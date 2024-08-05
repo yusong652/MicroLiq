@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-EN">
 <head>
-	<title>Analysis of microscopic fabric evolution and its influence on liquefaction using DEM</title>
+	<title>Analysis of microscopic fabric evolution using discrete element method</title>
 	<style>
 		body {
 			background-color: white;
@@ -20,10 +20,20 @@
 	<hr>
 
 	<h2 style="text-align:left">1. Fabric evolution under general stress states</h2>
+	<p>
+		This chapter describes the characteristics of fabric evolution of sand soil by conducting a series of drained true triaxial shear tests using DEM. The difference in fabric under general stress conditions inspired and motivated the study on its influence on liquefaction resistance.
+	</p>
 
 	<hr>
 
 	<h2 style="text-align:left">2. Study on factors affecting liquefaction resistance during anisotropic consolidation</h2>
+
+	<p>
+		This chapter introduces an innovative DEM simulation method of the hollow cylindrical apparatus (HCA). This algorithm simultaneously replicates undrained and stress conditions using a combined-servo-mechanism. 
+	</p>
+	<p>
+		With the proposed method, specimens with the same p under different horizontal to vertical stress ratio K<sub>0</sub> were subjected to different cyclic shear stress ratios, and typical stress-strain relationships observed in laboratory test were obtained. The effects of K<sub>0</sub> on liquefaction resistance were analyzed from both macroscopic and microscopic perspectives.
+	</p>
 	<p>
 		<a href="torsionSim/doc/manuscript.docx">Download manuscript</a>
 	</p>
@@ -31,25 +41,41 @@
 	<hr>
 
 	<h2 style="text-align:left;">3. Experimental validation of K<sub>0</sub> effects on liquefaction resistance</h2>
+	<p>
+		The purpose of this chapter is to validate the results obtained in chapter 2 by providing experimental evidence. The effects of K<sub>0</sub> and preparation protocols, including the stress paths in consolidation stage, are discussed.
+	</p>
 
 	<hr>
 
 	<h2 style="text-align:left">4. Effects of multi-directional shear stress on liquefaction resistance</h2>
 
+	<p>
+		Besides the anisotropy of soil, directionality of seismic loading also matters in liquefaction analyses. This chapter examines the multi-directional effects on liquefaction resistance. These effects are quantitatively studied by applying different loading paths while maintaining the magitudes of shear stress.
+	</p>
+
 	<hr>
 
 	<h2 style="text-align:left">5. Implementation of high performance computing in DEM accelerated with GPU</h2>
+
+	<p>
+		This chapter demonstrates the implementation of high-performance computing (HPC) in DEM using TaichiLang. This repository includes a basic linear contact model and a simple cuboidal boundary, with plans to incorporate additional contact models.
+	</p>
+	<p>
+		<a href="https://github.com/yusong652/taichiDEM">View this repository</a>
+	</p>
 
 	<hr>
 
 	<h2 style="text-align:left">6. Ray tracing: refining every pixel in DEM visualization</h2>
 	<p>
-		<a href="https://github.com/yusong652/ray-tracing">Visit this repository</a>
+		Utilizing a visualization software such as Paraview is not strictly necessary. Offline rendering can accurately capture pixels in DEM scenes featuring spherical objects, including effects like reflection and refraction. TaichiLang offers efficient GPU interaction, facilitating rapid development of high-performance renderers.
+	</p>
+	<p>
+		<a href="https://github.com/yusong652/ray-tracing">View this repository</a>
 	</p>
 	<hr>
 
-	<h2 style="text-align:left">7. From micro to macro, what is the next step in liquefaction analysis using DEM?</h2>
-
+	<h2 style="text-align:left">7. Linking the micro to the macro, future steps in liquefaction analysis from DEM</h2>
 	<hr>
 
 </body>
