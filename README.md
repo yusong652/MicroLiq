@@ -1,4 +1,4 @@
-# Analysis of microscopic fabric evolution in liquefaction using discrete element method
+# Microscopic analysis of fabric evolution in liquefaction using discrete element method
 
 ## 1. Fabric evolution under general stress states
 
