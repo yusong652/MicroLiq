@@ -22,8 +22,12 @@ Besides the anisotropy of soil, directionality of seismic loading also matters i
 
 This chapter demonstrates the implementation of high-performance computing (HPC) in DEM using TaichiLang. This repository includes a basic linear contact model and a simple cuboidal boundary, with plans to incorporate additional contact models.
 
+[taichiDEM](https://github.com/yusong652/taichiDEM)
+
 ## 6. Ray tracing: refining every pixel in DEM visualization
 
 Utilizing a visualization software such as Paraview is not strictly necessary. Offline rendering can accurately capture pixels in DEM scenes featuring spherical objects, including effects like reflection and refraction. TaichiLang offers efficient GPU interaction, facilitating rapid development of high-performance renderers.
+
+[ray-tracing](https://github.com/yusong652/ray-tracing)
 
 ## 7. Linking the micro to macro scales, further steps in liquefaction analysis using DEM
