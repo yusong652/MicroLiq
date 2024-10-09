@@ -19,7 +19,7 @@ time = np.linspace(0, len(effe_stress)*freq_record, len(effe_stress))
 def get_index_begin(shear_stress):
 	index_begin = 0
 	for stress in shear_stress:
-		if stress <= 0.5:
+		if stress <= 1.0:
 			index_begin += 1
 		else:
 			break
@@ -39,8 +39,8 @@ def get_index_liq(lateral_stress, index_begin):
 
 index_liq = get_index_liq(lateral_stress, index_begin)
 
-effe_stress = effe_stress[index_begin:index_liq]
-shear_stress = shear_stress[index_begin:index_liq]
+effe_stress = effe_stress[index_begin:]
+shear_stress = shear_stress[index_begin:]
 
 time_begin = time[index_begin]
 time_liq = time[index_liq] - time_begin
@@ -49,7 +49,7 @@ print(time_liq/10.)
 
 ax.plot(effe_stress, shear_stress)
 ax.set_xlabel(r"$Mean\ effective\ stress\ p\prime\ (kPa)$")
-ax.set_ylabel(r"$Pore\ water\ stress\ (kPa)$")
+ax.set_ylabel(r"$Shear\ stress\ \tau(kPa)$")
 
 plt.savefig('p-tau.png')
 plt.show()

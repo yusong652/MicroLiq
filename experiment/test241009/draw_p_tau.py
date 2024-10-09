@@ -49,7 +49,7 @@ print(time_liq/10.)
 
 ax.plot(effe_stress, shear_stress)
 ax.set_xlabel(r"$Mean\ effective\ stress\ p\prime\ (kPa)$")
-ax.set_ylabel(r"$Pore\ water\ stress\ (kPa)$")
+ax.set_ylabel(r"$Shear\ stress\ \tau(kPa)$")
 
 plt.savefig('p-tau.png')
 plt.show()
