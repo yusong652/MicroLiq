@@ -1,3 +1,4 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -45,6 +46,7 @@ def get_k0_cycle():
 			k0 = (lateral_stress[index_begin]/
 				(lateral_stress[index_begin]+axial_stress[index_begin]))
 
+
 			time_begin = time[index_begin]
 			time_liq = time[index_liq] - time_begin
 			cycle_liq = time_liq/10.0
@@ -54,7 +56,15 @@ get_k0_cycle()
 
 ax.set_xlabel(r"$Ratio\ of\ lateral\ to\ vertical\ stress$")
 ax.set_ylabel(r"$Number\ of\ cycle\ to\ liquefaction$")
+# ax.set_yscale('log')
 ax.set_xscale('log')
+ax.set_xticks([0.2, 0.3, 0.4, 0.5, 1.0])
+# ax.set_xticklabels([0.2, 0.3, 0.4, 0.5, 1.0])
+ax.get_xaxis().set_minor_formatter(matplotlib.ticker.ScalarFormatter())
+ax.get_xaxis().set_minor_formatter(matplotlib.ticker.NullFormatter())
+ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
+# ax.get_xaxis().get_major_formatter().labelOnlyBase = False
+
 
 plt.savefig('k0_effect.png')
 plt.show()
