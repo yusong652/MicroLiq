@@ -12,11 +12,11 @@ effe_stress = - pore_stress
 stress_min = np.array(effe_stress).min()
 effe_stress -= stress_min
 
-freq = 0.02
+freq = 0.05
 time = np.linspace(0, len(effe_stress)*freq, len(effe_stress))
 
 ax.plot(time, pore_stress)
-ax.set_xlabel(r"$Mean\ effective\ stress\ p\prime\ (kPa)$")
+ax.set_xlabel(r"$Time\ (s)$")
 ax.set_ylabel(r"$Pore\ water\ stress\ (kPa)$")
 
 plt.savefig('time_u.png')
