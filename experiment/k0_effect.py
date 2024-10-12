@@ -54,11 +54,11 @@ def get_k0_cycle():
 
 get_k0_cycle()
 
-ax.set_xlabel(r"$Ratio\ of\ lateral\ to\ vertical\ stress$")
-ax.set_ylabel(r"$Number\ of\ cycle\ to\ liquefaction$")
+ax.set_xlabel(r"$Ratio\ of\ lateral\ to\ vertical\ stress\ K_0$")
+ax.set_ylabel(r"$Number\ of\ cycle\ to\ liquefaction\ N_L$")
 # ax.set_yscale('log')
 ax.set_xscale('log')
-ax.set_xticks([0.2, 0.3, 0.4, 0.5, 1.0])
+ax.set_xticks([0.2, 0.3, 0.4, 0.5, 1.0, 2.0])
 # ax.set_xticklabels([0.2, 0.3, 0.4, 0.5, 1.0])
 ax.get_xaxis().set_minor_formatter(matplotlib.ticker.ScalarFormatter())
 ax.get_xaxis().set_minor_formatter(matplotlib.ticker.NullFormatter())
