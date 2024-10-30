@@ -12,7 +12,17 @@ shear_strain = df["CH_2"]/180.*np.pi*(0.05**3-0.03**3)/((0.05**2-0.03**2)*3*0.1)
 shear_strain = np.array(shear_strain)
 shear_strain = shear_strain - shear_strain[0]
 
-ax.plot(shear_strain, shear_stress)
+def get_index_begin(shear_stress):
+	index_begin = 0
+	for stress in shear_stress:
+		if stress <= 1.0:
+			index_begin += 1
+		else:
+			break
+	return index_begin
+
+index_begin = get_index_begin(shear_stress)
+ax.plot(shear_strain[index_begin:len(shear_strain)-100], shear_stress[index_begin:len(shear_strain)-100])
 ax.set_xlabel(r"$Shear\ strain(\%)$")
 ax.set_ylabel(r"$Shear\ stress\ \tau\ (kPa)$")
 

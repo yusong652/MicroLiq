@@ -22,7 +22,7 @@ def get_index_begin(shear_stress):
 	return index_begin
 
 index_begin = get_index_begin(shear_stress)
-ax.plot(shear_strain[index_begin:], shear_stress[index_begin:])
+ax.plot(shear_strain[index_begin:len(shear_strain)-0], shear_stress[index_begin:len(shear_strain)-0])
 ax.set_xlabel(r"$Shear\ strain(\%)$")
 ax.set_ylabel(r"$Shear\ stress\ \tau\ (kPa)$")
 
