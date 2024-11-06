@@ -13,8 +13,17 @@
 			color: red;
 		}
 	</style>
+	<script src="quadTree/p5.js"></script>
+    <script src="quadTree/quadtree.js"></script>
+    <script src="quadTree/particle.js"></script>
+    <script src="quadTree/sketch.js"></script>
+    <link rel="stylesheet" type="text/css" href="quadTree/style.css">
 </head>
 <body>
+	<main>
+
+	</main>
+
 	<h1 style="text-align: center;">Microscopic analysis of fabric evolution in liquefaction using discrete element method</h1>
 	<p style="text-align: right;">
 		<a href="https://github.com/yusong652/MicroLiq">View repository</a>
@@ -25,6 +34,17 @@
 	<h2 style="text-align:left">1. Fabric evolution under general stress states</h2>
 	<p>
 		This chapter describes the characteristics of fabric evolution of sand soil by conducting a series of drained true triaxial shear tests using DEM. The difference in fabric under general stress conditions inspired and motivated the study on its influence on liquefaction resistance.
+	</p>
+
+	<pre style="text-align: center">
+		<a href="triaxial/demo/trueTriaxial.png"><img src="triaxial/demo/trueTriaxial.png" alt="icon" width="300" height="300"/></a> <a href="triaxial/demo/failureCriterion.png"><img src="triaxial/demo/failureCriterion.png" alt="icon" width="300" height="300"/></a>
+		True triaxial apparatus in DEM simulation        M-N Failure Criterion
+
+		<a href="triaxial/demo/fabricEvolution.png"><img src="triaxial/demo/fabricEvolution.png" alt="icon" width="500" height="400"/></a> <a href="triaxial/demo/fabricCritical.png"><img src="triaxial/demo/fabricCritical.png" alt="icon" width="600" height="400"/></a> 
+		Fabric evolution in true triaxial shear (b=0.0)          Fabric under critical state for different b
+	</pre>
+
+	<p>Han, Y., Kato, S. & Kim, BS. DEM Analysis of Fabric Evolution and Behavior of Granular Geomaterials in True Triaxial Test with Flexible Boundary. KSCE J Civ Eng 27, 3341–3354 (2023). <a href="https://doi.org/10.1007/s12205-023-0336-1">https://doi.org/10.1007/s12205-023-0336-1</a>
 	</p>
 
 	<hr>
@@ -39,14 +59,21 @@
 	</p>
 
 	<pre style="text-align: center">
-		<a href="torsionSim/demo/force_animation.gif"><img src="torsionSim/demo/force_165.png" alt="icon" width="300" height="200"/></a>
+		<a href="torsionSim/demo/algorithm.png"><img src="torsionSim/demo/algorithm.png" alt="icon" width="400" height="400"/></a>
+		Combined servo-mechanism for achieving undrained HCA simulation in DEM
+
+		<a href="torsionSim/demo/force_animation.gif"><img src="torsionSim/demo/force_animation.gif" alt="icon" width="400" height="280"/></a>
 		Contact force and particle displacement in HCA
+
 		<a href="torsionSim/demo/k0_times.png"><img src="torsionSim/demo/k0_times.png" alt="icon" width="400" height="300"/></a>
 		K<sub>0</sub> effects on liquefaction
 	</pre>
-	<p>
-		<a href="torsionSim/doc/manuscript.docx" title="manuscript">Download manuscript</a>
+
+	<p>Ma, Q., He, X., Zhou, Y.-G., Chen, Y.-M., & Han, Y.-S. (2024). An approach to DEM simulation of hollow torsional shear tests for achieving general loading paths. Computers and Geotechnics, 172, 106402. <a href="https://doi.org/10.1016/j.compgeo.2024.106402">https://doi.org/10.1007/s12205-023-0336-1</a>
 	</p>
+<!-- 	<p>
+		<a href="torsionSim/doc/manuscript.docx" title="manuscript">Download manuscript</a>
+	</p> -->
 
 	<hr>
 
@@ -73,11 +100,17 @@
 		<a href="multi_directional/demo/force_single8.gif"><img src="multi_directional/demo/force_single8.gif" alt="icon" width="260" height="180"/></a> <a href="multi_directional/demo/force_double8.gif"><img src="multi_directional/demo/force_double8.gif" alt="icon" width="260" height="180"/></a>
 		Single-8                                  Double-8
 		Specimen deformation and interparticle force
+		<a href="multi_directional/demo/liq_res_cur.png"><img src="multi_directional/demo/liq_res_cur.png" alt="icon" width="380" height="320"/></a>
+		Liquefaction resistance subjected to different shear modes
+		<a href="multi_directional/demo/contactDensitySingle8
+		.gif"><img src="multi_directional/demo/contactDensitySingle8.gif" alt="icon" width="260" height="260"/></a> <a href="multi_directional/demo/contactDensityDouble8.gif"><img src="multi_directional/demo/contactDensityDouble8.gif" alt="icon" width="260" height="260"/></a>
+		Single-8                                  Double-8
+		Fabric evolution under different shear modes
 	</pre>
 
-	<p>
+<!-- 	<p>
 		<a href="multi_directional/doc/manuscript_mul_direction.docx" title="manuscript">Download manuscript</a>
-	</p>
+	</p> -->
 
 	<hr>
 
