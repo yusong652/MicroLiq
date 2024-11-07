@@ -2,6 +2,7 @@ let particles = [];
 var button;
 
 function setup() {
+  window.scrollTo(0, 0);
   createCanvas(windowWidth, windowHeight/2);
   button = createButton('Clear particles');
   button.position(width-120, height);
