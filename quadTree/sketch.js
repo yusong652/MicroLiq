@@ -1,8 +1,9 @@
 let particles = [];
-var button;
 let fade = 0;
 let fadeAmount = 1;
 let mouseIsPushed = false;
+var button;
+var particleNumLmt;
 
 function setup() {
   window.scrollTo(0, 0);
@@ -14,6 +15,7 @@ function setup() {
   // qtree.show();
 
   let numParticle = 60;
+  particleNumLmt = Math.floor(width * height / 1000);
   for (let i = 0; i < numParticle; i++){
     let x = random(width);
     let y = random(height);
@@ -32,6 +34,7 @@ function setup() {
 
 function clearParticles() {
   particles = [];
+  mouseIsPushed = false;
 }
 
 function showText() {
@@ -61,7 +64,7 @@ function draw() {
   let boundary = new Rectangle(width/2, height, width/2, height);
   let qtree = new QuadTree(boundary, 4);
 
-  if (mouseIsPressed && particles.length < 300 && mouseX<=width && mouseY<=height) {
+  if (mouseIsPressed && particles.length < particleNumLmt && mouseX<=width && mouseY<=height) {
     mouseIsPushed = true;
     let p = new Particle(mouseX, mouseY, particles.length);
     particles.push(p);
