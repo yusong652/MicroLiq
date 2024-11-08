@@ -23,7 +23,6 @@ class Particle {
     this.acceleration.mult(0);
   }
   edges() {
-    console.log(width);
     if (this.position.x > width - this.r){
       this.position.x = width - this.r;
       this.velocity.x *= -1;
@@ -67,6 +66,7 @@ class Particle {
   }
   show(){
     strokeWeight(3.2)
+    fill(255, 255, 255, 0);
     circle(this.position.x, this.position.y, this.r*2);
   }
 }
