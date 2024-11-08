@@ -35,8 +35,8 @@ function clearParticles() {
 }
 
 function showText() {
-  if (fade<-100) fadeAmount = 1;
-  if (fade>255) fadeAmount = -2;
+  if (fade<-50) fadeAmount = 1;
+  if (fade>255) fadeAmount = -4;
 
   fade += fadeAmount;
   if (fade >= 0){
