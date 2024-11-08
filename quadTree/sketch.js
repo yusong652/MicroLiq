@@ -43,7 +43,7 @@ function draw() {
   let boundary = new Rectangle(width/2, height, width/2, height);
   let qtree = new QuadTree(boundary, 4);
 
-  if (mouseIsPressed && particles.length < 1000 && mouseX<=width && mouseY<=height) {
+  if (mouseIsPressed && particles.length < 300 && mouseX<=width && mouseY<=height) {
     let p = new Particle(mouseX, mouseY, particles.length);
     particles.push(p);
   }
