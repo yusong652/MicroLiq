@@ -15,7 +15,7 @@ function setup() {
   // qtree.show();
 
   let numParticle = 60;
-  particleNumLmt = Math.floor(width * height / 1000);
+  particleNumLmt = getParticleNumLmt();
   for (let i = 0; i < numParticle; i++){
     let x = random(width);
     let y = random(height);
@@ -31,10 +31,14 @@ function setup() {
 //   background(0);
 //   qTree.show()
 // }
+function getParticleNumLmt(){
+  return Math.floor(width * height / 1000);
+}
 
 function clearParticles() {
   particles = [];
   mouseIsPushed = false;
+  particleNumLmt = getParticleNumLmt();
 }
 
 function showText() {
