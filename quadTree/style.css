@@ -5,3 +5,48 @@ html, body {
 canvas {
   display: block;
 }
+button {
+  position: absolute;
+  top: 40.2%;
+  right: 0.3%;
+  transform: translate(0px, 0px);
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  line-height: 18px;
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background: 
+  linear-gradient(70deg, #77f07f, #41a0ae, #36669c, #77f07f);
+  border-radius: 20px;
+  border-width: 0px;
+  background-size: 400%;
+  z-index: 1;
+} 
+@keyframes animate{
+  from{
+    background-position: 0%;
+  }
+  to{
+    background-position: 400%;
+  }
+}
+button::before{
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  background: 
+  linear-gradient(70deg, #77f07f, #41a0ae, #36669c, #77f07f);
+  background-size: 400%;
+  border-radius: 20px;
+  opacity: 0;
+}
+button:hover::before{
+  filter: blur(2px);
+  opacity: 0.8;
+  animation: animate 8s linear infinite;
+}

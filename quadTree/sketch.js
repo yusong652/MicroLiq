@@ -7,11 +7,12 @@ var particleNumLmt;
 
 function setup() {
   window.scrollTo(0, 0);
-  createCanvas(windowWidth, windowHeight/2);
-  button = createButton('Clear particles');
-  button.position(width-120, height);
-  button.size(120, 30);
-  button.mousePressed(clearParticles);
+  createCanvas(windowWidth, windowHeight*0.4);
+  document.getElementById("clearParticles").onclick = clearParticles;
+  // button = createButton('Clear particles');
+  // button.position(width-120, height);
+  // button.size(120, 30);
+  // button.mousePressed(clearParticles);
   // qtree.show();
 
   let numParticle = 60;
@@ -60,7 +61,7 @@ function showText() {
 
 function draw() {
   resizeCanvas(windowWidth, height);
-  button.position(width-120, height);
+  // button.position(width-120, height);
   
   background(30, 160, 120);
 
