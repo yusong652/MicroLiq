@@ -10,12 +10,12 @@ button {
   top: 40.2%;
   right: 0.3%;
   transform: translate(0px, 0px);
-  width: 100px;
+  width: 120px;
   height: 25px;
   text-align: center;
   line-height: 18px;
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: none;
   font-family: sans-serif;
   box-sizing: border-box;
@@ -46,7 +46,7 @@ button::before{
   opacity: 0;
 }
 button:hover::before{
-  filter: blur(2px);
+  filter: blur(0.5px);
   opacity: 0.8;
   animation: animate 8s linear infinite;
 }
