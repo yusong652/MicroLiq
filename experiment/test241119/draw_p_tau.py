@@ -44,7 +44,6 @@ shear_stress = shear_stress[index_begin:-200]
 
 time_begin = time[index_begin]
 time_liq = time[index_liq] - time_begin
-print(time_begin)
 print(time_liq/10.)
 
 ax.plot(effe_stress, shear_stress)

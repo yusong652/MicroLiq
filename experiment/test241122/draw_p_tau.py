@@ -39,8 +39,8 @@ def get_index_liq(lateral_stress, index_begin):
 
 index_liq = get_index_liq(lateral_stress, index_begin)
 
-effe_stress = effe_stress[index_begin:-200]
-shear_stress = shear_stress[index_begin:-200]
+effe_stress = effe_stress[index_begin:]
+shear_stress = shear_stress[index_begin:]
 
 time_begin = time[index_begin]
 time_liq = time[index_liq] - time_begin
