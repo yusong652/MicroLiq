@@ -22,19 +22,19 @@ class Particle {
     this.position.add(this.velocity);
     this.acceleration.mult(0);
   }
-  edges() {
-    if (this.position.x > width - this.r){
-      this.position.x = width - this.r;
+  edges(boundary_x_min, boundary_x_max, boundary_y_min, boundary_y_max) {
+    if (this.position.x > boundary_x_max - this.r){
+      this.position.x = boundary_x_max - this.r;
       this.velocity.x *= -1;
-    } else if (this.position.x < this.r) {
-      this.position.x = this.r;
+    } else if (this.position.x < boundary_x_min + this.r) {
+      this.position.x = boundary_x_min + this.r;
       this.velocity.x *= -1;
     }
-    if (this.position.y > height - this.r) {
-      this.position.y = height - this.r;
+    if (this.position.y > boundary_y_max - this.r) {
+      this.position.y = boundary_y_max - this.r;
       this.velocity.y *= -1;
-    } else if (this.position.y < this.r) {
-      this.position.y = this.r;
+    } else if (this.position.y < boundary_y_min + this.r) {
+      this.position.y = boundary_y_min + this.r;
       this.velocity.y *= -1;
     }
   }
