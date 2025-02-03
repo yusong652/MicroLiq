@@ -48,11 +48,11 @@ function checkIfClearParticles(){
 }
 
 function clearParticles() {
-  a_var = 0.01;
-  if (accelerationBoundaryMovement < 0.8){
+  a_var = 0.008;
+  if (accelerationBoundaryMovement < 1){
     accelerationBoundaryMovement += a_var;
   }
-  if (velocityBoundaryMovement < 20.0){
+  if (velocityBoundaryMovement < 32.0){
     velocityBoundaryMovement += accelerationBoundaryMovement;
   }
   wall_x_min += velocityBoundaryMovement;
@@ -119,9 +119,12 @@ function updateQTree(){
 } 
 
 function updateParticle(){
+  collisionDetection();
   for (let p of particles) {
     p.update();
     p.edges(wall_x_min, wall_x_max, wall_y_min, wall_y_max);
+  }
+  for (let p of particles) {
     p.show();
   }
 } 
@@ -133,7 +136,7 @@ function draw() {
   checkIfClearParticles();
   updateQTree();
   updateParticle();
-  collisionDetection();
+  
 
   if (!mouseIsPushed){
     showText();
