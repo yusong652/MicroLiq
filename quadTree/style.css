@@ -6,9 +6,9 @@ canvas {
   display: block;
 }
 .clear-button {
-  position: absolute;
-  top: 40.2%;
-  right: 0.3%;
+  position: relative;
+  top: -0px;
+  left: 0px;
   transform: translate(0px, 0px);
   width: 120px;
   height: 25px;
