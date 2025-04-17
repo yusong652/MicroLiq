@@ -2,6 +2,7 @@ let particles = [];
 let fade = 0;
 let fadeAmount = 1;
 let mouseIsPushed = false;
+let isMouseOverCanvas = false;
 var qtree;
 var button;
 var particleNumLmt;
@@ -25,6 +26,15 @@ function setup() {
     let y = random(height);
     particles.push(new Particle(x, y, i));
   }
+
+  // 添加画布鼠标事件监听
+  let canvas = document.querySelector('canvas');
+  canvas.addEventListener('mouseenter', () => {
+    isMouseOverCanvas = true;
+  });
+  canvas.addEventListener('mouseleave', () => {
+    isMouseOverCanvas = false;
+  });
 }
 
 function getParticleNumLmt(){
@@ -100,7 +110,8 @@ function collisionDetection(){
 }
 
 function checkIfAddParticle(){
-  if (!(mouseIsPressed && particles.length < particleNumLmt && mouseX<=width && mouseY<=height)) {
+  if (!isMouseOverCanvas) return;  // 如果鼠标不在画布上，直接返回
+  if (!(mouseIsPressed && particles.length < particleNumLmt)) {
     return; 
   }
   mouseIsPushed = true;
@@ -140,5 +151,16 @@ function draw() {
 
   if (!mouseIsPushed){
     showText();
+  }
+}
+
+function mousePressed(event) {
+  // 如果鼠标不在画布上，不处理事件
+  if (!isMouseOverCanvas) return;
+  
+  // 检查是否点击了清除按钮
+  const clearButton = document.getElementById('clearParticles');
+  if (clearButton && clearButton.contains(event.target)) {
+    return false;
   }
 }

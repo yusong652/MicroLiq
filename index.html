@@ -2,136 +2,186 @@
 <html lang="en-EN">
 <head>
 	<title>Microscopic analysis of fabric evolution in liquefaction using discrete element method</title>
-	<style>
-		body {
-			background-color: white;
-		}
-		.center {
-			text-align: center;
-		}
-		.red {
-			color: red;
-		}
-
-	</style>
 	<script src="quadTree/p5.min.js"></script>
-    <script src="quadTree/quadtree.js"></script>
-    <script src="quadTree/particle.js"></script>
-    <script src="quadTree/sketch.js"></script>
-    <script src="quadTree/collapsible.js"></script>
-    <link rel="stylesheet" type="text/css" href="quadTree/style.css">
+	<script src="quadTree/quadtree.js"></script>
+	<script src="quadTree/particle.js"></script>
+	<script src="quadTree/sketch.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<main>
-	</main>
-	<button id="clearParticles" type="button" class="clear-button" value="Clear particles" onclick="clearParticles();" /> Clear particles</button>
-	<h1 style="text-align: center;">Microscopic analysis of fabric evolution in liquefaction using discrete element method</h1>
-
-<!-- 	<p style="text-align: right;">
-		<a href="https://github.com/yusong652/MicroLiq">View repository</a>
-	</p> -->
-	<hr>
-	<button type="button" class="chapter-title">1. Fabric evolution under general stress states</button>
-	<div class="content">
-	<pre style="text-align: center">
-		<a href="triaxial/triaxial.html"><img src="triaxial/demo/trueTriaxial.png" alt="icon" width="220" height="220"/></a>      <a href="triaxial/triaxial.html"><img src="triaxial/demo/failureCriterion.png" alt=icon width="220" height="220"/></a>
-
-		True triaxial apparatus using DEM        M-N Failure Criterion
-
-		<a href="triaxial/triaxial.html">(Click for details)</a>
-	</pre>
-		<p>
-		This chapter describes the characteristics of fabric evolution of sand soil by conducting a series of drained true triaxial shear tests using DEM. The difference in fabric under general stress conditions inspired and motivated the study on its influence on liquefaction resistance.
-		</p>
-
-		<p>Han, Y., Kato, S. & Kim, BS. DEM Analysis of Fabric Evolution and Behavior of Granular Geomaterials in True Triaxial Test with Flexible Boundary. KSCE J Civ Eng 27, 3341–3354 (2023). <a href="https://doi.org/10.1007/s12205-023-0336-1">https://doi.org/10.1007/s12205-023-0336-1</a>
-		</p>
+	<!-- 动画展示区域 -->
+	<div id="animation-container">
+		<main>
+			<!-- p5.js 会自动在这里创建 canvas -->
+		</main>
+		<div class="button-wrapper">
+			<button id="clearParticles" type="button" class="clear-button">Clear particles</button>
+		</div>
 	</div>
 
-	<hr>
-	<button type="button" class="chapter-title">2. Study on factors affecting liquefaction resistance during anisotropic consolidation</button>
-	<div class="content">
-	<p>
-		This chapter introduces an innovative DEM simulation method of the hollow cylindrical apparatus (HCA). This algorithm simultaneously replicates undrained and stress conditions using a combined-servo-mechanism. 
-	</p>
-	<p>
-		With the proposed method, specimens with the same p under different horizontal to vertical stress ratio K<sub>0</sub> were subjected to different cyclic shear stress ratios, and typical stress-strain relationships observed in laboratory test were reproduced. The effects of K<sub>0</sub> on liquefaction resistance were studied from both macroscopic and microscopic perspectives.
-	</p>
-
-	<pre style="text-align: center">
-
-		<a href="torsionSim/torsionSim.html"><img src="torsionSim/demo/force.png" alt="icon" width="300" height="200"/></a>
-		
-		Contact force and particle displacement in HCA
-		
-		<a href="torsionSim/torsionSim.html">(Click for animation and details)</a>
-
-	</pre>
-
-	<p>Ma, Q., He, X., Zhou, Y.-G., Chen, Y.-M., & Han, Y.-S. (2024). An approach to DEM simulation of hollow torsional shear tests for achieving general loading paths. Computers and Geotechnics, 172, 106402. <a href="https://doi.org/10.1016/j.compgeo.2024.106402">https://doi.org/10.1007/s12205-023-0336-1</a>
-	</p>
+	<!-- 主标题 -->
+	<div class="title-container">
+		<h1>Microscopic analysis of fabric evolution in liquefaction using discrete element method</h1>
 	</div>
 
-	<hr>
-	<button type="button" class="chapter-title">3. Experimental validation of K0 effects on liquefaction resistance</button>
-	<div class="content">
-	<p>
-		The purpose of this chapter is to validate the results obtained in chapter 2 by providing experimental evidence. The effects of K<sub>0</sub> and preparation protocols, including the stress paths in consolidation stage, are discussed.
-	</p>
-	<a target="_blank" rel="noopener noreferrer" href="experiment/experiment.html">Experiment Data</a>
+	<!-- 标签导航栏 -->
+	<nav class="tab-navigation">
+		<div class="tab-container">
+			<button class="tab-button active" data-section="section1">1. Fabric evolution</button>
+			<button class="tab-button" data-section="section2">2. HCA simulation</button>
+			<button class="tab-button" data-section="section3">3. Experimental validation</button>
+			<button class="tab-button" data-section="section4">4. Multi-directional effects</button>
+			<button class="tab-button" data-section="section5">5. HPC-DEM</button>
+			<button class="tab-button" data-section="section6">6. Visualization</button>
+		</div>
+	</nav>
+
+	<!-- 内容区域 -->
+	<div class="page-content">
+		<!-- 主内容区域 -->
+		<main id="main-content">
+			<!-- 第一章 -->
+			<div id="section1" class="content-section active">
+				<h2 class="chapter-title">Chapter 1. Fabric evolution under general stress states</h2>
+				<div class="image-gallery">
+					<div class="gallery-item">
+						<a href="triaxial/triaxial.html">
+							<img src="triaxial/demo/trueTriaxial.png" alt="icon" width="220" height="220"/>
+						</a>
+						<p class="caption">True triaxial apparatus using DEM</p>
+					</div>
+					<div class="gallery-item">
+						<a href="triaxial/triaxial.html">
+							<img src="triaxial/demo/failureCriterion.png" alt="icon" width="220" height="220"/>
+						</a>
+						<p class="caption">M-N Failure Criterion</p>
+					</div>
+				</div>
+				<div class="gallery-link">
+					<a href="triaxial/triaxial.html">(Click for details)</a>
+				</div>
+				<p>
+					This chapter describes the characteristics of fabric evolution of sand soil by conducting a series of drained true triaxial shear tests using DEM. The difference in fabric under general stress conditions inspired and motivated the study on its influence on liquefaction resistance.
+				</p>
+
+				<p>Han, Y., Kato, S. & Kim, BS. DEM Analysis of Fabric Evolution and Behavior of Granular Geomaterials in True Triaxial Test with Flexible Boundary. KSCE J Civ Eng 27, 3341–3354 (2023). <a href="https://doi.org/10.1007/s12205-023-0336-1">https://doi.org/10.1007/s12205-023-0336-1</a>
+				</p>
+			</div>
+
+			<!-- 第二章 -->
+			<div id="section2" class="content-section">
+				<h2 class="chapter-title">Chapter 2. Study on factors affecting liquefaction resistance during anisotropic consolidation</h2>
+				<p>
+					This chapter introduces an innovative DEM simulation method of the hollow cylindrical apparatus (HCA). This algorithm simultaneously replicates undrained and stress conditions using a combined-servo-mechanism. 
+				</p>
+				<p>
+					With the proposed method, specimens with the same p under different horizontal to vertical stress ratio K<sub>0</sub> were subjected to different cyclic shear stress ratios, and typical stress-strain relationships observed in laboratory test were reproduced. The effects of K<sub>0</sub> on liquefaction resistance were studied from both macroscopic and microscopic perspectives.
+				</p>
+
+				<div class="image-gallery">
+					<div class="gallery-item">
+						<a href="torsionSim/torsionSim.html">
+							<img src="torsionSim/demo/force.png" alt="icon" width="300" height="200"/>
+						</a>
+						<p class="caption">Contact force and particle displacement in HCA</p>
+					</div>
+				</div>
+				<div class="gallery-link">
+					<a href="torsionSim/torsionSim.html">(Click for animation and details)</a>
+				</div>
+
+				<p>Ma, Q., He, X., Zhou, Y.-G., Chen, Y.-M., & Han, Y.-S. (2024). An approach to DEM simulation of hollow torsional shear tests for achieving general loading paths. Computers and Geotechnics, 172, 106402. <a href="https://doi.org/10.1016/j.compgeo.2024.106402">https://doi.org/10.1016/j.compgeo.2024.106402</a>
+				</p>
+			</div>
+
+			<!-- 第三章 -->
+			<div id="section3" class="content-section">
+				<h2 class="chapter-title">Chapter 3. Experimental validation of K0 effects on liquefaction resistance</h2>
+				<p>
+					The purpose of this chapter is to validate the results obtained in chapter 2 by providing experimental evidence. The effects of K<sub>0</sub> and preparation protocols, including the stress paths in consolidation stage, are discussed.
+				</p>
+				<a target="_blank" rel="noopener noreferrer" href="experiment/experiment.html">Experiment Data</a>
+			</div>
+
+			<!-- 第四章 -->
+			<div id="section4" class="content-section">
+				<h2 class="chapter-title">Chapter 4. Effects of multi-directional shear stress on liquefaction resistance</h2>
+				<p>
+					Besides the anisotropy of soil, directionality of seismic loading also matters in liquefaction analyses. This chapter examines the multi-directional effects on liquefaction resistance. These effects are quantitatively studied by applying different loading paths while maintaining the magitudes of shear stress.
+				</p>
+				<div class="image-gallery">
+					<div class="gallery-item">
+						<a href="multiDirection/multiDirection.html">
+							<img src="multiDirection/demo/stress_unidirectional.jpg" alt="icon" width="200" height="200"/>
+						</a>
+						<p class="caption">Unidirectional</p>
+					</div>
+					<div class="gallery-item">
+						<a href="multiDirection/multiDirection.html">
+							<img src="multiDirection/demo/stress_single8.jpg" alt="icon" width="200" height="200"/>
+						</a>
+						<p class="caption">Single-8</p>
+					</div>
+					<div class="gallery-item">
+						<a href="multiDirection/multiDirection.html">
+							<img src="multiDirection/demo/stress_double8.jpg" alt="icon" width="200" height="200"/>
+						</a>
+						<p class="caption">Double-8</p>
+						<p class="caption">Shear and mean effective stress evolution</p>
+					</div>
+				</div>
+				<div class="gallery-link">
+					<a href="multiDirection/multiDirection.html">(Click for animation and details)</a>
+				</div>
+			</div>
+
+			<!-- 第五章 -->
+			<div id="section5" class="content-section">
+				<h2 class="chapter-title">Chapter 5. Implementation of high performance computing in DEM accelerated with GPU</h2>
+				<p>
+					This chapter demonstrates the implementation of high-performance computing (HPC) in DEM using TaichiLang. This repository includes a basic linear contact model and a simple cuboidal boundary, with plans to incorporate additional contact models.
+				</p>
+				<div class="video-container">
+					<video width="400" height="280" controls>
+						<source src="taichiDEM/demo/animation.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<p class="caption">An example of generating a slope using taichiDEM</p>
+				</div>
+				<p>
+					<a href="https://github.com/yusong652/taichiDEM">View this repository</a>
+				</p>
+			</div>
+
+			<!-- 第六章 -->
+			<div id="section6" class="content-section">
+				<h2 class="chapter-title">Chapter 6. Ray tracing: refining every pixel in DEM visualization</h2>
+				<p>
+					Utilizing a visualization software such as Paraview is not strictly necessary. Offline rendering can accurately capture pixels in DEM scenes featuring spherical objects, including effects like reflection and refraction. TaichiLang offers efficient GPU interaction, facilitating rapid development of high-performance renderers.
+				</p>
+				<div class="image-gallery">
+					<div class="gallery-item">
+						<a href="graphics/ray_tracer/demo/particleRayTracing.png">
+							<img src="graphics/ray_tracer/demo/particleRayTracing.png" alt="taichiDEM_demo" width="420" height="200"/>
+						</a>
+						<p class="caption">An example of ray tracing of particle objects</p>
+					</div>
+				</div>
+				<p>
+					<a href="https://github.com/yusong652/ray-tracing">View this repository</a>
+				</p>
+			</div>
+		</main>
 	</div>
 
-	<hr>
-	<button type="button" class="chapter-title">4. Effects of multi-directional shear stress on liquefaction resistance</button>
-	<div class="content">
-	<p>
-		Besides the anisotropy of soil, directionality of seismic loading also matters in liquefaction analyses. This chapter examines the multi-directional effects on liquefaction resistance. These effects are quantitatively studied by applying different loading paths while maintaining the magitudes of shear stress.
-	</p>
-	<pre style="text-align: center">
-		<a href="multiDirection/multiDirection.html"><img src="multiDirection/demo/stress_unidirectional.jpg" alt="icon" width="200" height="200"/></a> <a href="multiDirection/multiDirection.html"><img src="multiDirection/demo/stress_single8.jpg" alt="icon" width="200" height="200"/></a> <a href="multiDirection/multiDirection.html"><img src="multiDirection/demo/stress_double8.jpg" alt="icon" width="200" height="200"/></a>
+	<!-- 页脚 -->
+	<footer class="footer">
+		<div class="footer-content">
+			<p>&copy; 2024 Yusong Han with Nagisa Toyoura. All rights reserved.</p>
+			<p>Division of Geotechnics, Disaster Prevention Research Institute, Kyoto University</p>
+		</div>
+	</footer>
 
-		Unidirectional               Single-8                Double-8
-
-		Shear and mean effective stress evolution
-
-		<a href="multiDirection/multiDirection.html">(Click for animation and detials) </a>
-	</pre>
-	</div>
-
-	<hr>
-	<button type="button" class="chapter-title">5. Implementation of high performance computing in DEM accelerated with GPU</button>
-	<div class="content">
-	<p>
-		This chapter demonstrates the implementation of high-performance computing (HPC) in DEM using TaichiLang. This repository includes a basic linear contact model and a simple cuboidal boundary, with plans to incorporate additional contact models.
-	</p>
-	<pre style="text-align: center">
-		<video width="400" height="280" controls>
-			<source src="taichiDEM/demo/animation.mp4" type="video/mp4">
-			Your browser does not support the video tag.
-		</video>
-		An example of generating a slope using taichiDEM
-	</pre>
-	<p>
-		<a href="https://github.com/yusong652/taichiDEM">View this repository</a>
-	</p>
-	</div>
-
-	<hr>
-	<button type="button" class="chapter-title">6. Ray tracing: refining every pixel in DEM visualization</button>
-	<div class="content">
-	<h2 style="text-align:left"></h2>
-	<p>
-		Utilizing a visualization software such as Paraview is not strictly necessary. Offline rendering can accurately capture pixels in DEM scenes featuring spherical objects, including effects like reflection and refraction. TaichiLang offers efficient GPU interaction, facilitating rapid development of high-performance renderers.
-	</p>
-	<pre style="text-align: center">
-		<a href="graphics/ray_tracer/demo/particleRayTracing.png"><img src="graphics/ray_tracer/demo/particleRayTracing.png" alt="taichiDEM_demo" width="420" height="200"/></a>
-		An example of ray tracing of particle objects
-	</pre>
-	<p>
-		<a href="https://github.com/yusong652/ray-tracing">View this repository</a>
-	</p>
-	<hr>
-	</div>
-
+	<script src="js/navigation.js"></script>
 </body>
 </html>
