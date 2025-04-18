@@ -13,33 +13,29 @@ let accelerationBoundaryMovement = 0.0;
 
 function setup() {
   window.scrollTo(0, 0);
-  let canvas = createCanvas(windowWidth, windowHeight*0.4);
   
-  // 先检查占位符元素是否存在
+  // 创建 canvas 并设置在容器内
+  let canvas = createCanvas(windowWidth, windowHeight * 0.4);
+  canvas.parent('animation-container');
+  
+  // 获取元素
   let placeholder = document.getElementById('canvas-placeholder');
-  if (placeholder) {
-    // 初始时设置 canvas 为透明
-    canvas.elt.style.opacity = '0';
-    
-    // 在 canvas 加载完成后执行过渡
+  let canvasElement = document.querySelector('#animation-container canvas');
+  
+  if (placeholder && canvasElement) {
+    // 确保 canvas 已经准备好
     setTimeout(() => {
-      // 再次检查占位符是否存在
-      if (placeholder) {
-        // 淡出占位符
-        placeholder.style.opacity = '0';
-        // 淡入 canvas
-        canvas.elt.style.opacity = '1';
-        // 移除占位符
-        setTimeout(() => {
-          if (placeholder && placeholder.parentNode) {
-            placeholder.parentNode.removeChild(placeholder);
-          }
-        }, 300); // 与 CSS transition 时间相匹配
-      }
+      // 淡入 canvas
+      canvasElement.style.opacity = '1';
+      
+      // 淡出并移除占位符
+      placeholder.style.opacity = '0';
+      setTimeout(() => {
+        if (placeholder && placeholder.parentNode) {
+          placeholder.parentNode.removeChild(placeholder);
+        }
+      }, 300);
     }, 100);
-  } else {
-    // 如果没有占位符，直接显示 canvas
-    canvas.elt.style.opacity = '1';
   }
 
   document.getElementById("clearParticles").onclick = setClearParticlesOn;
