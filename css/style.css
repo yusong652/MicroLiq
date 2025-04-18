@@ -28,6 +28,8 @@ body {
     background-color: var(--bg-color);  /* 使用主背景色变量 */
     border-bottom: 1px solid var(--border-color);  /* 边框也使用变量 */
     transition: background-color 0.3s;  /* 添加过渡效果 */
+    position: relative;
+    z-index: 1;  /* 确保在较低层级 */
 }
 
 /* 标题文字样式 */
@@ -49,6 +51,8 @@ body {
     width: 100%;
     position: relative;
     margin-top: 0;
+    position: relative;
+    z-index: 1;  /* 确保内容在较低层级 */
 }
 
 /* 主内容区域 */
@@ -56,6 +60,8 @@ body {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    position: relative;
+    z-index: 1;  /* 确保内容在较低层级 */
 }
 
 /* 内容区块 */
@@ -204,44 +210,58 @@ pre {
     --footer-bg: #f8f9fa;
     --border-color: #ddd;
     --title-color: rgb(0, 0, 0);  /* 添加标题颜色变量 */
+    --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: "Tiempos Text", Georgia, serif;
+    --color-text: #2C3E50;
+    --color-active: #1E293B;
+    --color-hover: #0F172A;
+    --active-border: #ffffff;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    
+    /* 亮色模式变量 */
+    --bg-nav: #ffffff;
 }
 
 /* 定义夜间模式的颜色 */
 .dark-mode {
-    --bg-color: rgb(35, 33, 32);  /* 调亮的深褐色背景 */
-    --text-color: rgb(229, 225, 220);  /* 正文文字颜色 */
-    --title-color: rgb(255, 255, 255);  /* 标题使用纯白色 */
+    --bg-color: rgb(45, 43, 42);  /* 进一步调亮的深褐色背景 */
+    --text-color: rgb(229, 225, 220);  /* 保持原有的文字颜色 */
     --primary-color: rgb(25, 118, 88);
     --accent-color: rgb(35, 154, 85);
-    --footer-bg: rgb(28, 27, 26);  /* 更深的褐色作为页脚背景 */
-    --border-color: rgb(48, 46, 44);
+    --footer-bg: rgb(38, 36, 35);  /* 相应调整页脚背景，保持比主背景深一点 */
+    --border-color: #333333;     /* 边框颜色 */
+    --color-text: #94A3B8;       /* 普通文本颜色 */
+    --color-active: #ffffff;     /* 激活状态颜色 */
+    --color-hover: #e2e8f0;      /* 悬停状态颜色 */
+    --active-border: #ffffff;    /* 激活状态下的边框颜色 */
+    --bg-nav: #1a1a1a;          /* 导航栏背景色 */
 }
 
-/* 标签导航栏容器 */
+/* 导航栏容器样式 */
 .tab-navigation {
     width: 100%;
-    background-color: var(--bg-color);
+    background-color: var(--bg-nav);
     border-bottom: 1px solid var(--border-color);
     padding: 6px 0;
     overflow-x: auto;
     cursor: grab;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    position: sticky;    /* 使导航栏粘性定位 */
-    top: 0;             /* 固定在顶部 */
-    z-index: 1000;      /* 确保导航栏在其他内容之上 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* 添加阴影效果，提供视觉深度 */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--bg-nav);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* 为了确保滚动时的平滑过渡，可以添加阴影动画 */
 .tab-navigation.scrolled {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* 确保内容不会突然跳动 */
-.page-content {
-    margin-top: 0;
-    position: relative;
 }
 
 /* 当正在拖动时禁用平滑滚动，使移动更即时 */
@@ -267,13 +287,30 @@ pre {
     scrollbar-width: none;
 }
 
-/* 标签按钮容器 */
+/* 导航按钮容器 */
 .tab-container {
     display: flex;
-    white-space: nowrap;
+    flex-wrap: nowrap;
+    width: max-content;
     padding: 0 20px;
-    min-width: min-content;
-    margin: 0 auto;
+}
+
+/* 导航按钮基础样式 */
+.tab-button {
+    padding: 14px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-family: var(--font-primary);
+    position: relative;
 }
 
 /* 导航按钮的基础样式 */
@@ -290,14 +327,15 @@ pre {
 
 /* 夜间模式下的导航按钮样式 */
 .dark-mode .tab-button {
-    color: rgb(200, 200, 200);  /* 夜间模式下用较亮的灰色 */
+    color: var(--color-text);
 }
 
 /* 活跃状态的按钮样式 */
 .tab-button.active {
     opacity: 1;
     background-color: rgb(51, 122, 183);  /* 选中时的蓝色背景 */
-    color: white !important;  /* 确保选中时文字始终为白色 */
+    color: var(--color-active) !important;  /* 确保选中时文字始终为白色 */
+    font-weight: 600;
 }
 
 /* 夜间模式下活跃状态的按钮 */
@@ -308,6 +346,64 @@ pre {
 /* 悬停效果 */
 .tab-button:hover {
     opacity: 1;
+    font-weight: 500;
+    color: var(--color-hover);
+}
+
+/* 添加浮动提示框样式 */
+.floating-tooltip {
+    position: fixed;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 10000;
+    max-width: 250px;
+    min-width: 150px;
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.floating-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+}
+
+.floating-tooltip.show-above::after {
+    bottom: -5px;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent;
+}
+
+.floating-tooltip.show-below::after {
+    top: -5px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.8);
+}
+
+.floating-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dark-mode .floating-tooltip {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+
+.dark-mode .floating-tooltip.show-above::after {
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent;
+}
+
+.dark-mode .floating-tooltip.show-below::after {
+    border-color: transparent transparent rgba(255, 255, 255, 0.9);
 }
 
 /* 主内容区域 */
@@ -610,4 +706,46 @@ input:checked + .slider .slider-icon.dark {
 /* 夜间模式下的标题样式 */
 .dark-mode .chapter-title {
     color: rgb(255, 255, 255);  /* 夜间模式下是白色 */
+}
+
+/* 默认（白天模式）的链接样式 */
+a {
+    color: #0066cc;  /* 深蓝色 */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0052a3;  /* 悬停时稍微深一点 */
+}
+
+/* 夜间模式的链接样式 */
+.dark-mode a {
+    color: #00b3e6;  /* 带青色的亮蓝色 */
+}
+
+.dark-mode a:hover {
+    color: #00ccff;  /* 悬停时更亮一些 */
+}
+
+/* 确保切换动画平滑 */
+.tab-navigation,
+.tab-button,
+.tab-button::after {
+    transition: 
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--active-border);
+    transform-origin: left center;
+    transition: background-color 0.3s ease;
 } 
