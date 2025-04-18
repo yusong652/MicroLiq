@@ -8,8 +8,12 @@
 	<script src="quadTree/sketch.js" defer></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<script src="js/tooltip.js" defer></script>
 </head>
 <body>
+	<!-- 在 body 的开始部分添加 -->
+	<div id="tooltip" class="floating-tooltip"></div>
+
 	<!-- 主题切换滑块 -->
 	<div class="theme-switch-wrapper">
 		<label class="theme-switch" for="theme-toggle">
@@ -44,12 +48,24 @@
 	<!-- 标签导航栏 -->
 	<nav class="tab-navigation">
 		<div class="tab-container">
-			<button class="tab-button active" data-section="section1">1. Fabric evolution</button>
-			<button class="tab-button" data-section="section2">2. HCA simulation</button>
-			<button class="tab-button" data-section="section3">3. Experimental validation</button>
-			<button class="tab-button" data-section="section4">4. Multi-directional effects</button>
-			<button class="tab-button" data-section="section5">5. HPC-DEM</button>
-			<button class="tab-button" data-section="section6">6. Visualization</button>
+			<button class="tab-button active" data-section="section1" data-tooltip="Chapter 1. Fabric evolution under general stress states">
+				1. Fabric evolution
+			</button>
+			<button class="tab-button" data-section="section2" data-tooltip="Chapter 2. Study on factors affecting liquefaction resistance during anisotropic consolidation">
+				2. HCA simulation
+			</button>
+			<button class="tab-button" data-section="section3" data-tooltip="Chapter 3. Experimental validation of K0 effects on liquefaction resistance">
+				3. Experimental validation
+			</button>
+			<button class="tab-button" data-section="section4" data-tooltip="Chapter 4. Effects of multi-directional shear stress on liquefaction resistance">
+				4. Multi-directional effects
+			</button>
+			<button class="tab-button" data-section="section5" data-tooltip="Chapter 5. Implementation of high performance computing in DEM accelerated with GPU">
+				5. HPC-DEM
+			</button>
+			<button class="tab-button" data-section="section6" data-tooltip="Chapter 6. Ray tracing: refining every pixel in DEM visualization">
+				6. Visualization
+			</button>
 		</div>
 	</nav>
 
@@ -201,5 +217,6 @@
 
 	<script src="js/navigation.js" defer></script>
 	<script src="js/theme.js" defer></script>
+	<script src="js/tooltip.js" defer></script>
 </body>
 </html>

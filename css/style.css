@@ -738,7 +738,8 @@ a:hover {
         color 0.3s ease;
 }
 
-.tab-button.active::after {
+/* 删除或注释掉这段代码 */
+/*.tab-button.active::after {
     content: '';
     position: absolute;
     bottom: -1px;
@@ -748,4 +749,23 @@ a:hover {
     background-color: var(--active-border);
     transform-origin: left center;
     transition: background-color 0.3s ease;
+}*/
+
+.tab-button {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    padding: 14px 22px;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.tab-button:hover {
+    color: var(--color-hover);
+}
+
+.tab-button.active {
+    font-weight: 600;
+    color: var(--color-active);
 } 
