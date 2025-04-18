@@ -111,13 +111,12 @@ function showText() {
   if (fade>255) fadeAmount = -4;
 
   fade += fadeAmount;
-  if (fade >= 0){
-
+  if (fade >= 0) {
     strokeWeight(0);
     textSize(30);
     fill(255, 255, 255, fade);
     text("Press to add particles", 20, 30);
-    textSize(12)
+    textSize(12);
     text("QuadTree for collision detection", width-100, height, 160, 120);
   }
 }
@@ -169,14 +168,23 @@ function updateParticle(){
 
 function draw() {
   resizeCanvas(windowWidth, height);
-  background(30, 160, 120);
+  
+  // 检查深色模式
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  
+  // 根据模式设置背景色
+  if (isDarkMode) {
+    background(30, 40, 55);  // 深色模式使用深蓝色
+  } else {
+    background(30, 160, 120);  // 浅色模式使用绿色
+  }
+  
   checkIfAddParticle();
   checkIfClearParticles();
   updateQTree();
   updateParticle();
   
-
-  if (!mouseIsPushed){
+  if (!mouseIsPushed) {
     showText();
   }
 }

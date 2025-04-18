@@ -520,7 +520,7 @@ pre {
     position: fixed;
     right: 20px;
     transition: top 0.3s ease;
-    z-index: 3000;  /* 确保高于导航栏 */
+    z-index: 3000;
 }
 
 /* 初始位置 - 在 canvas 下方 */
@@ -530,7 +530,7 @@ pre {
 
 /* 滚动后的位置 - 导航栏下方 */
 .theme-switch-wrapper.scrolled {
-    top: 70px;  /* 调整到导航栏下方，给予足够空间 */
+    top: 70px;
 }
 
 /* 主题切换开关容器 */
