@@ -101,6 +101,7 @@ body {
     }
 }
 
+/* 按钮基础样式 */
 .clear-button {
     padding: 8px 16px;
     color: white;
@@ -109,12 +110,8 @@ body {
     cursor: pointer;
     pointer-events: all;
     position: relative;
-    overflow: hidden;    /* 确保渐变不会溢出按钮范围 */
-    
-    /* 移除背景色，因为我们用伪元素来处理所有背景效果 */
+    overflow: hidden;
     background: transparent;
-    
-    /* 阴影效果 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -123,10 +120,10 @@ body {
 .clear-button::before {
     content: '';
     position: absolute;
-    inset: 0;           /* 完全覆盖按钮 */
-    background: rgb(30, 160, 120);
-    z-index: -2;        /* 放在最底层 */
-    border-radius: 8px;  /* 与按钮相同的圆角 */
+    inset: 0;
+    background: rgb(30, 160, 120);  /* 浅色模式的基础绿色 */
+    z-index: -2;
+    border-radius: 8px;
 }
 
 /* 渐变动画背景 */
@@ -150,7 +147,24 @@ body {
     transition: opacity 1s ease;
 }
 
-/* 鼠标悬停时显示渐变 */
+/* 深色模式样式 */
+.dark-mode .clear-button::before {
+    background: rgb(30, 40, 55);  /* 深色模式的基础深蓝色 */
+}
+
+.dark-mode .clear-button::after {
+    background: linear-gradient(
+        90deg, 
+        rgb(30, 40, 55),    /* 深蓝色 */
+        rgb(60, 50, 80),    /* 紫色 */
+        rgb(80, 40, 60),    /* 红色 */
+        rgb(60, 50, 80),    /* 紫色 */
+        rgb(30, 40, 55)     /* 深蓝色 */
+    );
+    background-size: 400%;
+}
+
+/* 鼠标悬停效果 */
 .clear-button:hover::after {
     opacity: 1;
 }
@@ -205,9 +219,9 @@ pre {
     --title-height: 100px; /* 根据实际标题高度调整 */
     --bg-color: rgb(255, 255, 255);
     --text-color: rgb(0, 0, 0);
-    --primary-color: rgb(30, 160, 120);
+    --primary-color: #ffffff;  /* 亮色模式下的背景色 */
     --accent-color: rgb(46, 204, 113);
-    --footer-bg: #f8f9fa;
+    --footer-bg: rgb(30, 160, 120);    /* 浅色模式下的绿色 */
     --border-color: #ddd;
     --title-color: rgb(0, 0, 0);  /* 添加标题颜色变量 */
     --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -224,15 +238,17 @@ pre {
     --bg-nav: #ffffff;
     --active-bg: rgba(0, 80, 60, 0.25);     /* 深绿色，较高不透明度 */
     --hover-bg: rgba(0, 100, 75, 0.1);      /* 浅绿色，低不透明度 */
+    --footer-text: #ffffff;            /* 白色文字 */
+    --canvas-bg: rgb(30, 160, 120);  /* 浅色模式下的绿色 */
 }
 
 /* 定义夜间模式的颜色 */
 .dark-mode {
     --bg-color: rgb(45, 43, 42);  /* 进一步调亮的深褐色背景 */
     --text-color: rgb(229, 225, 220);  /* 保持原有的文字颜色 */
-    --primary-color: rgb(25, 118, 88);
+    --primary-color: rgb(30, 40, 55);  /* 深色模式下的背景色 */
     --accent-color: rgb(35, 154, 85);
-    --footer-bg: rgb(38, 36, 35);  /* 相应调整页脚背景，保持比主背景深一点 */
+    --footer-bg: rgb(30, 40, 55);      /* 深色模式下的背景色 */
     --border-color: #333333;     /* 边框颜色 */
     --color-text: #94A3B8;       /* 普通文本颜色 */
     --color-active: #ffffff;     /* 激活状态颜色 */
@@ -241,6 +257,7 @@ pre {
     --bg-nav: #1a1a1a;          /* 导航栏背景色 */
     --active-bg: rgba(0, 120, 90, 0.3);     /* 深色模式下的深绿色 */
     --hover-bg: rgba(0, 140, 105, 0.15);    /* 深色模式下的悬停色 */
+    --canvas-bg: rgb(30, 40, 55);    /* 深色模式下的深蓝色 */
 }
 
 /* 导航栏样式 */
@@ -250,7 +267,7 @@ pre {
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 2000;
     overflow-x: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
@@ -435,63 +452,46 @@ pre {
     text-justify: inter-word;
 }
 
-/* 页脚样式 */
+/* 页脚基础样式 */
 .footer {
     width: 100%;
+    padding: 12px 0;        /* 减小内边距 */
+    text-align: center;
     background-color: var(--footer-bg);
-    padding: 2em 0;
-    margin-top: 3em;
-    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.5);  /* 半透明白色，看起来更柔和 */
+    padding: 0 20px;
 }
 
 .footer-content p {
-    margin: 0.3em 0;
-    font-size: 0.8em;
-    line-height: 1.4;
-    font-weight: 300;
-    letter-spacing: 0.02em;
+    color: var(--footer-text);
+    opacity: 0.9;           /* 增加文字透明度 */
+    margin: 6px 0;         /* 减小段落间距 */
+    font-size: 14px;       /* 稍微减小字体大小 */
 }
 
-/* 如果需要在深色主题下保持可读性 */
-@media (prefers-color-scheme: dark) {
-    .footer {
-        background-color: rgb(30, 160, 120);
-        border-top-color: #97c4ff;
-    }
-    
-    .footer-content {
-        color: #c2f5ff;
-    }
-}
-
+/* Canvas 占位符 */
 #canvas-placeholder {
     width: 100%;
-    height: 40vh;  /* 改为 40vh，与 windowHeight*0.4 对应 */
-    background-color: rgb(30, 160, 120);
-    position: absolute;
-    top: 0;
-    left: 0;
+    height: 40vh;
+    background-color: var(--canvas-bg);
+    position: relative;
     transition: opacity 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* 加载动画容器 */
 .loading-spinner {
-    position: relative;
-    width: 60px;
-    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* 旋转的圆圈 */
+/* 加载动画 */
 .spinner {
     width: 40px;
     height: 40px;
@@ -499,19 +499,11 @@ pre {
     border-radius: 50%;
     border-top-color: #fff;
     animation: spin 1s ease-in-out infinite;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
-/* 定义旋转动画 */
 @keyframes spin {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -523,13 +515,22 @@ pre {
     transition: opacity 0.3s ease;
 }
 
-/* 主题切换包装器 */
+/* 主题切换按钮包装器 */
 .theme-switch-wrapper {
     position: fixed;
     right: 20px;
-    bottom: 20px;
-    z-index: 1000;
-    padding: 10px;
+    transition: top 0.3s ease;
+    z-index: 3000;  /* 确保高于导航栏 */
+}
+
+/* 初始位置 - 在 canvas 下方 */
+.theme-switch-wrapper.initial {
+    top: calc(40vh + 20px);  /* canvas 高度是 40vh，加上间距 */
+}
+
+/* 滚动后的位置 - 导航栏下方 */
+.theme-switch-wrapper.scrolled {
+    top: 70px;  /* 调整到导航栏下方，给予足够空间 */
 }
 
 /* 主题切换开关容器 */
