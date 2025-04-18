@@ -2,15 +2,20 @@
 <html lang="en-EN">
 <head>
 	<title>Microscopic analysis of fabric evolution in liquefaction using discrete element method</title>
-	<script src="quadTree/p5.min.js"></script>
-	<script src="quadTree/quadtree.js"></script>
-	<script src="quadTree/particle.js"></script>
-	<script src="quadTree/sketch.js"></script>
+	<script src="quadTree/p5.min.js" defer></script>
+	<script src="quadTree/quadtree.js" defer></script>
+	<script src="quadTree/particle.js" defer></script>
+	<script src="quadTree/sketch.js" defer></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<!-- 动画展示区域 -->
 	<div id="animation-container">
+		<div id="canvas-placeholder">
+			<div class="loading-spinner">
+				<div class="spinner"></div>
+			</div>
+		</div>
 		<main>
 			<!-- p5.js 会自动在这里创建 canvas -->
 		</main>
@@ -182,6 +187,6 @@
 		</div>
 	</footer>
 
-	<script src="js/navigation.js"></script>
+	<script src="js/navigation.js" defer></script>
 </body>
 </html>

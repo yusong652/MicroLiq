@@ -13,7 +13,35 @@ let accelerationBoundaryMovement = 0.0;
 
 function setup() {
   window.scrollTo(0, 0);
-  createCanvas(windowWidth, windowHeight*0.4);
+  let canvas = createCanvas(windowWidth, windowHeight*0.4);
+  
+  // 先检查占位符元素是否存在
+  let placeholder = document.getElementById('canvas-placeholder');
+  if (placeholder) {
+    // 初始时设置 canvas 为透明
+    canvas.elt.style.opacity = '0';
+    
+    // 在 canvas 加载完成后执行过渡
+    setTimeout(() => {
+      // 再次检查占位符是否存在
+      if (placeholder) {
+        // 淡出占位符
+        placeholder.style.opacity = '0';
+        // 淡入 canvas
+        canvas.elt.style.opacity = '1';
+        // 移除占位符
+        setTimeout(() => {
+          if (placeholder && placeholder.parentNode) {
+            placeholder.parentNode.removeChild(placeholder);
+          }
+        }, 300); // 与 CSS transition 时间相匹配
+      }
+    }, 100);
+  } else {
+    // 如果没有占位符，直接显示 canvas
+    canvas.elt.style.opacity = '1';
+  }
+
   document.getElementById("clearParticles").onclick = setClearParticlesOn;
   wall_x_min = 0;
   wall_x_max = width;
@@ -28,11 +56,10 @@ function setup() {
   }
 
   // 添加画布鼠标事件监听
-  let canvas = document.querySelector('canvas');
-  canvas.addEventListener('mouseenter', () => {
+  canvas.elt.addEventListener('mouseenter', () => {
     isMouseOverCanvas = true;
   });
-  canvas.addEventListener('mouseleave', () => {
+  canvas.elt.addEventListener('mouseleave', () => {
     isMouseOverCanvas = false;
   });
 }
