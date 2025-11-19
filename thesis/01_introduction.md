@@ -12,17 +12,17 @@ Soil liquefaction is a major geotechnical hazard that occurs when saturated gran
 
 One of the earliest and most extensively studied cases of liquefaction-induced failure is the 1964 Niigata Earthquake (M 7.6, Japan) (Kishida, 1966; Ohsaki, 1966; Seed and Idriss, 1967; Yoshimi and Tokimatsu, 1977; Ishihara and Koga, 1981; Ishihara and Yoshimine, 1992; Yoshida et al., 2007). The collapse of apartment buildings in Niigata City, as shown in Fig.1.1, despite their structural integrity, was attributed to liquefaction-induced bearing capacity failure of the underlying saturated sand layers. Similarly, widespread liquefaction led to severe damage to river embankments and bridges, as shown in Fig. 1.2, posing a significant threat to critical infrastructure.
 
-![建筑的摆设布局 中度可信度描述已自动生成](thesis/assets/media/image1.png)
+![](thesis/assets/media/image1.jpg)
 
 Fig. 1.1. Tilting and overturning of Kawagishi-cho apartment buildings due to liquefaction-induced foundation failure in the 1964 Niigata Earthquake, Japan (Source: Elnashai, A. S., 2015)
 
-![图片包含 日历 描述已自动生成](thesis/assets/media/image2.png)
+![](thesis/assets/media/image2.png)
 
 Fig. 1.2. Collapse of Showa bridge caused by liquefaction during the 1964 Niigata earthquake, Japan, (Source: Yoshida et al., 2007)
 
 Another catastrophic example is the 1995 Hanshin-Awaji Earthquake (M 6.9, Japan), which caused extensive liquefaction across reclaimed lands in Kobe, particularly in Port Island, Rokko Island, and Fukae Island (Ishihara et al., 1997; Hatanaka et al., 1997). Severe damage was observed in port infrastructures (Fig. 1.3), such as the collapse of quay walls, lateral spreading of waterfront areas, and ground subsidence, significantly affecting Kobe Port, one of Japan's largest trading hubs. These failures disrupted maritime transportation for months, showing the vulnerability of reclaimed land to liquefaction-induced ground deformations.
 
-![木船上 低可信度描述已自动生成](thesis/assets/media/image3.png)
+![](thesis/assets/media/image3.png)
 
 Fig. 1.3 Liquefaction-induced ground deformation at Kobe Port during the 1995 Hanshin-Awaji Earthquake, causing severe damage to port infrastructure (Source: Ministry of Land, Infrastructure, Transport, and Tourism (MLIT))
 

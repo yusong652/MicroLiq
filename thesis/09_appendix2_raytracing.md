@@ -18,7 +18,7 @@ Ray tracing is a rendering technique that models the interaction of light with o
 
 ### A2.1.1. Camera, ray, viewport, and scene
 
-![示意图 低可信度描述已自动生成](thesis/assets/media/image166.png)
+![](thesis/assets/media/image166.png)
 
 Fig. A2.1. Ray tracing workflow: Rays originate from the camera, pass through the viewport, and interact with objects in the 3D scene, determining the color information for each pixel.
 
@@ -32,7 +32,7 @@ Fig. A2.1 illustrates the basic workflow of ray tracing, where rays originate fr
 
 The ray tracing process begins by iterating over every pixel in the viewport, generating a primary ray for each. These rays are traced into the 3D scene to identify intersections with objects. For each intersection, additional calculations are performed to evaluate lighting, material properties, and other effects such as shadows or reflections. If a ray intersects with an object, the nearest intersection point is determined. The object\'s material properties, combined with lighting conditions, are then used to compute the pixel\'s final color. Rays that do not intersect with any object are typically assigned a background color, representing the environment or sky. To visualize the setup, Fig. A2.2 presents two spheres rendered with refined, elegant colors---muted green (RGB: 0.45, 0.55, 0.47) and muted violet (RGB: 0.35, 0.30, 0.37).
 
-![图表, 气泡图 描述已自动生成](thesis/assets/media/image167.png)
+![](thesis/assets/media/image167.png)
 
 Fig. A2.2. Rendered spheres with purple and green colors
 
@@ -52,11 +52,11 @@ where $C$ is the object's base color, and $k_{a}$ is the ambient coefficient.
 
 Point lights represent localized sources of light that radiate uniformly in all directions from a specific position. They mimic real-world light sources like bulbs or candles. The intensity of light decreases with distance from the source, modeled by an attenuation factor.
 
-![图片包含 形状 描述已自动生成](thesis/assets/media/image168.png)
+![](thesis/assets/media/image168.png)
 
 Fig. A2.3. Diffuse reflection of light, showing the relationship between the light direction, surface normal, and reflection distribution
 
-![黑暗中的灯光 中度可信度描述已自动生成](thesis/assets/media/image169.png)
+![](thesis/assets/media/image169.png)
 
 Fig. A2.4. Specular reflection, illustrating the relationship between the light ray, surface normal, and viewer position
 
@@ -72,7 +72,7 @@ $I_{p} = C \cdot (k_{d}\left( \mathbf{L} \cdot \mathbf{N} \right) + k_{s}\left( 
 
 Directional light represents a distant light source, such as sunlight, where the light rays are considered parallel. Unlike point lights, directional light does not attenuate with distance. The illumination model for directional light is similar to that of point light but simplifies calculations as the light direction remains constant for the entire scene.
 
-![桌子上有一些彩色的球 低可信度描述已自动生成](thesis/assets/media/image170.png)
+![](thesis/assets/media/image170.png)
 
 Fig. A2.5. Rendering of two spheres under directional light showcasing diffuse and specular reflections.
 
@@ -90,7 +90,7 @@ Reflections are crucial to creating realistic scenes in ray tracing, as they sim
 
 In the ray tracing process, reflections are computed by generating a secondary ray at the point of intersection between the primary ray and the reflective surface. This reflected ray continues to propagate through the scene, checking for further intersections with other objects. Each subsequent intersection contributes to the pixel's final color by considering the material properties and lighting conditions at each reflection point. This iterative process allows for the simulation of mirrored surfaces and multi-object reflections.
 
-![图片包含 形状 描述已自动生成](thesis/assets/media/image171.png)
+![](thesis/assets/media/image171.png)
 
 Fig. A2.6. Illustration of inter-object reflection showing ray paths
 
@@ -102,7 +102,7 @@ $\mathbf{r} = \mathbf{i} - 2(\mathbf{i} \cdot \mathbf{N})\mathbf{N}$ (A2-3)
 
 In Fig. A2.7, the visual results of reflections are demonstrated. Both spheres possess reflective properties, but their reflectivity coefficients differ. The sphere on the right exhibits a higher reflectivity, creating a pronounced mirror-like appearance that reflects the checkerboard floor and adjacent sphere. In contrast, the left sphere, with a lower reflectivity coefficient, produces a subtler reflection.
 
-![蓝色的球 描述已自动生成](thesis/assets/media/image172.png)
+![](thesis/assets/media/image172.png)
 
 Fig. A2.7. Spheres with high (right) and low (left) reflectivity
 
@@ -112,7 +112,7 @@ To prevent infinite recursion in complex scenes, a recursion depth is typically 
 
 In addition to reflection, ray tracing also accounts for refraction, where rays pass through transparent or semi-transparent objects, altering their trajectory according to Snell\'s law. Refraction is calculated using the indices of refraction of the two media involved. Fig. A2.8, illustrates this process, where a ray transitions from the purple object into the green object, resulting in a refracted direction.
 
-![图示 中度可信度描述已自动生成](thesis/assets/media/image173.png)
+![](thesis/assets/media/image173.png)
 
 Fig. A2.8. Refraction of a ray between two objects
 
@@ -122,7 +122,7 @@ $\frac{\sin\left( \theta_{i} \right)}{\sin\left( \theta_{refract} \right)} = \fr
 
 , where $\theta_{i}$ is the angle of incidence, $\theta_{refract}$ is the angle of refraction, and $n_{1}$ and $n_{2}$ are the indices of the refraction for the two media. The refracted ray can further interact with other objects in the scene, contributing to the final color and transparency effects.
 
-![图片包含 建筑, 桌子, 板子, 大 描述已自动生成](thesis/assets/media/image174.png)
+![](thesis/assets/media/image174.png)
 
 Fig. A2.9. Combined effects of reflection and refraction on two spheres
 
@@ -156,7 +156,7 @@ BVH is a hierarchical tree structure designed to optimize ray-object intersectio
 
 Fig. A2.11 demonstrates the capability of ray tracing to handle scenes with many objects efficiently. Each sphere in this dense granular assembly is rendered with accurate lighting effects, such as reflections and refractions, showcasing the robustness of ray tracing algorithms in managing complex object interactions. The rendering highlights the application of spatial data structures, such as Bounding Volume Hierarchies (BVH) or uniform grids, to optimize the computational workload and achieve high-quality visualizations even for scenes with thousands of objects.
 
-![图片包含 食物, 游戏机, 许多, 束 描述已自动生成](thesis/assets/media/image176.png)
+![](thesis/assets/media/image176.png)
 
 Fig. A2.11. Large-scale ray tracing of granular assemblies with accurate reflections
 

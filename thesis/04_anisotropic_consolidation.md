@@ -30,11 +30,11 @@ The stress paths for specimen preparation often entail linearly increasing $p'$ 
 
 Itasca PFC^3D^ (Itasca Consulting Group, Inc., 2021) was employed to implement DEM simulations of undrained cyclic torsional shear test. Unlike the periodic boundaries commonly used in element tests, the HCA in DEM simulation employs two cylinders, upper and lower planes, as well as six blades to provide torsional force, closely approximating the boundary conditions of HCA (Ishihara and Yasuda, 1975; Vargas et al., 2020; Li et al, 2014; Liu et al, 2021). As shown in Fig. 3.1(a), two rigid cylindrical walls with inner diameter of 6 cm and outer diameter of 10 cm are positioned coaxially and vertically, with the upper and lower planes placed 10 cm apart, resembling the geometric dimensions of laboratory tests (Vargas et al., 2020).
 
-![图片包含 应用程序 描述已自动生成](thesis/assets/media/image65.png)
+![](thesis/assets/media/image65.png)
 
 (a) Pouring method for generating particles
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image66.png)
+![](thesis/assets/media/image66.png)
 
 (b) Insertion of torsional blades
 
@@ -100,11 +100,11 @@ wall elements that solely interact with particles to apply shear loads is prefer
 
 Soils not merely encounter diverse levels of $K_{0}$, but also frequently undergo complex stress histories, potentially influencing the liquefaction resistance. For instance, Pan et al. (2019) observed that the stress history of triaxial extension-unloading can enhance liquefaction resistance compared to IC specimen, whereas the triaxial compression-unloading history yields a contrary effect. To investigate the impact of stress path on the liquefaction resistance, two protocols employing distinct stress paths were utilized to prepare specimens. To achieve the desired target stress
 
-![图表 描述已自动生成](thesis/assets/media/image67.png)
+![](thesis/assets/media/image67.png)
 
 (a) Mean effective stress $p'$ vs. deviator stress $q$
 
-![图表 描述已自动生成](thesis/assets/media/image68.png)
+![](thesis/assets/media/image68.png)
 
 (b) Mean effective stress $p'$ vs. void ratio $e$
 
@@ -118,11 +118,11 @@ The other approach adopted a constant-$p'$ triaxial shear method, where triaxial
 
 Compared to the gradually increasing $q$ at a constant $p'$ for the IC-AC-TS approach, the IC-AC method initiates $q$ at a lower $p'$, with $q$ increasing as $p'$ rises.
 
-![图形用户界面, 应用程序, 表格, Excel 描述已自动生成](thesis/assets/media/image69.png)
+![](thesis/assets/media/image69.png)
 
 (a) Axial strain $\varepsilon_{a}$ vs. deviator stress $q$
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image70.png)
+![](thesis/assets/media/image70.png)
 
 (b) Relationship between e and $\varepsilon_{a}$
 
@@ -132,11 +132,11 @@ The impact of these differences on liquefaction resistance is worth exploring. T
 
 Table 3-3. Specification of dense specimens in initial cyclic undrained shear stage
 
-![表格 描述已自动生成](thesis/assets/media/image71.png)
+![](thesis/assets/media/image71.png)
 
 Table 3-4. Specification of loose specimens in initial cyclic undrained shear stage
 
-![表格 描述已自动生成](thesis/assets/media/image72.png)
+![](thesis/assets/media/image72.png)
 
 ### Implementation of undrained condition
 
@@ -162,7 +162,7 @@ $u = \sigma_{r0}' - \sigma_{r}'$ (3-4)
 
 Shear forces are applied to the specimens in the form of a sine wave. Similar to the servo mechanism in consolidation process, the torque application method also considers the difference between the target and current values, along with the total contact stiffness between the blades and particles. The main distinction from the servo
 
-![图示 中度可信度描述已自动生成](thesis/assets/media/image73.png)
+![](thesis/assets/media/image73.png)
 
 Fig. 3.4. Determination of moment of inertia of shear stiffness in servo mechanism for torque application
 
@@ -184,19 +184,19 @@ Fig. 3.5, 3.6, and 3.7 respectively depict the relationships between mean princi
 
 In Fig. 3.5(a) and (b), as the shear stress $\tau$ cyclically acts on the hollow cylindrical specimen, the mean principal stress $p'$ exhibited an overall decrease for both IC and AC specimens. Once $p'$ falls below approximately 60 kPa, an increase in the magnitude of $\tau$ drove an upward trend in $p'$, displaying a butterfly-shaped relationship in $p'$-$q$ space. After liquefaction onset, $p'$ and $\tau$ delineate the critical state line and then converge at the origin, periodically. To better understand the
 
-![图表 描述已自动生成](thesis/assets/media/image74.png)
+![](thesis/assets/media/image74.png)
 
 (a) Shear stress $\tau$ vs. mean effective stress $p'$ (CSR = 0.250, $K_{0}$=1.00, dense)
 
-![图表 描述已自动生成](thesis/assets/media/image75.png)
+![](thesis/assets/media/image75.png)
 
 (b) Shear stress $\tau$ vs. mean effective stress $p'$ (CSR = 0.250, $K_{0}$=0.40, dense)
 
-![图表 描述已自动生成](thesis/assets/media/image76.png)
+![](thesis/assets/media/image76.png)
 
 (c) Deviatoric stress $\sigma_{vM}$ vs. mean effective stress $p'$ (CSR=0.250, dense)
 
-![图表 中度可信度描述已自动生成](thesis/assets/media/image77.png)
+![](thesis/assets/media/image77.png)
 
 (d) Deviatoric stress $\sigma_{vM}$ vs. mean effective stress $p'$, CSR=0.350
 
@@ -204,11 +204,11 @@ Fig. 3.5. Stress evolution of IC with $K_{0}$=1.0 and AC specimen with $K_{0}$=0
 
 evolution of stress state for the $K_{0}$=1.0 and $K_{0}$=0.40, the relationship between $p'$ and deviatoric von-Mises stress $\sigma_{vM}$ is depicted in Fig. 3.5(c) and Fig. 3.5(d) for CSR=0.250 and CSR=0.350, respectively. The $K_{0}$=1.0 specimen started with $\sigma_{vM}$ at 0, while the $K_{0}$=0.40 specimen initially exhibited higher level of initial $\sigma_{vM}$. As cyclic shear progressed, the $K_{0}$=1.0 specimen exhibited larger fluctuation in $\sigma_{vM}$. In contrast, the AC specimen initially showed smaller amplitude in $\sigma_{vM}$, which gradually increased in amplitude while decreasing in magnitude over time, as illustrated in Fig. 3.5(c) or Fig. 3.5(d).
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image78.png)
+![](thesis/assets/media/image78.png)
 
 (a) Shear stress $\tau$ vs. shear strain $\gamma$, CSR = 0.250, $K_{0}$=1.00
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image79.png)
+![](thesis/assets/media/image79.png)
 
 (b) Shear stress $\tau$ vs. shear strain $\gamma$, CSR = 0.250, $K_{0}$=0.40
 
@@ -216,17 +216,17 @@ Fig. 3.6. Evolution of shear stress $\tau$ and shear strain $\gamma$ in undraine
 
 In Fig. 3.6, stiff shear modulus with slight reduction was observed in initial stage. As cyclic loading progressed towards the liquefaction state, shear stiffness markedly decreased, plastic deformation occurred, and strong nonlinearity became evident. As shown in Fig. 3.7, pore water pressure responses differ between $K_{0}$=1.0 and $K_{0}$=0.40 states. For the $K_{0}$=1.0 state, $r_{u}$ increased more rapidly in the initial stages. However, after approximately 20 cycles, $r_{u}$ for the $K_{0}$=0.40 state surpassed that of the $K_{0}$=1.0 state. Liquefaction occurred after about 41 cycles for $K_{0}$=0.40, whereas $K_{0}$=1.0 case
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image80.png)
+![](thesis/assets/media/image80.png)
 
 Fig. 3.7. Comparison of evolution of excess pore water pressure ratio $r_{u}$ between IC state with $K_{0} = 1.0$ and AC state with $K_{0}$=0.40
 
 Reached liquefaction after approximately 84 cycles, nearly twice as many as the $K_{0}$=0.40 state, suggesting a higher liquefaction strength for initially IC state with $K_{0}$=1.0. Fig. 3.5, 3.6, and 3.7 demonstrate that typical stress and strain evolution in laboratory tests has been replicated in DEM simulations, providing preliminary evidence for the effectiveness of the method proposed. On the other hand, it is crucial to investigate how this resistance changes with varying CSR and $K_{0}$. Fig. 3.8(a) and Fig. 3.8(b) compare the number of cycles required to reach liquefaction under varying CSR and initial $K_{0}$ values. Fig. 3.8(a) demonstrates liquefaction resistance for specimens prepared with IC-AC protocol and found that under different CSR conditions, the number of cycles to liquefaction decreases with decreasing $K_{0}$ when
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image81.png)
+![](thesis/assets/media/image81.png)
 
 (a) Cyclic liquefaction resistance with various CSR
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image82.png)
+![](thesis/assets/media/image82.png)
 
 (b) Number of cyclic loadings $N_{L}$ vs. $K_{0}$ under cyclic shear loading with cyclic shear stress ratio of 0.250
 
@@ -240,11 +240,11 @@ The influence of stress paths on liquefaction resistance is also noteworthy. Fig
 
 Cumulative shear work refers to the energy input during undrained cyclic shear in this study. It is valuable to examine the correlation between the liquefaction resistance of soils and their susceptibility to the input energy. Towhata and Ishihara (1985) conducted a series of experiments where specimens were subjected to undrained cyclic shear under various loading conditions. They revealed a unique relationship between excess pore water pressure and shear work, despite differences in stress anisotropy. Figueroa et al. (1994) similarly confirmed that the shear work required for triggering liquefaction is independent of the amplitude of strain through strain-controlled tests. Georgiannou and Konstadinou (2014) concluded from the comparison between IC and AC specimens that the energy associated with terminal water pressure is positively correlated with relative density. For equivalent relative densities, AC specimens require greater energy than IC specimens to induce liquefaction.
 
-![图表 描述已自动生成](thesis/assets/media/image83.png)
+![](thesis/assets/media/image83.png)
 
 (a) $W_{s}$ vs. $N_{c}/N_{L}$ (dense)
 
-![图表 描述已自动生成](thesis/assets/media/image84.png)
+![](thesis/assets/media/image84.png)
 
 (b) $r_{u}$ vs. $W_{s}$ (dense)
 
@@ -262,7 +262,7 @@ The response in cumulative shear work inspired an exploration in relationship be
 
 $V_{s0} = \sqrt{\frac{G_{0}}{\rho_{sat}}}$ (3-8)
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image85.png)
+![](thesis/assets/media/image85.png)
 
 Fig. 3.10. Relationship between cyclic number and initial shear wave velocity (CSR=0.250)
 
@@ -280,7 +280,7 @@ $Z_{m}$ represents the mechanical coordination number. $N_{c}$ is the number of 
 
 Figure 3.11 shows the evolution of $Z_{m}$ under different initial $K_{0}$ states during the cyclic shear. The results indicate that the influence of initial stress states on the coordination number is significant, with greater stress anisotropy corresponding to lower coordination numbers both at the initial state and during the cyclic shear process. As cyclic loading was applied to the undrained specimen, $Z_{m}$ exhibited oscillatory behavior while progressively decreasing as shown in Fig. 3.11. The decline in $Z_{m}$ indicates a reduction in interparticle contacts and a loss of fabric integrity and robustness. Liquefaction was observed to occur when $Z_{m}$ fell to approximately 3.5, signifying a critical threshold where the specimen became susceptible to cyclic shear
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image86.png)
+![](thesis/assets/media/image86.png)
 
 Fig. 3.11. Mechanical coordination number evolution in cyclic shear and relationship between cyclic number required for liquefaction and initial mechanical coordination number (CSR=0.250)
 
@@ -294,7 +294,7 @@ $\mathbf{\Phi}_{\mathbf{ij}} = \ \frac{1}{N_{c}}\Sigma\mathbf{n}_{\mathbf{i}}\ma
 
 The diagonal elements of $\mathbf{\Phi}_{\mathbf{ij}}$ are positive and sum to one. The fraction of the diagonal elements describes the concentration of contact normals, with higher value indicating a greter concentration in that direction. The off-diagonal elements represent the asymmetry of the distribution of contact normals. The fabric tensor is a crucial indicator for characterizing the state of granular materials, microscopically refining the critical state theory (Li and Dafalias, 2012).
 
-![图形用户界面 描述已自动生成](thesis/assets/media/image87.png)
+![](thesis/assets/media/image87.png)
 
 Fig. 3.12. Transformation of contact normal from global x-y-z orthogonal coordinate to circumferential-radial-axial local cylindrical coordinates
 
@@ -320,7 +320,7 @@ $F_{c} = \sqrt{\frac{3}{2}\mathbf{F}_{\mathbf{ij}}\mathbf{F}_{\mathbf{ij}}}$ (3-
 
 Eq. (3-11) defines the anisotropic fabric tensor $\mathbf{F}_{\mathbf{ij}}$, which subtracts 1/3 from the diagonal elements of the fabric tensor and then multiplied by 15/2, where $\mathbf{\delta}_{\mathbf{ij}}$ represents the Kronecker delta. As the second invariant of $\mathbf{F}_{\mathbf{ij}}$, $F_{c}$ measures the development of fabric anisotropy (Zhao and Guo, 2013), as shown in Eq. (3-12), where the Einstein summation convention is applied, and indicates the magnitude of fabric
 
-![图表 描述已自动生成](thesis/assets/media/image88.png)
+![](thesis/assets/media/image88.png)
 
 Fig. 3.13. Evolution of second invariant of mechanical anisotropic fabric tensor $F_{c}$ for specimens subjected to different initial stress anisotropies
 
@@ -340,11 +340,11 @@ $N_{L} = \exp\left( {\zeta Z}_{m0} + \eta\alpha_{0}\  + \chi \right)$ (3-14)
 
 The fitted surface equation produced positive $\zeta$=3.63 and $\eta$=0.19, suggesting that an increasing $Z_{m0}$ or $\alpha_{0}$ enhances liquefaction resistance, which contrasts with the literatures, where an increasing $\alpha_{0}$ reduces liquefaction resistance. The $K_{0}$ conditions of the specimens in this study vary considerably compared to the literature and could explain the distinct conclusions. For instance, unlike a comparison between two stress ratios of $K_{0}$=1.0 and $K_{0}$=0.5 (Yang and Taiebat, 2024), this study evaluates liquefaction resistance between and beyond the thresholds, with $K_{0}$ ranging from 0.33 to 3.33, under different relative densities. When comparing the IC state of $K_{0}$=1.0 with AC states of $K_{0}$≠1.0, as shown in Fig. 3.14(b), it is evident that for both dense and loose states, the $N_{L}$ for $K_{0}$=1.0 lies above the fitted lines for $K_{0}$\<1.0 or $K_{0}$\>1.0, indicating a stronger liquefaction resistance for $K_{0}$=1.0 state at the same $Z_{m0}$. This tendency aligns well with the conclusions found in the literatures. However, introducing multiple values of $\alpha_{0}$ emphasized the comparison between the AC states of $K_{0}$\<1.0 and $K_{0}$\>1.0, thus yielding a positive value of $\eta$ when fitting the relationship. On the other hand, through a comparison of different relative densities as shown in Fig. 3.14 (b), the fitted line for dense state is positioned above that of the loose state, indicating that not only the microscopic factors like $Z_{m0}$ and $\alpha_{0}$, but also a smaller void ratio, which evaluates the macroscopic compactness, strengthens liquefaction resistance.
 
-![图表 描述已自动生成](thesis/assets/media/image89.png)
+![](thesis/assets/media/image89.png)
 
 (a) Coupled effect of $Z_{m0}$ and $\alpha_{0}$ on liquefaction resistance
 
-![图表 描述已自动生成](thesis/assets/media/image90.png)
+![](thesis/assets/media/image90.png)
 
 (b) Effect of $Z_{m0}$ on liquefaction resistance
 
@@ -362,19 +362,19 @@ This observation contrasts this study, where $b = 0.0$ shows larger liquefaction
 
 To interpret the interparticle relationships, contact forces and individual particle movement in the initial state with $K_{0}$=0.33, post-liquefaction state with $K_{0}$=0.33, initial state with $K_{0}$=3.00, and post-liquefaction state with $K_{0}$=3.00 are depicted in Fig. 3.15(a), Fig. 3.15(b), Fig. 3.15(c), and Fig. 3.15(d). The specimens with $K_{0}$=0.33 and $K_{0}$=3.00 exhibit significant differences in the distribution of contact forces at the initial stages in cyclic shear. For $K_{0}$=0.33, the contact forces converge in the axial direction, whereas for $K_{0}$=3.00, the contact forces tend to be distributed horizontally, aligning with the direction of the maximum principal stress in both cases. As cyclic loading progresses, the number of interparticle force gradually decreases, and the magnitude of these forces diminishes, until liquefaction and large deformation occurs. From a macroscopic perspective, the liquefaction process involves a decline in stiffness and an increase in nonlinearity, as discussed in the macroscopic behavior section. From a microscopic viewpoint, liquefaction occurs because the particle-constituting skeleton becomes increasingly unable to sustain itself through particle interaction, such as the relative movement, hindering the transfer of external forces. In contrast to the influence of $K_{0}$ on contact forces in initial state, the effect of different initial $K_{0}$ values on the
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image91.jpeg)
+![](thesis/assets/media/image91.jpeg)
 
 (a) AC state with initial $K_{0}$=0.33
 
-![图形用户界面 中度可信度描述已自动生成](thesis/assets/media/image92.jpeg)
+![](thesis/assets/media/image92.jpeg)
 
 (b) Post-liquefaction state with initial $K_{0}$=0.33
 
-![电脑萤幕画面 中度可信度描述已自动生成](thesis/assets/media/image93.jpeg)
+![](thesis/assets/media/image93.jpeg)
 
 (c) AC state with initial $K_{0}$=3.00
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image94.jpeg)
+![](thesis/assets/media/image94.jpeg)
 
 (d) Post-liquefaction state with initial $K_{0}$=3.00
 
@@ -392,21 +392,21 @@ Here, $\rho_{c}$ represents the contact density, $\theta_{z}$ and $\phi_{cir}$ i
 
 The evolutions of contact density during the liquefaction process for $K_{0}$=0.33 and $K_{0}$=3.00, are shown in Fig. 3.16 and Fig. 3.17. Fig. 3.16(a) represents the dense state with initial $K_{0}$=0.33, exhibiting an elongated columnar shape extending along the axial direction, whereas Fig. 3.17(a) depicts the contact density with initial $K_{0}$=3.00, characterized by a dimpled ellipsoid oriented toward the axial direction. As cyclic shear progresses, the direction of maximum contact density varies following the rotating principal stress axis, and the overall contact density gradually decreases as shown in Fig. 3.16 (b) and Fig. 3.17 (b). The evolution of contact density indicates that the post-liquefaction distribution of contact density is largely independent of the initial state, shifting between two inclined elongated columnar distributions along varying directions.
 
-![图表, 雷达图 描述已自动生成](thesis/assets/media/image95.jpeg) ![图表, 图示 描述已自动生成](thesis/assets/media/image96.jpeg)
+![](thesis/assets/media/image95.jpeg) ![](thesis/assets/media/image96.jpeg)
 
 (a) $N_{c}$/$N_{L}$=0.00 (b) $N_{c}$/$N_{L}$=0.75
 
-![图表 中度可信度描述已自动生成](thesis/assets/media/image97.jpeg) ![图表 描述已自动生成](thesis/assets/media/image98.jpeg)
+![](thesis/assets/media/image97.jpeg) ![](thesis/assets/media/image98.jpeg)
 
 \(c\) $N_{c}$/$N_{L}$=1.01 (d) $N_{c}$/$N_{L}$=1.04
 
 Fig. 3.16. Contact density evolution in liquefaction process with initial $K_{0}$=0.33
 
-![图表 描述已自动生成](thesis/assets/media/image99.jpeg) ![图表 描述已自动生成](thesis/assets/media/image100.jpeg)
+![](thesis/assets/media/image99.jpeg) ![](thesis/assets/media/image100.jpeg)
 
 (a) $N_{c}$/$N_{L}$=0.00 (b) $N_{c}$/$N_{L}$=0.73
 
-![图表 描述已自动生成](thesis/assets/media/image101.jpeg) ![图表 描述已自动生成](thesis/assets/media/image102.jpeg)
+![](thesis/assets/media/image101.jpeg) ![](thesis/assets/media/image102.jpeg)
 
 \(c\) $N_{c}$/$N_{L}$=0.97 (d) $N_{c}$/$N_{L}$=1.03
 
@@ -450,7 +450,7 @@ The limitations and inconsistencies in previous studies inspired the experimenta
 
 As shown in Fig. 4.1, the experimental apparatus is divided into five main components, each designed to fulfill a specific function in conducting hollow torsional shear tests: the Pressure control system, water injection and control system, Torsional shear apparatus, Servo pressure control system, and Data acquisition system.
 
-![房间里有许多电脑 中度可信度描述已自动生成](thesis/assets/media/image103.png)
+![](thesis/assets/media/image103.png)
 
 Fig. 4.1. Experimental apparatus: Pressure system, Water system, Torsional shear system, Servo system, Data acquisition system
 
@@ -480,7 +480,7 @@ The data acquisition system records and processes experimental measurements in r
 
 The specimen preparation process begins with the installation of the inner and outer rigid molds, which have an inner diameter of 6 cm and an outer diameter of 10 cm. A membrane is carefully placed around the molds, and negative pressure is applied to ensure the membrane tightly adheres to the mold, maintaining the intended shape and volume of the specimen. The funnel is held approximately 26 cm above the surface of the specimen, as shown in Fig. 4.2 and sand is evenly distributed by moving
 
-![图片包含 室内, 桌子, 厨房, 小 描述已自动生成](thesis/assets/media/image104.jpeg)
+![](thesis/assets/media/image104.jpeg)
 
 Fig. 4.2. Air pluviation method for generating specimen
 
@@ -490,7 +490,7 @@ the funnel in a circular motion at a uniform speed, completing each circle in ab
 
 The installation process begins by placing the upper torsional shear cap, designed to apply torsional shear forces, onto the top of the specimen. The membrane is carefully attached to the cap to ensure a secure fit. Tubes are then connected between the valves
 
-![图片包含 室内, 厨房, 搅拌机, 柜台 描述已自动生成](thesis/assets/media/image105.jpeg)
+![](thesis/assets/media/image105.jpeg)
 
 Fig. 4.3. Specimen with installed torsional shear cap after mold removal
 
@@ -588,19 +588,19 @@ Overall, this comprehensive range of $K_{0}$ values and associated stress condit
 
 Figure 4.5 illustrates the relationship between mean effective stress ($p'$) and shear stress ($\tau$) for the isotropic stress condition ($K_{0}$=1.0) during cyclic loading. Initially, as cyclic shearing progresses, $p'$ decreases steadily from approximately 100 kPa, reflecting the buildup of pore pressure. When $p'$ decreases to around 40 kPa, the relationship begins to exhibit a characteristic \"butterfly\" shape. In this stage, the cyclic
 
-![图表 描述已自动生成](thesis/assets/media/image107.png)
+![](thesis/assets/media/image107.png)
 
 Fig. 4.5. Relationship between mean effective stress ($p'$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}1.0
 
 loading causes $p'$ to oscillate along with the shear stress, forming closed loops that reflect the alternating shear directions. Figure 4.6 presents shear stress $\tau$ versus shear strain $\gamma$ relationship, highlighting the development of hysteretic loops typical of cyclic loading. These loops reflect the progressive deformation and energy dissipation within
 
-![图表, 直方图 描述已自动生成](thesis/assets/media/image108.png)
+![](thesis/assets/media/image108.png)
 
 Fig. 4.6. Relationship between shear strain ($\gamma$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}1.0
 
 the specimen. Figure 4.7 illustrates the evolution of pore water pressure over time during cyclic loading. The pore pressure increases incrementally with each shear cycle, eventually reaching a level comparable to the chamber pressure. This behavior aligns
 
-![图表, 直方图 描述已自动生成](thesis/assets/media/image109.png)
+![](thesis/assets/media/image109.png)
 
 Fig. 4.7. Pore water pressure evolution during cyclic shear for $K_{0}$=1.0
 
@@ -610,11 +610,11 @@ with the expected trend for undrained conditions and confirms the occurrence of 
 
 Figures 4.5, 4.8, and 4.9 present the evolution of $p'$ and $\tau$ during cyclic loading under varying initial $K_{0}$. These results reveal both consistent characteristics of liquefaction behavior and notable differences, suggesting a relationship between $K_{0}$ and liquefaction resistance.
 
-![图表 描述已自动生成](thesis/assets/media/image110.png)
+![](thesis/assets/media/image110.png)
 
 Fig. 4.8. Relationship between mean effective stress ($p'$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}0.25
 
-![图表 描述已自动生成](thesis/assets/media/image111.png)
+![](thesis/assets/media/image111.png)
 
 Fig. 4.9. Relationship between mean effective stress ($p'$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}0.20
 
@@ -628,7 +628,7 @@ The results suggest a non-linear relationship between $K_{0}$ and liquefaction r
 
 Figure 4.10 illustrates the variation in the number of cycles required for liquefaction ($N_{L}$) as a function of $K_{0}$, with liquefaction defined as the point where pore water pressure reaches 95% of the initial confining pressure. The figure covers a broad range of ​$K_{0}$ values, from isotropic stress conditions ($K_{0}$=1.0) to highly anisotropic states ($K_{0}$=0.2 and $K_{0}$=3.0), allowing for a comprehensive analysis of the influence of stress anisotropy on liquefaction resistance.
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image112.png)
+![](thesis/assets/media/image112.png)
 
 Fig. 4.10. Liquefaction resistance for states with different $K_{0}$
 

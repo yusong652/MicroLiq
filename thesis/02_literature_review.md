@@ -14,7 +14,7 @@ This section provides a comprehensive review of the fundamental mechanical behav
 
 Granular materials, such as sand, exhibit complex mechanical behaviors, including permeability, shear strength, and dilatancy, as first systematically described by Reynolds (1885). As illustrated in Fig. 2.1, the spatial configuration of particles within a granular material undergoes significant rearrangements during shear deformation. The left configuration represents a loosely packed state with a higher void ratio, allowing for greater potential volumetric reduction under shear. In contrast, the right configuration corresponds to a densely packed state, where the void ratio is lower, and particle rearrangements are more constrained. These spatial rearrangements of particles can lead to either volume expansion or contraction, depending on the initial packing density and applied stress conditions.
 
-![图示 描述已自动生成](thesis/assets/media/image4.png)
+![](thesis/assets/media/image4.png)
 
 Fig. 2.1. Variation in the spatial configuration of granular material under shear loading, obtained from (Reynolds, 1885)
 
@@ -22,7 +22,7 @@ In densely packed configurations, particles are pushed to move apart during shea
 
 ### Undrained Responses of Granular Materials under Monotonic Shear
 
-![图示 描述已自动生成](thesis/assets/media/image5.png)
+![](thesis/assets/media/image5.png)
 
 Fig. 2.2. Pore water pressure changes in a dilating sample by an undrained monotonic shear test (Bishop and Eldin, 1950)
 
@@ -30,7 +30,7 @@ Research on undrained shear behavior of granular materials can be traced back to
 
 ### Undrained Responses of Granular Materials under Cyclic Shear
 
-![图示 描述已自动生成](thesis/assets/media/image6.png) ![图示, 工程绘图 描述已自动生成](thesis/assets/media/image7.png)
+![](thesis/assets/media/image6.png) ![](thesis/assets/media/image7.png)
 
 Fig. 2.3. Stress-strain behavior under cyclic undrained triaxial shear on Masado soil (Source: Hatanaka et al., 1997): (a) Deviatoric stress vs. axial strain (b) Deviatoric stress vs. effective mean principal stress
 
@@ -42,7 +42,7 @@ This section reviews classical constitutive models developed to describe the mec
 
 ### From Experimental Observation to Unified Theoretical Framework: the Critical State Soil Mechanics
 
-![图示 描述已自动生成](thesis/assets/media/image8.png)
+![](thesis/assets/media/image8.png)
 
 Fig. 2.4. Consolidation line and critical state line in volume $v$ -- mean effective stress $p'$ - deviatoric stress $q$ space (Source: Atkinson and Bransby, 2012)
 
@@ -50,19 +50,19 @@ The development of critical state soil mechanics by Roscoe et al. (1958) establi
 
 When $q$ is zero, soil states lie on the bottom plane, representing isotropic stress conditions in the $p'$ - $v$ space. The normal consolidation line (NCL) represents states where the soil has not experienced a greater historical stress than its current effective mean stress $p'$. In contrast, states located below the NCL indicate over-consolidation, meaning the soil has previously been subjected to a higher effective stress than its current state.
 
-![图示 描述已自动生成](thesis/assets/media/image9.png)
+![](thesis/assets/media/image9.png)
 
 Fig. 2.5. Evolution of soil state during triaxial drained shear in $p'$-$v$--$q$ space (Source: Atkinson and Bransby, 2012)
 
 Figure 2.5 illustrates the evolution of soil states during a triaxial drained shear test. Different initial consolidation states evolve along the shaded plane, representing the variation of stress and void ratio during shear. For a normally consolidated state, the stress path follows the outermost curve AB. As shear deformation increases, all initial states eventually reach the same point B, known as the critical state, regardless of their initial consolidation conditions. At this critical state, both void ratio and stress ratio remain constant despite further shear deformation, forming the critical state line (CSL).
 
-![图示, 工程绘图 描述已自动生成](thesis/assets/media/image10.png)
+![](thesis/assets/media/image10.png)
 
 Fig. 2.6. Evolution of soil state during triaxial undrained shear in $p'$-$v$--$q$ space (Source: Atkinson and Bransby, 2012)
 
 Figure 2.6 illustrates the evolution of soil states in undrained shear tests within the $p'$-$v$-$q$ space. The shaded plane represents the shear paths corresponding to different initial consolidation states but with the same initial void ratio. For an initially normally consolidated state, the stress path follows the outermost curve, progressing toward the critical state. For an over-consolidated state, the path originates from the inner regions and evolves along the plane, ultimately reaching the same critical state as normally consolidated specimens. At the critical state, both void ratio and stress ratio remain constant despite continued shear deformation. Notably, the CSL obtained from undrained shear tests is identical to that from drained shear tests, underscoring its uniqueness. Along the CSL, the stress ratio $q/p'$ remains constant, independent of their absolute magnitudes.
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image11.png)
+![](thesis/assets/media/image11.png)
 
 Fig. 2.7. Normalized state paths during drained and undrained triaxial shear tests, and Roscoe surface (Source: Atkinson and Bransby, 2012)
 

@@ -24,11 +24,11 @@ These studies have made significant contributions to understanding liquefaction 
 
 The discrete element method (DEM) simulates the mechanical response of granular materials, such as sand, by calculating the interparticle contacts and the motion of individual particles. This approach effectively overcomes the limitations of laboratory experiments, where replicating the same initial state for comparative analyses can be challenging. Additionally, DEM enables the application of multi-directional shear and the use of periodic boundaries, which mimic the continuous conditions in natural soil. In this study, the software Itasca PFC3D was used to simulate simple shear tests on granular sand. The rolling resistance contact model was employed to replicate the inter-particle interactions of non-spherical sand grains.
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image113.png)
+![](thesis/assets/media/image113.png)
 
 Fig. 5.1. Grain size distribution of curves of Toyoura sand and DEM simulation
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image114.png)
+![](thesis/assets/media/image114.png)
 
 Fig. 5.2. Particle and contact force distribution after initial compaction, along with boundary and shearing rib configuration
 
@@ -60,13 +60,13 @@ $\tau_{d8,y} = \left\{ \begin{array}{r}
 
 The introduction of a comparison between the double-8 shear loading and the single-8 shear loading provides several benefits. First, it ensures that the magnitude of the two multidirectional shear stresses always remains equivalent. Second, it maintains similarity in the change rate of shear stress: during odd-numbered cycles, the change rate of the double-8 loading matches that of the single-8 loading, while during even-numbered cycles, the change rates are opposite but share the equal magnitudes.
 
-![图表, 折线图, 直方图 描述已自动生成](thesis/assets/media/image115.png)![图表 描述已自动生成](thesis/assets/media/image116.png)
+![](thesis/assets/media/image115.png)![](thesis/assets/media/image116.png)
 
 (a) Unidirectional shear stress evolution
 
 \(b\) Unidirectional shear stress path
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image117.png)![图表 描述已自动生成](thesis/assets/media/image118.png)
+![](thesis/assets/media/image117.png)![](thesis/assets/media/image118.png)
 
 \(c\) Single-8 shear stress path
 
@@ -87,11 +87,11 @@ With the application of unidirectional and multidirectional cyclic shear loads t
 Figure 5.5 presents the liquefaction resistance under different forms of shear loading. The occurrence of liquefaction is defined as when the pore water pressure reaches 95% of the initial confining stress. It is evident that the unidirectional shear loading requires the highest cyclic number to reach liquefaction at the same CSR, compared to the multidirectional loadings. Following this, there is a difference between the required cyclic numbers for single-8 and double-8 shear stresses, with single-8 needing slightly more cycles than double-8. For instance, at CSR = 0.25, single-8 requires 30 cycles to reach liquefaction, whereas double-8 only requires about 22 cycles.
 
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ![图表, 雷达图 描述已自动生成](thesis/assets/media/image119.jpeg) | ![图表 描述已自动生成](thesis/assets/media/image120.jpeg) |
+| ![](thesis/assets/media/image119.jpeg) | ![](thesis/assets/media/image120.jpeg) |
 +===============================================================================================================================+=======================================================================================================================+
 | (a) Unidirectional loading                                                                                                    | (b) Single-8 loading                                                                                                  |
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ![图表 描述已自动生成](thesis/assets/media/image121.jpeg)         |                                                                                                                       |
+| ![](thesis/assets/media/image121.jpeg)         |                                                                                                                       |
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | \(c\) double-8 loading                                                                                                        |                                                                                                                       |
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -100,13 +100,13 @@ Fig. 5.4. Shear and mean effective stress evolution in unidirectional and multid
 
 From a macroscopic perspective, the rotation of shear force direction has a significant impact on the liquefaction process. Although the magnitudes of unidirectional and multidirectional shear forces are equal at any given moment, the shear force direction in unidirectional loading remains fixed, unlike in multidirectional loading. This lack of directional rotation in unidirectional loading results in a higher number of cycles needed to reach liquefaction. Additionally, besides the influence of shear stress direction on the liquefaction process, the shear loading history also plays a role. For instance, although single-8 and double-8 paths share the same shear stress magnitude and rate of change at any given moment, the single-8 path maintains a
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image122.png)
+![](thesis/assets/media/image122.png)
 
 Fig. 5.5. Liquefaction resistance under unidirectional and multidirectional shear stress
 
 constant figure-8 orientation, while the double-8 path alternates its orientation with each odd and even cycle. This alternating orientation in the double-8 path results in a lower number of cycles needed to reach liquefaction. In addition to differences in the number of cycles required for liquefaction, the strain development behaviors of single-8 and double-8 also differ, as shown in Fig 5.6. As cyclic loading continues, both single-8 and double-8 shear paths exhibit figure-8 patterns in their strain development. However, distinct differences emerged in the two shear paths. The strain path under single-8 shear stress maintains a consistent orientation throughout the cycles, with each cycle expanding outward along both $\gamma_{zx}$ and $\gamma_{zy}$ directions. This results in a steady accumulation of strain that gradually shifts in a direction perpendicular to the primary single-8 axis. The strain path for double-8 stress alternates orientation with each cycle, causing the \"8-shape\" axis to shift periodically. As a result, the double-8 pattern shows more complex and irregular strain growth compared to the single-8 path, with less directional offset over time.
 
-![图表 描述已自动生成](thesis/assets/media/image123.jpeg)![图表 描述已自动生成](thesis/assets/media/image124.jpeg)
+![](thesis/assets/media/image123.jpeg)![](thesis/assets/media/image124.jpeg)
 
 (a) Strain evolution in single-8 loading
 
@@ -118,7 +118,7 @@ Fig. 5.6. Comparison of strain evolution between single-8 and double-8 loading
 
 Shear work, defined as the work performed by the shearing rib on the specimen during cyclic loading, provides a scalar measure to evaluate liquefaction differences across various shear stress paths from a macroscopic perspective. In Fig. 5.7, before the EPWP reaches approximately 60 kPa, the double-8 path shows the highest EPWP at equivalent shear work levels, followed by single-8 path, with unidirectional path exhibiting the lowest EPWP. This order of EPWP increase is inversely related to the number of cycles required to reach liquefaction, with double-8 reaching liquefaction faster than single-8, and unidirectional taking the longest. Despite these differences, the shear work required to reach liquefaction is roughly similar across all three loading types. This indicates that while directional variations in shear stress influence the rate at which EPWP builds up, the total energy input needed to induce liquefaction remains consistent.
 
-![图表 描述已自动生成](thesis/assets/media/image125.jpeg)
+![](thesis/assets/media/image125.jpeg)
 
 Fig. 5.7. Cumulative shear work evolution in liquefaction under unidirectional, single-8, and double-8 cyclic shear stress
 
@@ -130,7 +130,7 @@ The coordination number is a key indicator of the microstructural characteristic
 
 $Z_{m} = \frac{2N_{c} - N_{1}}{N_{p} - N_{1} - N_{0}}$ (5-6)
 
-![图表, 散点图 描述已自动生成](thesis/assets/media/image126.png)
+![](thesis/assets/media/image126.png)
 
 Fig. 5.8. Coordination number evolution in liquefaction under unidirectional, single-8, and double-8 cyclic shear stress
 
@@ -154,7 +154,7 @@ Eq. (5-9) present**s the** invariant of the anisotropic fabric **tensor** $F_{c}
 
 $F_{c} = \sqrt{\frac{3}{2}\mathbf{F}_{\mathbf{ij}}\mathbf{F}_{\mathbf{ij}}}$ (5-9)
 
-![图表, 直方图 描述已自动生成](thesis/assets/media/image127.png)
+![](thesis/assets/media/image127.png)
 
 Fig. 5.9. Invariant of anisotropic fabric tensor evolution in liquefaction under unidirectional, single-8, and double-8 cyclic shear stress
 
@@ -166,13 +166,13 @@ The double-8 path demonstrates the highest level of anisotropy development, with
 
 Fig. 5.10, 5.11, and 5.12 display the contact density distribution for the unidirectional, single-8, and double-8 shear paths throughout the liquefaction process, respectively. Each sequence shows how the contact density evolves from an initial state (at $N_{c}/N_{L}$=0) to stages closer to (at $N_{c}/N_{L}$=0.81) and beyond liquefaction (at $N_{c}/N_{L}$=1.03 and 1.08)​, highlighting the distinctions in fabric evolution among these paths. Across all shear paths, the contact density reduces, indicating a loosening in the particle arrangement. The contact orientations become more pronounced, showing a tendency toward specific directional alignment, which reflects a strengthening of anisotropic characteristics within the skeleton of fabric.
 
-![图表, 雷达图 描述已自动生成](thesis/assets/media/image128.png)![图表, 雷达图 描述已自动生成](thesis/assets/media/image129.png)
+![](thesis/assets/media/image128.png)![](thesis/assets/media/image129.png)
 
 (a) $N_{c}/N_{L}$=0.0
 
 (b) $N_{c}/N_{L}$=0.81
 
-![图表 描述已自动生成](thesis/assets/media/image130.png)![图表 描述已自动生成](thesis/assets/media/image131.png)
+![](thesis/assets/media/image130.png)![](thesis/assets/media/image131.png)
 
 (c) $N_{c}/N_{L}$=1.03
 
@@ -182,13 +182,13 @@ Fig. 5.10. Contact density evolution in liquefaction under unidirectional cyclic
 
 At the stage of $N_{c}/N_{L}$=0.81, notable differences emerge among the three shear paths, reflecting their distinct responses to shear stress. For unidirectional path, contact density remains relatively uniform with limited directionality, indicating a weaker development of anisotropy compared to the other two paths. This is consistent with the previously observed lower fabric anisotropy $F_{c}$​, suggesting that the unidirectional path promotes a more isotropic structure, contributing to its higher liquefaction resistance.
 
-![图表, 雷达图 描述已自动生成](thesis/assets/media/image132.png)![图表 描述已自动生成](thesis/assets/media/image133.png)
+![](thesis/assets/media/image132.png)![](thesis/assets/media/image133.png)
 
 (a) $N_{c}/N_{L}$=0.0
 
 \(b\) $N_{c}/N_{L}$=0.81
 
-![图表 描述已自动生成](thesis/assets/media/image134.png)![图表 描述已自动生成](thesis/assets/media/image135.png)
+![](thesis/assets/media/image134.png)![](thesis/assets/media/image135.png)
 
 \(c\) $N_{c}/N_{L}$=1.03
 
@@ -198,13 +198,13 @@ Fig. 5.11. Contact density evolution in liquefaction under single-8 cyclic shear
 
 For single-8 case, contact density shows moderate alignment along certain directions, revealing an intermediate degree of anisotropy. The contact density distribution is less uniform than in the unidirectional path but not as concentrated as in the double-8 path. This intermediate anisotropy level aligns with the fabric tensor $F_{c}$​ observed for single-8, reflecting moderate liquefaction resistance. For double-8 pattern, contact density exhibits more pronounced alignment in contact density and the highest degree of fabric concentration among the three paths. This is consistent with the high $F_{c}$ for double-8, as the directional changes in the shear path enhance the formation of an anisotropic structure.
 
-![图表, 雷达图 描述已自动生成](thesis/assets/media/image136.png)![图表 描述已自动生成](thesis/assets/media/image137.png)
+![](thesis/assets/media/image136.png)![](thesis/assets/media/image137.png)
 
 (a) $N_{c}/N_{L}$=0.0
 
 (b) $N_{c}/N_{L}$=0.81
 
-![图表 描述已自动生成](thesis/assets/media/image138.png)![图表 描述已自动生成](thesis/assets/media/image139.png)
+![](thesis/assets/media/image138.png)![](thesis/assets/media/image139.png)
 
 (c) $N_{c}/N_{L}$=1.03
 

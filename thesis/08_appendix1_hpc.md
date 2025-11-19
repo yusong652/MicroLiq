@@ -26,7 +26,7 @@ To address this challenge, neighbor search algorithms are commonly used to reduc
 
 In the discrete element method (DEM), spatial partitioning using grids is a fundamental approach to optimize collision detection. The computational domain is divided into grid cells, each with the grid length set to at least the diameter of the largest particle in the system. This ensures that any particle potentially interacting with a given particle is located either within the same grid cell or in one of its neighboring cells.
 
-![图片包含 形状 描述已自动生成](thesis/assets/media/image140.png)
+![](thesis/assets/media/image140.png)
 
 Fig. A1.1. Spatial grid partitioning and neighbor search scope for grid cell (1,1)
 
@@ -34,11 +34,11 @@ As illustrated in Fig. A1.1, the search area for particles in grid cell (1,1) in
 
 #### A1.2.1.2. Particle counting process for neighbor search
 
-![图形用户界面, 应用程序 描述已自动生成](thesis/assets/media/image141.png)
+![](thesis/assets/media/image141.png)
 
 (a) Particle to grid mapping
 
-![图片包含 图标 描述已自动生成](thesis/assets/media/image142.png)
+![](thesis/assets/media/image142.png)
 
 (b) Grid cell counts
 
@@ -60,19 +60,19 @@ $N_{prefix}$ represents the cumulative count of particles in all grid cells from
 
 As illustrated in Fig. A1.3(a), the first step involves calculating the total number of particles in each row ($N_{sum\_ row}$​) by summing the particle counts across all columns for each row. Since each row\'s calculation is independent of the others, similar to the calculation process of $N_{grid}$, this operation is fully parallel, allowing for high computational efficiency.
 
-![图形用户界面, 应用程序, 图标 描述已自动生成](thesis/assets/media/image143.png)
+![](thesis/assets/media/image143.png)
 
 (a) Row-wise summation of particle counts ($N_{sum\_ row}$​)
 
-![蓝色的背景和白色的字 描述已自动生成](thesis/assets/media/image144.png)
+![](thesis/assets/media/image144.png)
 
 (b) Serial calculation of prefix particle count for the first column ($N_{prefix}(i,\ 0)$)
 
-![蓝色的标志 描述已自动生成](thesis/assets/media/image145.png)
+![](thesis/assets/media/image145.png)
 
 (c) Parallel-serial calculation of prefix particle counts ($N_{prefix}(i,j)$)
 
-![手机屏幕的截图 描述已自动生成](thesis/assets/media/image146.png)
+![](thesis/assets/media/image146.png)
 
 (d) Calculation of total particle counts including current grid ($N_{postfix}(i,j)$)
 
@@ -101,11 +101,11 @@ By combining parallel row-wise operations and efficient one-dimensional serial o
 
 To enable efficient neighbor search, particles are grouped, and their IDs are rearranged based on the grids they occupy. This process involves initializing $N_{cur}$​, which tracks the current position for recording particle IDs in each grid. By cloning $N_{prefix}$​, $N_{cur}$​ inherits the cumulative particle counts already computed.
 
-![图形用户界面, 应用程序 描述已自动生成](thesis/assets/media/image147.png)
+![](thesis/assets/media/image147.png)
 
 (a) Particle ID assignment using $N_{cur}$ for rearrangement
 
-![图形用户界面 描述已自动生成](thesis/assets/media/image148.png)
+![](thesis/assets/media/image148.png)
 
 (b) Final rearranged particle IDs grouped by grid for neighbor search
 
@@ -117,7 +117,7 @@ The rearranged ID array, illustrated in Fig. A1.4(b), organizes particles accord
 
 #### A1.2.1.5. Neighbor search after particle ID rearrangement
 
-![手机屏幕的截图 描述已自动生成](thesis/assets/media/image149.png)
+![](thesis/assets/media/image149.png)
 
 Fig. A1.5. Neighbor Search After Particle ID Rearrangement
 
@@ -145,7 +145,7 @@ If $g < 0$, the two particles are considered to be in contact. Once contact is 
 
 #### A1.2.2.2. Contact model
 
-![图标 描述已自动生成](thesis/assets/media/image12.png)
+![](thesis/assets/media/image12.png)
 
 Fig. A1.6. Contact model in HPC-DEM framework
 
@@ -223,7 +223,7 @@ Table. A1-1 Parameters used in slope generation demo
 
 (b) 250,000-time step
 
-![图形用户界面 低可信度描述已自动生成](thesis/assets/media/image152.png) ![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image153.png)
+![](thesis/assets/media/image152.png) ![](thesis/assets/media/image153.png)
 
 (c) 300,000-time step
 
@@ -235,13 +235,13 @@ Fig. A1.7. Particle arrangement at different timesteps during the settling phase
 
 Following the stabilization process, the right wall element, which initially provided lateral support to the particles, was shifted to the right boundary of the simulation domain. This adjustment removed the lateral confinement, allowing particles to move and redistribute under gravitational forces. The system evolved as particles slid downward and rearranged themselves, ultimately forming a stable slope. The progression of this slope formation is depicted in Fig. A1.8.
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image154.png) ![图表, 表面图 描述已自动生成](thesis/assets/media/image155.png)
+![](thesis/assets/media/image154.png) ![](thesis/assets/media/image155.png)
 
 (a) 2,060,000-time step
 
 \(b\) 2,220,000-time step
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image156.png) ![图表 低可信度描述已自动生成](thesis/assets/media/image157.png)
+![](thesis/assets/media/image156.png) ![](thesis/assets/media/image157.png)
 
 \(c\) 2,520,000-time step
 
@@ -293,7 +293,7 @@ Table. A1-2 Parameters used in monotonic triaxial shear demonstration
 
 This demonstration involves two triaxial shear simulations under drained and undrained conditions. Prior to shearing, an isotropic consolidation phase was applied to the granular assembly, where all particles were consolidated under an isotropic confining stress ($\sigma_{1}' = \sigma_{2}' = \sigma_{3}' = 200kPa$). After achieving a stable isotropic state, the drained triaxial shear test was conducted under a constant confining stress ($\sigma_{2}' = \sigma_{3}' = 200kPa$) while incrementally increasing the axial stress ($\sigma_{1}'$) by applying a constant axial displacement rate of 0.01m/s.
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image158.png)
+![](thesis/assets/media/image158.png)
 
 Fig. A1.9. Deviatoric stress ($q$) versus axial strain ($\varepsilon_{a}$) during drained triaxial shear
 
@@ -301,7 +301,7 @@ Figure A1.9 depicts the deviatoric stress ($q = \sigma_{1}' - \sigma_{3}'$) vers
 
 Correspondingly, Fig. A1.10 shows the void ratio ($e$) evolution. Initially, the void ratio decreased due to particle rearrangements and compaction (increasing $p'$). After reaching a minimum, it began to increase slightly as the sample dilated at larger strains, indicative of a transition from a contractive to a dilative response.
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image159.png)
+![](thesis/assets/media/image159.png)
 
 Fig. A1.10. Void ratio ($e$) evolution versus axial strain ($\varepsilon_{a}$) during drained triaxial shear
 
@@ -309,7 +309,7 @@ Fig. A1.10. Void ratio ($e$) evolution versus axial strain ($\varepsilon_{a}$) d
 
 For the undrained condition, isotropic consolidation to 200 kPa was also performed before shearing. Here too, the axial displacement rate was fixed at 0.01m/s, ensuring consistency across the simulations. The evolution of deviatoric stress ($q$) and pore water pressure buildup, shown in Fig. A1.11, reveals a distinct pattern. Initially, the sample
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image160.png)
+![](thesis/assets/media/image160.png)
 
 Fig. A1.11. Deviatoric stress ($q$) versus axial strain ($\varepsilon_{a}$) during undrained triaxial shear
 
@@ -319,13 +319,13 @@ exhibited strain hardening up to approximately $\varepsilon_{a} = 2.5\%$, after 
 
 The force chain network, represented in Fig. A1.12, highlights particle interactions at various stages of shearing. Strong force chains are visibly aligned with the major principal stress direction as shearing progresses, illustrating the stress redistribution within the granular assembly.
 
-![图片包含 图示 描述已自动生成](thesis/assets/media/image161.png) ![图片包含 图示 描述已自动生成](thesis/assets/media/image162.png)
+![](thesis/assets/media/image161.png) ![](thesis/assets/media/image162.png)
 
 (a) $\varepsilon_{a}$=0%
 
 \(b\) $\varepsilon_{a}$=5%
 
-![图片包含 图表 描述已自动生成](thesis/assets/media/image163.png) ![图片包含 图表 描述已自动生成](thesis/assets/media/image164.png)
+![](thesis/assets/media/image163.png) ![](thesis/assets/media/image164.png)
 
 \(c\) $\varepsilon_{a}$=10%
 
@@ -339,7 +339,7 @@ Figure A1.13 compares the stress paths ($p'$-$q$) for drained and undrained shea
 
 Under the drained condition, the confining stress was held constant ($\sigma_{2}' = \sigma_{3}' = 200kPa$). The stress path follows the expected trajectory, with incremental changes in $q$ and $p'$ maintaining a consistent ratio of $\frac{\Delta q}{\Delta p'} = 3$. This reflects the effective control of lateral stresses by the servo system and demonstrates the model\'s ability to maintain boundary conditions accurately during shearing. The drained stress path progresses smoothly toward the critical state line (CSL), confirming the equilibrium behavior of granular materials under large deformation.
 
-![图表, 折线图 描述已自动生成](thesis/assets/media/image165.png)
+![](thesis/assets/media/image165.png)
 
 Fig. A1.13. Stress paths ($p'$-$q$) for drained and undrained triaxial shear, with critical state line (CSL)
 

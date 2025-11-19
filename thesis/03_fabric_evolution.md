@@ -22,7 +22,7 @@ In this study, the difference in true triaxial tests with a flexible membrane in
 
 The DEM simulations in this study were implemented using PFC3D (Itasca, 2005). The contact model in the DEM determines the interparticle relationship, such as the friction and contact force between particles. The contact models employed to represent cohesionless sands typically include linear models, in which the stiffness (Wei et al., 2022) or modulus (Zhao and Guo, 2013) is constant, and nonlinear models such as the Hertz-Mindlin model (Tsuji et al., 1992). The contact stiffness has a direct impact on the timestep. For instance, the study conducted by O\'Sullivan (2004) indicates that the critical timestep is proportional to the value of (*m*/*k*)^0.5^, where *m* is the mass of the particle at the end of the contact, and *k* denotes the stiffness of the contact. Thus, excessive stiffness increases the computational effort, but an appropriate contact stiffness guarantees the convergence and efficiency of the calculation. Table 2-1 and Fig 2.1 summarize the input parameters of a linear model applied in this study (Kim et al., 2012 & 2021).
 
-![图标 描述已自动生成](thesis/assets/media/image12.png)
+![](thesis/assets/media/image12.png)
 
 Fig. 2.1. Contact model in DEM simulation
 
@@ -60,13 +60,13 @@ were randomly generated in a cubic space enclosed by six frictionless flat wall 
 
 Fig. 2.3. Variation of void ratio under the isotropic compression
 
-![图表 描述已自动生成](thesis/assets/media/image17.png)
+![](thesis/assets/media/image17.png)
 
 Fig. 2.4. Specimen state after isotropic compression of p = 5.1 MPa
 
 Subsequently, isotropic compression with gradually increasing confining stress was performed, during which three measurement ball function (Itasaca, 2005) with radii of 1.5 mm are positioned vertically inside the specimen to measure the void ratio. The measurement ball function is built into the program, which sets a spherical spatial domain for measurement and measures parameters such as void ratio, average stress, and coordination number for particles that exist within this domain. When measuring the average value of the void ratio in the domain, the obtained result can be regarded as the average void ratio at the center point of the domain. The stability of the stresses acting on the wall elements and the void ratio of the specimen served as the completion condition for each compression stage. The current compression stage was completed when stress and strain stabilized, and a quasi-static state was accordingly reproduced in the specimen. Figures 2.3 and 2.4 show the variation in the void ratio under isotropic compression and the specimen under a confining pressure of 5.1 MPa, respectively. Simulation by Cao et al. (2021) involved low confining pressures for consistency with laboratory tests. On the other hand, some simulations covered a wide range of confining pressures from tens kPa to tens MPa (ex., Huang et al., 2014a; Zhao and Guo, 2013). Moreover, the particle crushing was modeled by Zhu et al (2022) when the specimen was subjected to high confining pressure. Unlike these studies, this study aims to compare the mechanical behavior of theoretical spherical aggregates under a wide range of pressures. Thus, particle crushing is not considered. Isotropically compressed specimens under confining pressures of 0.7MPa, 1.4MPa, 1.9MPa, 2.6MPa, 3.7MPa, 5.1MPa, 7.0MPa, 9.7MPa, 13.5MPa, 18.7MPa, and 26.0MPa were selected for the subsequent shear tests under general stress states.
 
-![图表, 雷达图 描述已自动生成](thesis/assets/media/image18.png)
+![](thesis/assets/media/image18.png)
 
 Fig. 2.5. Loading paths in shear tests
 
@@ -74,17 +74,17 @@ Fig. 2.5. Loading paths in shear tests
 
 During shearing, the Lode angle and the mean effective stress were maintained constant. Five loading paths corresponding to each mean effective stress state were considered: Lode angles of 60°, 75°, 90°, 105°, and 120° as shown in Fig. 2.5. Lode angle refers to the angle between the stress path and the axis of the principal stress in the stress state of a material. Lode angles of 60° and 120°indicate the triaxial extension and triaxial compression states, respectively. On the other hand, the stress path can also be described by using the intermediate principal stress ratio (*b* = (*σ~2~'*-*σ~3~'*)/(*σ~1~'*-σ~3~')), where *b*=0 for triaxial com-pression and *b*=1 for the triaxial extension. Typical boundaries in DEM triaxial tests include the nondeformable wall boundary (Zhao and Guo, 2013; Cao et al., 2021), the periodic boundary (Thornton, 2000; González-Montellano et al., 2011), and the membrane boundaries. Multiple membrane boundaries exist in DEM simulations. One of the membrane boundaries is implemented by applying additional force to the outmost particles (Cui et al., 2007; Cheung and O'Sullivan, 2008; O\'Sullivan and Cui, 2009). Another type of membrane boundary is modeled by assigning tensile and shear strength between the membrane particles (Kim and Park, 2020). Recently, a coupled FDM-DEM approach using the shell element was proposed to model the membrane boundary (Zhu et al., 2022). Although the wall boundary can effectively maintain the specimen symmetry under deformation, local deformation such as the shear band, which originates from irregular displacement on the deformable flexible boundary, is inhibited. In this study, the major and minor principal stresses were applied by wall element boundaries, and the membrane boundary with applied force was adopted in the intermediate principal stress direction, which is consistent with the apparatus developed by Nakai et al. (1986).
 
-> ![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image19.png)
+> ![](thesis/assets/media/image19.png)
 >
 > Fig. 2.6. Membrane zone detection
 
 The method for identifying the membrane particles is similar to that proposed by Cui et al. (2007) and only differs in coordinate transformation because the specimen in previous studies was a cylinder, whereas the specimen in this study is a cuboid. The boundary in the direction of intermediate principal stress, which serves as the membrane, was determined using the following procedure. As illustrated in Fig. 2.6, a membrane zone with a thickness of three times the mean particle diameter was designated from the outmost particle in the intermediate principal stress direction. The particles in the membrane zone were further identified depending on whether they were prevented from contact with the outside. Each particle in the membrane zone had a corresponding cone with its vertex coinciding with the center of the particle, as shown in Fig. 2.7. If no other particle is detected inside this conical region, this particle is in direct contact with the outside and is, consequently, identified as a membrane particle.
 
-> ![图表, 表面图 描述已自动生成](thesis/assets/media/image20.png)
+> ![](thesis/assets/media/image20.png)
 >
 > Fig. 2.7. Membrane particle identification
 >
-> ![图片包含 文本 描述已自动生成](thesis/assets/media/image21.png)
+> ![](thesis/assets/media/image21.png)
 >
 > Fig. 2.8. Specimen after Membrane particle identification
 
@@ -94,7 +94,7 @@ Figure 2.8 shows the specimen after membrane particle identification in the DEM 
 
 Fig. 2.9. Voronoi geometry corresponding Membrane particles
 
-![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image24.png)
+![](thesis/assets/media/image24.png)
 
 Fig. 2.10. Boundary force application
 
@@ -124,11 +124,11 @@ stress-path dependent. The deviatoric stresses under the critical states are mar
 
 Figure 2.12 compares the stress and void ratio variation between the true triaxial tests with and without flexible boundaries. In agreement with the findings of Cheung and O'Sullivan (2008) and Qu et al. (2019), the boundary type has little effect on the macroscopic response, such as deviatoric stress and void ratio. The changes in particle position after the application of membrane boundary could lead to an inevitable disturbance to the specimen and account for the slight difference in stress and void ratio. A shear band is a common form of highly localized deformation in ductile solids (Rice, 1976). It is more likely to develop in the middle of the specimen under a flexible membrane boundary, and through the entire specimen under a rigid boundary (Cheung and O'Sullivan, 2007; Qu et al., 2019, Kim and Park, 2020). The rotational velocity of particles could be employed as an indicator of the deformation localization of granular materials (Kim and Park, 2020). On the other hand, in the specimen under a rigid boundary, as shown in Fig. 2.13 (a), the particles with a relatively higher rotational angular velocity (over 100 rad/s) tended to concentrate in the middle part of the cross-section. The particles with high rotational angular velocities in the specimen under flexible boundary as shown in Fig. 2.13 (b) concentrated at the top left and lower right of the *x*-*z* cross-section. Bono et al. (2015) pointed out that the interparticle bonds contribute to the emergence of shear bands. In contrast, because a linear model without any bonds for modeling cohesionless sands was adopted in this study, it can be understood that the typical *x*-shaped shear bond was not observed.
 
-![电脑合成图 低可信度描述已自动生成](thesis/assets/media/image31.png)
+![](thesis/assets/media/image31.png)
 
 > \(a\) Rigid boundary
 
-![墙上挂着一幅画 中度可信度描述已自动生成](thesis/assets/media/image32.png)
+![](thesis/assets/media/image32.png)
 
 \(b\) Flexible boundary
 
@@ -162,7 +162,7 @@ Fig. 2.15. Sensitivity of angle of shearing resistance to intermediate stress ra
 
 The parameters in the three equations were obtained via regression analysis, and the results are shown in Fig. 2.15. The peak of *ϕ'~cs~* is obtained when *b*$\ $is between 0.2 and 0.6 for all cases in this study. Unlike the results by Huang et al. (2014a), the Matsuoka-Nakai criterion, which predicts an equivalent angle of shearing resistance (*ϕ'~cs~*) in triaxial extension (*b*=1.0) and compression (*b*=0.0) with a minimum deviation of 0.004, is generally consistent with all data. At low mean effective stress, *ϕ'~cs~* in the triaxial extension (*b*=1.0) is slightly higher than that in the triaxial compression (*b*=0.0), making the Lade criterion preferable. On the other hand, the increasing mean effective stress *p'* leads to a higher *ϕ'~cs~* in triaxial compression and a lower *ϕ'~cs~* in other stress paths, which is more consistent with the Matsuoka-Nakai criterion, or even the Mohr-Coulomb criterion. The stress states and failure surface are shown in Fig. 2.16. Notably, the stress state under a mean effective stress *p'* with a medium magnitude of approximately 10 MPa exhibits the greatest consistency with the Matsuoka-Nakai criterion. Other studies were inconclusive due to a narrow range of mean effective stress *p'*.
 
-> ![图表, 图示 描述已自动生成](thesis/assets/media/image40.png)
+> ![](thesis/assets/media/image40.png)
 
 Fig. 2.16. Critical stress state and Matsuoka-Nakai criterion in stress space
 
@@ -228,7 +228,7 @@ $\rho_{c}(\theta,\phi) = \frac{2E(\theta,\phi)N_{c}}{N_{p}}$ (2-9)
 
 where E is the probability density function of contact, $N_{\theta,\phi}$is the number of contacts with normal falling in the interval \[θ, θ + δθ)∩\[ϕ, ϕ + δϕ), $N_{c}$ corresponds to the number of total contacts, the contact density, $N_{c}$ is the total contact number between particles, and $N_{p}$is the number of particles.
 
-![图片包含 名片, 游戏机 描述已自动生成](thesis/assets/media/image55.png)
+![](thesis/assets/media/image55.png)
 
 Fig. 2.21. Unit sphere for contact classification
 
@@ -239,13 +239,13 @@ By modifying $E$ to $\rho_{c}$, both the anisotropies of contact distribution an
 The morphological evolution of contact density during the compression test under the mean effective stress of 5.1MPa is shown in Fig. 2.22. Here, Figures 2.22(a)\~(d) correspond to the axial strains of 0%, 2%, 5%, and 20%, respectively. The contact density distribution at the axial strain of 0% is almost a sphere with a mean density of approximately 0.3445, which indicates an isotropic state in the fabric. As the strain and stress develop, the contact density gradually evolves toward the direction of the major principal stress. At the axial strain of 2%, the morphology evolves into an ellipsoid with a mean density of 0.3940 and 0.2919 in the direction of *σ~1~'* (0^o^ \< *ϕ* \< 20^o^) and *σ~3~'/σ~2~'* (80^o^ \< *ϕ* \< 100^o^), respectively. This indicates a slight concentration of interparticle contacts in the direction of *σ~1~'* and fabric anisotropy. On the other hand, when the major principal strain exceeds 5%, the mean density in the direction of *σ~1~'* increases to 0.4143, and the mean density in the direction of *σ~3~'/σ~2~'* decreases to 0.2716. This indicates a more significant concentration of interparticle contacts. The contact density at the axial strain of 20% in the critical state exhibits the greatest fabric anisotropy: a mean density of 0.4009 in the direction of *σ~1~'* and 0.2385 in the direction of *σ~3~'/σ~2~'*. The mean contact density in the direction of *σ~1~'* under the critical state was slightly lower than that when
 
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image56.png) | ![图片包含 文本 描述已自动生成](thesis/assets/media/image57.png)     |
+| ![](thesis/assets/media/image56.png) | ![](thesis/assets/media/image57.png)     |
 +:=================================================================================================================================:+:================================================================================================================================:+
 | \(a\) ε~a~=0%                                                                                                                     | \(b\) ε~a~=2%                                                                                                                    |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                   |                                                                                                                                  |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image58.png) | ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image59.png) |
+| ![](thesis/assets/media/image58.png) | ![](thesis/assets/media/image59.png) |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
 | \(c\) ε~a~=5%                                                                                                                     | \(d\) ε~a~=20%                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
@@ -257,13 +257,13 @@ The morphological evolution of contact density during the compression test under
 the axial strain *ε~1~* is 5%, however, the lower contact density in the direction of *σ~3~'/σ~2~'* resulted in greater fabric anisotropy in the critical state. Furthermore, at the critical state, the morphology of contact density was an elongated cylinder with a contracted body and *z*-axis oriented to the direction of major principal stress. Thus, the consistency of microstructure with macroscopic stress was verified in the triaxial compression test. The distribution morphology evolution of the contact density also implies a variation in the magnitude of *F~c~*. A greater difference between the anisotropic morphology and an isotropic sphere indicates a higher degree of anisotropy and a larger *F~c~*. Therefore, the evolution of the contact distribution morphologically estimates the gradual increase of *F~c~* in the triaxial compression test.
 
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image60.png) | ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image61.png) |
+| ![](thesis/assets/media/image60.png) | ![](thesis/assets/media/image61.png) |
 +:=================================================================================================================================:+:=================================================================================================================================:+
 | \(a\) *θ*=120°                                                                                                                    | \(b\) *θ*=90°                                                                                                                     |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                   |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![图片包含 图表 描述已自动生成](thesis/assets/media/image62.png)      |                                                                                                                                   |
+| ![](thesis/assets/media/image62.png)      |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | \(c\) *θ*=60°                                                                                                                     |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
@@ -275,13 +275,13 @@ the axial strain *ε~1~* is 5%, however, the lower contact density in the direct
 The distributions of contact density for tests with Lode angles of 120°, 90°, and 60° are illustrated in Fig. 2.23, considering the uniqueness of $Z$ and nonuniqueness of *F~c~* and $e$ in tests with different Lode angles at the critical state under the same mean effective principal stress. In contrast to the compression test (*θ* = 120°), the morphology of contact density in the extension test (*θ* = 60°) was a dimpled flat pie with a concave oriented toward the direction of the minor principal stress. The contact density distribution for a Lode angle of 90° is an intermediate transition state. The contact density distribution microscopically reveals the intrinsic difference in critical states under different stress paths and is indicative of the anisotropy in the void ratio and fabric tensor. Although the CSL of $Z$ is uniquely presented, the contact anisotropy varies with the Lode angle, resulting in the *F~c~* and void ratio (*e*) of the triaxial extension being greater than that in the triaxial compression.
 
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image63.png) | ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image60.png) |
+| ![](thesis/assets/media/image63.png) | ![](thesis/assets/media/image60.png) |
 +:=================================================================================================================================:+:=================================================================================================================================:+
 | \(a\) *p'*= 1.9 MPa                                                                                                               | \(b\) *p'*= 5.1 MPa                                                                                                               |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                   |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 描述已自动生成](thesis/assets/media/image64.png)           |                                                                                                                                   |
+| ![](thesis/assets/media/image64.png)           |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | \(c\) *p'*= 26.0 MPa                                                                                                              |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
