@@ -10,6 +10,23 @@ This is a PhD thesis research project on **microscopic analysis of fabric evolut
 
 The project is organized into chapter-based directories corresponding to thesis chapters:
 
+### Thesis Documentation (Markdown)
+- **thesis/** - Complete PhD thesis in Markdown format for Obsidian
+  - `index.md` - Main navigation hub with wikilinks to all chapters
+  - `00_front_matter.md` - Title, author, abstract, keywords, table of contents
+  - `01_introduction.md` - Liquefaction phenomena, historical cases, motivation
+  - `02_literature_review.md` - Critical state theory, constitutive models, DEM fundamentals
+  - `03_fabric_evolution.md` - True triaxial simulations, fabric tensor analysis
+  - `04_anisotropic_consolidation.md` - K₀ effects, HCA simulations, experimental validation
+  - `05_multidirectional_shear.md` - Double-8 loading method, multi-directional effects
+  - `06_conclusions.md` - Key findings and future research directions
+  - `07_references.md` - Complete bibliography
+  - `08_appendix1_hpc.md` - GPU-accelerated DEM with TaichiLang
+  - `09_appendix2_raytracing.md` - Ray tracing for DEM visualization
+  - `assets/media/` - 162 extracted images (PNG, JPEG, SVG)
+  - `MicroLiq_full.md` - Original single-file version (backup)
+
+### Interactive Web Visualizations
 - **index.html** - Main landing page with tabbed navigation for all thesis chapters
 - **triaxial/** - Chapter 1: True triaxial apparatus simulation (fabric evolution under general stress states)
 - **torsionSim/** - Chapter 2: Hollow cylindrical apparatus (HCA) simulation with combined-servo-mechanism
@@ -116,10 +133,39 @@ This is geotechnical engineering research focused on:
 - K₀ consolidation stress states
 - Multi-directional seismic loading
 
+### Thesis Content Summary
+
+**Main Research Questions:**
+1. How does fabric (microstructure) evolve under different stress states in true triaxial conditions?
+2. What is the relationship between K₀ (stress anisotropy during consolidation) and liquefaction resistance?
+3. How does multi-directional shear stress affect liquefaction differently than unidirectional loading?
+
+**Key Findings:**
+- Coordination number ($Z_m$) shows uniqueness at critical state, while void ratio and fabric anisotropy are non-unique
+- Initial coordination number ($Z_{m0}$) has strong positive correlation with liquefaction resistance
+- K₀ effects on liquefaction show non-monotonic trends (validated by both DEM and experiments)
+- Multi-directional shear (double-8 loading) causes faster liquefaction than unidirectional shear
+- Contact density ($\rho_c$) distribution reveals fabric evolution mechanisms under general stress states
+
+**Microscopic Parameters:**
+- $Z_m$ - Mechanical coordination number (particles with 4+ contacts)
+- $F_c$ - Fabric anisotropy tensor invariant
+- $\rho_c$ - Contact density (directional distribution of contacts)
+- $e$ - Void ratio
+- $K_0$ - Horizontal to vertical stress ratio during consolidation
+
+**Experimental Methods:**
+- DEM simulations using PFC3D (commercial) and TaichiLang (GPU-accelerated, custom)
+- True triaxial apparatus simulations with flexible boundaries
+- Hollow cylinder apparatus (HCA) with combined servo mechanism for undrained conditions
+- Physical experiments using hollow cylinder torsional shear apparatus
+- Toyoura sand specimens (Dr = 40-80%)
+
 ### Citations and Publications
-The work references published research:
+The work references and builds upon published research:
 - Han, Y., Kato, S. & Kim, BS. (2023) - True triaxial DEM analysis (KSCE J Civ Eng)
 - Ma, Q., et al. (2024) - HCA simulation approach (Computers and Geotechnics)
+- Historical liquefaction case studies: 1964 Niigata, 1995 Kobe, 2024 Noto earthquakes
 
 ### Visualization Philosophy
 The project emphasizes interactive visualizations over static images:
@@ -155,3 +201,29 @@ Hollow cylindrical specimen geometry:
 - Experimental data: CSV with channel columns (CH_1, CH_3, CH_4)
 - Recording frequency: 0.05 Hz (20 second intervals)
 - Liquefaction criterion: p' < 5% of initial p'
+
+## Thesis Workflow with Obsidian
+
+The thesis is managed using Obsidian vault at `/Users/hanyusong/thesis/MicroLiq/`:
+
+### File Organization
+- Open Obsidian vault pointing to `MicroLiq/` directory (not `MicroLiq/thesis/`)
+- Image paths in markdown files use `thesis/assets/media/imageX.png` format
+- Start navigation from `thesis/index.md`
+
+### Editing Workflow
+1. Open Obsidian vault at `MicroLiq/` root
+2. Navigate via `thesis/index.md` with wikilinks
+3. Edit individual chapter files as needed
+4. Images auto-display with correct relative paths
+5. Use tags to search: #liquefaction, #fabric-evolution, #K0-effect, etc.
+
+### Cross-References
+- Use Obsidian wikilinks: `[[01_introduction|Chapter 1]]`
+- Refer to figures by number within chapters
+- Mathematical notation uses LaTeX: `$Z_m$`, `$$\tau = F/A$$`
+
+### Version Control
+- Thesis markdown files are tracked in git
+- Commit chapter changes separately for clear history
+- Keep `MicroLiq_full.md` as backup of original conversion
