@@ -200,17 +200,17 @@ Soil liquefaction is a major geotechnical hazard that occurs when saturated gran
 
 One of the earliest and most extensively studied cases of liquefaction-induced failure is the 1964 Niigata Earthquake (M 7.6, Japan) (Kishida, 1966; Ohsaki, 1966; Seed and Idriss, 1967; Yoshimi and Tokimatsu, 1977; Ishihara and Koga, 1981; Ishihara and Yoshimine, 1992; Yoshida et al., 2007). The collapse of apartment buildings in Niigata City, as shown in Fig.1.1, despite their structural integrity, was attributed to liquefaction-induced bearing capacity failure of the underlying saturated sand layers. Similarly, widespread liquefaction led to severe damage to river embankments and bridges, as shown in Fig. 1.2, posing a significant threat to critical infrastructure.
 
-![建筑的摆设布局 中度可信度描述已自动生成](assets/media/image1.png){width="3.9372090988626423in" height="2.2440944881889764in"}
+![建筑的摆设布局 中度可信度描述已自动生成](thesis/assets/media/image1.png)
 
 Fig. 1.1. Tilting and overturning of Kawagishi-cho apartment buildings due to liquefaction-induced foundation failure in the 1964 Niigata Earthquake, Japan (Source: Elnashai, A. S., 2015)
 
-![图片包含 日历 描述已自动生成](assets/media/image2.png){width="2.366898512685914in" height="2.3196719160104986in"}
+![图片包含 日历 描述已自动生成](thesis/assets/media/image2.png)
 
 Fig. 1.2. Collapse of Showa bridge caused by liquefaction during the 1964 Niigata earthquake, Japan, (Source: Yoshida et al., 2007)
 
 Another catastrophic example is the 1995 Hanshin-Awaji Earthquake (M 6.9, Japan), which caused extensive liquefaction across reclaimed lands in Kobe, particularly in Port Island, Rokko Island, and Fukae Island (Ishihara et al., 1997; Hatanaka et al., 1997). Severe damage was observed in port infrastructures (Fig. 1.3), such as the collapse of quay walls, lateral spreading of waterfront areas, and ground subsidence, significantly affecting Kobe Port, one of Japan's largest trading hubs. These failures disrupted maritime transportation for months, showing the vulnerability of reclaimed land to liquefaction-induced ground deformations.
 
-![木船上 低可信度描述已自动生成](assets/media/image3.png){width="3.1496062992125986in" height="2.163850612423447in"}
+![木船上 低可信度描述已自动生成](thesis/assets/media/image3.png)
 
 Fig. 1.3 Liquefaction-induced ground deformation at Kobe Port during the 1995 Hanshin-Awaji Earthquake, causing severe damage to port infrastructure (Source: Ministry of Land, Infrastructure, Transport, and Tourism (MLIT))
 
@@ -296,7 +296,7 @@ This section provides a comprehensive review of the fundamental mechanical behav
 
 Granular materials, such as sand, exhibit complex mechanical behaviors, including permeability, shear strength, and dilatancy, as first systematically described by Reynolds (1885). As illustrated in Fig. 2.1, the spatial configuration of particles within a granular material undergoes significant rearrangements during shear deformation. The left configuration represents a loosely packed state with a higher void ratio, allowing for greater potential volumetric reduction under shear. In contrast, the right configuration corresponds to a densely packed state, where the void ratio is lower, and particle rearrangements are more constrained. These spatial rearrangements of particles can lead to either volume expansion or contraction, depending on the initial packing density and applied stress conditions.
 
-![图示 描述已自动生成](assets/media/image4.png){width="3.937007874015748in" height="1.637516404199475in"}
+![图示 描述已自动生成](thesis/assets/media/image4.png)
 
 Fig. 2.1. Variation in the spatial configuration of granular material under shear loading, obtained from (Reynolds, 1885)
 
@@ -304,7 +304,7 @@ In densely packed configurations, particles are pushed to move apart during shea
 
 ### Undrained Responses of Granular Materials under Monotonic Shear
 
-![图示 描述已自动生成](assets/media/image5.png){width="3.1496062992125986in" height="3.065988626421697in"}
+![图示 描述已自动生成](thesis/assets/media/image5.png)
 
 Fig. 2.2. Pore water pressure changes in a dilating sample by an undrained monotonic shear test (Bishop and Eldin, 1950)
 
@@ -312,7 +312,7 @@ Research on undrained shear behavior of granular materials can be traced back to
 
 ### Undrained Responses of Granular Materials under Cyclic Shear
 
-![图示 描述已自动生成](assets/media/image6.png){width="2.3622047244094486in" height="2.3468153980752406in"} ![图示, 工程绘图 描述已自动生成](assets/media/image7.png){width="2.3622047244094486in" height="2.2722156605424324in"}
+![图示 描述已自动生成](thesis/assets/media/image6.png) ![图示, 工程绘图 描述已自动生成](thesis/assets/media/image7.png)
 
 Fig. 2.3. Stress-strain behavior under cyclic undrained triaxial shear on Masado soil (Source: Hatanaka et al., 1997): (a) Deviatoric stress vs. axial strain (b) Deviatoric stress vs. effective mean principal stress
 
@@ -324,7 +324,7 @@ This section reviews classical constitutive models developed to describe the mec
 
 ### From Experimental Observation to Unified Theoretical Framework: the Critical State Soil Mechanics
 
-![图示 描述已自动生成](assets/media/image8.png){width="2.3622047244094486in" height="2.643076334208224in"}
+![图示 描述已自动生成](thesis/assets/media/image8.png)
 
 Fig. 2.4. Consolidation line and critical state line in volume $v$ -- mean effective stress $p'$ - deviatoric stress $q$ space (Source: Atkinson and Bransby, 2012)
 
@@ -332,19 +332,19 @@ The development of critical state soil mechanics by Roscoe et al. (1958) establi
 
 When $q$ is zero, soil states lie on the bottom plane, representing isotropic stress conditions in the $p'$ - $v$ space. The normal consolidation line (NCL) represents states where the soil has not experienced a greater historical stress than its current effective mean stress $p'$. In contrast, states located below the NCL indicate over-consolidation, meaning the soil has previously been subjected to a higher effective stress than its current state.
 
-![图示 描述已自动生成](assets/media/image9.png){width="2.3622047244094486in" height="2.5695450568678915in"}
+![图示 描述已自动生成](thesis/assets/media/image9.png)
 
 Fig. 2.5. Evolution of soil state during triaxial drained shear in $p'$-$v$--$q$ space (Source: Atkinson and Bransby, 2012)
 
 Figure 2.5 illustrates the evolution of soil states during a triaxial drained shear test. Different initial consolidation states evolve along the shaded plane, representing the variation of stress and void ratio during shear. For a normally consolidated state, the stress path follows the outermost curve AB. As shear deformation increases, all initial states eventually reach the same point B, known as the critical state, regardless of their initial consolidation conditions. At this critical state, both void ratio and stress ratio remain constant despite further shear deformation, forming the critical state line (CSL).
 
-![图示, 工程绘图 描述已自动生成](assets/media/image10.png){width="2.3622047244094486in" height="2.5695450568678915in"}
+![图示, 工程绘图 描述已自动生成](thesis/assets/media/image10.png)
 
 Fig. 2.6. Evolution of soil state during triaxial undrained shear in $p'$-$v$--$q$ space (Source: Atkinson and Bransby, 2012)
 
 Figure 2.6 illustrates the evolution of soil states in undrained shear tests within the $p'$-$v$-$q$ space. The shaded plane represents the shear paths corresponding to different initial consolidation states but with the same initial void ratio. For an initially normally consolidated state, the stress path follows the outermost curve, progressing toward the critical state. For an over-consolidated state, the path originates from the inner regions and evolves along the plane, ultimately reaching the same critical state as normally consolidated specimens. At the critical state, both void ratio and stress ratio remain constant despite continued shear deformation. Notably, the CSL obtained from undrained shear tests is identical to that from drained shear tests, underscoring its uniqueness. Along the CSL, the stress ratio $q/p'$ remains constant, independent of their absolute magnitudes.
 
-![图表, 散点图 描述已自动生成](assets/media/image11.png){width="3.1496062992125986in" height="1.9904877515310586in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image11.png)
 
 Fig. 2.7. Normalized state paths during drained and undrained triaxial shear tests, and Roscoe surface (Source: Atkinson and Bransby, 2012)
 
@@ -414,7 +414,7 @@ In this study, the difference in true triaxial tests with a flexible membrane in
 
 The DEM simulations in this study were implemented using PFC3D (Itasca, 2005). The contact model in the DEM determines the interparticle relationship, such as the friction and contact force between particles. The contact models employed to represent cohesionless sands typically include linear models, in which the stiffness (Wei et al., 2022) or modulus (Zhao and Guo, 2013) is constant, and nonlinear models such as the Hertz-Mindlin model (Tsuji et al., 1992). The contact stiffness has a direct impact on the timestep. For instance, the study conducted by O\'Sullivan (2004) indicates that the critical timestep is proportional to the value of (*m*/*k*)^0.5^, where *m* is the mass of the particle at the end of the contact, and *k* denotes the stiffness of the contact. Thus, excessive stiffness increases the computational effort, but an appropriate contact stiffness guarantees the convergence and efficiency of the calculation. Table 2-1 and Fig 2.1 summarize the input parameters of a linear model applied in this study (Kim et al., 2012 & 2021).
 
-![图标 描述已自动生成](assets/media/image12.png){width="4.0in" height="1.5555555555555556in"}
+![图标 描述已自动生成](thesis/assets/media/image12.png)
 
 Fig. 2.1. Contact model in DEM simulation
 
@@ -442,23 +442,23 @@ Table 2-1. Input parameters of the linear model
 
 A uniform size distribution, similar to the typical grain size distribution of Toyoura sand, ranging from 0.1mm to 0.3mm with a median particle size of 0.2mm was adopted in this study, as shown in Fig. 2.2. Initially, approximately 29000 spherical particles
 
-![](assets/media/image14.svg){width="4.043924978127734in" height="2.7559055118110236in"}
+![](thesis/assets/media/image14.svg)
 
 Fig. 2.2. Particle size distribution curve in the DEM analysis for Toyoura sand
 
 were randomly generated in a cubic space enclosed by six frictionless flat wall elements. The length, width, and height of the cubic space are 0.005m, 0.005m, and 0.01m, respectively. The specimens used in the actual test device are mostly cubes with equal length, width, and height (Nakai et al., 1986; Ye et al., 2012; Yin et al., 2011). However, considering that the length of the major principal stress direction undergoes a significant reduction at the critical state, the initial axial length of the specimen is approximately set to be twice the width. The initial random spatial distribution of the particles leads to large overlaps between particles. To reduce the overlaps and relieve the initial interparticle force, a servo mechanism (Itasaca, 2005) was employed to displace the wall elements until the relatively small confining stress of 50 kPa was reached, and the initial void ratio for 50 kPa was 0.696 as shown in Fig. 2.3.
 
-![](assets/media/image16.svg){width="3.9891885389326336in" height="2.7559055118110236in"}
+![](thesis/assets/media/image16.svg)
 
 Fig. 2.3. Variation of void ratio under the isotropic compression
 
-![图表 描述已自动生成](assets/media/image17.png){width="2.8733573928258966in" height="3.1496062992125986in"}
+![图表 描述已自动生成](thesis/assets/media/image17.png)
 
 Fig. 2.4. Specimen state after isotropic compression of p = 5.1 MPa
 
 Subsequently, isotropic compression with gradually increasing confining stress was performed, during which three measurement ball function (Itasaca, 2005) with radii of 1.5 mm are positioned vertically inside the specimen to measure the void ratio. The measurement ball function is built into the program, which sets a spherical spatial domain for measurement and measures parameters such as void ratio, average stress, and coordination number for particles that exist within this domain. When measuring the average value of the void ratio in the domain, the obtained result can be regarded as the average void ratio at the center point of the domain. The stability of the stresses acting on the wall elements and the void ratio of the specimen served as the completion condition for each compression stage. The current compression stage was completed when stress and strain stabilized, and a quasi-static state was accordingly reproduced in the specimen. Figures 2.3 and 2.4 show the variation in the void ratio under isotropic compression and the specimen under a confining pressure of 5.1 MPa, respectively. Simulation by Cao et al. (2021) involved low confining pressures for consistency with laboratory tests. On the other hand, some simulations covered a wide range of confining pressures from tens kPa to tens MPa (ex., Huang et al., 2014a; Zhao and Guo, 2013). Moreover, the particle crushing was modeled by Zhu et al (2022) when the specimen was subjected to high confining pressure. Unlike these studies, this study aims to compare the mechanical behavior of theoretical spherical aggregates under a wide range of pressures. Thus, particle crushing is not considered. Isotropically compressed specimens under confining pressures of 0.7MPa, 1.4MPa, 1.9MPa, 2.6MPa, 3.7MPa, 5.1MPa, 7.0MPa, 9.7MPa, 13.5MPa, 18.7MPa, and 26.0MPa were selected for the subsequent shear tests under general stress states.
 
-![图表, 雷达图 描述已自动生成](assets/media/image18.png){width="2.920742563429571in" height="2.9921259842519685in"}
+![图表, 雷达图 描述已自动生成](thesis/assets/media/image18.png)
 
 Fig. 2.5. Loading paths in shear tests
 
@@ -466,27 +466,27 @@ Fig. 2.5. Loading paths in shear tests
 
 During shearing, the Lode angle and the mean effective stress were maintained constant. Five loading paths corresponding to each mean effective stress state were considered: Lode angles of 60°, 75°, 90°, 105°, and 120° as shown in Fig. 2.5. Lode angle refers to the angle between the stress path and the axis of the principal stress in the stress state of a material. Lode angles of 60° and 120°indicate the triaxial extension and triaxial compression states, respectively. On the other hand, the stress path can also be described by using the intermediate principal stress ratio (*b* = (*σ~2~'*-*σ~3~'*)/(*σ~1~'*-σ~3~')), where *b*=0 for triaxial com-pression and *b*=1 for the triaxial extension. Typical boundaries in DEM triaxial tests include the nondeformable wall boundary (Zhao and Guo, 2013; Cao et al., 2021), the periodic boundary (Thornton, 2000; González-Montellano et al., 2011), and the membrane boundaries. Multiple membrane boundaries exist in DEM simulations. One of the membrane boundaries is implemented by applying additional force to the outmost particles (Cui et al., 2007; Cheung and O'Sullivan, 2008; O\'Sullivan and Cui, 2009). Another type of membrane boundary is modeled by assigning tensile and shear strength between the membrane particles (Kim and Park, 2020). Recently, a coupled FDM-DEM approach using the shell element was proposed to model the membrane boundary (Zhu et al., 2022). Although the wall boundary can effectively maintain the specimen symmetry under deformation, local deformation such as the shear band, which originates from irregular displacement on the deformable flexible boundary, is inhibited. In this study, the major and minor principal stresses were applied by wall element boundaries, and the membrane boundary with applied force was adopted in the intermediate principal stress direction, which is consistent with the apparatus developed by Nakai et al. (1986).
 
-> ![图片包含 图形用户界面 描述已自动生成](assets/media/image19.png){width="3.260334645669291in" height="3.1496062992125986in"}
+> ![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image19.png)
 >
 > Fig. 2.6. Membrane zone detection
 
 The method for identifying the membrane particles is similar to that proposed by Cui et al. (2007) and only differs in coordinate transformation because the specimen in previous studies was a cylinder, whereas the specimen in this study is a cuboid. The boundary in the direction of intermediate principal stress, which serves as the membrane, was determined using the following procedure. As illustrated in Fig. 2.6, a membrane zone with a thickness of three times the mean particle diameter was designated from the outmost particle in the intermediate principal stress direction. The particles in the membrane zone were further identified depending on whether they were prevented from contact with the outside. Each particle in the membrane zone had a corresponding cone with its vertex coinciding with the center of the particle, as shown in Fig. 2.7. If no other particle is detected inside this conical region, this particle is in direct contact with the outside and is, consequently, identified as a membrane particle.
 
-> ![图表, 表面图 描述已自动生成](assets/media/image20.png){width="2.921761811023622in" height="3.1496062992125986in"}
+> ![图表, 表面图 描述已自动生成](thesis/assets/media/image20.png)
 >
 > Fig. 2.7. Membrane particle identification
 >
-> ![图片包含 文本 描述已自动生成](assets/media/image21.png){width="3.220120297462817in" height="3.1496062992125986in"}
+> ![图片包含 文本 描述已自动生成](thesis/assets/media/image21.png)
 >
 > Fig. 2.8. Specimen after Membrane particle identification
 
 Figure 2.8 shows the specimen after membrane particle identification in the DEM simulation. The yellow particles in this figure denote the membrane particles directly subject to the intermediate principal stress. The boundary stress was subsequently applied to each membrane particle in the form of applied forces for the coordinate axis. To obtain the applied force corresponding to each membrane particle, a two-dimensional Voronoi tessellation based on the membrane particle positions was employed.
 
-![](assets/media/image23.svg){width="4.059321959755031in" height="3.45538823272091in"}
+![](thesis/assets/media/image23.svg)
 
 Fig. 2.9. Voronoi geometry corresponding Membrane particles
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image24.png){width="3.181431539807524in" height="3.432202537182852in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image24.png)
 
 Fig. 2.10. Boundary force application
 
@@ -496,17 +496,17 @@ Figure 2.9 illustrates the principle of the Voronoi polygon; the perpendicular b
 
 ### Relationship between deviatoric stress and strain
 
-![](assets/media/image26.svg){width="4.854757217847769in" height="3.1496062992125986in"}
+![](thesis/assets/media/image26.svg)
 
 Fig. 2.11. Deviatoric stress and volumetric strain in shear test (*p* = 26.0 MPa)
 
 Figure 2.11 shows the comparison of volumetric strain and deviatoric stress between different stress paths. A contraction before an expansion in volume is evident for all cases. After the axial strain increases to approximately 18%, the increase rate of volumetric strain reduced significantly and remained almost constant. Similarly, a hardening before a slight softening in deviatoric stress is observed in Fig. 2.11. Further, the deviatoric stresses in the five cases were steady beyond the axial strain of approximately 18%. Considering the convergence of the deviatoric stress and volumetric strain (i.e., steady state), states at the axial strain of 20% in this study were employed for the subsequent critical state analyses. The volumetric strains under the critical states exhibited apparent dependence on the loading paths: the volumetric strain gradually decreased as the Lode angle increased from 60° to 120°. On the other hand, there are some exceptions where a larger volumetric strain corresponds to a larger Lode angle, such as the cases with Lode angles of 60° and 75°. This error is attributed to the differences in deviatoric strain rates and measurement balls, which is discussed in the subsection on the critical state. Although some exceptions exist in the volumetric strain results under the critical states, the difference in volumetric strain between triaxial compression and triaxial extension is significant. Therefore, the volumetric strain is
 
-![](assets/media/image28.svg){width="4.487944006999125in" height="2.9921259842519685in"}
+![](thesis/assets/media/image28.svg)
 
 > \(a\) Axial strain vs. deviatoric stress
 
-![](assets/media/image30.svg){width="4.487945100612423in" height="2.9921259842519685in"}
+![](thesis/assets/media/image30.svg)
 
 > \(b\) Axial strain vs. void ratio
 
@@ -516,11 +516,11 @@ stress-path dependent. The deviatoric stresses under the critical states are mar
 
 Figure 2.12 compares the stress and void ratio variation between the true triaxial tests with and without flexible boundaries. In agreement with the findings of Cheung and O'Sullivan (2008) and Qu et al. (2019), the boundary type has little effect on the macroscopic response, such as deviatoric stress and void ratio. The changes in particle position after the application of membrane boundary could lead to an inevitable disturbance to the specimen and account for the slight difference in stress and void ratio. A shear band is a common form of highly localized deformation in ductile solids (Rice, 1976). It is more likely to develop in the middle of the specimen under a flexible membrane boundary, and through the entire specimen under a rigid boundary (Cheung and O'Sullivan, 2007; Qu et al., 2019, Kim and Park, 2020). The rotational velocity of particles could be employed as an indicator of the deformation localization of granular materials (Kim and Park, 2020). On the other hand, in the specimen under a rigid boundary, as shown in Fig. 2.13 (a), the particles with a relatively higher rotational angular velocity (over 100 rad/s) tended to concentrate in the middle part of the cross-section. The particles with high rotational angular velocities in the specimen under flexible boundary as shown in Fig. 2.13 (b) concentrated at the top left and lower right of the *x*-*z* cross-section. Bono et al. (2015) pointed out that the interparticle bonds contribute to the emergence of shear bands. In contrast, because a linear model without any bonds for modeling cohesionless sands was adopted in this study, it can be understood that the typical *x*-shaped shear bond was not observed.
 
-![电脑合成图 低可信度描述已自动生成](assets/media/image31.png){width="3.628416447944007in" height="2.9921259842519685in"}
+![电脑合成图 低可信度描述已自动生成](thesis/assets/media/image31.png)
 
 > \(a\) Rigid boundary
 
-![墙上挂着一幅画 中度可信度描述已自动生成](assets/media/image32.png){width="3.610647419072616in" height="2.9921259842519685in"}
+![墙上挂着一幅画 中度可信度描述已自动生成](thesis/assets/media/image32.png)
 
 \(b\) Flexible boundary
 
@@ -528,7 +528,7 @@ Fig. 2.13. Comparison of particle rotational velocity between rigid boundary and
 
 Two-hundred measurement balls with a radius of 0.5 mm were uniformly placed in the specimens with rigid and flexible boundaries along the x-direction to obtain the local void ratio. When distant from the boundaries, the local void ratio under the two boundaries is similar, whereas when close to the boundaries, the void ratio near the rigid boundary is almost always larger than that near the membrane boundary as shown in Fig. 2.14. The particles in contact with the rigid boundary are tightly attached to it, forming a constraint perpendicular to the rigid boundary. On the other hand, the
 
-![](assets/media/image34.svg){width="4.8690813648293965in" height="3.543307086614173in"}
+![](thesis/assets/media/image34.svg)
 
 Fig. 2.14. Comparison of local void ratios between rigid and flexible boundaries under the critical state (*p'*=1.4MPa)
 
@@ -540,21 +540,21 @@ The relationship between the angle of shearing resistance (*ϕ'~cs~=arcsin*((*σ
 
 In this study, the results on the angle of shearing resistance (*ϕ'~cs~*) are compared with those of the Matsuoka-Nakai (Matsuoka and Nakai, 1974), Lade (Lade and Duncan, 1975), and Mohr-Coulomb criteria, expressed as Eqs. (2-1), (2-2), and (2-3), respectively.
 
-![](assets/media/image35.wmf) (2-1)
+![](thesis/assets/media/image35.wmf) (2-1)
 
-![](assets/media/image36.wmf) (2-2)
+![](thesis/assets/media/image36.wmf) (2-2)
 
-![](assets/media/image37.wmf) (2-3)
+![](thesis/assets/media/image37.wmf) (2-3)
 
 where *σ~1~'*, *σ~2~'*, and *σ~3~'* are the maximum and intermediate, and minimum principal stresses; *η~Matsuoka-Nakai~* is the Matsuoka--Nakai criterion, *η~Lade~* is the Lade criterion, and *η~Mohr-Coulomb~* is Mohr--Coulomb criterion.
 
-> ![](assets/media/image39.svg){width="4.743573928258968in" height="3.543307086614173in"}
+> ![](thesis/assets/media/image39.svg)
 
 Fig. 2.15. Sensitivity of angle of shearing resistance to intermediate stress ratio at the critical states
 
 The parameters in the three equations were obtained via regression analysis, and the results are shown in Fig. 2.15. The peak of *ϕ'~cs~* is obtained when *b*$\ $is between 0.2 and 0.6 for all cases in this study. Unlike the results by Huang et al. (2014a), the Matsuoka-Nakai criterion, which predicts an equivalent angle of shearing resistance (*ϕ'~cs~*) in triaxial extension (*b*=1.0) and compression (*b*=0.0) with a minimum deviation of 0.004, is generally consistent with all data. At low mean effective stress, *ϕ'~cs~* in the triaxial extension (*b*=1.0) is slightly higher than that in the triaxial compression (*b*=0.0), making the Lade criterion preferable. On the other hand, the increasing mean effective stress *p'* leads to a higher *ϕ'~cs~* in triaxial compression and a lower *ϕ'~cs~* in other stress paths, which is more consistent with the Matsuoka-Nakai criterion, or even the Mohr-Coulomb criterion. The stress states and failure surface are shown in Fig. 2.16. Notably, the stress state under a mean effective stress *p'* with a medium magnitude of approximately 10 MPa exhibits the greatest consistency with the Matsuoka-Nakai criterion. Other studies were inconclusive due to a narrow range of mean effective stress *p'*.
 
-> ![图表, 图示 描述已自动生成](assets/media/image40.png){width="3.4826607611548557in" height="3.1102362204724407in"}
+> ![图表, 图示 描述已自动生成](thesis/assets/media/image40.png)
 
 Fig. 2.16. Critical stress state and Matsuoka-Nakai criterion in stress space
 
@@ -562,9 +562,9 @@ Fig. 2.16. Critical stress state and Matsuoka-Nakai criterion in stress space
 
 Li and Wang (1998) proposed a scaling method employing a power function to obtain a linear relationship between void ratio and mean effective stress (*p'*) under a steady state. In this study, the CSL in the *e* -- *p'* space was rescaled with the method shown in Fig. 2.17. The index applied for Toyoura sand was 0.7 based on the research conducted by Huang et al (2014a). Noticeably, $e$ increases with increasing *p'* when *p'* is low, which corroborates the findings of Huang et al (2014b). According to their studies, a large friction coefficient, such as 0.5, as used in this study, may lead to an anomalous variation trend of the CLS in the *e*-*p'* space when *p'* is small. The uniqueness
 
-![](assets/media/image42.svg){width="4.849561461067367in" height="3.1496062992125986in"}
+![](thesis/assets/media/image42.svg)
 
-Fig. 2.17. Critical states in ![](assets/media/image43.wmf) space
+Fig. 2.17. Critical states in ![](thesis/assets/media/image43.wmf) space
 
 and non-uniqueness of the void ratio under critical states can be a controversial topic: the uniqueness of the CSL for the void ratio is observed in some studies (Zhao and Guo, 2013), whereas in other studies, the CSL for the void ratio exhibits dependency on the stress path, and the uniqueness of the void ratio is attributed to a low contact stiffness (Huang et al., 2014a). The results reported herein reveal that dependency of the CSL on the stress path was drawn for different mean effective principal stresses *p'*, as shown in Fig. 2.17. The void ratio of the intermediate Lode angle is larger than the triaxial extension or less than the triaxial compression in some exceptions for other *p'* values. Presumably, the constant axial velocity could lead to a larger deviatoric strain ratio in cases with a smaller Lode angle, resulting in a more intensive fluctuation in the void ratio. Meanwhile, the void ratio was obtained using three measurement balls, contributing to the fluctuation in the void ratio during the shear tests because the location of the center of the ball---whether within the measurement sphere surface---affects the calculated porosity. Thus, those fluctuations cause some CSL exceptions. Although they exist in the critical state, the *e* gap between triaxial compression and triaxial extension is great, and sufficient and explicit evidence exists to support the CSL dependency on the stress path in the *e* -- *p'* space.
 
@@ -576,11 +576,11 @@ $Z = \frac{2N_{c}}{N_{p}}$ (2-4)
 
 where $Z$ is the coordination number, $N_{c}$ is the total number of contacts between particles, and $N_{p}$ is the number of particles.
 
-![](assets/media/image45.svg){width="4.9207042869641295in" height="3.1496062992125986in"}
+![](thesis/assets/media/image45.svg)
 
 Fig. 2.18. Variation of coordination number ($Z$) for Lode angle in the shear process (*p* = 7.0 MPa)
 
-![](assets/media/image47.svg){width="5.008136482939633in" height="3.1496062992125986in"}
+![](thesis/assets/media/image47.svg)
 
 Fig. 2.19. Variation in coordination number (CN) for Lode angle at the critical state
 
@@ -590,19 +590,19 @@ The variation in $Z$ during the shear test under the mean effective stress of 7.
 
 The fabric tensor (*Φ~ij~*) is a classical method pioneered by Satake (1982) and Kanatani (1984) and has been frequently employed to describe granular structure anisotropy. The anisotropic fabric tensor (*F~ij~*) as shown in Eq. (2-6) is the deviatoric part of *Φ~ij~*. Notably, an invariant of anisotropic fabric (*F~c~*) in this study differs from that of the aforementioned studies and is related to multiples of the results in the study by Zhao and Guo (2013). In particular, the same value of *Φ~d~* was applied for comparison with the results of Huang et al. (2014a).
 
-![](assets/media/image48.wmf) (2-5)
+![](thesis/assets/media/image48.wmf) (2-5)
 
-![](assets/media/image49.wmf) (2-6)
+![](thesis/assets/media/image49.wmf) (2-6)
 
-![](assets/media/image50.wmf) (2-7)
+![](thesis/assets/media/image50.wmf) (2-7)
 
 where *Φ~ij~* is the fabric tensor, *N~c~* is the total contact number between particles, *F~ij~* is the anisotropic fabric tensor, *δ~ij~* is the Kronecker delta, *n~i~* is the unit direction vector that joins the centroids of two particles in contact, and *F~c~* is the degree of anisotropy in granular materials and refers to the second invariant of *F~ij~*.
 
-![](assets/media/image52.svg){width="4.662354549431321in" height="2.9921259842519685in"}
+![](thesis/assets/media/image52.svg)
 
 \(a\) Results in this study
 
-![](assets/media/image54.svg){width="4.67625in" height="2.9921259842519685in"}
+![](thesis/assets/media/image54.svg)
 
 \(b\) Results obtained from Huang et al. (2014a)
 
@@ -620,7 +620,7 @@ $\rho_{c}(\theta,\phi) = \frac{2E(\theta,\phi)N_{c}}{N_{p}}$ (2-9)
 
 where E is the probability density function of contact, $N_{\theta,\phi}$is the number of contacts with normal falling in the interval \[θ, θ + δθ)∩\[ϕ, ϕ + δϕ), $N_{c}$ corresponds to the number of total contacts, the contact density, $N_{c}$ is the total contact number between particles, and $N_{p}$is the number of particles.
 
-![图片包含 名片, 游戏机 描述已自动生成](assets/media/image55.png){width="3.7034558180227473in" height="3.1496062992125986in"}
+![图片包含 名片, 游戏机 描述已自动生成](thesis/assets/media/image55.png)
 
 Fig. 2.21. Unit sphere for contact classification
 
@@ -631,13 +631,13 @@ By modifying $E$ to $\rho_{c}$, both the anisotropies of contact distribution an
 The morphological evolution of contact density during the compression test under the mean effective stress of 5.1MPa is shown in Fig. 2.22. Here, Figures 2.22(a)\~(d) correspond to the axial strains of 0%, 2%, 5%, and 20%, respectively. The contact density distribution at the axial strain of 0% is almost a sphere with a mean density of approximately 0.3445, which indicates an isotropic state in the fabric. As the strain and stress develop, the contact density gradually evolves toward the direction of the major principal stress. At the axial strain of 2%, the morphology evolves into an ellipsoid with a mean density of 0.3940 and 0.2919 in the direction of *σ~1~'* (0^o^ \< *ϕ* \< 20^o^) and *σ~3~'/σ~2~'* (80^o^ \< *ϕ* \< 100^o^), respectively. This indicates a slight concentration of interparticle contacts in the direction of *σ~1~'* and fabric anisotropy. On the other hand, when the major principal strain exceeds 5%, the mean density in the direction of *σ~1~'* increases to 0.4143, and the mean density in the direction of *σ~3~'/σ~2~'* decreases to 0.2716. This indicates a more significant concentration of interparticle contacts. The contact density at the axial strain of 20% in the critical state exhibits the greatest fabric anisotropy: a mean density of 0.4009 in the direction of *σ~1~'* and 0.2385 in the direction of *σ~3~'/σ~2~'*. The mean contact density in the direction of *σ~1~'* under the critical state was slightly lower than that when
 
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](assets/media/image56.png){width="2.7146095800524934in" height="2.3622047244094486in"} | ![图片包含 文本 描述已自动生成](assets/media/image57.png){width="2.7392694663167103in" height="2.3622047244094486in"}     |
+| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image56.png) | ![图片包含 文本 描述已自动生成](thesis/assets/media/image57.png)     |
 +:=================================================================================================================================:+:================================================================================================================================:+
 | \(a\) ε~a~=0%                                                                                                                     | \(b\) ε~a~=2%                                                                                                                    |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                   |                                                                                                                                  |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](assets/media/image58.png){width="2.7091021434820646in" height="2.3622047244094486in"} | ![卡通人物 中度可信度描述已自动生成](assets/media/image59.png){width="2.740155293088364in" height="2.3622047244094486in"} |
+| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image58.png) | ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image59.png) |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
 | \(c\) ε~a~=5%                                                                                                                     | \(d\) ε~a~=20%                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
@@ -649,13 +649,13 @@ The morphological evolution of contact density during the compression test under
 the axial strain *ε~1~* is 5%, however, the lower contact density in the direction of *σ~3~'/σ~2~'* resulted in greater fabric anisotropy in the critical state. Furthermore, at the critical state, the morphology of contact density was an elongated cylinder with a contracted body and *z*-axis oriented to the direction of major principal stress. Thus, the consistency of microstructure with macroscopic stress was verified in the triaxial compression test. The distribution morphology evolution of the contact density also implies a variation in the magnitude of *F~c~*. A greater difference between the anisotropic morphology and an isotropic sphere indicates a higher degree of anisotropy and a larger *F~c~*. Therefore, the evolution of the contact distribution morphologically estimates the gradual increase of *F~c~* in the triaxial compression test.
 
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](assets/media/image60.png){width="2.7226356080489937in" height="2.3622047244094486in"} | ![卡通人物 中度可信度描述已自动生成](assets/media/image61.png){width="2.7299070428696415in" height="2.3622047244094486in"} |
+| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image60.png) | ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image61.png) |
 +:=================================================================================================================================:+:=================================================================================================================================:+
 | \(a\) *θ*=120°                                                                                                                    | \(b\) *θ*=90°                                                                                                                     |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                   |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![图片包含 图表 描述已自动生成](assets/media/image62.png){width="2.7354746281714784in" height="2.3622047244094486in"}      |                                                                                                                                   |
+| ![图片包含 图表 描述已自动生成](thesis/assets/media/image62.png)      |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | \(c\) *θ*=60°                                                                                                                     |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
@@ -667,13 +667,13 @@ the axial strain *ε~1~* is 5%, however, the lower contact density in the direct
 The distributions of contact density for tests with Lode angles of 120°, 90°, and 60° are illustrated in Fig. 2.23, considering the uniqueness of $Z$ and nonuniqueness of *F~c~* and $e$ in tests with different Lode angles at the critical state under the same mean effective principal stress. In contrast to the compression test (*θ* = 120°), the morphology of contact density in the extension test (*θ* = 60°) was a dimpled flat pie with a concave oriented toward the direction of the minor principal stress. The contact density distribution for a Lode angle of 90° is an intermediate transition state. The contact density distribution microscopically reveals the intrinsic difference in critical states under different stress paths and is indicative of the anisotropy in the void ratio and fabric tensor. Although the CSL of $Z$ is uniquely presented, the contact anisotropy varies with the Lode angle, resulting in the *F~c~* and void ratio (*e*) of the triaxial extension being greater than that in the triaxial compression.
 
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 中度可信度描述已自动生成](assets/media/image63.png){width="2.7234853455818024in" height="2.3622047244094486in"} | ![卡通人物 中度可信度描述已自动生成](assets/media/image60.png){width="2.7226345144356956in" height="2.3622047244094486in"} |
+| ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image63.png) | ![卡通人物 中度可信度描述已自动生成](thesis/assets/media/image60.png) |
 +:=================================================================================================================================:+:=================================================================================================================================:+
 | \(a\) *p'*= 1.9 MPa                                                                                                               | \(b\) *p'*= 5.1 MPa                                                                                                               |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                                                                   |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ![卡通人物 描述已自动生成](assets/media/image64.png){width="2.7290387139107612in" height="2.3622047244094486in"}           |                                                                                                                                   |
+| ![卡通人物 描述已自动生成](thesis/assets/media/image64.png)           |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | \(c\) *p'*= 26.0 MPa                                                                                                              |                                                                                                                                   |
 +-----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
@@ -726,11 +726,11 @@ The stress paths for specimen preparation often entail linearly increasing $p'$ 
 
 Itasca PFC^3D^ (Itasca Consulting Group, Inc., 2021) was employed to implement DEM simulations of undrained cyclic torsional shear test. Unlike the periodic boundaries commonly used in element tests, the HCA in DEM simulation employs two cylinders, upper and lower planes, as well as six blades to provide torsional force, closely approximating the boundary conditions of HCA (Ishihara and Yasuda, 1975; Vargas et al., 2020; Li et al, 2014; Liu et al, 2021). As shown in Fig. 3.1(a), two rigid cylindrical walls with inner diameter of 6 cm and outer diameter of 10 cm are positioned coaxially and vertically, with the upper and lower planes placed 10 cm apart, resembling the geometric dimensions of laboratory tests (Vargas et al., 2020).
 
-![图片包含 应用程序 描述已自动生成](assets/media/image65.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图片包含 应用程序 描述已自动生成](thesis/assets/media/image65.png)
 
 (a) Pouring method for generating particles
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image66.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image66.png)
 
 (b) Insertion of torsional blades
 
@@ -796,11 +796,11 @@ wall elements that solely interact with particles to apply shear loads is prefer
 
 Soils not merely encounter diverse levels of $K_{0}$, but also frequently undergo complex stress histories, potentially influencing the liquefaction resistance. For instance, Pan et al. (2019) observed that the stress history of triaxial extension-unloading can enhance liquefaction resistance compared to IC specimen, whereas the triaxial compression-unloading history yields a contrary effect. To investigate the impact of stress path on the liquefaction resistance, two protocols employing distinct stress paths were utilized to prepare specimens. To achieve the desired target stress
 
-![图表 描述已自动生成](assets/media/image67.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表 描述已自动生成](thesis/assets/media/image67.png)
 
 (a) Mean effective stress $p'$ vs. deviator stress $q$
 
-![图表 描述已自动生成](assets/media/image68.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表 描述已自动生成](thesis/assets/media/image68.png)
 
 (b) Mean effective stress $p'$ vs. void ratio $e$
 
@@ -814,11 +814,11 @@ The other approach adopted a constant-$p'$ triaxial shear method, where triaxial
 
 Compared to the gradually increasing $q$ at a constant $p'$ for the IC-AC-TS approach, the IC-AC method initiates $q$ at a lower $p'$, with $q$ increasing as $p'$ rises.
 
-![图形用户界面, 应用程序, 表格, Excel 描述已自动生成](assets/media/image69.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图形用户界面, 应用程序, 表格, Excel 描述已自动生成](thesis/assets/media/image69.png)
 
 (a) Axial strain $\varepsilon_{a}$ vs. deviator stress $q$
 
-![图表, 折线图 描述已自动生成](assets/media/image70.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image70.png)
 
 (b) Relationship between e and $\varepsilon_{a}$
 
@@ -828,11 +828,11 @@ The impact of these differences on liquefaction resistance is worth exploring. T
 
 Table 3-3. Specification of dense specimens in initial cyclic undrained shear stage
 
-![表格 描述已自动生成](assets/media/image71.png){width="5.905555555555556in" height="4.429166666666666in"}
+![表格 描述已自动生成](thesis/assets/media/image71.png)
 
 Table 3-4. Specification of loose specimens in initial cyclic undrained shear stage
 
-![表格 描述已自动生成](assets/media/image72.png){width="5.904763779527559in" height="3.2467530621172354in"}
+![表格 描述已自动生成](thesis/assets/media/image72.png)
 
 ### Implementation of undrained condition
 
@@ -858,7 +858,7 @@ $u = \sigma_{r0}' - \sigma_{r}'$ (3-4)
 
 Shear forces are applied to the specimens in the form of a sine wave. Similar to the servo mechanism in consolidation process, the torque application method also considers the difference between the target and current values, along with the total contact stiffness between the blades and particles. The main distinction from the servo
 
-![图示 中度可信度描述已自动生成](assets/media/image73.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图示 中度可信度描述已自动生成](thesis/assets/media/image73.png)
 
 Fig. 3.4. Determination of moment of inertia of shear stiffness in servo mechanism for torque application
 
@@ -880,19 +880,19 @@ Fig. 3.5, 3.6, and 3.7 respectively depict the relationships between mean princi
 
 In Fig. 3.5(a) and (b), as the shear stress $\tau$ cyclically acts on the hollow cylindrical specimen, the mean principal stress $p'$ exhibited an overall decrease for both IC and AC specimens. Once $p'$ falls below approximately 60 kPa, an increase in the magnitude of $\tau$ drove an upward trend in $p'$, displaying a butterfly-shaped relationship in $p'$-$q$ space. After liquefaction onset, $p'$ and $\tau$ delineate the critical state line and then converge at the origin, periodically. To better understand the
 
-![图表 描述已自动生成](assets/media/image74.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图表 描述已自动生成](thesis/assets/media/image74.png)
 
 (a) Shear stress $\tau$ vs. mean effective stress $p'$ (CSR = 0.250, $K_{0}$=1.00, dense)
 
-![图表 描述已自动生成](assets/media/image75.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图表 描述已自动生成](thesis/assets/media/image75.png)
 
 (b) Shear stress $\tau$ vs. mean effective stress $p'$ (CSR = 0.250, $K_{0}$=0.40, dense)
 
-![图表 描述已自动生成](assets/media/image76.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图表 描述已自动生成](thesis/assets/media/image76.png)
 
 (c) Deviatoric stress $\sigma_{vM}$ vs. mean effective stress $p'$ (CSR=0.250, dense)
 
-![图表 中度可信度描述已自动生成](assets/media/image77.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图表 中度可信度描述已自动生成](thesis/assets/media/image77.png)
 
 (d) Deviatoric stress $\sigma_{vM}$ vs. mean effective stress $p'$, CSR=0.350
 
@@ -900,11 +900,11 @@ Fig. 3.5. Stress evolution of IC with $K_{0}$=1.0 and AC specimen with $K_{0}$=0
 
 evolution of stress state for the $K_{0}$=1.0 and $K_{0}$=0.40, the relationship between $p'$ and deviatoric von-Mises stress $\sigma_{vM}$ is depicted in Fig. 3.5(c) and Fig. 3.5(d) for CSR=0.250 and CSR=0.350, respectively. The $K_{0}$=1.0 specimen started with $\sigma_{vM}$ at 0, while the $K_{0}$=0.40 specimen initially exhibited higher level of initial $\sigma_{vM}$. As cyclic shear progressed, the $K_{0}$=1.0 specimen exhibited larger fluctuation in $\sigma_{vM}$. In contrast, the AC specimen initially showed smaller amplitude in $\sigma_{vM}$, which gradually increased in amplitude while decreasing in magnitude over time, as illustrated in Fig. 3.5(c) or Fig. 3.5(d).
 
-![图表, 折线图 描述已自动生成](assets/media/image78.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image78.png)
 
 (a) Shear stress $\tau$ vs. shear strain $\gamma$, CSR = 0.250, $K_{0}$=1.00
 
-![图表, 折线图 描述已自动生成](assets/media/image79.png){width="3.937007874015748in" height="2.624517716535433in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image79.png)
 
 (b) Shear stress $\tau$ vs. shear strain $\gamma$, CSR = 0.250, $K_{0}$=0.40
 
@@ -912,17 +912,17 @@ Fig. 3.6. Evolution of shear stress $\tau$ and shear strain $\gamma$ in undraine
 
 In Fig. 3.6, stiff shear modulus with slight reduction was observed in initial stage. As cyclic loading progressed towards the liquefaction state, shear stiffness markedly decreased, plastic deformation occurred, and strong nonlinearity became evident. As shown in Fig. 3.7, pore water pressure responses differ between $K_{0}$=1.0 and $K_{0}$=0.40 states. For the $K_{0}$=1.0 state, $r_{u}$ increased more rapidly in the initial stages. However, after approximately 20 cycles, $r_{u}$ for the $K_{0}$=0.40 state surpassed that of the $K_{0}$=1.0 state. Liquefaction occurred after about 41 cycles for $K_{0}$=0.40, whereas $K_{0}$=1.0 case
 
-![图表, 折线图 描述已自动生成](assets/media/image80.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image80.png)
 
 Fig. 3.7. Comparison of evolution of excess pore water pressure ratio $r_{u}$ between IC state with $K_{0} = 1.0$ and AC state with $K_{0}$=0.40
 
 Reached liquefaction after approximately 84 cycles, nearly twice as many as the $K_{0}$=0.40 state, suggesting a higher liquefaction strength for initially IC state with $K_{0}$=1.0. Fig. 3.5, 3.6, and 3.7 demonstrate that typical stress and strain evolution in laboratory tests has been replicated in DEM simulations, providing preliminary evidence for the effectiveness of the method proposed. On the other hand, it is crucial to investigate how this resistance changes with varying CSR and $K_{0}$. Fig. 3.8(a) and Fig. 3.8(b) compare the number of cycles required to reach liquefaction under varying CSR and initial $K_{0}$ values. Fig. 3.8(a) demonstrates liquefaction resistance for specimens prepared with IC-AC protocol and found that under different CSR conditions, the number of cycles to liquefaction decreases with decreasing $K_{0}$ when
 
-![图表, 散点图 描述已自动生成](assets/media/image81.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image81.png)
 
 (a) Cyclic liquefaction resistance with various CSR
 
-![图表, 散点图 描述已自动生成](assets/media/image82.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image82.png)
 
 (b) Number of cyclic loadings $N_{L}$ vs. $K_{0}$ under cyclic shear loading with cyclic shear stress ratio of 0.250
 
@@ -936,11 +936,11 @@ The influence of stress paths on liquefaction resistance is also noteworthy. Fig
 
 Cumulative shear work refers to the energy input during undrained cyclic shear in this study. It is valuable to examine the correlation between the liquefaction resistance of soils and their susceptibility to the input energy. Towhata and Ishihara (1985) conducted a series of experiments where specimens were subjected to undrained cyclic shear under various loading conditions. They revealed a unique relationship between excess pore water pressure and shear work, despite differences in stress anisotropy. Figueroa et al. (1994) similarly confirmed that the shear work required for triggering liquefaction is independent of the amplitude of strain through strain-controlled tests. Georgiannou and Konstadinou (2014) concluded from the comparison between IC and AC specimens that the energy associated with terminal water pressure is positively correlated with relative density. For equivalent relative densities, AC specimens require greater energy than IC specimens to induce liquefaction.
 
-![图表 描述已自动生成](assets/media/image83.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表 描述已自动生成](thesis/assets/media/image83.png)
 
 (a) $W_{s}$ vs. $N_{c}/N_{L}$ (dense)
 
-![图表 描述已自动生成](assets/media/image84.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表 描述已自动生成](thesis/assets/media/image84.png)
 
 (b) $r_{u}$ vs. $W_{s}$ (dense)
 
@@ -958,7 +958,7 @@ The response in cumulative shear work inspired an exploration in relationship be
 
 $V_{s0} = \sqrt{\frac{G_{0}}{\rho_{sat}}}$ (3-8)
 
-![图表, 折线图 描述已自动生成](assets/media/image85.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image85.png)
 
 Fig. 3.10. Relationship between cyclic number and initial shear wave velocity (CSR=0.250)
 
@@ -976,7 +976,7 @@ $Z_{m}$ represents the mechanical coordination number. $N_{c}$ is the number of 
 
 Figure 3.11 shows the evolution of $Z_{m}$ under different initial $K_{0}$ states during the cyclic shear. The results indicate that the influence of initial stress states on the coordination number is significant, with greater stress anisotropy corresponding to lower coordination numbers both at the initial state and during the cyclic shear process. As cyclic loading was applied to the undrained specimen, $Z_{m}$ exhibited oscillatory behavior while progressively decreasing as shown in Fig. 3.11. The decline in $Z_{m}$ indicates a reduction in interparticle contacts and a loss of fabric integrity and robustness. Liquefaction was observed to occur when $Z_{m}$ fell to approximately 3.5, signifying a critical threshold where the specimen became susceptible to cyclic shear
 
-![图表, 散点图 描述已自动生成](assets/media/image86.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image86.png)
 
 Fig. 3.11. Mechanical coordination number evolution in cyclic shear and relationship between cyclic number required for liquefaction and initial mechanical coordination number (CSR=0.250)
 
@@ -990,7 +990,7 @@ $\mathbf{\Phi}_{\mathbf{ij}} = \ \frac{1}{N_{c}}\Sigma\mathbf{n}_{\mathbf{i}}\ma
 
 The diagonal elements of $\mathbf{\Phi}_{\mathbf{ij}}$ are positive and sum to one. The fraction of the diagonal elements describes the concentration of contact normals, with higher value indicating a greter concentration in that direction. The off-diagonal elements represent the asymmetry of the distribution of contact normals. The fabric tensor is a crucial indicator for characterizing the state of granular materials, microscopically refining the critical state theory (Li and Dafalias, 2012).
 
-![图形用户界面 描述已自动生成](assets/media/image87.png){width="3.937007874015748in" height="2.6323873578302712in"}
+![图形用户界面 描述已自动生成](thesis/assets/media/image87.png)
 
 Fig. 3.12. Transformation of contact normal from global x-y-z orthogonal coordinate to circumferential-radial-axial local cylindrical coordinates
 
@@ -1016,7 +1016,7 @@ $F_{c} = \sqrt{\frac{3}{2}\mathbf{F}_{\mathbf{ij}}\mathbf{F}_{\mathbf{ij}}}$ (3-
 
 Eq. (3-11) defines the anisotropic fabric tensor $\mathbf{F}_{\mathbf{ij}}$, which subtracts 1/3 from the diagonal elements of the fabric tensor and then multiplied by 15/2, where $\mathbf{\delta}_{\mathbf{ij}}$ represents the Kronecker delta. As the second invariant of $\mathbf{F}_{\mathbf{ij}}$, $F_{c}$ measures the development of fabric anisotropy (Zhao and Guo, 2013), as shown in Eq. (3-12), where the Einstein summation convention is applied, and indicates the magnitude of fabric
 
-![图表 描述已自动生成](assets/media/image88.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表 描述已自动生成](thesis/assets/media/image88.png)
 
 Fig. 3.13. Evolution of second invariant of mechanical anisotropic fabric tensor $F_{c}$ for specimens subjected to different initial stress anisotropies
 
@@ -1036,11 +1036,11 @@ $N_{L} = \exp\left( {\zeta Z}_{m0} + \eta\alpha_{0}\  + \chi \right)$ (3-14)
 
 The fitted surface equation produced positive $\zeta$=3.63 and $\eta$=0.19, suggesting that an increasing $Z_{m0}$ or $\alpha_{0}$ enhances liquefaction resistance, which contrasts with the literatures, where an increasing $\alpha_{0}$ reduces liquefaction resistance. The $K_{0}$ conditions of the specimens in this study vary considerably compared to the literature and could explain the distinct conclusions. For instance, unlike a comparison between two stress ratios of $K_{0}$=1.0 and $K_{0}$=0.5 (Yang and Taiebat, 2024), this study evaluates liquefaction resistance between and beyond the thresholds, with $K_{0}$ ranging from 0.33 to 3.33, under different relative densities. When comparing the IC state of $K_{0}$=1.0 with AC states of $K_{0}$≠1.0, as shown in Fig. 3.14(b), it is evident that for both dense and loose states, the $N_{L}$ for $K_{0}$=1.0 lies above the fitted lines for $K_{0}$\<1.0 or $K_{0}$\>1.0, indicating a stronger liquefaction resistance for $K_{0}$=1.0 state at the same $Z_{m0}$. This tendency aligns well with the conclusions found in the literatures. However, introducing multiple values of $\alpha_{0}$ emphasized the comparison between the AC states of $K_{0}$\<1.0 and $K_{0}$\>1.0, thus yielding a positive value of $\eta$ when fitting the relationship. On the other hand, through a comparison of different relative densities as shown in Fig. 3.14 (b), the fitted line for dense state is positioned above that of the loose state, indicating that not only the microscopic factors like $Z_{m0}$ and $\alpha_{0}$, but also a smaller void ratio, which evaluates the macroscopic compactness, strengthens liquefaction resistance.
 
-![图表 描述已自动生成](assets/media/image89.png){width="3.7401574803149606in" height="4.051983814523185in"}
+![图表 描述已自动生成](thesis/assets/media/image89.png)
 
 (a) Coupled effect of $Z_{m0}$ and $\alpha_{0}$ on liquefaction resistance
 
-![图表 描述已自动生成](assets/media/image90.png){width="3.7401574803149606in" height="4.051983814523185in"}
+![图表 描述已自动生成](thesis/assets/media/image90.png)
 
 (b) Effect of $Z_{m0}$ on liquefaction resistance
 
@@ -1058,19 +1058,19 @@ This observation contrasts this study, where $b = 0.0$ shows larger liquefaction
 
 To interpret the interparticle relationships, contact forces and individual particle movement in the initial state with $K_{0}$=0.33, post-liquefaction state with $K_{0}$=0.33, initial state with $K_{0}$=3.00, and post-liquefaction state with $K_{0}$=3.00 are depicted in Fig. 3.15(a), Fig. 3.15(b), Fig. 3.15(c), and Fig. 3.15(d). The specimens with $K_{0}$=0.33 and $K_{0}$=3.00 exhibit significant differences in the distribution of contact forces at the initial stages in cyclic shear. For $K_{0}$=0.33, the contact forces converge in the axial direction, whereas for $K_{0}$=3.00, the contact forces tend to be distributed horizontally, aligning with the direction of the maximum principal stress in both cases. As cyclic loading progresses, the number of interparticle force gradually decreases, and the magnitude of these forces diminishes, until liquefaction and large deformation occurs. From a macroscopic perspective, the liquefaction process involves a decline in stiffness and an increase in nonlinearity, as discussed in the macroscopic behavior section. From a microscopic viewpoint, liquefaction occurs because the particle-constituting skeleton becomes increasingly unable to sustain itself through particle interaction, such as the relative movement, hindering the transfer of external forces. In contrast to the influence of $K_{0}$ on contact forces in initial state, the effect of different initial $K_{0}$ values on the
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image91.jpeg){width="3.937007874015748in" height="2.624517716535433in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image91.jpeg)
 
 (a) AC state with initial $K_{0}$=0.33
 
-![图形用户界面 中度可信度描述已自动生成](assets/media/image92.jpeg){width="3.937007874015748in" height="2.624517716535433in"}
+![图形用户界面 中度可信度描述已自动生成](thesis/assets/media/image92.jpeg)
 
 (b) Post-liquefaction state with initial $K_{0}$=0.33
 
-![电脑萤幕画面 中度可信度描述已自动生成](assets/media/image93.jpeg){width="3.937007874015748in" height="2.624517716535433in"}
+![电脑萤幕画面 中度可信度描述已自动生成](thesis/assets/media/image93.jpeg)
 
 (c) AC state with initial $K_{0}$=3.00
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image94.jpeg){width="3.937007874015748in" height="2.624517716535433in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image94.jpeg)
 
 (d) Post-liquefaction state with initial $K_{0}$=3.00
 
@@ -1088,21 +1088,21 @@ Here, $\rho_{c}$ represents the contact density, $\theta_{z}$ and $\phi_{cir}$ i
 
 The evolutions of contact density during the liquefaction process for $K_{0}$=0.33 and $K_{0}$=3.00, are shown in Fig. 3.16 and Fig. 3.17. Fig. 3.16(a) represents the dense state with initial $K_{0}$=0.33, exhibiting an elongated columnar shape extending along the axial direction, whereas Fig. 3.17(a) depicts the contact density with initial $K_{0}$=3.00, characterized by a dimpled ellipsoid oriented toward the axial direction. As cyclic shear progresses, the direction of maximum contact density varies following the rotating principal stress axis, and the overall contact density gradually decreases as shown in Fig. 3.16 (b) and Fig. 3.17 (b). The evolution of contact density indicates that the post-liquefaction distribution of contact density is largely independent of the initial state, shifting between two inclined elongated columnar distributions along varying directions.
 
-![图表, 雷达图 描述已自动生成](assets/media/image95.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"} ![图表, 图示 描述已自动生成](assets/media/image96.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"}
+![图表, 雷达图 描述已自动生成](thesis/assets/media/image95.jpeg) ![图表, 图示 描述已自动生成](thesis/assets/media/image96.jpeg)
 
 (a) $N_{c}$/$N_{L}$=0.00 (b) $N_{c}$/$N_{L}$=0.75
 
-![图表 中度可信度描述已自动生成](assets/media/image97.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"} ![图表 描述已自动生成](assets/media/image98.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"}
+![图表 中度可信度描述已自动生成](thesis/assets/media/image97.jpeg) ![图表 描述已自动生成](thesis/assets/media/image98.jpeg)
 
 \(c\) $N_{c}$/$N_{L}$=1.01 (d) $N_{c}$/$N_{L}$=1.04
 
 Fig. 3.16. Contact density evolution in liquefaction process with initial $K_{0}$=0.33
 
-![图表 描述已自动生成](assets/media/image99.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"} ![图表 描述已自动生成](assets/media/image100.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"}
+![图表 描述已自动生成](thesis/assets/media/image99.jpeg) ![图表 描述已自动生成](thesis/assets/media/image100.jpeg)
 
 (a) $N_{c}$/$N_{L}$=0.00 (b) $N_{c}$/$N_{L}$=0.73
 
-![图表 描述已自动生成](assets/media/image101.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"} ![图表 描述已自动生成](assets/media/image102.jpeg){width="2.7559055118110236in" height="2.7559055118110236in"}
+![图表 描述已自动生成](thesis/assets/media/image101.jpeg) ![图表 描述已自动生成](thesis/assets/media/image102.jpeg)
 
 \(c\) $N_{c}$/$N_{L}$=0.97 (d) $N_{c}$/$N_{L}$=1.03
 
@@ -1146,7 +1146,7 @@ The limitations and inconsistencies in previous studies inspired the experimenta
 
 As shown in Fig. 4.1, the experimental apparatus is divided into five main components, each designed to fulfill a specific function in conducting hollow torsional shear tests: the Pressure control system, water injection and control system, Torsional shear apparatus, Servo pressure control system, and Data acquisition system.
 
-![房间里有许多电脑 中度可信度描述已自动生成](assets/media/image103.png){width="3.937007874015748in" height="2.131084864391951in"}
+![房间里有许多电脑 中度可信度描述已自动生成](thesis/assets/media/image103.png)
 
 Fig. 4.1. Experimental apparatus: Pressure system, Water system, Torsional shear system, Servo system, Data acquisition system
 
@@ -1176,7 +1176,7 @@ The data acquisition system records and processes experimental measurements in r
 
 The specimen preparation process begins with the installation of the inner and outer rigid molds, which have an inner diameter of 6 cm and an outer diameter of 10 cm. A membrane is carefully placed around the molds, and negative pressure is applied to ensure the membrane tightly adheres to the mold, maintaining the intended shape and volume of the specimen. The funnel is held approximately 26 cm above the surface of the specimen, as shown in Fig. 4.2 and sand is evenly distributed by moving
 
-![图片包含 室内, 桌子, 厨房, 小 描述已自动生成](assets/media/image104.jpeg){width="2.362134733158355in" height="3.1496062992125986in"}
+![图片包含 室内, 桌子, 厨房, 小 描述已自动生成](thesis/assets/media/image104.jpeg)
 
 Fig. 4.2. Air pluviation method for generating specimen
 
@@ -1186,7 +1186,7 @@ the funnel in a circular motion at a uniform speed, completing each circle in ab
 
 The installation process begins by placing the upper torsional shear cap, designed to apply torsional shear forces, onto the top of the specimen. The membrane is carefully attached to the cap to ensure a secure fit. Tubes are then connected between the valves
 
-![图片包含 室内, 厨房, 搅拌机, 柜台 描述已自动生成](assets/media/image105.jpeg){width="2.3622047244094486in" height="3.149701443569554in"}
+![图片包含 室内, 厨房, 搅拌机, 柜台 描述已自动生成](thesis/assets/media/image105.jpeg)
 
 Fig. 4.3. Specimen with installed torsional shear cap after mold removal
 
@@ -1198,7 +1198,7 @@ Next, a transparent resin pressure chamber is installed onto the torsional shear
 
 Figure 4.4 illustrates the process of carbon dioxide saturation for the specimen. The specimen is housed within the transparent pressure chamber, and tubes are connected to its top and bottom. Carbon dioxide is introduced from the bottom of the specimen, while the top is connected to the atmosphere to allow for gas displacement. This setup ensures a controlled flow of carbon dioxide into the specimen, aiding in the removal of air from the pore spaces and preparing it for subsequent saturation with degassed water. The pressure chamber and connected components are configured to maintain the stability and integrity of the specimen during this process. The carbon dioxide is allowed to flow for over 30 minutes to ensure the specimen is fully saturated with carbon dioxide.
 
-![](assets/media/image106.jpeg){width="2.3622047244094486in" height="3.149701443569554in"}
+![](thesis/assets/media/image106.jpeg)
 
 Fig. 4.4. Process of carbon dioxide saturation for the specimen
 
@@ -1284,19 +1284,19 @@ Overall, this comprehensive range of $K_{0}$ values and associated stress condit
 
 Figure 4.5 illustrates the relationship between mean effective stress ($p'$) and shear stress ($\tau$) for the isotropic stress condition ($K_{0}$=1.0) during cyclic loading. Initially, as cyclic shearing progresses, $p'$ decreases steadily from approximately 100 kPa, reflecting the buildup of pore pressure. When $p'$ decreases to around 40 kPa, the relationship begins to exhibit a characteristic \"butterfly\" shape. In this stage, the cyclic
 
-![图表 描述已自动生成](assets/media/image107.png){width="3.939212598425197in" height="2.625984251968504in"}
+![图表 描述已自动生成](thesis/assets/media/image107.png)
 
 Fig. 4.5. Relationship between mean effective stress ($p'$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}1.0
 
 loading causes $p'$ to oscillate along with the shear stress, forming closed loops that reflect the alternating shear directions. Figure 4.6 presents shear stress $\tau$ versus shear strain $\gamma$ relationship, highlighting the development of hysteretic loops typical of cyclic loading. These loops reflect the progressive deformation and energy dissipation within
 
-![图表, 直方图 描述已自动生成](assets/media/image108.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 直方图 描述已自动生成](thesis/assets/media/image108.png)
 
 Fig. 4.6. Relationship between shear strain ($\gamma$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}1.0
 
 the specimen. Figure 4.7 illustrates the evolution of pore water pressure over time during cyclic loading. The pore pressure increases incrementally with each shear cycle, eventually reaching a level comparable to the chamber pressure. This behavior aligns
 
-![图表, 直方图 描述已自动生成](assets/media/image109.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 直方图 描述已自动生成](thesis/assets/media/image109.png)
 
 Fig. 4.7. Pore water pressure evolution during cyclic shear for $K_{0}$=1.0
 
@@ -1306,11 +1306,11 @@ with the expected trend for undrained conditions and confirms the occurrence of 
 
 Figures 4.5, 4.8, and 4.9 present the evolution of $p'$ and $\tau$ during cyclic loading under varying initial $K_{0}$. These results reveal both consistent characteristics of liquefaction behavior and notable differences, suggesting a relationship between $K_{0}$ and liquefaction resistance.
 
-![图表 描述已自动生成](assets/media/image110.png){width="3.939212598425197in" height="2.625984251968504in"}
+![图表 描述已自动生成](thesis/assets/media/image110.png)
 
 Fig. 4.8. Relationship between mean effective stress ($p'$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}0.25
 
-![图表 描述已自动生成](assets/media/image111.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表 描述已自动生成](thesis/assets/media/image111.png)
 
 Fig. 4.9. Relationship between mean effective stress ($p'$) and shear stress ($\tau$) for $K_{0} =$`<!-- -->`{=html}0.20
 
@@ -1324,7 +1324,7 @@ The results suggest a non-linear relationship between $K_{0}$ and liquefaction r
 
 Figure 4.10 illustrates the variation in the number of cycles required for liquefaction ($N_{L}$) as a function of $K_{0}$, with liquefaction defined as the point where pore water pressure reaches 95% of the initial confining pressure. The figure covers a broad range of ​$K_{0}$ values, from isotropic stress conditions ($K_{0}$=1.0) to highly anisotropic states ($K_{0}$=0.2 and $K_{0}$=3.0), allowing for a comprehensive analysis of the influence of stress anisotropy on liquefaction resistance.
 
-![图表, 散点图 描述已自动生成](assets/media/image112.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image112.png)
 
 Fig. 4.10. Liquefaction resistance for states with different $K_{0}$
 
@@ -1380,11 +1380,11 @@ These studies have made significant contributions to understanding liquefaction 
 
 The discrete element method (DEM) simulates the mechanical response of granular materials, such as sand, by calculating the interparticle contacts and the motion of individual particles. This approach effectively overcomes the limitations of laboratory experiments, where replicating the same initial state for comparative analyses can be challenging. Additionally, DEM enables the application of multi-directional shear and the use of periodic boundaries, which mimic the continuous conditions in natural soil. In this study, the software Itasca PFC3D was used to simulate simple shear tests on granular sand. The rolling resistance contact model was employed to replicate the inter-particle interactions of non-spherical sand grains.
 
-![图表, 折线图 描述已自动生成](assets/media/image113.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image113.png)
 
 Fig. 5.1. Grain size distribution of curves of Toyoura sand and DEM simulation
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image114.png){width="3.937007874015748in" height="2.710627734033246in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image114.png)
 
 Fig. 5.2. Particle and contact force distribution after initial compaction, along with boundary and shearing rib configuration
 
@@ -1416,13 +1416,13 @@ $\tau_{d8,y} = \left\{ \begin{array}{r}
 
 The introduction of a comparison between the double-8 shear loading and the single-8 shear loading provides several benefits. First, it ensures that the magnitude of the two multidirectional shear stresses always remains equivalent. Second, it maintains similarity in the change rate of shear stress: during odd-numbered cycles, the change rate of the double-8 loading matches that of the single-8 loading, while during even-numbered cycles, the change rates are opposite but share the equal magnitudes.
 
-![图表, 折线图, 直方图 描述已自动生成](assets/media/image115.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image116.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表, 折线图, 直方图 描述已自动生成](thesis/assets/media/image115.png)![图表 描述已自动生成](thesis/assets/media/image116.png)
 
 (a) Unidirectional shear stress evolution
 
 \(b\) Unidirectional shear stress path
 
-![图表, 折线图 描述已自动生成](assets/media/image117.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image118.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image117.png)![图表 描述已自动生成](thesis/assets/media/image118.png)
 
 \(c\) Single-8 shear stress path
 
@@ -1443,11 +1443,11 @@ With the application of unidirectional and multidirectional cyclic shear loads t
 Figure 5.5 presents the liquefaction resistance under different forms of shear loading. The occurrence of liquefaction is defined as when the pore water pressure reaches 95% of the initial confining stress. It is evident that the unidirectional shear loading requires the highest cyclic number to reach liquefaction at the same CSR, compared to the multidirectional loadings. Following this, there is a difference between the required cyclic numbers for single-8 and double-8 shear stresses, with single-8 needing slightly more cycles than double-8. For instance, at CSR = 0.25, single-8 requires 30 cycles to reach liquefaction, whereas double-8 only requires about 22 cycles.
 
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ![图表, 雷达图 描述已自动生成](assets/media/image119.jpeg){width="2.3622047244094486in" height="2.3622047244094486in"} | ![图表 描述已自动生成](assets/media/image120.jpeg){width="2.3622047244094486in" height="2.3622047244094486in"} |
+| ![图表, 雷达图 描述已自动生成](thesis/assets/media/image119.jpeg) | ![图表 描述已自动生成](thesis/assets/media/image120.jpeg) |
 +===============================================================================================================================+=======================================================================================================================+
 | (a) Unidirectional loading                                                                                                    | (b) Single-8 loading                                                                                                  |
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ![图表 描述已自动生成](assets/media/image121.jpeg){width="2.3622047244094486in" height="2.3622047244094486in"}         |                                                                                                                       |
+| ![图表 描述已自动生成](thesis/assets/media/image121.jpeg)         |                                                                                                                       |
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | \(c\) double-8 loading                                                                                                        |                                                                                                                       |
 +-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -1456,13 +1456,13 @@ Fig. 5.4. Shear and mean effective stress evolution in unidirectional and multid
 
 From a macroscopic perspective, the rotation of shear force direction has a significant impact on the liquefaction process. Although the magnitudes of unidirectional and multidirectional shear forces are equal at any given moment, the shear force direction in unidirectional loading remains fixed, unlike in multidirectional loading. This lack of directional rotation in unidirectional loading results in a higher number of cycles needed to reach liquefaction. Additionally, besides the influence of shear stress direction on the liquefaction process, the shear loading history also plays a role. For instance, although single-8 and double-8 paths share the same shear stress magnitude and rate of change at any given moment, the single-8 path maintains a
 
-![图表, 散点图 描述已自动生成](assets/media/image122.png){width="3.9352482502187227in" height="3.279527559055118in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image122.png)
 
 Fig. 5.5. Liquefaction resistance under unidirectional and multidirectional shear stress
 
 constant figure-8 orientation, while the double-8 path alternates its orientation with each odd and even cycle. This alternating orientation in the double-8 path results in a lower number of cycles needed to reach liquefaction. In addition to differences in the number of cycles required for liquefaction, the strain development behaviors of single-8 and double-8 also differ, as shown in Fig 5.6. As cyclic loading continues, both single-8 and double-8 shear paths exhibit figure-8 patterns in their strain development. However, distinct differences emerged in the two shear paths. The strain path under single-8 shear stress maintains a consistent orientation throughout the cycles, with each cycle expanding outward along both $\gamma_{zx}$ and $\gamma_{zy}$ directions. This results in a steady accumulation of strain that gradually shifts in a direction perpendicular to the primary single-8 axis. The strain path for double-8 stress alternates orientation with each cycle, causing the \"8-shape\" axis to shift periodically. As a result, the double-8 pattern shows more complex and irregular strain growth compared to the single-8 path, with less directional offset over time.
 
-![图表 描述已自动生成](assets/media/image123.jpeg){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image124.jpeg){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表 描述已自动生成](thesis/assets/media/image123.jpeg)![图表 描述已自动生成](thesis/assets/media/image124.jpeg)
 
 (a) Strain evolution in single-8 loading
 
@@ -1474,7 +1474,7 @@ Fig. 5.6. Comparison of strain evolution between single-8 and double-8 loading
 
 Shear work, defined as the work performed by the shearing rib on the specimen during cyclic loading, provides a scalar measure to evaluate liquefaction differences across various shear stress paths from a macroscopic perspective. In Fig. 5.7, before the EPWP reaches approximately 60 kPa, the double-8 path shows the highest EPWP at equivalent shear work levels, followed by single-8 path, with unidirectional path exhibiting the lowest EPWP. This order of EPWP increase is inversely related to the number of cycles required to reach liquefaction, with double-8 reaching liquefaction faster than single-8, and unidirectional taking the longest. Despite these differences, the shear work required to reach liquefaction is roughly similar across all three loading types. This indicates that while directional variations in shear stress influence the rate at which EPWP builds up, the total energy input needed to induce liquefaction remains consistent.
 
-![图表 描述已自动生成](assets/media/image125.jpeg){width="3.937007874015748in" height="3.280994094488189in"}
+![图表 描述已自动生成](thesis/assets/media/image125.jpeg)
 
 Fig. 5.7. Cumulative shear work evolution in liquefaction under unidirectional, single-8, and double-8 cyclic shear stress
 
@@ -1486,7 +1486,7 @@ The coordination number is a key indicator of the microstructural characteristic
 
 $Z_{m} = \frac{2N_{c} - N_{1}}{N_{p} - N_{1} - N_{0}}$ (5-6)
 
-![图表, 散点图 描述已自动生成](assets/media/image126.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 散点图 描述已自动生成](thesis/assets/media/image126.png)
 
 Fig. 5.8. Coordination number evolution in liquefaction under unidirectional, single-8, and double-8 cyclic shear stress
 
@@ -1510,7 +1510,7 @@ Eq. (5-9) present**s the** invariant of the anisotropic fabric **tensor** $F_{c}
 
 $F_{c} = \sqrt{\frac{3}{2}\mathbf{F}_{\mathbf{ij}}\mathbf{F}_{\mathbf{ij}}}$ (5-9)
 
-![图表, 直方图 描述已自动生成](assets/media/image127.png){width="3.937007874015748in" height="3.280994094488189in"}
+![图表, 直方图 描述已自动生成](thesis/assets/media/image127.png)
 
 Fig. 5.9. Invariant of anisotropic fabric tensor evolution in liquefaction under unidirectional, single-8, and double-8 cyclic shear stress
 
@@ -1522,13 +1522,13 @@ The double-8 path demonstrates the highest level of anisotropy development, with
 
 Fig. 5.10, 5.11, and 5.12 display the contact density distribution for the unidirectional, single-8, and double-8 shear paths throughout the liquefaction process, respectively. Each sequence shows how the contact density evolves from an initial state (at $N_{c}/N_{L}$=0) to stages closer to (at $N_{c}/N_{L}$=0.81) and beyond liquefaction (at $N_{c}/N_{L}$=1.03 and 1.08)​, highlighting the distinctions in fabric evolution among these paths. Across all shear paths, the contact density reduces, indicating a loosening in the particle arrangement. The contact orientations become more pronounced, showing a tendency toward specific directional alignment, which reflects a strengthening of anisotropic characteristics within the skeleton of fabric.
 
-![图表, 雷达图 描述已自动生成](assets/media/image128.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表, 雷达图 描述已自动生成](assets/media/image129.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表, 雷达图 描述已自动生成](thesis/assets/media/image128.png)![图表, 雷达图 描述已自动生成](thesis/assets/media/image129.png)
 
 (a) $N_{c}/N_{L}$=0.0
 
 (b) $N_{c}/N_{L}$=0.81
 
-![图表 描述已自动生成](assets/media/image130.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image131.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表 描述已自动生成](thesis/assets/media/image130.png)![图表 描述已自动生成](thesis/assets/media/image131.png)
 
 (c) $N_{c}/N_{L}$=1.03
 
@@ -1538,13 +1538,13 @@ Fig. 5.10. Contact density evolution in liquefaction under unidirectional cyclic
 
 At the stage of $N_{c}/N_{L}$=0.81, notable differences emerge among the three shear paths, reflecting their distinct responses to shear stress. For unidirectional path, contact density remains relatively uniform with limited directionality, indicating a weaker development of anisotropy compared to the other two paths. This is consistent with the previously observed lower fabric anisotropy $F_{c}$​, suggesting that the unidirectional path promotes a more isotropic structure, contributing to its higher liquefaction resistance.
 
-![图表, 雷达图 描述已自动生成](assets/media/image132.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image133.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表, 雷达图 描述已自动生成](thesis/assets/media/image132.png)![图表 描述已自动生成](thesis/assets/media/image133.png)
 
 (a) $N_{c}/N_{L}$=0.0
 
 \(b\) $N_{c}/N_{L}$=0.81
 
-![图表 描述已自动生成](assets/media/image134.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image135.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表 描述已自动生成](thesis/assets/media/image134.png)![图表 描述已自动生成](thesis/assets/media/image135.png)
 
 \(c\) $N_{c}/N_{L}$=1.03
 
@@ -1554,13 +1554,13 @@ Fig. 5.11. Contact density evolution in liquefaction under single-8 cyclic shear
 
 For single-8 case, contact density shows moderate alignment along certain directions, revealing an intermediate degree of anisotropy. The contact density distribution is less uniform than in the unidirectional path but not as concentrated as in the double-8 path. This intermediate anisotropy level aligns with the fabric tensor $F_{c}$​ observed for single-8, reflecting moderate liquefaction resistance. For double-8 pattern, contact density exhibits more pronounced alignment in contact density and the highest degree of fabric concentration among the three paths. This is consistent with the high $F_{c}$ for double-8, as the directional changes in the shear path enhance the formation of an anisotropic structure.
 
-![图表, 雷达图 描述已自动生成](assets/media/image136.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image137.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表, 雷达图 描述已自动生成](thesis/assets/media/image136.png)![图表 描述已自动生成](thesis/assets/media/image137.png)
 
 (a) $N_{c}/N_{L}$=0.0
 
 (b) $N_{c}/N_{L}$=0.81
 
-![图表 描述已自动生成](assets/media/image138.png){width="2.3622047244094486in" height="2.3622047244094486in"}![图表 描述已自动生成](assets/media/image139.png){width="2.3622047244094486in" height="2.3622047244094486in"}
+![图表 描述已自动生成](thesis/assets/media/image138.png)![图表 描述已自动生成](thesis/assets/media/image139.png)
 
 (c) $N_{c}/N_{L}$=1.03
 
@@ -1924,7 +1924,7 @@ To address this challenge, neighbor search algorithms are commonly used to reduc
 
 In the discrete element method (DEM), spatial partitioning using grids is a fundamental approach to optimize collision detection. The computational domain is divided into grid cells, each with the grid length set to at least the diameter of the largest particle in the system. This ensures that any particle potentially interacting with a given particle is located either within the same grid cell or in one of its neighboring cells.
 
-![图片包含 形状 描述已自动生成](assets/media/image140.png){width="3.486111111111111in" height="3.3472222222222223in"}
+![图片包含 形状 描述已自动生成](thesis/assets/media/image140.png)
 
 Fig. A1.1. Spatial grid partitioning and neighbor search scope for grid cell (1,1)
 
@@ -1932,11 +1932,11 @@ As illustrated in Fig. A1.1, the search area for particles in grid cell (1,1) in
 
 #### A1.2.1.2. Particle counting process for neighbor search
 
-![图形用户界面, 应用程序 描述已自动生成](assets/media/image141.png){width="4.724409448818897in" height="2.209425853018373in"}
+![图形用户界面, 应用程序 描述已自动生成](thesis/assets/media/image141.png)
 
 (a) Particle to grid mapping
 
-![图片包含 图标 描述已自动生成](assets/media/image142.png){width="3.9384733158355205in" height="2.2283464566929134in"}
+![图片包含 图标 描述已自动生成](thesis/assets/media/image142.png)
 
 (b) Grid cell counts
 
@@ -1958,19 +1958,19 @@ $N_{prefix}$ represents the cumulative count of particles in all grid cells from
 
 As illustrated in Fig. A1.3(a), the first step involves calculating the total number of particles in each row ($N_{sum\_ row}$​) by summing the particle counts across all columns for each row. Since each row\'s calculation is independent of the others, similar to the calculation process of $N_{grid}$, this operation is fully parallel, allowing for high computational efficiency.
 
-![图形用户界面, 应用程序, 图标 描述已自动生成](assets/media/image143.png){width="2.25in" height="1.3333333333333333in"}
+![图形用户界面, 应用程序, 图标 描述已自动生成](thesis/assets/media/image143.png)
 
 (a) Row-wise summation of particle counts ($N_{sum\_ row}$​)
 
-![蓝色的背景和白色的字 描述已自动生成](assets/media/image144.png){width="2.8333333333333335in" height="1.3333333333333333in"}
+![蓝色的背景和白色的字 描述已自动生成](thesis/assets/media/image144.png)
 
 (b) Serial calculation of prefix particle count for the first column ($N_{prefix}(i,\ 0)$)
 
-![蓝色的标志 描述已自动生成](assets/media/image145.png){width="4.416666666666667in" height="1.3333333333333333in"}
+![蓝色的标志 描述已自动生成](thesis/assets/media/image145.png)
 
 (c) Parallel-serial calculation of prefix particle counts ($N_{prefix}(i,j)$)
 
-![手机屏幕的截图 描述已自动生成](assets/media/image146.png){width="2.736111111111111in" height="1.3333333333333333in"}
+![手机屏幕的截图 描述已自动生成](thesis/assets/media/image146.png)
 
 (d) Calculation of total particle counts including current grid ($N_{postfix}(i,j)$)
 
@@ -1999,11 +1999,11 @@ By combining parallel row-wise operations and efficient one-dimensional serial o
 
 To enable efficient neighbor search, particles are grouped, and their IDs are rearranged based on the grids they occupy. This process involves initializing $N_{cur}$​, which tracks the current position for recording particle IDs in each grid. By cloning $N_{prefix}$​, $N_{cur}$​ inherits the cumulative particle counts already computed.
 
-![图形用户界面, 应用程序 描述已自动生成](assets/media/image147.png){width="5.5106266404199475in" height="2.62992125984252in"}
+![图形用户界面, 应用程序 描述已自动生成](thesis/assets/media/image147.png)
 
 (a) Particle ID assignment using $N_{cur}$ for rearrangement
 
-![图形用户界面 描述已自动生成](assets/media/image148.png){width="4.724409448818897in" height="2.906438101487314in"}
+![图形用户界面 描述已自动生成](thesis/assets/media/image148.png)
 
 (b) Final rearranged particle IDs grouped by grid for neighbor search
 
@@ -2015,7 +2015,7 @@ The rearranged ID array, illustrated in Fig. A1.4(b), organizes particles accord
 
 #### A1.2.1.5. Neighbor search after particle ID rearrangement
 
-![手机屏幕的截图 描述已自动生成](assets/media/image149.png){width="5.518428477690288in" height="3.1811023622047245in"}
+![手机屏幕的截图 描述已自动生成](thesis/assets/media/image149.png)
 
 Fig. A1.5. Neighbor Search After Particle ID Rearrangement
 
@@ -2043,7 +2043,7 @@ If $g < 0$, the two particles are considered to be in contact. Once contact is 
 
 #### A1.2.2.2. Contact model
 
-![图标 描述已自动生成](assets/media/image12.png){width="4.0in" height="1.5555555555555556in"}
+![图标 描述已自动生成](thesis/assets/media/image12.png)
 
 Fig. A1.6. Contact model in HPC-DEM framework
 
@@ -2121,7 +2121,7 @@ Table. A1-1 Parameters used in slope generation demo
 
 (b) 250,000-time step
 
-![图形用户界面 低可信度描述已自动生成](assets/media/image152.png){width="2.7559055118110236in" height="1.837159886264217in"} ![图片包含 图形用户界面 描述已自动生成](assets/media/image153.png){width="2.7559055118110236in" height="1.837159886264217in"}
+![图形用户界面 低可信度描述已自动生成](thesis/assets/media/image152.png) ![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image153.png)
 
 (c) 300,000-time step
 
@@ -2133,13 +2133,13 @@ Fig. A1.7. Particle arrangement at different timesteps during the settling phase
 
 Following the stabilization process, the right wall element, which initially provided lateral support to the particles, was shifted to the right boundary of the simulation domain. This adjustment removed the lateral confinement, allowing particles to move and redistribute under gravitational forces. The system evolved as particles slid downward and rearranged themselves, ultimately forming a stable slope. The progression of this slope formation is depicted in Fig. A1.8.
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image154.png){width="2.7559055118110236in" height="1.837159886264217in"} ![图表, 表面图 描述已自动生成](assets/media/image155.png){width="2.7559055118110236in" height="1.837159886264217in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image154.png) ![图表, 表面图 描述已自动生成](thesis/assets/media/image155.png)
 
 (a) 2,060,000-time step
 
 \(b\) 2,220,000-time step
 
-![图片包含 图形用户界面 描述已自动生成](assets/media/image156.png){width="2.7559055118110236in" height="1.837159886264217in"} ![图表 低可信度描述已自动生成](assets/media/image157.png){width="2.7559055118110236in" height="1.837159886264217in"}
+![图片包含 图形用户界面 描述已自动生成](thesis/assets/media/image156.png) ![图表 低可信度描述已自动生成](thesis/assets/media/image157.png)
 
 \(c\) 2,520,000-time step
 
@@ -2191,7 +2191,7 @@ Table. A1-2 Parameters used in monotonic triaxial shear demonstration
 
 This demonstration involves two triaxial shear simulations under drained and undrained conditions. Prior to shearing, an isotropic consolidation phase was applied to the granular assembly, where all particles were consolidated under an isotropic confining stress ($\sigma_{1}' = \sigma_{2}' = \sigma_{3}' = 200kPa$). After achieving a stable isotropic state, the drained triaxial shear test was conducted under a constant confining stress ($\sigma_{2}' = \sigma_{3}' = 200kPa$) while incrementally increasing the axial stress ($\sigma_{1}'$) by applying a constant axial displacement rate of 0.01m/s.
 
-![图表, 折线图 描述已自动生成](assets/media/image158.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image158.png)
 
 Fig. A1.9. Deviatoric stress ($q$) versus axial strain ($\varepsilon_{a}$) during drained triaxial shear
 
@@ -2199,7 +2199,7 @@ Figure A1.9 depicts the deviatoric stress ($q = \sigma_{1}' - \sigma_{3}'$) vers
 
 Correspondingly, Fig. A1.10 shows the void ratio ($e$) evolution. Initially, the void ratio decreased due to particle rearrangements and compaction (increasing $p'$). After reaching a minimum, it began to increase slightly as the sample dilated at larger strains, indicative of a transition from a contractive to a dilative response.
 
-![图表, 折线图 描述已自动生成](assets/media/image159.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image159.png)
 
 Fig. A1.10. Void ratio ($e$) evolution versus axial strain ($\varepsilon_{a}$) during drained triaxial shear
 
@@ -2207,7 +2207,7 @@ Fig. A1.10. Void ratio ($e$) evolution versus axial strain ($\varepsilon_{a}$) d
 
 For the undrained condition, isotropic consolidation to 200 kPa was also performed before shearing. Here too, the axial displacement rate was fixed at 0.01m/s, ensuring consistency across the simulations. The evolution of deviatoric stress ($q$) and pore water pressure buildup, shown in Fig. A1.11, reveals a distinct pattern. Initially, the sample
 
-![图表, 折线图 描述已自动生成](assets/media/image160.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image160.png)
 
 Fig. A1.11. Deviatoric stress ($q$) versus axial strain ($\varepsilon_{a}$) during undrained triaxial shear
 
@@ -2217,13 +2217,13 @@ exhibited strain hardening up to approximately $\varepsilon_{a} = 2.5\%$, after 
 
 The force chain network, represented in Fig. A1.12, highlights particle interactions at various stages of shearing. Strong force chains are visibly aligned with the major principal stress direction as shearing progresses, illustrating the stress redistribution within the granular assembly.
 
-![图片包含 图示 描述已自动生成](assets/media/image161.png){width="2.7559055118110236in" height="1.8371609798775153in"} ![图片包含 图示 描述已自动生成](assets/media/image162.png){width="2.7559055118110236in" height="1.8371587926509185in"}
+![图片包含 图示 描述已自动生成](thesis/assets/media/image161.png) ![图片包含 图示 描述已自动生成](thesis/assets/media/image162.png)
 
 (a) $\varepsilon_{a}$=0%
 
 \(b\) $\varepsilon_{a}$=5%
 
-![图片包含 图表 描述已自动生成](assets/media/image163.png){width="2.7559055118110236in" height="1.837159886264217in"} ![图片包含 图表 描述已自动生成](assets/media/image164.png){width="2.7559055118110236in" height="1.837159886264217in"}
+![图片包含 图表 描述已自动生成](thesis/assets/media/image163.png) ![图片包含 图表 描述已自动生成](thesis/assets/media/image164.png)
 
 \(c\) $\varepsilon_{a}$=10%
 
@@ -2237,7 +2237,7 @@ Figure A1.13 compares the stress paths ($p'$-$q$) for drained and undrained shea
 
 Under the drained condition, the confining stress was held constant ($\sigma_{2}' = \sigma_{3}' = 200kPa$). The stress path follows the expected trajectory, with incremental changes in $q$ and $p'$ maintaining a consistent ratio of $\frac{\Delta q}{\Delta p'} = 3$. This reflects the effective control of lateral stresses by the servo system and demonstrates the model\'s ability to maintain boundary conditions accurately during shearing. The drained stress path progresses smoothly toward the critical state line (CSL), confirming the equilibrium behavior of granular materials under large deformation.
 
-![图表, 折线图 描述已自动生成](assets/media/image165.png){width="3.937007874015748in" height="2.624514435695538in"}
+![图表, 折线图 描述已自动生成](thesis/assets/media/image165.png)
 
 Fig. A1.13. Stress paths ($p'$-$q$) for drained and undrained triaxial shear, with critical state line (CSL)
 
@@ -2267,7 +2267,7 @@ Ray tracing is a rendering technique that models the interaction of light with o
 
 ### A2.1.1. Camera, ray, viewport, and scene
 
-![示意图 低可信度描述已自动生成](assets/media/image166.png){width="2.7559055118110236in" height="2.8742147856517937in"}
+![示意图 低可信度描述已自动生成](thesis/assets/media/image166.png)
 
 Fig. A2.1. Ray tracing workflow: Rays originate from the camera, pass through the viewport, and interact with objects in the 3D scene, determining the color information for each pixel.
 
@@ -2281,7 +2281,7 @@ Fig. A2.1 illustrates the basic workflow of ray tracing, where rays originate fr
 
 The ray tracing process begins by iterating over every pixel in the viewport, generating a primary ray for each. These rays are traced into the 3D scene to identify intersections with objects. For each intersection, additional calculations are performed to evaluate lighting, material properties, and other effects such as shadows or reflections. If a ray intersects with an object, the nearest intersection point is determined. The object\'s material properties, combined with lighting conditions, are then used to compute the pixel\'s final color. Rays that do not intersect with any object are typically assigned a background color, representing the environment or sky. To visualize the setup, Fig. A2.2 presents two spheres rendered with refined, elegant colors---muted green (RGB: 0.45, 0.55, 0.47) and muted violet (RGB: 0.35, 0.30, 0.37).
 
-![图表, 气泡图 描述已自动生成](assets/media/image167.png){width="3.1476377952755907in" height="2.0984251968503935in"}
+![图表, 气泡图 描述已自动生成](thesis/assets/media/image167.png)
 
 Fig. A2.2. Rendered spheres with purple and green colors
 
@@ -2301,11 +2301,11 @@ where $C$ is the object's base color, and $k_{a}$ is the ambient coefficient.
 
 Point lights represent localized sources of light that radiate uniformly in all directions from a specific position. They mimic real-world light sources like bulbs or candles. The intensity of light decreases with distance from the source, modeled by an attenuation factor.
 
-![图片包含 形状 描述已自动生成](assets/media/image168.png){width="3.9360793963254594in" height="2.2755905511811023in"}
+![图片包含 形状 描述已自动生成](thesis/assets/media/image168.png)
 
 Fig. A2.3. Diffuse reflection of light, showing the relationship between the light direction, surface normal, and reflection distribution
 
-![黑暗中的灯光 中度可信度描述已自动生成](assets/media/image169.png){width="4.639433508311461in" height="2.2755905511811023in"}
+![黑暗中的灯光 中度可信度描述已自动生成](thesis/assets/media/image169.png)
 
 Fig. A2.4. Specular reflection, illustrating the relationship between the light ray, surface normal, and viewer position
 
@@ -2321,7 +2321,7 @@ $I_{p} = C \cdot (k_{d}\left( \mathbf{L} \cdot \mathbf{N} \right) + k_{s}\left( 
 
 Directional light represents a distant light source, such as sunlight, where the light rays are considered parallel. Unlike point lights, directional light does not attenuate with distance. The illumination model for directional light is similar to that of point light but simplifies calculations as the light direction remains constant for the entire scene.
 
-![桌子上有一些彩色的球 低可信度描述已自动生成](assets/media/image170.png){width="3.1496062992125986in" height="2.099737532808399in"}
+![桌子上有一些彩色的球 低可信度描述已自动生成](thesis/assets/media/image170.png)
 
 Fig. A2.5. Rendering of two spheres under directional light showcasing diffuse and specular reflections.
 
@@ -2339,7 +2339,7 @@ Reflections are crucial to creating realistic scenes in ray tracing, as they sim
 
 In the ray tracing process, reflections are computed by generating a secondary ray at the point of intersection between the primary ray and the reflective surface. This reflected ray continues to propagate through the scene, checking for further intersections with other objects. Each subsequent intersection contributes to the pixel's final color by considering the material properties and lighting conditions at each reflection point. This iterative process allows for the simulation of mirrored surfaces and multi-object reflections.
 
-![图片包含 形状 描述已自动生成](assets/media/image171.png){width="3.1496062992125986in" height="2.7008956692913384in"}
+![图片包含 形状 描述已自动生成](thesis/assets/media/image171.png)
 
 Fig. A2.6. Illustration of inter-object reflection showing ray paths
 
@@ -2351,7 +2351,7 @@ $\mathbf{r} = \mathbf{i} - 2(\mathbf{i} \cdot \mathbf{N})\mathbf{N}$ (A2-3)
 
 In Fig. A2.7, the visual results of reflections are demonstrated. Both spheres possess reflective properties, but their reflectivity coefficients differ. The sphere on the right exhibits a higher reflectivity, creating a pronounced mirror-like appearance that reflects the checkerboard floor and adjacent sphere. In contrast, the left sphere, with a lower reflectivity coefficient, produces a subtler reflection.
 
-![蓝色的球 描述已自动生成](assets/media/image172.png){width="3.937007874015748in" height="2.6246719160104988in"}
+![蓝色的球 描述已自动生成](thesis/assets/media/image172.png)
 
 Fig. A2.7. Spheres with high (right) and low (left) reflectivity
 
@@ -2361,7 +2361,7 @@ To prevent infinite recursion in complex scenes, a recursion depth is typically 
 
 In addition to reflection, ray tracing also accounts for refraction, where rays pass through transparent or semi-transparent objects, altering their trajectory according to Snell\'s law. Refraction is calculated using the indices of refraction of the two media involved. Fig. A2.8, illustrates this process, where a ray transitions from the purple object into the green object, resulting in a refracted direction.
 
-![图示 中度可信度描述已自动生成](assets/media/image173.png){width="3.937007874015748in" height="2.2510050306211724in"}
+![图示 中度可信度描述已自动生成](thesis/assets/media/image173.png)
 
 Fig. A2.8. Refraction of a ray between two objects
 
@@ -2371,7 +2371,7 @@ $\frac{\sin\left( \theta_{i} \right)}{\sin\left( \theta_{refract} \right)} = \fr
 
 , where $\theta_{i}$ is the angle of incidence, $\theta_{refract}$ is the angle of refraction, and $n_{1}$ and $n_{2}$ are the indices of the refraction for the two media. The refracted ray can further interact with other objects in the scene, contributing to the final color and transparency effects.
 
-![图片包含 建筑, 桌子, 板子, 大 描述已自动生成](assets/media/image174.png){width="3.937007874015748in" height="2.6246719160104988in"}
+![图片包含 建筑, 桌子, 板子, 大 描述已自动生成](thesis/assets/media/image174.png)
 
 Fig. A2.9. Combined effects of reflection and refraction on two spheres
 
@@ -2383,7 +2383,7 @@ This rendered image shown in Fig. A2.9 demonstrates the simultaneous application
 
 Supersampling is a fundamental technique to mitigate aliasing, a common artifact in computer graphics where jagged edges appear along diagonal or curved boundaries due to insufficient sampling resolution. By subdividing each pixel into multiple subpixels, rays are cast through each subpixel to calculate individual color contributions, which are then averaged to determine the final pixel color. This process ensures smoother transitions and more visually appealing results.
 
-![](assets/media/image175.png){width="3.9330708661417324in" height="2.622047244094488in"}
+![](thesis/assets/media/image175.png)
 
 Fig. A2.10. Supersampled render with 64 samples per pixel, illustrating significant quality improvement and reduced aliasing
 
@@ -2405,7 +2405,7 @@ BVH is a hierarchical tree structure designed to optimize ray-object intersectio
 
 Fig. A2.11 demonstrates the capability of ray tracing to handle scenes with many objects efficiently. Each sphere in this dense granular assembly is rendered with accurate lighting effects, such as reflections and refractions, showcasing the robustness of ray tracing algorithms in managing complex object interactions. The rendering highlights the application of spatial data structures, such as Bounding Volume Hierarchies (BVH) or uniform grids, to optimize the computational workload and achieve high-quality visualizations even for scenes with thousands of objects.
 
-![图片包含 食物, 游戏机, 许多, 束 描述已自动生成](assets/media/image176.png){width="4.724409448818897in" height="2.098151793525809in"}
+![图片包含 食物, 游戏机, 许多, 束 描述已自动生成](thesis/assets/media/image176.png)
 
 Fig. A2.11. Large-scale ray tracing of granular assemblies with accurate reflections
 
