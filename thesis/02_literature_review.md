@@ -1,7 +1,15 @@
 ---
 title: "Chapter 2: Literature Review"
-tags: [thesis, chapter-2, literature-review, granular-materials, DEM, constitutive-models]
-aliases: [Literature Review, Chapter 2]
+tags:
+  - thesis
+  - chapter-2
+  - literature-review
+  - granular-materials
+  - DEM
+  - constitutive-models
+aliases:
+  - Literature Review
+  - Chapter 2
 ---
 
 # Literature Review
@@ -68,11 +76,21 @@ Fig. 2.7. Normalized state paths during drained and undrained triaxial shear tes
 
 During undrained shear of a normally consolidated state, the stress state is constrained by a distinct surface, known as the Roscoe surface. The stress path of undrained samples follows a curved trajectory on this surface. Similarly, in drained shear tests under constant $p'$ and constant radial stress conditions, the state also evolves along this surface. Notably, the Roscoe surface is not only unique but also exhibits a cross-sectional shape that remains invariant with respect to $p'$, as illustrated in Fig. 2.7.
 
-### The Modified Cam-Clay model
+These experimental observations of the Roscoe surface and critical state behavior motivated the development of constitutive models that could mathematically capture the unified stress-strain-volume change relationships in granular soils. The Modified Cam-Clay model emerged as one of the most influential frameworks, providing a theoretical foundation for predicting soil behavior under various loading conditions based on critical state concepts. However, while these classical models successfully describe behavior under conventional triaxial conditions, their applicability to more complex stress states and loading paths remains a subject of ongoing investigation.
 
 ### Limitations in classical theories and models
 
-The classical critical state theory proposed by Roscoe et al. (1963) describes a dynamic equilibrium state: the stress state is stable while the strain evolves under large deformation conditions. However, this theory is mainly based on axisymmetric triaxial compression experiments. Thus, the uniqueness of the stress ratio and void ratio along other stress paths remain of great interest.
+While classical critical state theory and associated constitutive models have provided fundamental frameworks for understanding soil behavior, several limitations restrict their applicability to real-world seismic conditions and liquefaction phenomena.
+
+First, classical models such as Modified Cam-Clay are phenomenological, describing macroscopic stress-strain relationships through continuum mechanics without explicitly accounting for the underlying particle-scale mechanisms. The void ratio $e$ and stress state variables ($p'$, $q$) capture the overall volumetric and deviatoric responses, but they do not reveal how interparticle contacts, force chains, and fabric anisotropy evolve during loading. This limitation becomes critical when attempting to understand why soils with identical void ratios may exhibit vastly different liquefaction resistance depending on their consolidation history and fabric structure.
+
+Second, the classical critical state theory proposed by Roscoe et al. (1963) is mainly based on axisymmetric triaxial compression experiments, where the intermediate and minor principal stresses remain equal. Thus, the uniqueness of the stress ratio and void ratio along other stress paths, particularly under general three-dimensional stress states with varying intermediate principal stress ratios (Lode angle), remain subjects of ongoing debate. Real seismic loading often involves complex stress paths that deviate significantly from conventional triaxial conditions.
+
+Third, classical models typically assume isotropic material properties or employ simple scalar state variables. They do not adequately capture the effects of fabric anisotropy induced by anisotropic consolidation (e.g., $K_0$ consolidation) or directional loading histories. Experimental evidence has shown that the initial stress anisotropy significantly influences liquefaction resistance, yet classical frameworks lack microstructural parameters to quantify and predict these effects systematically.
+
+Finally, most classical theories were developed for monotonic loading conditions. While extensions to cyclic loading exist, they often rely on empirical rules and cycle-counting methods that may not capture the cumulative degradation of soil fabric under irregular, multi-directional seismic shaking. The rotation of principal stress axes during earthquake loading introduces additional complexities that challenge the predictive capabilities of models based solely on stress invariants.
+
+These limitations motivate the need for particle-scale investigations using discrete element methods, which can explicitly track microstructural evolution and provide deeper insights into the mechanisms governing liquefaction resistance under diverse loading conditions.
 
 ## Stress-induced-anisotropy 
 
