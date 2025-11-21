@@ -128,47 +128,61 @@ As indicated by Fig. 3.2(b), the void ratio decreases from approximately 0.736 a
 
 Fig 3.3. Visualization of hollow cylindrical specimens after anisotropic consolidation to $p'$=100 kPa with different $K_{0}$ values. Cross-sectional view shows particles (colored by radius) and contact forces (red vectors), corresponding to the final states in Fig. 3.2.
 
-The specification of specimens for cyclic shear are summarized in Table 3-3.
-
-Table 3-3. Specification of specimens in initial cyclic undrained shear stage
-
-![](thesis/assets/media/image71.png)
-
 ### Implementation of undrained condition
 
-In DEM simulations of undrained tests, the interaction between water and particles is disregarded, employing a constant volume approach to replicate the undrain condition. The effectiveness of this constant volume approach has been validated in numerous DEM simulations. (Sitharam et al., 2002; Yimsiri and Soga, 2010). With the specimen height held constant, following laboratory testing procedures (Vargas et al., 2020), an unchanged cross-sectional area ensures the overall volume remains consistent. As described by Eq. (3-1), the variation of the outer and inner radii was controlled proportionally to maintain a constant cross-sectional area of the specimen, where $R$ and $r$ denote the inner and outer radii, respectively, and $t$ represents time.
+In DEM simulations of undrained tests, the interaction between water and particles is disregarded, employing a constant volume approach to replicate the undrained condition. The effectiveness of this constant volume approach has been validated in numerous DEM simulations (Sitharam et al., 2002; Yimsiri and Soga, 2010). To simultaneously achieve the stress boundary conditions and undrained condition observed in laboratory HCA tests, an innovative combined servo mechanism is proposed.
 
-$\frac{dR}{dt} = \frac{r}{R}\frac{dr}{dt}$ (3-1)
+The key challenge in simulating undrained HCA tests lies in satisfying multiple conditions simultaneously. In laboratory tests, the inner and outer chamber pressures ($p_i$ and $p_o$) are maintained equal and constant, the additional axial pressure ($p_z$) or height ($H$) is controlled, and a target shear stress ($\tau_{z\theta,tar}$) is applied. Meanwhile, the undrained condition requires constant volume. This study addresses these challenges through a combined servo mechanism by controlling four variables: inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and additional axial pressure ($p_z$), to satisfy four condition equations simultaneously.
 
-As shown in Eq. (3-2), the difference in effective stresses between the inner and outer cylinders is regulated by controlling diameter variation, aiming to achieve equivalent stresses acting on inner and outer cylinders, with respect to laboratory tests. Here, $H$ represents the height of the specimen, $\sigma_{dif}'$ denotes the difference in effective stresses between the outer and inner cylinders, and $E_{eq}$ is an averaged equivalent modulus.
+**Condition 1: Equal inner and outer chamber pressures**
 
-$\frac{dr}{dt} = \frac{2\pi H\sigma_{dif}'}{E_{eq}\Delta t}$ (3-2)
+To address the inhomogeneity in radial direction caused by the axial symmetry of HCA, the difference in effective stresses between the outer and inner cylinders is regulated by controlling the diameter variation. The inner radius rate is determined by Eq. (3-1), where $\sigma_{dif,r}'$ represents the effective stress difference between outer and inner cylinders, and $S_{cr}$ is the servo coefficient.
 
-$E_{eq}$ is influenced by the dimensions of the inner and outer cylinders, along with the contact stiffness between the cylinders and particles, $K_{i}$ and $K_{o}$, as defined in Eq. (3-3).
+$$\frac{dr}{dt} = \frac{\left(\sigma_{dif,r}' - (p_o - p_i)\right)}{\Delta t}S_{cr}$$ (3-1)
 
-$E_{eq} = \frac{r}{R}\frac{K_{o}}{R} + \frac{K_{i}}{r}$ (3-3)
+**Condition 2: Constant additional axial pressure or constant height**
 
-The essence of the method lies in a combined servo mechanism. This mechanism achieves two objectives simultaneously: maintaining constant volume to replicate undrained conditions and minimizing differences in effective stress between the inner and outer cylinders to replicate stress boundary conditions observed in laboratory tests. This method is equivalent to the mixed stress and strain-controlled loading with $v_{z}$ being zero described in algorithm Ⅱ by Ma et al. (2024), trickily achieving the simulation of undrained condition and stress condition in HCA tests.
+During undrained cyclic shear, the height can be controlled either as constant (dH/dt = 0) or through additional axial pressure regulation. The height rate is governed by Eq. (3-2), where $\sigma_{dif,z}'$ denotes the effective stress difference between axial and radial stress, and $S_{cz}$ is the corresponding servo coefficient.
 
-The effective stresses were evaluated by measuring the contact stresses between the boundary and particle skeleton. The assumptions of undrained condition and full saturation result in variations in effective stress on lateral cylinders and EPWP that are equal in magnitude but opposite in sign, quantifying this relationship in Eq. (3-4). Here, $u$ represents the excess pore water pressure, $\sigma_{r}'$ denotes the radial effective stress, which is derived from the inner and outer effective stress $p_{i}'$ and $p_{o}'$, and $\sigma_{r0}'$ is its initial value (Yimsiri and Soga, 2010).
+$$\frac{dH}{dt} = \frac{\left(\sigma_{dif,z}' - p_z\right)}{\Delta t}S_{cz} \qquad \frac{dH}{dt} = 0\ \text{if constant}\ H$$ (3-2)
 
-$u = \sigma_{r0}' - \sigma_{r}'$ (3-4)
+**Condition 3: Target shear stress**
 
-### Application of shear force
+The rotation angle rate is controlled to achieve the target shear stress through Eq. (3-3), where $T_{dif}$ represents the torque difference between target and current value, and $S_{cs}$ is the servo coefficient.
 
-Shear forces are applied to the specimens in the form of a sine wave. Similar to the servo mechanism in consolidation process, the torque application method also considers the difference between the target and current values, along with the total contact stiffness between the blades and particles. The main distinction from the servo
+$$\frac{d\theta}{dt} = \frac{T_{dif}}{\Delta t}S_{cs}$$ (3-3)
+
+**Condition 4: Undrained condition (constant volume)**
+
+The undrained condition is ensured by maintaining constant volume throughout the cyclic shear test, as expressed in Eq. (3-4).
+
+$$2\pi H\left(R\frac{dR}{dt} + r\frac{dr}{dt}\right) + \pi(R^2 - r^2)\frac{dH}{dt} = 0$$ (3-4)
+
+By combining these four equations, the system of four variables ($dr/dt$, $dR/dt$, $dH/dt$, $p_z$) and four constraints is solved simultaneously at each timestep, achieving both the stress conditions and undrained condition in DEM simulation of HCA tests. This combined servo mechanism (Ma et al., 2024) elegantly replicates the boundary conditions observed in laboratory undrained cyclic torsional shear tests.
+
+**Determination of servo coefficients**
+
+The servo coefficients ($S_{cr}$, $S_{cz}$, $S_{cs}$) in the combined servo mechanism are determined based on the contact stiffness between boundaries and particles. For the torsional servo coefficient $S_{cs}$ in Condition 3, the moment of inertia of shear stiffness $I_{rot}$ is calculated considering the distance from the center of rotation. Fig. 3.4 illustrates the contact between a particle and a blade, where $r_{d}$ denotes the distance from the center of rotation to the contact point, and $\theta$ is the angle between the contact normal and the horizontal plane.
 
 ![](thesis/assets/media/image73.png)
 
 Fig. 3.4. Determination of moment of inertia of shear stiffness in servo mechanism for torque application
 
-mechanism for the lateral cylinder is in how stiffness is calculated, specifically considering the distance from the center of rotation. Fig. 3.4 illustrates the contact between a particle and a blade, where the distance from the center of rotation to the contact point is denoted as $r_{d}$, and the angle between the contact normal and the horizontal plane is $\theta$. Eq. (3-5) describes the angular velocity of the torsional blade, where $T_{dif}$ represents the difference between the target torque and the current value, and $I_{rot}$ denotes the moment of inertia of the contact stiffness. As indicated by Eq. (3-6), $I_{rot}$ is determined by the contact stiffness $k_{n}$ and square of the distance $r_{d}$. $I_{rot}$ is adjusted by $\cos^{2}\theta$ because a larger $\theta$ reduces its contribution to the shear stiffness.
+The moment of inertia $I_{rot}$ is calculated by Eq. (3-5), where $k_{n}$ represents the normal contact stiffness. The contribution of each contact is adjusted by $\cos^{2}\theta$ because a larger $\theta$ reduces its contribution to the shear stiffness. The servo coefficient $S_{cs}$ for torsional control is then determined by Eq. (3-6).
 
-$\omega = \frac{T_{dif}}{I_{rot}\Delta t}$ (3-5)
+$$I_{rot} = \Sigma r_{d}^{2}k_{n}\cos^{2}\theta$$ (3-5)
 
-$I_{rot} = \Sigma r_{d}^{2}k_{n}\cos^{2}\theta$ (3-6)
+$$S_{cs} = \frac{1}{I_{rot}}$$ (3-6)
 
-AC and IC specimens obtained from both the IC-AC and IC-AC-TS protocols, with $K_{0}$ ranging from 0.33 to 3.33, underwent shear forces with 4 different cyclic stress ratios CSR ranging from 0.25 to 0.40 until liquefaction occurred. A discussion concerning the factors influencing liquefaction strength is provided from both macroscopic and microscopic perspectives.
+Similarly, the servo coefficients $S_{cr}$ and $S_{cz}$ for radial and axial directions are determined based on the equivalent stiffness of inner/outer cylinders and top/bottom plates, respectively. This stiffness-based approach ensures stable and efficient convergence of the combined servo mechanism.
+
+**Excess pore water pressure calculation**
+
+The effective stresses are evaluated by measuring the contact stresses between the boundary and particle skeleton. The assumptions of undrained condition and full saturation result in variations in effective stress on lateral cylinders and excess pore water pressure (EPWP) that are equal in magnitude but opposite in sign, as quantified in Eq. (3-7). Here, $u$ represents the EPWP, $\sigma_{r}'$ denotes the radial effective stress derived from the inner and outer effective stresses, and $\sigma_{r0}'$ is its initial value (Yimsiri and Soga, 2010).
+
+$$u = \sigma_{r0}' - \sigma_{r}'$$ (3-7)
+
+Specimens with three representative $K_{0}$ values (0.5, 1.0, 2.0) obtained from the IC-AC protocol underwent undrained cyclic torsional shear until liquefaction occurred. The cyclic shear stress is applied as a sinusoidal wave with different cyclic stress ratios (CSR). The factors influencing liquefaction resistance are discussed from both macroscopic and microscopic perspectives.
 
 ## Results and discussion
 
