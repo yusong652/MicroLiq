@@ -6,7 +6,7 @@ aliases: [Anisotropic Consolidation, Chapter 4, K0 Effect]
 
 # Study on Factors Affecting Liquefaction Resistance during Anisotropic Consolidation
 
-This chapter employs DEM to investigate the effects of stress anisotropy on liquefaction resistance of sand soils through undrained cyclic shear simulations. A combined servo mechanism replicates undrained conditions and stress states in hollow cylinder apparatus (HCA) tests. The influence of lateral to vertical stress ratios ($K_{0}$), as well as the stress path for specimen preparation, on the soil\'s response to cyclic loading are examined across a wide range of $K_{0}$ values from 0.33 to 3.33. Results demonstrate that increasing stress anisotropy reduces liquefaction resistance and the stress path, whether through initial isotropic consolidation followed by linear anisotropic consolidation (IC-AC) or initial isotropic consolidation followed by constant-$p'$ triaxial shear (IC-AC-TS), does not significantly affect liquefaction resistance. The factors that influence liquefaction resistance are attributed to changes in both macroscopic and microscopic quantities, such as relative density and coordination number ($Z_{m}$). Anisotropic consolidation states with $K_{0}$\<1.0 or $K_{0}$\>1.0 produce different morphologies of contact density, affecting fabric anisotropy and liquefaction resistance.
+This chapter employs DEM to investigate the effects of stress anisotropy on liquefaction resistance of sand soils through undrained cyclic shear simulations. A combined servo mechanism replicates undrained conditions and stress states in hollow cylinder apparatus (HCA) tests. The influence of lateral to vertical stress ratios ($K_{0}$) on the soil's response to cyclic loading is examined through three representative cases: compression ($K_{0}$=0.5), isotropic ($K_{0}$=1.0), and extension ($K_{0}$=2.0) states. Specimens are prepared following initial isotropic consolidation to $p'$=10 kPa followed by linear anisotropic consolidation (IC-AC) to $p'$=100 kPa. The factors that influence liquefaction resistance are attributed to changes in both macroscopic and microscopic quantities, such as void ratio and coordination number ($Z_{m}$). Anisotropic consolidation states with $K_{0}$<1.0 or $K_{0}$>1.0 produce different morphologies of contact density, affecting fabric anisotropy and liquefaction resistance.
 
 ##  Introduction
 
@@ -30,11 +30,11 @@ The stress paths for specimen preparation often entail linearly increasing $p'$ 
 
 Itasca PFC^3D^ (Itasca Consulting Group, Inc., 2021) was employed to implement DEM simulations of undrained cyclic torsional shear test. Unlike the periodic boundaries commonly used in element tests, the HCA in DEM simulation employs two cylinders, upper and lower planes, as well as six blades to provide torsional force, closely approximating the boundary conditions of HCA (Ishihara and Yasuda, 1975; Vargas et al., 2020; Li et al, 2014; Liu et al, 2021). As shown in Fig. 3.1(a), two rigid cylindrical walls with inner diameter of 6 cm and outer diameter of 10 cm are positioned coaxially and vertically, with the upper and lower planes placed 10 cm apart, resembling the geometric dimensions of laboratory tests (Vargas et al., 2020).
 
-![](thesis/assets/media/image65.png)
+![](thesis/assets/media/image65.jpg)
 
 (a) Pouring method for generating particles
 
-![](thesis/assets/media/image66.png)
+![](thesis/assets/media/image66.jpg)
 
 (b) Insertion of torsional blades
 
@@ -47,7 +47,7 @@ Table 3-1. Parameters in DEM simulation
   ------------------------------------------------------------------------------------------
   Description                                                               Value
   ------------------------------------------------------------------------- ----------------
-  Number of particles $N_{p}$                                               40,249
+  Number of particles $N_{p}$                                               53,764
 
   Density, $\rho_{s}$ (kg/m3)                                               2650
 
@@ -68,7 +68,7 @@ Table 3-1. Parameters in DEM simulation
 
 \*IC
 
-\*\* Generation, AC, TS, and Cyclic shear
+\*\*AC, and Cyclic shear
 
 The typical approach of applying shear force to cuboidal (Wei et al., 2020; Yang et al., 2021; Banerjee et al., 2023) or cylindrical (Li et al., 2014; Liu et al., 2021) elements involves selecting and regulating the flexibility of the particles on both sides of the specimen. However, this method for providing torque on HCA specimens raises concerns, as the selected and constrained particles interfere with the cylinders' expansion or contraction, affecting the measurement of radial stresses. Therefore, using
 
@@ -100,43 +100,25 @@ wall elements that solely interact with particles to apply shear loads is prefer
 
 Soils not merely encounter diverse levels of $K_{0}$, but also frequently undergo complex stress histories, potentially influencing the liquefaction resistance. For instance, Pan et al. (2019) observed that the stress history of triaxial extension-unloading can enhance liquefaction resistance compared to IC specimen, whereas the triaxial compression-unloading history yields a contrary effect. To investigate the impact of stress path on the liquefaction resistance, two protocols employing distinct stress paths were utilized to prepare specimens. To achieve the desired target stress
 
-![](thesis/assets/media/image67.png)
+![](thesis/assets/images/fig3_2a_aniso_stress.png)
 
 (a) Mean effective stress $p'$ vs. deviator stress $q$
 
-![](thesis/assets/media/image68.png)
+![](thesis/assets/images/fig3_2b_stress_void.png)
 
 (b) Mean effective stress $p'$ vs. void ratio $e$
 
-Fig. 3.2. Stress and void ratio evolution in anisotropic consolidation for specimens with different stress anisotropies from isotropic consolidation state with $p'$=10.0kPa and different target $K_{0}$
+Fig. 3.2. Stress and void ratio evolution in anisotropic consolidation for specimens with three representative stress anisotropies ($K_{0}$=0.5, 1.0, 2.0) from isotropic consolidation state with $p'$=10.0kPa to target mean effective stress $p'$=100.0kPa
 
 levels, a servo mechanism (Itasca Consulting Group, 2021; Ma et al., 2024) is employed to manipulate the position of vertices of wall elements throughout the consolidation process.
 
-In the first approach, the specimen was initially compressed to a target void ratio of 0.808 under a friction coefficient of 0.1. Subsequently, the friction coefficient was reset to 0.5, followed by anisotropic consolidation from a state with $p'$=10.0kPa and $K_{0}$=1.0 to $p'$=133.33kPa and the target $K_{0}$ (IC-AC protocol), as shown in Fig. 3.2 (a) and Fig. 3.2(b). Notably, during the AC process with an increasing $p'$, $K_{0}$ evolves from 1.0 to the corresponding target $K_{0}$. Ten cases of specimens with $K_{0}$ values ranging from 0.33 to 3.33 were obtained.
+The specimen was initially compressed to a target void ratio of approximately 0.736 under a friction coefficient of 0.1. Subsequently, the friction coefficient was reset to 0.5, followed by anisotropic consolidation from a state with $p'$=10.0kPa and $K_{0}$=1.0 to $p'$=100.0kPa and the target $K_{0}$ (IC-AC protocol), as shown in Fig. 3.2(a) and Fig. 3.2(b). Notably, during the AC process with an increasing $p'$, $K_{0}$ evolves from 1.0 to the corresponding target $K_{0}$. Fig. 3.2 illustrates three representative cases with $K_{0}$ values of 0.5, 1.0, and 2.0, representing compression ($K_{0}$<1.0), isotropic ($K_{0}$=1.0), and extension ($K_{0}$>1.0) states, respectively. During the AC process, both $p'$ and $q$ increase simultaneously, with the stress path depending on the target $K_{0}$ value.
 
-The other approach adopted a constant-$p'$ triaxial shear method, where triaxial compression ($K_{0}$\<1.0) and extension ($K_{0}$\>1.0) shear tests were performed on the specimen with $p'$=133.33kPa and $K_{0}$=1.0 obtained using the first IC-AC protocol. The axial strain rate was set as ±1%/second, and the lateral cylinders were controlled to maintain a constant-$p'$ condition along the π-plane in stress space (IC-AC-TS protocol). For clarity, the term \"triaxial shear\" here refers to the shearing process applied to HCA specimens, which simulates the same stress state as in triaxial shear tests. Fig. 3.3(a) and Fig. 3.3(b) respectively show the relationship between deviator stress $q$ and axial strain $\varepsilon_{\alpha}$, as well as the variation in void ratio $e$ up to ±1.6% $\varepsilon_{\alpha}$.
+As indicated by Fig. 3.2(b), the void ratio decreases from approximately 0.736 at the initial state ($p'$=10 kPa) to around 0.732 at the target stress ($p'$=100 kPa) during anisotropic consolidation. The differences in final void ratio $e$ between different $K_{0}$ states after IC-AC are minimal, with $e$ ranging from 0.7315 to 0.7325. This small variation (approximately 0.001) makes it reasonable to emphasize the effects of microscopic quantities, such as coordination number and fabric anisotropy, rather than $e$, on liquefaction resistance. The specification of specimens for cyclic shear are summarized in Table 3-3.
 
-Compared to the gradually increasing $q$ at a constant $p'$ for the IC-AC-TS approach, the IC-AC method initiates $q$ at a lower $p'$, with $q$ increasing as $p'$ rises.
-
-![](thesis/assets/media/image69.png)
-
-(a) Axial strain $\varepsilon_{a}$ vs. deviator stress $q$
-
-![](thesis/assets/media/image70.png)
-
-(b) Relationship between e and $\varepsilon_{a}$
-
-Fig. 3.3. Stress and void ratio evolution in constant-$p'$ triaxial shear for specimens with different stress anisotropies after anisotropic consolidation with $p'$=133.33kPa and target $K_{0}$=1.0
-
-The impact of these differences on liquefaction resistance is worth exploring. To simplify, the results with the first IC-AC protocol is labeled as \"AC\", whereas the results with IC-AC-TS specimens refer to "TS" in the accompanying figures. As indicated by Fig. 3.2(b) and Fig. 3.3(b), the differences in $e$ between different $K_{0}$ states after IC-AC or IC-AC-TS were minimal, with $e$ ranging from 0.8080 to 0.8083. This variation is small compared to the changes during the IC-AC or IC-AC-TS processes, making it reasonable to emphasize the effects of microscopic quantities, instead of $e$, on liquefaction resistance. The specification of specimens for cyclic shear are summarized in Table 3-3 and Table 3-4.
-
-Table 3-3. Specification of dense specimens in initial cyclic undrained shear stage
+Table 3-3. Specification of specimens in initial cyclic undrained shear stage
 
 ![](thesis/assets/media/image71.png)
-
-Table 3-4. Specification of loose specimens in initial cyclic undrained shear stage
-
-![](thesis/assets/media/image72.png)
 
 ### Implementation of undrained condition
 

@@ -1,0 +1,12 @@
+[project]
+name = "microliq"
+version = "0.1.0"
+description = "PhD thesis research on microscopic analysis of fabric evolution in liquefaction using DEM"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "matplotlib>=3.9.0",
+    "pandas>=2.2.0",
+    "numpy>=2.0.0",
+    "scipy>=1.14.0",
+]
