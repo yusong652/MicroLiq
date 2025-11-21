@@ -142,7 +142,7 @@ $$\frac{dr}{dt} = \frac{\left(\sigma_{dif,r}' - (p_o - p_i)\right)}{\Delta t}S_{
 
 **Condition 2: Constant additional axial pressure or constant height**
 
-During undrained cyclic shear, the height can be controlled either as constant (dH/dt = 0) or through additional axial pressure regulation. The height rate is governed by Eq. (3-2), where $\sigma_{dif,z}'$ denotes the effective stress difference between axial and radial stress, and $S_{cz}$ is the corresponding servo coefficient.
+During undrained cyclic shear, the height can be controlled either as constant (dH/dt = 0) or through additional axial pressure regulation. The height rate is governed by Eq. (3-2), where $\sigma_{dif,z}'$ denotes the effective stress difference between axial and radial stress, and $S_{cz}$ is the corresponding servo coefficient. In this study, constant height (dH/dt = 0) is adopted throughout the cyclic shear simulations to match typical HCA test protocols.
 
 $$\frac{dH}{dt} = \frac{\left(\sigma_{dif,z}' - p_z\right)}{\Delta t}S_{cz} \qquad \frac{dH}{dt} = 0\ \text{if constant}\ H$$ (3-2)
 
