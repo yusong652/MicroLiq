@@ -142,7 +142,7 @@ $$\frac{dr}{dt} = \frac{\left(\sigma_{dif,r}' - (p_o - p_i)\right)}{\Delta t}S_{
 
 **Condition 2: Constant additional axial pressure or constant height**
 
-During undrained cyclic shear, the height can be controlled either as constant (dH/dt = 0) or through additional axial pressure regulation. The height rate is governed by Eq. (3-2), where $\sigma_{dif,z}'$ denotes the effective stress difference between axial and radial stress, and $S_{cz}$ is the corresponding servo coefficient. In this study, constant height (dH/dt = 0) is adopted throughout the cyclic shear simulations to match typical HCA test protocols.
+During undrained cyclic shear, the height can be controlled either as constant (dH/dt = 0) or through additional axial pressure regulation. The height rate is governed by Eq. (3-2), where $\sigma_{dif,z}'$ denotes the effective stress difference between axial and radial stress, and $S_{cz}$ is the corresponding servo coefficient.
 
 $$\frac{dH}{dt} = \frac{\left(\sigma_{dif,z}' - p_z\right)}{\Delta t}S_{cz} \qquad \frac{dH}{dt} = 0\ \text{if constant}\ H$$ (3-2)
 
@@ -188,7 +188,7 @@ To validate the micro-parameters and numerical implementation, simulations were 
 
 #### Monotonic shear validation
 
-Undrained monotonic shear simulations were compared with HCA tests reported by Nakata et al. (1998). The specimen was isotropically consolidated to $p'_{0}$=100 kPa ($K_{0}$=1.0) before applying monotonic torsional shear under constant height condition. The micro-parameters listed in Table 3-1 were employed.
+Undrained monotonic shear simulations were compared with HCA tests reported by Nakata et al. (1998). The specimen was isotropically consolidated to $p'_{0}$=100 kPa ($K_{0}$=1.0) before applying monotonic torsional shear. Following the experimental protocol, the additional axial pressure $p_z$ was maintained at zero (i.e., $\sigma_{dif,z}' = 0$ in Eq. 3-2) to ensure the axial effective stress equals the radial effective stress during shearing. The micro-parameters listed in Table 3-1 were employed.
 
 ![](thesis/assets/images/validate_p_q_dense.png)
 
@@ -212,7 +212,7 @@ Fig. 3.6. Cyclic stress ratio (CSR) versus number of cycles to liquefaction: val
 
 Five CSR levels (0.20, 0.25, 0.30, 0.35, 0.40) were simulated. The DEM results align well with experimental trends across the full range of cyclic stress ratios, demonstrating the model's capability to reproduce the characteristic CSR-N liquefaction resistance curve. Both monotonic and cyclic validations confirm that the DEM model can accurately reproduce undrained behavior of dense Toyoura sand under different loading modes.
 
-Having validated the model against isotropic consolidation conditions ($K_{0}$=1.0), the following sections investigate how different consolidation stress ratios affect liquefaction resistance. Specimens with three representative $K_{0}$ values (0.5, 1.0, 2.0) obtained from the IC-AC protocol underwent undrained cyclic torsional shear until liquefaction occurred. The cyclic shear stress is applied as a sinusoidal wave with different cyclic stress ratios (CSR). The factors influencing liquefaction resistance are discussed from both macroscopic and microscopic perspectives.
+Having validated the model against isotropic consolidation conditions ($K_{0}$=1.0), the following sections investigate how different consolidation stress ratios affect liquefaction resistance. Specimens with three representative $K_{0}$ values (0.5, 1.0, 2.0) obtained from the IC-AC protocol underwent undrained cyclic torsional shear until liquefaction occurred. The cyclic shear stress is applied as a sinusoidal wave with different cyclic stress ratios (CSR). Unlike the monotonic shear validation where zero additional axial pressure was maintained, constant height (dH/dt = 0) is adopted for all cyclic shear simulations to match typical HCA test protocols and maintain consistent boundary conditions across different $K_{0}$ states. The factors influencing liquefaction resistance are discussed from both macroscopic and microscopic perspectives.
 
 ## Results and discussion
 
