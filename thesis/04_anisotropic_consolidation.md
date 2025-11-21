@@ -250,7 +250,7 @@ The EPWP responses differ significantly among the three $K_{0}$ states. The $K_{
 
 To systematically investigate how liquefaction resistance varies with CSR and $K_{0}$, Fig. 3.11(a) and Fig. 3.11(b) compare the number of cycles required to reach liquefaction under varying conditions.
 
-![](thesis/assets/media/image81.png)
+![](thesis/assets/images/liq_res_cur.png)
 
 (a) Cyclic liquefaction resistance with various CSR
 
