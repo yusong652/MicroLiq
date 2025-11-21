@@ -188,7 +188,7 @@ To validate the micro-parameters and numerical implementation, simulations were 
 
 #### Monotonic shear validation
 
-Undrained monotonic shear simulations were compared with HCA tests reported by Nakata et al. (1998). The specimen was isotropically consolidated to $p'_{0}$=100 kPa ($K_{0}$=1.0) before applying monotonic torsional shear under constant height condition. The micro-parameters listed in Table 3-1 were employed without any calibration.
+Undrained monotonic shear simulations were compared with HCA tests reported by Nakata et al. (1998). The specimen was isotropically consolidated to $p'_{0}$=100 kPa ($K_{0}$=1.0) before applying monotonic torsional shear under constant height condition. The micro-parameters listed in Table 3-1 were employed.
 
 ![](thesis/assets/images/validate_p_q_dense.png)
 
@@ -210,7 +210,7 @@ Liquefaction resistance under cyclic loading was validated against the classical
 
 Fig. 3.6. Cyclic stress ratio (CSR) versus number of cycles to liquefaction: validation against Ishihara et al. (1985) for dense Toyoura sand
 
-Five CSR levels (0.20, 0.25, 0.30, 0.35, 0.40) were simulated using the same micro-parameters as monotonic tests without any recalibration. The DEM results align well with experimental trends across the full range of cyclic stress ratios, demonstrating the model's capability to reproduce the characteristic CSR-N liquefaction resistance curve. Both monotonic and cyclic validations confirm that the DEM model with a single set of micro-parameters can accurately reproduce undrained behavior of dense Toyoura sand under different loading modes.
+Five CSR levels (0.20, 0.25, 0.30, 0.35, 0.40) were simulated. The DEM results align well with experimental trends across the full range of cyclic stress ratios, demonstrating the model's capability to reproduce the characteristic CSR-N liquefaction resistance curve. Both monotonic and cyclic validations confirm that the DEM model can accurately reproduce undrained behavior of dense Toyoura sand under different loading modes.
 
 Having validated the model against isotropic consolidation conditions ($K_{0}$=1.0), the following sections investigate how different consolidation stress ratios affect liquefaction resistance. Specimens with three representative $K_{0}$ values (0.5, 1.0, 2.0) obtained from the IC-AC protocol underwent undrained cyclic torsional shear until liquefaction occurred. The cyclic shear stress is applied as a sinusoidal wave with different cyclic stress ratios (CSR). The factors influencing liquefaction resistance are discussed from both macroscopic and microscopic perspectives.
 
