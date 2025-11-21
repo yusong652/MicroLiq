@@ -98,7 +98,7 @@ Table 3-2. Equations of stress and strain in the HCA
 
 wall elements that solely interact with particles to apply shear loads is preferred. The gravity was removed to achieve a uniform stress state and then, as shown in Fig. 3.1(b), vertically arranged torsional blades consisting of six wall elements were inserted into the specimen.
 
-Soils not merely encounter diverse levels of $K_{0}$, but also frequently undergo complex stress histories, potentially influencing the liquefaction resistance. For instance, Pan et al. (2019) observed that the stress history of triaxial extension-unloading can enhance liquefaction resistance compared to IC specimen, whereas the triaxial compression-unloading history yields a contrary effect. To investigate the impact of stress path on the liquefaction resistance, two protocols employing distinct stress paths were utilized to prepare specimens. To achieve the desired target stress
+To achieve the target stress levels for anisotropic consolidation, a servo mechanism (Itasca Consulting Group, 2021; Ma et al., 2024) is employed to manipulate the position of vertices of wall elements throughout the consolidation process. Fig. 3.2 shows the stress and void ratio evolution during the anisotropic consolidation process for three representative $K_{0}$ values.
 
 ![](thesis/assets/images/fig3_2a_aniso_stress.png)
 
@@ -110,11 +110,25 @@ Soils not merely encounter diverse levels of $K_{0}$, but also frequently underg
 
 Fig. 3.2. Stress and void ratio evolution in anisotropic consolidation for specimens with three representative stress anisotropies ($K_{0}$=0.5, 1.0, 2.0) from isotropic consolidation state with $p'$=10.0kPa to target mean effective stress $p'$=100.0kPa
 
-levels, a servo mechanism (Itasca Consulting Group, 2021; Ma et al., 2024) is employed to manipulate the position of vertices of wall elements throughout the consolidation process.
+The specimen was initially compressed to a target void ratio of approximately 0.736 under a friction coefficient of 0.0. Subsequently, the friction coefficient was reset to 0.5, followed by anisotropic consolidation from a state with $p'$=10.0kPa and $K_{0}$=1.0 to $p'$=100.0kPa and the target $K_{0}$ (IC-AC protocol). Notably, during the AC process with an increasing $p'$, $K_{0}$ evolves from 1.0 to the corresponding target $K_{0}$. Three representative cases with $K_{0}$ values of 0.5, 1.0, and 2.0 are examined, representing compression ($K_{0}$<1.0), isotropic ($K_{0}$=1.0), and extension ($K_{0}$>1.0) states, respectively. During the AC process, both $p'$ and $q$ increase simultaneously, with the stress path depending on the target $K_{0}$ value, as illustrated in Fig. 3.2(a) and Fig. 3.2(b).
 
-The specimen was initially compressed to a target void ratio of approximately 0.736 under a friction coefficient of 0.1. Subsequently, the friction coefficient was reset to 0.5, followed by anisotropic consolidation from a state with $p'$=10.0kPa and $K_{0}$=1.0 to $p'$=100.0kPa and the target $K_{0}$ (IC-AC protocol), as shown in Fig. 3.2(a) and Fig. 3.2(b). Notably, during the AC process with an increasing $p'$, $K_{0}$ evolves from 1.0 to the corresponding target $K_{0}$. Fig. 3.2 illustrates three representative cases with $K_{0}$ values of 0.5, 1.0, and 2.0, representing compression ($K_{0}$<1.0), isotropic ($K_{0}$=1.0), and extension ($K_{0}$>1.0) states, respectively. During the AC process, both $p'$ and $q$ increase simultaneously, with the stress path depending on the target $K_{0}$ value.
+As indicated by Fig. 3.2(b), the void ratio decreases from approximately 0.736 at the initial state ($p'$=10 kPa) to around 0.732 at the target stress ($p'$=100 kPa) during anisotropic consolidation. The differences in final void ratio $e$ between different $K_{0}$ states after IC-AC are minimal, with $e$ ranging from 0.7315 to 0.7325. This small variation (approximately 0.001) makes it reasonable to emphasize the effects of microscopic quantities, such as coordination number and fabric anisotropy, rather than $e$, on liquefaction resistance.
 
-As indicated by Fig. 3.2(b), the void ratio decreases from approximately 0.736 at the initial state ($p'$=10 kPa) to around 0.732 at the target stress ($p'$=100 kPa) during anisotropic consolidation. The differences in final void ratio $e$ between different $K_{0}$ states after IC-AC are minimal, with $e$ ranging from 0.7315 to 0.7325. This small variation (approximately 0.001) makes it reasonable to emphasize the effects of microscopic quantities, such as coordination number and fabric anisotropy, rather than $e$, on liquefaction resistance. The specification of specimens for cyclic shear are summarized in Table 3-3.
+![](thesis/assets/media/image67_k05.jpg)
+
+(a) $K_{0}$=0.5
+
+![](thesis/assets/media/image67_k10.jpg)
+
+(b) $K_{0}$=1.0
+
+![](thesis/assets/media/image67_k20.jpg)
+
+(c) $K_{0}$=2.0
+
+Fig 3.3. Visualization of hollow cylindrical specimens after anisotropic consolidation to $p'$=100 kPa with different $K_{0}$ values. Cross-sectional view shows particles (colored by radius) and contact forces (red vectors), corresponding to the final states in Fig. 3.2.
+
+The specification of specimens for cyclic shear are summarized in Table 3-3.
 
 Table 3-3. Specification of specimens in initial cyclic undrained shear stage
 
