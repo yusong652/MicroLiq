@@ -248,21 +248,13 @@ The EPWP responses differ significantly among the three $K_{0}$ states. The $K_{
 
 #### Liquefaction resistance curves
 
-To systematically investigate how liquefaction resistance varies with CSR and $K_{0}$, Fig. 3.11(a) and Fig. 3.11(b) compare the number of cycles required to reach liquefaction under varying conditions.
+To systematically investigate how liquefaction resistance varies with CSR and $K_{0}$, Fig. 3.11 presents the cyclic stress ratio versus number of cycles to liquefaction for three representative $K_{0}$ values.
 
 ![](thesis/assets/images/liq_res_cur.png)
 
-(a) Cyclic liquefaction resistance with various CSR
+Fig. 3.11. Cyclic liquefaction resistance curves for specimens with three representative stress anisotropies ($K_{0}$=0.5, 1.0, 2.0)
 
-![](thesis/assets/media/image82.png)
-
-(b) Number of cyclic loadings $N_{L}$ vs. $K_{0}$ under cyclic shear loading with cyclic shear stress ratio of 0.250
-
-Fig. 3.11. Cyclic liquefaction resistance of specimens subjected to different initial stress anisotropies and cyclic shear stress ratios
-
-Fig. 3.11(a) demonstrates liquefaction resistance for specimens prepared with IC-AC protocol. Under different CSR conditions, the number of cycles to liquefaction decreases with decreasing $K_{0}$ when $K_{0} < 1.0$, and decreases with increasing $K_{0}$ when $K_{0} > 1.0$. Hence, greater stress anisotropy results in fewer cycles needed to trigger liquefaction, indicating lower resistance. This observation is consistent with the findings by Georgiannou and Konstadinou (2014) regarding the loose state, but it diverges from the results reported by other experimental studies (Ishihara and Takatsu, 1979; Yamashita and Toki, 1993; Vargas et al., 2020).
-
-The influence of stress paths on liquefaction resistance is also noteworthy. Fig. 3.11(b) analyses the variation in the number of cycles required for triggering liquefaction under CSR=0.25, including specimens prepared with both protocols. Observations reveal that the protocols for preparing specimens, whether following the IC-AC or IC-AC-TS protocol, does not significantly affect the liquefaction resistance for the same $K_{0}$. Yet, other forms of protocols for preparation may have an impact on liquefaction resistance and remains to be investigated, but this falls outside the scope of this study and should be noted.
+The liquefaction resistance curves demonstrate clear dependency on initial stress anisotropy. For all CSR levels tested, the isotropic consolidation state ($K_{0}$=1.0) exhibits intermediate liquefaction resistance. The compression state ($K_{0}$=0.5) shows the highest resistance, requiring more cycles to reach liquefaction at the same CSR. Conversely, the extension state ($K_{0}$=2.0) demonstrates the lowest resistance, reaching liquefaction with fewer cycles. This trend indicates that greater stress anisotropy—whether in compression or extension—generally reduces liquefaction resistance compared to the isotropic state. The observed pattern is consistent with the findings by Georgiannou and Konstadinou (2014) for dense sand states, though it contrasts with some experimental studies (Ishihara and Takatsu, 1979; Yamashita and Toki, 1993) that reported minimal $K_{0}$ dependency.
 
 #### Cumulative shear work
 
