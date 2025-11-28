@@ -200,7 +200,7 @@ Undrained monotonic shear simulations were compared with HCA tests reported by N
 
 Fig. 3.5. Validation of DEM simulation against monotonic undrained shear tests (Nakata et al., 1998): dense Toyoura sand with Dr≈80%, $p'_{0}$=100 kPa, $K_{0}$=1.0
 
-The DEM simulation successfully captures the characteristic undrained behavior of dense sand: (1) strain-softening in effective stress space, with the stress path approaching the phase transformation line as mean effective stress $p'$ decreases from the initial state; (2) stress-strain hardening typical of dense specimens, where deviatoric stress $q$ increases monotonically with deviatoric strain $\varepsilon_{q}$. The close agreement between simulation and experimental results validates both the micro-parameters and the combined servo mechanism described in Section 3.2.2.
+The DEM simulation successfully captures the characteristic undrained behavior of dense sand: (1) dilative response in effective stress space, with the stress path initially moving leftward as $p'$ decreases, then turning rightward as $p'$ increases due to dilation while approaching the critical state line; (2) strain-hardening typical of dense specimens, where deviatoric stress $q$ increases monotonically with deviatoric strain $\varepsilon_{q}$. The close agreement between simulation and experimental results validates both the micro-parameters and the combined servo mechanism described in Section 3.2.2.
 
 #### Cyclic shear validation
 
@@ -260,13 +260,13 @@ The liquefaction resistance curves demonstrate clear dependency on initial stres
 
 Cumulative shear work refers to the energy input during undrained cyclic shear in this study. It is valuable to examine the correlation between the liquefaction resistance of soils and their susceptibility to the input energy. Towhata and Ishihara (1985) conducted a series of experiments where specimens were subjected to undrained cyclic shear under various loading conditions. They revealed a unique relationship between excess pore water pressure and shear work, despite differences in stress anisotropy. Figueroa et al. (1994) similarly confirmed that the shear work required for triggering liquefaction is independent of the amplitude of strain through strain-controlled tests. Georgiannou and Konstadinou (2014) concluded from the comparison between IC and AC specimens that the energy associated with terminal water pressure is positively correlated with relative density. For equivalent relative densities, AC specimens require greater energy than IC specimens to induce liquefaction.
 
-![](thesis/assets/media/image83.png)
+![](thesis/assets/images/acc_energy.png)
 
-(a) $W_{s}$ vs. $N_{c}/N_{L}$ (dense)
+(a) $W_{s}$ vs. $N_{c}/N_{L}$
 
-![](thesis/assets/media/image84.png)
+![](thesis/assets/images/acc_energy_EPWP.png)
 
-(b) $r_{u}$ vs. $W_{s}$ (dense)
+(b) $r_{u}$ vs. $W_{s}$
 
 Fig. 3.12. Evolution of cumulative unit volume shear work and shear work required to trigger liquefaction for different $K_{0}$
 
@@ -274,7 +274,7 @@ The cumulative unit volume shear work $W_{s}$ is defined as shown in Eq. (3-8), 
 
 $W_{s} = \int_{0}^{t}{\dot{\gamma_{z\theta}}\tau_{z\theta}dt}$ (3-8)
 
-As indicated by Fig. 3.12(a), in the liquefaction process normalized by $N_{L}$, it is difficult to distinguish the differences between the cases with different $K_{0}$ values. Fig. 3.12(b) explores the impact of different $K_{0}$ on the liquefaction by relating $W_{s}$ and $r_{u}$. For the initial stages, particularly when $r_{u}$ is less than 0.2, a larger $K_{0}$ contributes to a higher $r_{u}$ for the same amount of work $W_{s}$​. $r_{u}$ decreases as shear force performs positive work and increases as shear force performs negative work. The shear work required to achieve liquefaction $W_{sL}$ for different $K_{0}$ values range from 0.07 to 0.13, with a trend of increasing $W_{sL}$​ as stress anisotropy increases. This implies that although the IC state with $K_{0}$=1.0 specimen requires more cyclic numbers to reach liquefaction, its higher initial shear stiffness results in lower strain velocity, hence requiring the least shear work.
+As indicated by Fig. 3.12(a), in the liquefaction process normalized by $N_{L}$, the cumulative shear work evolution is nearly identical for all three $K_{0}$ values, indicating that the normalized energy accumulation pattern is independent of initial stress anisotropy. Fig. 3.12(b) explores the relationship between $W_{s}$ and $r_{u}$. For the same amount of shear work, the $K_{0}$=0.5 specimen exhibits lower $r_{u}$ compared to $K_{0}$=1.0 and $K_{0}$=2.0, indicating greater resistance to pore pressure buildup. The shear work required to achieve liquefaction $W_{sL}$ is highest for $K_{0}$=0.5 and lowest for $K_{0}$=1.0. This implies that although the $K_{0}$=1.0 specimen requires more cycles to reach liquefaction, its higher initial shear stiffness results in smaller strain amplitude per cycle, hence requiring the least total shear work.
 
 #### Initial shear wave velocity
 
