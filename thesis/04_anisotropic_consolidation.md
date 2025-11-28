@@ -298,11 +298,11 @@ While shear stiffness and energy dissipation provide useful macroscopic characte
 
 #### Evolution of coordination number
 
-The coordination number indicates the number of contacts each individual particle has. Its average value for all particles isotropically evaluates the compactness of fabric in granular materials (Oda, 1977; Shire and O'Sullivan, 2012; Fei and Narsilio, 2020). Particles with fewer than two contacts are generally unable to stably transmit interparticle forces and do not effectively contribute to the soil skeletons. These particles are classified as floaters and are excluded from the calculation of the coordination number (Thornton, 2000; Hu et al., 2023). As shown in Eq. (3-10),
+The coordination number quantifies the average number of contacts per particle, serving as a scalar measure of fabric compactness in granular materials (Oda, 1977; Shire and O'Sullivan, 2012; Fei and Narsilio, 2020). To focus on load-bearing particles, the mechanical coordination number $Z_m$ excludes "floaters"—particles with fewer than two contacts that cannot stably transmit interparticle forces (Thornton, 2000; Hu et al., 2023):
 
 $Z_{m} = \frac{2N_{c} - N_{1}}{N_{p} - N_{1} - N_{0}}$ (3-10)
 
-$Z_{m}$ represents the mechanical coordination number. $N_{c}$ is the number of interparticle contacts, and $N_{p}$ is the total number of particles. $N_{1}$ and $N_{0}$ indicate the number of particles with one and zero contacts, respectively, to eliminate the influence of floaters.
+where $N_c$ is the total number of interparticle contacts, $N_p$ is the total number of particles, and $N_1$ and $N_0$ are the numbers of particles with one and zero contacts, respectively.
 
 Figure 3.14 shows the evolution of $Z_{m}$ under different initial $K_{0}$ states during the cyclic shear. The results indicate that the influence of initial stress states on the coordination number is significant, with greater stress anisotropy corresponding to lower coordination numbers both at the initial state and during the cyclic shear process. As cyclic loading was applied to the undrained specimen, $Z_{m}$ exhibited oscillatory behavior while progressively decreasing as shown in Fig. 3.14. The decline in $Z_{m}$ indicates a reduction in interparticle contacts and a loss of fabric integrity and robustness. Liquefaction was observed to occur when $Z_{m}$ fell to approximately 3.5, signifying a critical threshold where the specimen became susceptible to cyclic shear
 
