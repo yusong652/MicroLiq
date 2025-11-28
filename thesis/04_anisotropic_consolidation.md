@@ -292,6 +292,8 @@ Combining Fig. 3.12 and Fig. 3.13 provides a comprehensive macroscopic interpret
 
 For the $K_0$=0.5 specimen, although both initial stiffness and stiffness during cyclic shear are lower than those of $K_0$=1.0 (Fig. 3.13), Fig. 3.12(b) clearly demonstrates that achieving the same $r_u$ level requires substantially more shear work for $K_0$=0.5 compared to $K_0$=1.0 and $K_0$=2.0. This indicates that the $K_0$=0.5 specimen possesses greater resistance to pore pressure buildup per unit energy input. Consequently, the $K_0$=0.5 specimen requires the most cycles to reach liquefaction and exhibits the highest liquefaction resistance among the three states, despite having lower shear stiffness than the isotropic state.
 
+While shear stiffness and energy dissipation provide useful macroscopic characterizations, they do not explain why the compression state ($K_0$=0.5) exhibits greater resistance to pore pressure buildup, or why specimens with similar energy requirements show different liquefaction resistance. Macroscopic parameters such as void ratio and stiffness cannot capture the underlying particle-scale fabric structure that ultimately governs the mechanical response. To elucidate the fundamental mechanisms, the following sections examine microscopic quantities and their evolution under different $K_0$ states.
+
 ### Microscopic interpretation
 
 #### Evolution of coordination number
