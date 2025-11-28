@@ -132,7 +132,7 @@ Fig 3.3. Visualization of hollow cylindrical specimens after anisotropic consoli
 
 In DEM simulations of undrained tests, the interaction between water and particles is disregarded, employing a constant volume approach to replicate the undrained condition. The effectiveness of this constant volume approach has been validated in numerous DEM simulations (Sitharam et al., 2002; Yimsiri and Soga, 2010). To simultaneously achieve the stress boundary conditions and undrained condition observed in laboratory HCA tests, an innovative combined servo mechanism is proposed.
 
-The key challenge in simulating undrained HCA tests lies in satisfying multiple conditions simultaneously. In laboratory tests, the inner and outer chamber pressures ($p_i$ and $p_o$) are maintained equal and constant, the additional axial pressure ($p_z$) or height ($H$) is controlled, and a target shear stress ($\tau_{z\theta,tar}$) is applied. Meanwhile, the undrained condition requires constant volume. This study addresses these challenges through a combined servo mechanism by controlling four variables: inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and additional axial pressure ($p_z$), to satisfy four condition equations simultaneously.
+The key challenge in simulating undrained HCA tests lies in satisfying multiple conditions simultaneously. In laboratory tests, the inner and outer chamber pressures ($p_i$ and $p_o$) are maintained equal and constant, the additional axial pressure ($p_z$) or height ($H$) is controlled, and a target shear stress ($\tau_{z\theta,tar}$) is applied. Meanwhile, the undrained condition requires constant volume. This study addresses these challenges through a combined servo mechanism by controlling four kinematic variables: inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$), to satisfy four condition equations simultaneously.
 
 **Condition 1: Equal inner and outer chamber pressures**
 
@@ -158,7 +158,7 @@ The undrained condition is ensured by maintaining constant volume throughout the
 
 $$2\pi H\left(R\frac{dR}{dt} + r\frac{dr}{dt}\right) + \pi(R^2 - r^2)\frac{dH}{dt} = 0$$ (3-4)
 
-By combining these four equations, the system of four variables ($dr/dt$, $dR/dt$, $dH/dt$, $p_z$) and four constraints is solved simultaneously at each timestep, achieving both the stress conditions and undrained condition in DEM simulation of HCA tests. This combined servo mechanism (Ma et al., 2024) elegantly replicates the boundary conditions observed in laboratory undrained cyclic torsional shear tests.
+By combining these four equations, the system of four kinematic variables ($dr/dt$, $dR/dt$, $dH/dt$, $d\theta/dt$) and four constraints is solved simultaneously at each timestep, achieving both the stress conditions and undrained condition in DEM simulation of HCA tests. This combined servo mechanism (Ma et al., 2024) elegantly replicates the boundary conditions observed in laboratory undrained cyclic torsional shear tests.
 
 **Determination of servo coefficients**
 
