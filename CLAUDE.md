@@ -23,6 +23,7 @@ The project is organized into chapter-based directories corresponding to thesis 
   - `07_references.md` - Complete bibliography
   - `08_appendix1_hpc.md` - GPU-accelerated DEM with TaichiLang
   - `09_appendix2_raytracing.md` - Ray tracing for DEM visualization
+  - `10_appendix3_aiNagisa.md` - LLM-driven PFC simulation assistant
   - `assets/media/` - 162 extracted images (PNG, JPEG, SVG)
   - `MicroLiq_full.md` - Original single-file version (backup)
 
@@ -227,3 +228,18 @@ The thesis is managed using Obsidian vault at `/Users/hanyusong/thesis/MicroLiq/
 - Thesis markdown files are tracked in git
 - Commit chapter changes separately for clear history
 - Keep `MicroLiq_full.md` as backup of original conversion
+
+## Related Projects
+
+### aiNagisa (Thesis Appendix 3)
+
+- **Path**: `/Users/hanyusong/aiNagisa`
+- **Description**: LLM-driven PFC simulation assistant
+- **Core Concept**: "Script is Context" - every PFC operation becomes a versioned
+  Python script, forming persistent cross-session context that the LLM learns from
+- **Key Features**:
+  - Documentation-driven workflow (query → test script → production script)
+  - Real-time WebSocket integration with ITASCA PFC
+  - Multi-provider LLM support (Gemini, Claude, OpenAI, local models)
+- **Tech Stack**: Python (FastAPI), React, TypeScript, WebSocket
+- **Relevance**: AI-assisted DEM simulation workflow

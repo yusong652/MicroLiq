@@ -55,6 +55,9 @@ GPU-accelerated DEM implementation using TaichiLang, covering efficient neighbor
 ### [[09_appendix2_raytracing|Appendix 2: Ray Tracing For Enhanced Visualization In DEM]]
 Ray tracing fundamentals for high-fidelity DEM visualization, including camera models, ray-object intersection, lighting models (ambient, point, directional), reflection/refraction physics, and optimization techniques (supersampling, spatial partitioning).
 
+### [[10_appendix3_aiNagisa|Appendix 3: AI-Assisted Workflow For DEM Simulations]]
+Application of LLM-based agents to numerical simulation workflows. Introduces aiNagisa, a documentation-driven AI assistant for PFC simulations that ensures command syntax reliability and maintains reproducibility through versioned scripts.
+
 ---
 
 ## Quick Navigation
@@ -63,7 +66,7 @@ Ray tracing fundamentals for high-fidelity DEM visualization, including camera m
 - [[01_introduction|Introduction]] → [[02_literature_review|Literature]] → [[03_fabric_evolution|Fabric Evolution]] → [[04_anisotropic_consolidation|K₀ Effects]] → [[05_multidirectional_shear|Multi-Directional Shear]] → [[06_conclusions|Conclusions]]
 
 **Technical Implementation:**
-- [[08_appendix1_hpc|HPC/GPU Computing]] | [[09_appendix2_raytracing|Visualization & Ray Tracing]]
+- [[08_appendix1_hpc|HPC/GPU Computing]] | [[09_appendix2_raytracing|Ray Tracing]] | [[10_appendix3_aiNagisa|AI-Assisted Workflow]]
 
 **Research Focus Areas:**
 - #fabric-evolution #anisotropic-consolidation #multidirectional-shear #K0-effect #liquefaction-resistance
