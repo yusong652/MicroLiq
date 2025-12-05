@@ -70,7 +70,7 @@ def plot_shear_modulus(k0, color, marker):
 		d_strain = strains[ind_end] - strains[ind_start]
 		d_stress = stresses_shear[ind_end] - stresses_shear[ind_start]
 
-		if abs(d_strain) > 1e-10:
+		if abs(d_strain) > 1e-11:
 			G = abs(d_stress / d_strain) * 1000.  # Pa
 			Vs = np.sqrt(G / density_sat)  # m/s
 
@@ -78,10 +78,10 @@ def plot_shear_modulus(k0, color, marker):
 			# i=1,3,5,... -> unloading (2/4T, 4/4T, 6/4T, ...)
 			if i % 2 == 0:  # loading
 				Vs_loading.append(Vs)
-				N_loading.append((i // 2) / n_liq)  # normalize by N_L, each full cycle
+				N_loading.append((t_end / period) / n_liq)  # normalize by N_L
 			else:  # unloading
 				Vs_unloading.append(Vs)
-				N_unloading.append((i // 2) / n_liq)
+				N_unloading.append((t_end / period) / n_liq)
 
 	Vs_loading = np.array(Vs_loading)
 	Vs_unloading = np.array(Vs_unloading)
@@ -89,8 +89,8 @@ def plot_shear_modulus(k0, color, marker):
 	N_unloading = np.array(N_unloading)
 
 	# filter to N/N_L <= 1.0
-	flt_load = N_loading <= 1.0
-	flt_unload = N_unloading <= 1.0
+	flt_load = N_loading <= 1.05
+	flt_unload = N_unloading <= 1.05
 
 	# plot loading curve (solid line)
 	label_load = r'$%.1f,\ load$' % k0
@@ -134,8 +134,8 @@ ax1.set_xlabel(r'$Normalized\ number\ of\ cycles\ N_c/N_L$', fontsize=13)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
 ax1.tick_params(axis='both', which='major', labelsize=13)
-ax1.set_xlim(0, 1.0)
-ax1.set_ylim(120, 220)
+ax1.set_xlim(0, 1.05)
+ax1.set_ylim(20, 220)
 plt.annotate(r"$CSR=0.200$", xy=(0.55, 125), fontsize=13)
 
 # inset axes settings
