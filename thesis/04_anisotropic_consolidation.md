@@ -336,21 +336,39 @@ $\alpha = \frac{5\left( 3\varphi_{v} - 1 \right)}{5\varphi_{v} + 1}$ (3-14)
 
 where $\varphi_{v}$ denotes the vertical principal component in fabric tensor $\mathbf{\Phi}_{\mathbf{ij}}$. A larger $\varphi_{v}$ indicates a concentration of contact normals in the axial direction. Positive $\alpha$ values correspond to axially-concentrated contacts (typical for $K_0 < 1.0$), while negative values correspond to horizontally-concentrated contacts (typical for $K_0 > 1.0$). This signed indicator allows for a more complete characterization of fabric evolution during cyclic shear.
 
-![](thesis/assets/media/image88.png)
+![](thesis/assets/media/fabric_anisotropy.png)
 
 Fig. 3.15. Evolution of fabric anisotropy indicator $\alpha$ during cyclic shear for different $K_{0}$ values (CSR=0.200)
 
 Fig. 3.15 presents the evolution of fabric anisotropy indicator $\alpha$ during undrained cyclic shear. The inset shows the initial fabric anisotropy $\alpha_0$ for different $K_0$ states. The $K_0$=0.5 specimen exhibits positive $\alpha_0$ (approximately 0.07), indicating contact normals concentrated in the axial direction. The $K_0$=1.0 specimen shows $\alpha_0$ close to zero (approximately 0.02), reflecting a nearly isotropic fabric. The $K_0$=2.0 specimen exhibits negative $\alpha_0$ (approximately -0.05), indicating contact normals concentrated in the horizontal direction. During the early stages of cyclic loading ($N_c/N_L < 0.8$), $\alpha$ remains relatively stable for all three $K_0$ states. As the specimens approach liquefaction, $\alpha$ begins to fluctuate significantly and converge toward zero, indicating that the directional fabric anisotropy diminishes as the fabric structure degrades.
 
+The morphological basis for the sign of $\alpha_0$ can be visualized through contact density distributions, as shown in Fig. 3.16. The contact density $\rho_c$ describes the average number of contacts per unit surface area on a unit sphere, providing a directional representation of fabric orientation (Han et al., 2023). For the $K_0$=0.5 specimen (Fig. 3.16a), the contact density exhibits an axially-extended distribution, with higher density (orange/red) at the poles and lower density (green) around the equator. This axial concentration corresponds to the positive $\alpha_0$ value. In contrast, the $K_0$=2.0 specimen (Fig. 3.16b) displays a horizontally-extended ellipsoidal distribution, with higher contact density in the equatorial band compared to the $K_0$=0.5 specimen. This horizontal concentration corresponds to the negative $\alpha_0$ value. These distinct morphologies arise from the stress-induced fabric rearrangement during anisotropic consolidation: contacts tend to align perpendicular to the maximum principal stress direction.
+
+![](thesis/assets/media/contact_density_k050_initial.jpg) ![](thesis/assets/media/contact_density_k200_initial.jpg)
+
+(a) $K_{0}$=0.5 (b) $K_{0}$=2.0
+
+Fig. 3.16. Initial contact density distribution for specimens with different $K_{0}$ values, showing (a) axially-extended distribution for $K_{0}$=0.5 ($\alpha_0 > 0$) and (b) horizontally-extended distribution for $K_{0}$=2.0 ($\alpha_0 < 0$)
+
+#### Interparticle contact force
+
+The initial distribution of contact forces for different $K_0$ states was presented in Fig. 3.3, where the contact forces align with the direction of the maximum principal stress: axially for $K_0$=0.5 and horizontally for $K_0$=2.0. As cyclic loading progresses, the number of interparticle contacts gradually decreases and the magnitude of contact forces diminishes, until liquefaction occurs. From a microscopic viewpoint, liquefaction occurs because the particle skeleton becomes increasingly unable to sustain itself through interparticle contact, hindering the transfer of external forces.
+
+![](thesis/assets/media/contact_force_post_liq.jpg)
+
+Fig. 3.17. Contact force chain (left half, colored by force magnitude) and particle displacement (right half, colored by displacement magnitude) in post-liquefaction state with initial $K_{0}$=0.5 (CSR=0.200)
+
+Fig. 3.17 shows the post-liquefaction state for the specimen with initial $K_0$=0.5. The left half displays the contact force chains, where the forces have become sparse and no longer exhibit the axially-concentrated pattern observed in Fig. 3.3. The right half shows the particle displacement field, with larger displacements (red) concentrated in the upper portion of the specimen. Regardless of the initial $K_0$ value, the post-liquefaction contact force distribution becomes similar—forces no longer align with the initial maximum principal stress direction but tend to orient randomly and concentrate locally. This convergence of post-liquefaction states is consistent with the observed convergence of $\alpha$, $V_s$, and $Z_m$ as specimens approach liquefaction.
+
 #### Effect of fabric on liquefaction resistance
 
-The impact of fabric on liquefaction resistance is investigated through a space of $\alpha_{0}$, $Z_{m0}$, and $N_{L}$ (Yang and Taiebat, 2024) for various $K_{0}$, as shown in Fig. 3.16(a) and (b). Specimens prepared using the IC-AC and IC-AC-TS protocols exhibit similar $Z_{m0}$ and $\alpha_{0}$, indicating that the two stress paths do not significantly affect the microscopic fabric, thereby explaining the similar $N_{L}$for different preparation protocols. For $K_{0}$=1.0, $Z_{m0}$ and liquefaction strength exhibit the highest levels. As stress anisotropy increases, AC states with $K_{0}$\<1.0 and $K_{0}$\>1.0 diverge along different routes.
+The impact of fabric on liquefaction resistance is investigated through a space of $\alpha_{0}$, $Z_{m0}$, and $N_{L}$ (Yang and Taiebat, 2024) for various $K_{0}$, as shown in Fig. 3.18(a) and (b). Specimens prepared using the IC-AC and IC-AC-TS protocols exhibit similar $Z_{m0}$ and $\alpha_{0}$, indicating that the two stress paths do not significantly affect the microscopic fabric, thereby explaining the similar $N_{L}$for different preparation protocols. For $K_{0}$=1.0, $Z_{m0}$ and liquefaction strength exhibit the highest levels. As stress anisotropy increases, AC states with $K_{0}$\<1.0 and $K_{0}$\>1.0 diverge along different routes.
 
 To investigate the influence of $Z_{m0}$ and $\alpha_{0}$ on liquefaction resistance, an exponential function that linearly relates $Z_{m0}$ and $\alpha_{0}$ to $N_{L}$ (Yang and Huang, 2023; Yang and Taiebat, 2024), was introduced to fit their relationship, as shown in Eq. (3-15).
 
 $N_{L} = \exp\left( {\zeta Z}_{m0} + \eta\alpha_{0}\  + \chi \right)$ (3-15)
 
-The fitted surface equation produced positive $\zeta$=3.63 and $\eta$=0.19, suggesting that an increasing $Z_{m0}$ or $\alpha_{0}$ enhances liquefaction resistance, which contrasts with the literatures, where an increasing $\alpha_{0}$ reduces liquefaction resistance. The $K_{0}$ conditions of the specimens in this study vary considerably compared to the literature and could explain the distinct conclusions. For instance, unlike a comparison between two stress ratios of $K_{0}$=1.0 and $K_{0}$=0.5 (Yang and Taiebat, 2024), this study evaluates liquefaction resistance between and beyond the thresholds, with $K_{0}$ ranging from 0.33 to 3.33, under different relative densities. When comparing the IC state of $K_{0}$=1.0 with AC states of $K_{0}$≠1.0, as shown in Fig. 3.16(b), it is evident that for both dense and loose states, the $N_{L}$ for $K_{0}$=1.0 lies above the fitted lines for $K_{0}$\<1.0 or $K_{0}$\>1.0, indicating a stronger liquefaction resistance for $K_{0}$=1.0 state at the same $Z_{m0}$. This tendency aligns well with the conclusions found in the literatures. However, introducing multiple values of $\alpha_{0}$ emphasized the comparison between the AC states of $K_{0}$\<1.0 and $K_{0}$\>1.0, thus yielding a positive value of $\eta$ when fitting the relationship. On the other hand, through a comparison of different relative densities as shown in Fig. 3.16 (b), the fitted line for dense state is positioned above that of the loose state, indicating that not only the microscopic factors like $Z_{m0}$ and $\alpha_{0}$, but also a smaller void ratio, which evaluates the macroscopic compactness, strengthens liquefaction resistance.
+The fitted surface equation produced positive $\zeta$=3.63 and $\eta$=0.19, suggesting that an increasing $Z_{m0}$ or $\alpha_{0}$ enhances liquefaction resistance, which contrasts with the literatures, where an increasing $\alpha_{0}$ reduces liquefaction resistance. The $K_{0}$ conditions of the specimens in this study vary considerably compared to the literature and could explain the distinct conclusions. For instance, unlike a comparison between two stress ratios of $K_{0}$=1.0 and $K_{0}$=0.5 (Yang and Taiebat, 2024), this study evaluates liquefaction resistance between and beyond the thresholds, with $K_{0}$ ranging from 0.33 to 3.33, under different relative densities. When comparing the IC state of $K_{0}$=1.0 with AC states of $K_{0}$≠1.0, as shown in Fig. 3.18(b), it is evident that for both dense and loose states, the $N_{L}$ for $K_{0}$=1.0 lies above the fitted lines for $K_{0}$\<1.0 or $K_{0}$\>1.0, indicating a stronger liquefaction resistance for $K_{0}$=1.0 state at the same $Z_{m0}$. This tendency aligns well with the conclusions found in the literatures. However, introducing multiple values of $\alpha_{0}$ emphasized the comparison between the AC states of $K_{0}$\<1.0 and $K_{0}$\>1.0, thus yielding a positive value of $\eta$ when fitting the relationship. On the other hand, through a comparison of different relative densities as shown in Fig. 3.18(b), the fitted line for dense state is positioned above that of the loose state, indicating that not only the microscopic factors like $Z_{m0}$ and $\alpha_{0}$, but also a smaller void ratio, which evaluates the macroscopic compactness, strengthens liquefaction resistance.
 
 ![](thesis/assets/media/image89.png)
 
@@ -360,39 +378,15 @@ The fitted surface equation produced positive $\zeta$=3.63 and $\eta$=0.19, sugg
 
 (b) Effect of $Z_{m0}$ on liquefaction resistance
 
-Fig. 3.16. Effect of initial coordination number $Z_{m0}$ and initial fabric anisotropy $\alpha_{0}$ on liquefaction resistance for specimens with different initial stress anisotropies (CSR=0.250)
+Fig. 3.18. Effect of initial coordination number $Z_{m0}$ and initial fabric anisotropy $\alpha_{0}$ on liquefaction resistance for specimens with different initial stress anisotropies (CSR=0.250)
 
-While liquefaction resistance decreases with increasing initial stress anisotropy for both dense and loose states, primarily due to variation in $Z_{m0}$, subtle differences in liquefaction response are observed for states with $K_{0}$\<1.0 and $K_{0}$\>1.0. For instance, as shown in Fig. 3.16(b), which decouples $\alpha_{0}$ from Fig. 3.16(a), illustrates that when comparing $K_{0}$=0.4 and $K_{0}$=2.5 in the dense state, both share a similar $Z_{m0}$ value around 4.43. However, the $N_{L}$ is over 10% higher for $K_{0}$ = 0.4 compared to $K_{0}$ = 2.5. Additionally, for $K_{0}$=0.33 and $K_{0}$=3.0 in the dense state, although their $N_{L}$ values are similar, the $Z_{m0}$ for $K_{0}$=0.33 is at least 0.05 lower than that for $K_{0}$=3.0. This suggests that a smaller $Z_{m0}$ is sufficient to achieve the same level of liquefaction resistance for $K_{0}$=0.33 as for $K_{0}$=3.0. These differences contribute to the positive value of $\eta$ in Eq. (3-15). On the other hand, for the loose states, this difference between $K_{0}$\<1.0 and $K_{0}$\>1.0 is limited, where the fitted lines for $K_{0}$\<1.0 and $K_{0}$\>1.0 almost overlap. However, for comparison between $K_{0}$=0.33 and $K_{0}$=3.33, or comparison between $K_{0}$=0.40 and $K_{0}$=2.50, stronger liquefaction tendency was also observed, where smaller $Z_{m0}$ enables similar liquefaction resistance for $K_{0}$\<1.0 compared to $K_{0}$\>1.0. The overlapping of fitted lines are mainly attributed to a sightly high value for $K_{0}$=3.00 in loose state.
+While liquefaction resistance decreases with increasing initial stress anisotropy for both dense and loose states, primarily due to variation in $Z_{m0}$, subtle differences in liquefaction response are observed for states with $K_{0}$\<1.0 and $K_{0}$\>1.0. For instance, as shown in Fig. 3.18(b), which decouples $\alpha_{0}$ from Fig. 3.18(a), illustrates that when comparing $K_{0}$=0.4 and $K_{0}$=2.5 in the dense state, both share a similar $Z_{m0}$ value around 4.43. However, the $N_{L}$ is over 10% higher for $K_{0}$ = 0.4 compared to $K_{0}$ = 2.5. Additionally, for $K_{0}$=0.33 and $K_{0}$=3.0 in the dense state, although their $N_{L}$ values are similar, the $Z_{m0}$ for $K_{0}$=0.33 is at least 0.05 lower than that for $K_{0}$=3.0. This suggests that a smaller $Z_{m0}$ is sufficient to achieve the same level of liquefaction resistance for $K_{0}$=0.33 as for $K_{0}$=3.0. These differences contribute to the positive value of $\eta$ in Eq. (3-15). On the other hand, for the loose states, this difference between $K_{0}$\<1.0 and $K_{0}$\>1.0 is limited, where the fitted lines for $K_{0}$\<1.0 and $K_{0}$\>1.0 almost overlap. However, for comparison between $K_{0}$=0.33 and $K_{0}$=3.33, or comparison between $K_{0}$=0.40 and $K_{0}$=2.50, stronger liquefaction tendency was also observed, where smaller $Z_{m0}$ enables similar liquefaction resistance for $K_{0}$\<1.0 compared to $K_{0}$\>1.0. The overlapping of fitted lines are mainly attributed to a sightly high value for $K_{0}$=3.00 in loose state.
 
 $K_{0} < 1.0$ and $K_{0} > 1.0$ states correspond to different intermediate principal stress $b$, as described in Eq. (2-15). Experimental results by Tastan and Carraro (2022) indicate that liquefaction resistance increases as $b$ increases from 0.0 to 0.8.
 
 $b = \frac{{\sigma_{2}' - \sigma}_{3}'}{\sigma_{1}' - \sigma_{3}'}$ (3-16)
 
 This observation contrasts this study, where $b = 0.0$ shows larger liquefaction resistance. The discussion in this study is focusing on comparing the influence of $b$ only at the extremes of 0.0 and 1.0. Yet, investigating how the liquefaction responses change with in-between values, and providing a microscopic explanation would also attract interest and warrants further study, but it lies beyond the scope of this study.
-
-#### Interparticle contact force
-
-To interpret the interparticle relationships, contact forces and individual particle movement in the initial state with $K_{0}$=0.33, post-liquefaction state with $K_{0}$=0.33, initial state with $K_{0}$=3.00, and post-liquefaction state with $K_{0}$=3.00 are depicted in Fig. 3.17(a), Fig. 3.17(b), Fig. 3.17(c), and Fig. 3.17(d). The specimens with $K_{0}$=0.33 and $K_{0}$=3.00 exhibit significant differences in the distribution of contact forces at the initial stages in cyclic shear. For $K_{0}$=0.33, the contact forces converge in the axial direction, whereas for $K_{0}$=3.00, the contact forces tend to be distributed horizontally, aligning with the direction of the maximum principal stress in both cases. As cyclic loading progresses, the number of interparticle force gradually decreases, and the magnitude of these forces diminishes, until liquefaction and large deformation occurs. From a macroscopic perspective, the liquefaction process involves a decline in stiffness and an increase in nonlinearity, as discussed in the macroscopic behavior section. From a microscopic viewpoint, liquefaction occurs because the particle-constituting skeleton becomes increasingly unable to sustain itself through particle interaction, such as the relative movement, hindering the transfer of external forces. In contrast to the influence of $K_{0}$ on contact forces in initial state, the effect of different initial $K_{0}$ values on the
-
-![](thesis/assets/media/image91.jpeg)
-
-(a) AC state with initial $K_{0}$=0.33
-
-![](thesis/assets/media/image92.jpeg)
-
-(b) Post-liquefaction state with initial $K_{0}$=0.33
-
-![](thesis/assets/media/image93.jpeg)
-
-(c) AC state with initial $K_{0}$=3.00
-
-![](thesis/assets/media/image94.jpeg)
-
-(d) Post-liquefaction state with initial $K_{0}$=3.00
-
-Fig. 3.17. Contact force chain and displacement of particles under initial and post-liquefaction states subjected to different initial $K_{0}$
-
-contact forces becomes insignificant in post-liquefaction stage. Whether $K_{0}$=0.33 or $K_{0}$=3.00, the contact forces no longer align with the initial direction of the maximum principal stress but tend to orient more randomly and concentrate locally.
 
 #### Contact orientation 
 
@@ -402,7 +396,7 @@ $\rho_{c}\left( \theta_{z},\ \phi_{cir} \right) = \frac{2N_{\theta_{z},\ \ \phi_
 
 Here, $\rho_{c}$ represents the contact density, $\theta_{z}$ and $\phi_{cir}$ indicate the polar and azimuthal angles in the spherical polar coordinate system, respectively. $N_{\theta_{z},\ \ \phi_{cir}}$ indicates the number of contacts with normals within the range of $\left( \theta_{z},\theta_{z} + \Delta\theta_{z} \right) \cap (\phi_{cir},\ \phi_{cir} + \Delta\phi_{cir})$. $N_{p}$ and the subsequent integral denote the total number of particles and the corresponding surface area on the unit sphere, respectively. This method effectively evaluates contact orientation during an undrained cyclic shear and accommodates granular systems with various particle numbers.
 
-The evolutions of contact density during the liquefaction process for $K_{0}$=0.33 and $K_{0}$=3.00, are shown in Fig. 3.18 and Fig. 3.19. Fig. 3.18(a) represents the dense state with initial $K_{0}$=0.33, exhibiting an elongated columnar shape extending along the axial direction, whereas Fig. 3.19(a) depicts the contact density with initial $K_{0}$=3.00, characterized by a dimpled ellipsoid oriented toward the axial direction. As cyclic shear progresses, the direction of maximum contact density varies following the rotating principal stress axis, and the overall contact density gradually decreases as shown in Fig. 3.18 (b) and Fig. 3.19 (b). The evolution of contact density indicates that the post-liquefaction distribution of contact density is largely independent of the initial state, shifting between two inclined elongated columnar distributions along varying directions.
+The evolutions of contact density during the liquefaction process for $K_{0}$=0.33 and $K_{0}$=3.00, are shown in Fig. 3.19 and Fig. 3.20. Fig. 3.19(a) represents the dense state with initial $K_{0}$=0.33, exhibiting an elongated columnar shape extending along the axial direction, whereas Fig. 3.20(a) depicts the contact density with initial $K_{0}$=3.00, characterized by a dimpled ellipsoid oriented toward the axial direction. As cyclic shear progresses, the direction of maximum contact density varies following the rotating principal stress axis, and the overall contact density gradually decreases as shown in Fig. 3.19 (b) and Fig. 3.20 (b). The evolution of contact density indicates that the post-liquefaction distribution of contact density is largely independent of the initial state, shifting between two inclined elongated columnar distributions along varying directions.
 
 ![](thesis/assets/media/image95.jpeg) ![](thesis/assets/media/image96.jpeg)
 
@@ -412,7 +406,7 @@ The evolutions of contact density during the liquefaction process for $K_{0}$=0.
 
 \(c\) $N_{c}$/$N_{L}$=1.01 (d) $N_{c}$/$N_{L}$=1.04
 
-Fig. 3.18. Contact density evolution in liquefaction process with initial $K_{0}$=0.33
+Fig. 3.19. Contact density evolution in liquefaction process with initial $K_{0}$=0.33
 
 ![](thesis/assets/media/image99.jpeg) ![](thesis/assets/media/image100.jpeg)
 
@@ -422,9 +416,9 @@ Fig. 3.18. Contact density evolution in liquefaction process with initial $K_{0}
 
 \(c\) $N_{c}$/$N_{L}$=0.97 (d) $N_{c}$/$N_{L}$=1.03
 
-Fig. 3.19. Contact density evolution in liquefaction process with initial $K_{0}$=3.00
+Fig. 3.20. Contact density evolution in liquefaction process with initial $K_{0}$=3.00
 
-Although $Z_{m0}$ has the dominant impact on liquefaction resistance, the variations in liquefaction resistance caused by morphological differences in fabric are also worth investigating. This morphological difference in fabric explains why, in the $Z_{mi}$-$N_{L}$ plane, as shown in Fig. 3.16 (b), paths with $K_{0}$\<1.0 and $K_{0}$\>1.0 diverge as stress anisotropy increases, and why $F_{c}$ exhibits more pronounced fluctuation with $K_{0}$\>1.0 than that with $K_{0}$\<1.0 during the cyclic shear in Fig. 3.16. The state with $K_{0}$\<1.0 corresponding to an elongated columnar morphology of fabric results in more contact normals along the axial direction, which is perpendicular to the shear force, potentially enhancing liquefaction resistance (Zhang et. al., 2023), compared to the dimpled ellipsoidal morphology observed for $K_{0}$\>1.0. Thus, a positive $\beta$ was obtained with the fitted surface in Fig. 3.16. Additionally, cyclic shear caused larger amplitude of fluctuations in $F_{c}$ during cyclic shear for $K_{0}$\>1.0 compared to $K_{0}$\<1.0 due to the instability in $F_{c}$ induced by the dimpled ellipsoidal morphology in fabric.
+Although $Z_{m0}$ has the dominant impact on liquefaction resistance, the variations in liquefaction resistance caused by morphological differences in fabric are also worth investigating. This morphological difference in fabric explains why, in the $Z_{mi}$-$N_{L}$ plane, as shown in Fig. 3.18(b), paths with $K_{0}$\<1.0 and $K_{0}$\>1.0 diverge as stress anisotropy increases, and why $\alpha$ exhibits more pronounced fluctuation with $K_{0}$\>1.0 than that with $K_{0}$\<1.0 during the cyclic shear in Fig. 3.15. The state with $K_{0}$\<1.0 corresponding to an elongated columnar morphology of fabric results in more contact normals along the axial direction, which is perpendicular to the shear force, potentially enhancing liquefaction resistance (Zhang et. al., 2023), compared to the dimpled ellipsoidal morphology observed for $K_{0}$\>1.0. Thus, a positive $\eta$ was obtained with the fitted surface in Fig. 3.18. Additionally, cyclic shear caused larger amplitude of fluctuations in $\alpha$ during cyclic shear for $K_{0}$\>1.0 compared to $K_{0}$\<1.0 due to the instability in fabric induced by the dimpled ellipsoidal morphology.
 
 ## Summary
 
