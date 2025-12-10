@@ -98,17 +98,19 @@ With the application of unidirectional and multidirectional cyclic shear loads t
 
 Figure 5.6 presents the liquefaction resistance under different forms of shear loading. The occurrence of liquefaction is defined as when the pore water pressure reaches 95% of the initial confining stress. It is evident that the unidirectional shear loading requires the highest cyclic number to reach liquefaction at the same CSR, compared to the multidirectional loadings. Following this, there is a difference between the required cyclic numbers for single-8 and double-8 shear stresses, with single-8 needing slightly more cycles than double-8. For instance, at CSR = 0.25, single-8 requires 30 cycles to reach liquefaction, whereas double-8 only requires about 22 cycles.
 
-+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ![](thesis/assets/media/image119.jpeg) | ![](thesis/assets/media/image120.jpeg) |
-+===============================================================================================================================+=======================================================================================================================+
-| (a) Unidirectional loading                                                                                                    | (b) Single-8 loading                                                                                                  |
-+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ![](thesis/assets/media/image121.jpeg)         |                                                                                                                       |
-+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| \(c\) double-8 loading                                                                                                        |                                                                                                                       |
-+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+![](thesis/assets/media/image119.jpeg)
 
-Fig. 5.5. Shear and mean effective stress evolution in unidirectional and multidirectional shear (CSR=0.250)
+(a) Unidirectional loading
+
+![](thesis/assets/media/image120.jpeg)
+
+(b) Single-8 loading
+
+![](thesis/assets/media/image121.jpeg)
+
+(c) Double-8 loading
+
+Fig. 5.5. Shear stress path and mean effective stress evolution under unidirectional and multidirectional cyclic shear (CSR=0.250)
 
 From a macroscopic perspective, the rotation of shear force direction has a significant impact on the liquefaction process. Although the magnitudes of unidirectional and multidirectional shear forces are equal at any given moment, the shear force direction in unidirectional loading remains fixed, unlike in multidirectional loading. This lack of directional rotation in unidirectional loading results in a higher number of cycles needed to reach liquefaction. Additionally, besides the influence of shear stress direction on the liquefaction process, the shear loading history also plays a role. For instance, although single-8 and double-8 paths share the same shear stress magnitude and rate of change at any given moment, the single-8 path maintains a
 
