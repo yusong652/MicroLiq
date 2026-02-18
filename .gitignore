@@ -26,3 +26,6 @@ __pycache__/
 *.jpeg
 *.png
 *.svg
+
+# Data files
+*.csv
