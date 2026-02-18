@@ -5,12 +5,12 @@ from pylab import style as st
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
 
-k0s = (0.50, 1.00, 2.00)
-time_lmts = (5.40, 4.2, 3.9)
-colors = ('tab:orange', 'tab:blue', 'tab:green')
-linestyles = ('-.', '-', '--')
+k0s = (0.50, 0.67, 1.00, 1.50, 2.00)
+time_lmts = (5.40, 5.0, 4.2, 4.0, 3.9)
+colors = ('tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green')
+linestyles = ('-.', ':', '-', '--', '-.')
 def plot_pwp(k0, time_lmt, color, linestyle):
-	df1 = pd.read_csv("k%.2f/csr_0.200/torsion_shear.csv"%k0,header=0)
+	df1 = pd.read_csv("Dr80/k%.2f/csr_0.200/torsion_shear.csv"%k0,header=0)
 	strains = df1["strain_shear"] * 100.
 	# overall data
 	stresses_shear = df1["stress_shear"] / 1000.
@@ -45,7 +45,7 @@ def plot_pwp(k0, time_lmt, color, linestyle):
 
 fig1 = plt.figure(figsize=(6.0, 4.0))
 ax1 = plt.gca()
-for i in range(3):
+for i in range(5):
 	plot_pwp(k0s[i], time_lmts[i], colors[i], linestyles[i])
 
 ax1.set_ylim((-0.1, 1.0))

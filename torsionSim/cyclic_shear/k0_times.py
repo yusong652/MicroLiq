@@ -10,13 +10,13 @@ csr_arr = np.arange(0.20, 0.25, 0.05).tolist()
 # csr_arr.append(0.235)
 # k0s = [0.30, 0.33, 0.4, 0.5, 0.67, 1.0,
 # 1.5, 2.0, 2.5, 3.0, 3.33]
-k0s = [0.5, 1.0, 2.0]
+k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
 ns_liq_total = []
 # markers = ['*', 'h', 'p', 'd', 's','o', '^', 'v', '<', '>', 'P']
 # colors = ['tab:cyan', 'tab:grey', 'tab:brown', 'tab:red', 'tab:orange',
 #  'tab:blue', 'tab:purple', 'tab:green', 'tab:pink', 'tab:olive', 'gold']
-markers = ['d', 'o', 'v']
-colors = ['tab:orange','tab:blue', 'tab:green']
+markers = ['d', 's', 'o', '^', 'v']
+colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
 fig1 = plt.figure(figsize=(6.0,5.0))
 ax1 = plt.gca()
 
@@ -24,7 +24,7 @@ def plot_liq(k0, color, marker, state='AC'):
 	ns_liq = []
 	k0s = []
 	csr=0.200
-	file_name = "k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
 	facecolors = 'None'
 	label = r'$K_0=:%.2f$'%k0
 	size = 86

@@ -23,9 +23,9 @@ ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 def plot_invFabTen(k0, color, marker, csr=0.250):
 	try:
-		df1 = pd.read_csv("k%.2fcsr%.3f/torsion_shear.csv"%(k0, csr),
+		df1 = pd.read_csv("Dr80/k%.2fcsr%.3f/torsion_shear.csv"%(k0, csr),
 			header=0)
-		df2 = pd.read_csv("k%.2fcsr%.3f/invFabTen.csv"%(k0, csr))
+		df2 = pd.read_csv("Dr80/k%.2fcsr%.3f/invFabTen.csv"%(k0, csr))
 	except FileNotFoundError:
 		return
 	# overall data

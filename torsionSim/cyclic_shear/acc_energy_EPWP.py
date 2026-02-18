@@ -9,9 +9,9 @@ from mpl_toolkits.axes_grid1.inset_locator import (inset_axes, InsetPosition,
 # setting style
 csr_arr = np.arange(0.200, 0.250, 0.05).tolist()
 # csr_arr.append(0.235)
-k0s = [0.5, 1.0, 2.0]
-markers = ['d', 'o', 'v']
-colors = ['tab:orange', 'tab:blue', 'tab:green']
+k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
+markers = ['d', 's', 'o', '^', 'v']
+colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
 
 fig1 = plt.figure(figsize=(6.0, 5.))
 ax1 = plt.gca()
@@ -26,7 +26,7 @@ ax2.set_axes_locator(ip)
 
 
 def plot_acc_energy(k0, color, marker, csr=0.200):
-	file_name = "k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
 	try:
 		df1 = pd.read_csv(file_name,header=0)
 	except FileNotFoundError:

@@ -7,17 +7,17 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 # setting style
 # st.use("seaborn-deep")
 csr_arr = [0.200]
-k0s = [0.5, 1.0, 2.0]
-markers = ['p', 'o', 'v']
-colors = ['tab:orange', 'tab:blue', 'tab:green']
-linestyles = ['-.', '-', '--']
+k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
+markers = ['d', 's', 'o', '^', 'v']
+colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
+linestyles = ['-.', ':', '-', '--', '-.']
 
 fig1 = plt.figure(figsize=(6,4))
 ax1 = plt.gca()
 
 def draw_dev(k0, lst, color):
 	for csr in csr_arr:
-		file_name = "k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+		file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
 		print(file_name)
 		try:
 			df1 = pd.read_csv(file_name,header=0)
@@ -55,7 +55,7 @@ def draw_dev(k0, lst, color):
 
 def draw_csl():
 	for csr in csr_arr:
-		file_name = "k%.2f/csr_%.3f/torsion_shear.csv"%(0.5, 0.200)
+		file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(0.5, 0.200)
 		try:
 			df1 = pd.read_csv(file_name,header=0)
 			print("Found")

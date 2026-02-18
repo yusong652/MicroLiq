@@ -3,9 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # setting style
-k0s = [0.5, 1.0, 2.0]
-markers = ['d', 'o', 'v']
-colors = ['tab:orange', 'tab:blue', 'tab:green']
+k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
+markers = ['d', 's', 'o', '^', 'v']
+colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
 alpha0_values = []  # store initial alpha for inset plot
 
 fig1, ax1 = plt.subplots(figsize=(6.0, 5.0))
@@ -14,8 +14,8 @@ ax2 = ax1.inset_axes([0.68, 0.74, 0.30, 0.22])
 
 def plot_fabric_anisotropy(k0, color, marker):
 	csr = 0.200
-	shear_file = "k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
-	alpha_file = "k%.2f/csr_%.3f/alpha_mech.csv" % (k0, csr)
+	shear_file = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
+	alpha_file = "Dr80/k%.2f/csr_%.3f/alpha_mech.csv" % (k0, csr)
 
 	try:
 		df_shear = pd.read_csv(shear_file, header=0)

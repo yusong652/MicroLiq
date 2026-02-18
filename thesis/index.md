@@ -33,8 +33,11 @@ Comprehensive review of granular material behavior under monotonic and cyclic sh
 ### [[03_fabric_evolution|Chapter 3: Fabric Evolution Under General Stress States]]
 Investigation of fabric evolution in true triaxial DEM simulations under various stress paths and Lode angles. Analyzes critical state behavior of void ratio, coordination number, and fabric anisotropy. Explores contact orientation distributions and their evolution with axial strain, revealing the role of stress anisotropy in microstructural development.
 
-### [[04_anisotropic_consolidation|Chapter 4: Study On Factors Affecting Liquefaction Resistance During Anisotropic Consolidation]]
-Development of a combined servo mechanism for DEM-based hollow cylinder apparatus (HCA) simulations. Examines the influence of K₀ (horizontal-to-vertical stress ratio) on liquefaction resistance through both DEM simulations and experimental validation. Identifies the critical role of initial coordination number ($Z_{m0}$) in liquefaction resistance and reveals non-monotonic trends with stress anisotropy.
+### [[04_1_anisotropic_consolidation_sim|Chapter 4-1: Study On Factors Affecting Liquefaction Resistance During Anisotropic Consolidation (Simulation)]]
+Development of a combined servo mechanism for DEM-based hollow cylinder apparatus (HCA) simulations. Examines the influence of K₀ (horizontal-to-vertical stress ratio) on liquefaction resistance through DEM simulations. Identifies the critical role of initial coordination number ($Z_{m0}$) in liquefaction resistance and reveals non-monotonic trends with stress anisotropy.
+
+### [[04_2_anisotropic_consolidation_exp|Chapter 4-2: Experimental Validation of K₀ Effects on Liquefaction Resistance]]
+Experimental validation of K₀ effects on liquefaction resistance using hollow cylindrical torsional shear apparatus (HCA). Compares experimental results with numerical findings from Chapter 4-1, covering a broader spectrum of K₀ values beyond the typical 0.5, 1.0, and 2.0.
 
 ### [[05_multidirectional_shear|Chapter 5: Effects Of Multi-Directional Shear Stress On Liquefaction Resistance]]
 Introduction of innovative double-8 shear loading method to isolate multi-directional shear effects on liquefaction. Compares unidirectional versus multi-directional loading patterns through DEM simulations. Analyzes microscopic fabric metrics ($Z_m$, $F_c$) and their evolution during liquefaction under complex loading paths, demonstrating increased vulnerability under multi-directional shear.
@@ -63,7 +66,7 @@ Application of LLM-based agents to numerical simulation workflows. Introduces ai
 ## Quick Navigation
 
 **Core Research Chapters:**
-- [[01_introduction|Introduction]] → [[02_literature_review|Literature]] → [[03_fabric_evolution|Fabric Evolution]] → [[04_anisotropic_consolidation|K₀ Effects]] → [[05_multidirectional_shear|Multi-Directional Shear]] → [[06_conclusions|Conclusions]]
+- [[01_introduction|Introduction]] → [[02_literature_review|Literature]] → [[03_fabric_evolution|Fabric Evolution]] → [[04_1_anisotropic_consolidation_sim|K₀ Effects (Sim)]] → [[04_2_anisotropic_consolidation_exp|K₀ Effects (Exp)]] → [[05_multidirectional_shear|Multi-Directional Shear]] → [[06_conclusions|Conclusions]]
 
 **Technical Implementation:**
 - [[08_appendix1_hpc|HPC/GPU Computing]] | [[09_appendix2_raytracing|Ray Tracing]] | [[10_appendix3_aiNagisa|AI-Assisted Workflow]]
