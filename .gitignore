@@ -20,3 +20,9 @@ __pycache__/
 *.tmp
 *.temp
 *~
+
+# Images (tracked separately or too large for git)
+*.jpg
+*.jpeg
+*.png
+*.svg

@@ -1,0 +1,71 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
+drs = ['Dr80', 'Dr60']
+dr_markers = {'Dr80': 'o', 'Dr60': 's'}
+dr_labels = {'Dr80': r'$D_r=80\%$', 'Dr60': r'$D_r=60\%$'}
+period = 1.0 / 8.0
+
+results = []
+
+for dr in drs:
+	for k0 in k0s:
+		shear_file = "%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr, k0)
+		cn_file = "%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr, k0)
+		alpha_file = "%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr, k0)
+		try:
+			df_shear = pd.read_csv(shear_file, header=0)
+			df_cn = pd.read_csv(cn_file, header=0)
+			df_alpha = pd.read_csv(alpha_file, header=0)
+		except FileNotFoundError as e:
+			print(f"Missing: {e}")
+			continue
+
+		stresses_out = df_shear["stress_outer"].to_numpy() / 1000.
+		stresses_in = df_shear["stress_inner"].to_numpy() / 1000.
+		stress_ini = (stresses_out[0] + stresses_in[0]) / 2.0
+		stresses_u = -(stresses_in + stresses_out) / 2 + stress_ini
+		time = df_shear["time_duration"].to_numpy()
+
+		ind_liq = 0
+		while ind_liq < len(stresses_u) and stresses_u[ind_liq] < 0.95 * stress_ini:
+			ind_liq += 1
+		n_liq = time[ind_liq] / period if ind_liq < len(time) else time[-1] / period
+
+		zm0 = df_cn["mechCN"].iloc[0]
+		alpha0 = df_alpha["alpha_mech"].iloc[0]
+
+		results.append({
+			'dr': dr, 'k0': k0, 'zm0': zm0, 'alpha0': alpha0, 'n_liq': n_liq
+		})
+		print(f"{dr} K0={k0:.2f}: Zm0={zm0:.3f}, alpha0={alpha0:.4f}, N_L={n_liq:.1f}")
+
+df = pd.DataFrame(results)
+
+# --- 3D scatter plot ---
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+for dr in drs:
+	mask = df['dr'] == dr
+	ax.scatter(df[mask]['zm0'], df[mask]['alpha0'], df[mask]['n_liq'],
+		marker=dr_markers[dr], s=100, label=dr_labels[dr],
+		edgecolors='black', linewidths=0.8, depthshade=True)
+	# annotate K0 values
+	for _, row in df[mask].iterrows():
+		ax.text(row['zm0'], row['alpha0'], row['n_liq'],
+			'  %.2f' % row['k0'], fontsize=8)
+
+ax.view_init(elev=20, azim=-40)
+ax.set_xlabel(r'$Z_{m0}$', fontsize=13, labelpad=8)
+ax.set_ylabel(r'$\alpha_0$', fontsize=13, labelpad=8)
+ax.set_zlabel(r'$N_L$', fontsize=13, labelpad=8)
+ax.legend(fontsize=12)
+ax.tick_params(axis='both', which='major', labelsize=11)
+
+plt.tight_layout()
+plt.savefig("fabric_liq_3d.png", dpi=350)
+plt.show()
