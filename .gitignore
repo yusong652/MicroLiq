@@ -3,8 +3,7 @@
 **/.DS_Store
 
 # Obsidian
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+.obsidian/
 
 # Python
 __pycache__/
