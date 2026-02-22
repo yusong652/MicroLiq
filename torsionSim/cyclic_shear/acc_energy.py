@@ -17,8 +17,11 @@ colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
 # colors = [ 'tab:grey', 'tab:red',
 #  'tab:blue', 'tab:green', 'tab:olive']
 
-fig1 = plt.figure(figsize=(6.0, 4.0))
+fig1 = plt.figure(figsize=(6.0, 4.5))
 ax1 = plt.gca()
+
+# inset axes for zoom region
+ax_inset = ax1.inset_axes([0.1, 0.45, 0.4, 0.35])
 
 def plot_acc_energy(k0, color, marker, csr=0.200):
 	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
@@ -62,7 +65,14 @@ def plot_acc_energy(k0, color, marker, csr=0.200):
 	ax1.plot(cycles_norm[flt],acc_ene[flt],linewidth=1.2,
 		color=color, marker=marker, markerfacecolor='None',
 		markevery=0.012*np.log(n_liq*2), markersize=9,
-		label=r"$%.2f$"%(k0), 
+		label=r"$%.2f$"%(k0),
+		)
+	mevery = 0.012*np.log(n_liq*2)
+	# scale markevery for inset zoom range (0.6~0.8 out of 0~1.06)
+	inset_mevery = mevery * (1.06) / (0.8 - 0.6)
+	ax_inset.plot(cycles_norm[flt],acc_ene[flt],linewidth=1.2,
+		color=color, marker=marker, markerfacecolor='None',
+		markevery=inset_mevery, markersize=9,
 		)
 
 # plot_acc_strain('1.0')
@@ -84,7 +94,14 @@ ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 plt.annotate(r"$CSR=0.200$", xy=(0.6, 0.2), fontsize=13)
 # ax1.set_xlim(0)
-ax1.set_ylim(-0.02, 0.6)
+ax1.set_ylim(-0.02, 0.4)
+# inset zoom region
+ax_inset.set_xlim(0.6, 0.8)
+ax_inset.set_ylim(0.03, 0.10)
+ax_inset.tick_params(axis='both', which='major', labelsize=10)
+ax_inset.grid(axis='both', which='major', color='grey', linestyle='--',
+	lw=0.35, alpha=0.8)
+ax1.indicate_inset_zoom(ax_inset, edgecolor='grey', linewidth=1.2)
 plt.tight_layout()
 plt.savefig("acc_energy.png",dpi=350)
 plt.show()

@@ -1,11 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from pylab import style as st
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
-
-# setting style
-# st.use("seaborn-deep")
 
 df1 = pd.read_csv("monotonic_dense/torsion_shear.csv",header=0)
 df2 = pd.read_csv("Nakata_gamma_q_dense.csv", header=None)
@@ -32,26 +28,24 @@ strains_dev_ref = df2.to_numpy()[:, 0]
 stresses_q_ref = df2.to_numpy()[:, 1]
 
 time = df1["time_duration"]
-fig1 = plt.figure(figsize=(4.0,4.5))
+fig1 = plt.figure(figsize=(6.0, 4.0))
 ax1 = plt.gca()
 ax1.set_xlim(0.0, 2.0)
 ax1.set_ylim((0, 200))
-ax1.grid(axis='both',which='major',color='grey',linestyle='--',
-	lw=0.35,alpha=0.8)
-ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
-	lw=0.35,alpha=0.8)
+ax1.grid(axis='both', which='major', color='grey', linestyle='--',
+	lw=0.35, alpha=0.8)
+ax1.grid(axis='y', which='minor', color='grey', linestyle='--',
+	lw=0.35, alpha=0.8)
 flt = time < 1.0
-ax1.plot(strains_dev[flt][::1],stresses_dev[flt][::1],linewidth=1.6,
-	label=r"$DEM\ Simulation$", color='tab:blue')
-ax1.plot(strains_dev_ref, stresses_q_ref, label=r"$Nakata\ et\ al., 1998$", 
-	color="tab:green", marker='s', markerfacecolor="None", markeredgewidth=1)
+ax1.plot(strains_dev[flt][::1], stresses_dev[flt][::1], linewidth=1.6,
+	label=r'$DEM\ simulation$', color='tab:blue')
+ax1.plot(strains_dev_ref, stresses_q_ref, label=r'$Nakata\ et\ al.,\ 1998$',
+	color='tab:green', marker='s', markersize=8, markerfacecolor='None', markeredgewidth=1.2, linewidth=1.2, markevery=2)
 ax1.set_xlabel(r'$Deviatoric\ strain\ \epsilon_q\ (\%)$', fontsize=13)
 ax1.set_ylabel(r'$Deviatoric\ stress\ q\ (kPa)$', fontsize=13)
-legend1 = ax1.legend(
-	fontsize=13, ncol=1, framealpha=0.2, columnspacing=0.05, 
-	loc=(-0.0, 1.05), handletextpad=0.1)
+ax1.legend(fontsize=12, ncol=1)
 ax1.tick_params(axis='both', which='major', labelsize=13)
 
-plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig("validate_gamma_q_dense.png",dpi=350)
+plt.tight_layout()
+plt.savefig("validate_gamma_q_dense.png", dpi=700)
 plt.show()
