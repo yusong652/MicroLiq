@@ -1,0 +1,82 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+% Core math and symbols
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+
+% Figures and tables
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+ \usepackage{xcolor}
+
+% Text / links / refs
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalize,nameinlink,noabbrev]{cleveref}
+
+% Optional review line numbers (uncomment for internal review)
+% \usepackage{lineno}
+% \linenumbers
+
+% ---------- Project macros ----------
+\newcommand{\Kzero}{K_0}
+\newcommand{\Zm}{Z_m}
+\newcommand{\Vs}{V_s}
+\newcommand{\ru}{r_u}
+\newcommand{\pmean}{p^\prime}
+\newcommand{\safeincludegraphics}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fcolorbox{gray}{white}{%
+      \begin{minipage}[c][0.22\textheight][c]{0.95\linewidth}
+        \centering
+        \textbf{Missing figure}\\
+        \texttt{#2}
+      \end{minipage}
+    }%
+  }%
+}
+
+\graphicspath{{figures/}}
+\journal{Soil Dynamics and Earthquake Engineering}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Influence of Initial Stress Anisotropy on Liquefaction Resistance in Undrained Cyclic Torsional Shear: DEM Simulation of Hollow Cylinder Tests}
+
+\author[aff1]{Author Name}
+\author[aff1]{Coauthor Name}
+\address[aff1]{Affiliation, City, Country}
+
+\begin{abstract}
+This manuscript skeleton is prepared for an Elsevier journal submission.
+Replace this placeholder with a structured abstract aligned with the target journal's expectations.
+Focus on: objective, DEM-HCA method, key findings on \Kzero-dependent liquefaction resistance, and microscopic interpretation.
+\end{abstract}
+
+\begin{keyword}
+Liquefaction resistance \sep Stress anisotropy \sep Hollow cylinder apparatus \sep Discrete element method \sep Fabric anisotropy
+\end{keyword}
+
+\end{frontmatter}
+
+% ---------------- Main text ----------------
+\input{sections/01_introduction}
+\input{sections/02_methodology}
+\input{sections/03_results_discussion}
+\input{sections/04_conclusions}
+
+% Optional
+% \input{sections/acknowledgements}
+% \appendix
+% \input{sections/appendix_a}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\end{document}
