@@ -1,21 +1,14 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Soil liquefaction resistance under cyclic loading is influenced by both density state and stress anisotropy.
-While conventional triaxial tests provide valuable insights, hollow cylinder apparatus (HCA) tests are better suited to represent stress paths involving rotation of principal stress axes.
+Liquefaction resistance under cyclic loading is governed by both density state and stress state. Although conventional triaxial tests have provided the basis for much of the current understanding, they cannot represent the continuous rotation of principal stress axes that occurs under many field loading conditions. Hollow cylinder apparatus (HCA) tests are therefore attractive for liquefaction studies because they can impose torsional shear paths that better reproduce stress-axis rotation.
 
-This manuscript investigates the influence of initial lateral-to-vertical stress ratio \Kzero{} on liquefaction resistance using discrete element method (DEM) simulations of undrained cyclic torsional shear in HCA specimens.
-The study combines macroscopic response analysis (e.g., cyclic resistance, excess pore pressure, stiffness degradation) with microscopic fabric descriptors (e.g., coordination number and fabric anisotropy).
+The influence of the initial lateral-to-vertical effective stress ratio, \Kzero{}, on liquefaction resistance has long been debated. Existing HCA-based experiments and numerical studies report inconsistent trends, especially when comparing isotropic and anisotropic consolidation states across different density levels. In addition, many previous studies focus on a narrow range of \Kzero{} values and primarily discuss macroscopic responses, making it difficult to identify the particle-scale mechanisms responsible for the observed differences.
 
-The main objectives are:
-\begin{enumerate}
-  \item to quantify the effect of initial stress anisotropy on liquefaction resistance under cyclic torsional shear,
-  \item to evaluate whether energy-based and stiffness-based macroscopic indicators can explain observed differences, and
-  \item to identify microscopic fabric mechanisms associated with \Kzero-dependent behavior.
-\end{enumerate}
+The discrete element method (DEM) provides a useful framework for this problem because it allows direct observation of contact-network evolution during cyclic loading while avoiding some of the uncontrolled variability associated with laboratory specimen preparation. However, DEM studies that explicitly reproduce HCA boundary conditions under undrained cyclic torsional shear remain relatively limited, particularly for systematic investigation of \Kzero{} effects on liquefaction resistance.
 
-% TODO:
-% - Compress thesis background into paper-length introduction.
-% - Add concise review on HCA tests and DEM studies.
-% - Clarify novelty relative to prior K0-focused studies.
+This study investigates the effect of initial stress anisotropy on liquefaction resistance using DEM simulations of undrained cyclic torsional shear in hollow cylindrical specimens. A combined servo mechanism is used to reproduce HCA stress boundary conditions together with the constant-volume approximation for undrained loading. Specimens are prepared using an isotropic-consolidation to anisotropic-consolidation (IC--AC) protocol, and cyclic loading is applied over a range of cyclic stress ratios.
 
+The contribution of the paper is twofold. First, it establishes the directional dependency of \Kzero{} effects on liquefaction resistance under HCA-type cyclic torsional shear (compression-state, isotropic, and extension-state initial conditions). Second, it links the macroscopic response (CSR--$N_L$, excess pore pressure accumulation, cumulative shear work, and stiffness degradation) to microscopic fabric evolution using coordination number, signed fabric anisotropy, contact-density morphology, and force-chain reorganization. Additional simulations at two relative densities and five \Kzero{} values are used to clarify the distinct roles of packing compactness and directional fabric anisotropy.
+
+The remainder of this paper is organized as follows. Section~\ref{sec:methodology} describes the DEM-HCA model, specimen preparation, loading protocol, calibration/validation, and microscopic descriptors. Section~\ref{sec:results} presents the macroscopic and microscopic results and discusses the mechanisms governing \Kzero{}-dependent liquefaction resistance. Section~\ref{sec:conclusions} summarizes the main findings and implications.

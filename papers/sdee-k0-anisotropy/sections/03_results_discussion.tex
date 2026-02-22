@@ -4,8 +4,7 @@
 \subsection{Macroscopic response and liquefaction resistance}
 \label{subsec:macro_response}
 
-Figure~\ref{fig:macro_response} presents the combined macroscopic response overview during undrained cyclic shear at a representative CSR.
-Replace the placeholder file names with final exported figures.
+Figure~\ref{fig:macro_response} presents a combined overview of the typical macroscopic response during undrained cyclic torsional shear at CSR = 0.200.
 
 \begin{figure*}[t]
   \centering
@@ -42,26 +41,218 @@ Replace the placeholder file names with final exported figures.
   \label{fig:macro_response}
 \end{figure*}
 
-As shown in Fig.~\ref{fig:macro_response}(d), initial stress anisotropy affects the excess pore pressure accumulation rate, leading to different numbers of cycles to liquefaction.
-Insert the CSR--$N_L$ curves and discuss the directional dependency of \Kzero{} ($<1$, $=1$, $>1$) on liquefaction resistance.
+As shown in Fig.~\ref{fig:macro_response}(a), the mean effective stress $\pmean$ decreases overall under cyclic shear, and the $\tau_{z\theta}$--$\pmean$ trajectory develops a butterfly-shaped pattern once $\pmean$ falls below approximately \SI{60}{kPa}. After liquefaction onset, $\pmean$ and $\tau_{z\theta}$ approach the origin periodically along the critical-state trend.
+
+Figure~\ref{fig:macro_response}(b) shows that the stress--strain response is initially stiff with only limited modulus reduction, followed by marked stiffness degradation and increasingly nonlinear hysteretic loops as liquefaction is approached. Figure~\ref{fig:macro_response}(c) further shows that specimens with different initial \Kzero{} states follow distinct stress paths toward the critical state, with different rates of stress degradation. Most importantly, Fig.~\ref{fig:macro_response}(d) indicates clear differences in excess pore pressure ratio accumulation: the \Kzero{} = 2.0 specimen accumulates $\ru$ fastest, the \Kzero{} = 0.5 specimen slowest, and the \Kzero{} = 1.0 specimen exhibits intermediate behavior.
+
+Two liquefaction criteria were examined: (i) a stress-based criterion defined by $\ru = 0.95$, and (ii) a strain-based criterion defined by single-amplitude shear strain $\gamma_{z\theta} = 2.5\%$ (consistent with the validation benchmark). Across all simulated cases, the strain-based criterion produced $N_L$ values typically 1--2 cycles larger than the stress-based criterion, but the ordering among \Kzero{} states remained unchanged. Since the present study focuses on differences in effective stress loss among anisotropic initial states, the stress-based criterion ($\ru = 0.95$) is adopted in the following analyses.
+
+To quantify the \Kzero{} effect over a range of cyclic stress ratios, the CSR--$N_L$ relationship for the three representative anisotropic states is shown in Fig.~\ref{fig:liq_resistance_curves}.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.88\linewidth]{liquefaction_resistance_curves.png}
+  \caption{Cyclic liquefaction resistance curves for specimens with three representative stress anisotropies (\Kzero{} = 0.5, 1.0, 2.0).}
+  \label{fig:liq_resistance_curves}
+\end{figure}
+
+The liquefaction resistance curves exhibit a clear directional dependency on initial stress anisotropy. For all CSR levels considered, the isotropically consolidated state (\Kzero{} = 1.0) shows intermediate resistance. The compression-state specimen (\Kzero{} = 0.5) exhibits the highest liquefaction resistance, requiring more cycles to reach liquefaction, whereas the extension-state specimen (\Kzero{} = 2.0) shows the lowest resistance. This trend indicates that the effect of \Kzero{} depends not only on the magnitude of stress anisotropy but also on its direction: compression-type anisotropy (\Kzero{} < 1.0) enhances liquefaction resistance relative to the isotropic state, while extension-type anisotropy (\Kzero{} > 1.0) reduces it.
 
 \subsection{Energy and stiffness interpretations}
 \label{subsec:energy_stiffness}
 
-Add the cumulative shear work and shear-wave-velocity analyses here.
-Use this section to distinguish between:
-\begin{itemize}
-  \item energy required to reach a given pore pressure ratio, and
-  \item energy input rate per cycle governed by stiffness degradation.
-\end{itemize}
+To interpret the macroscopic origin of the observed \Kzero{}-dependent liquefaction resistance, two complementary perspectives are considered: cumulative shear work (energy input) and shear-wave-velocity evolution (stiffness degradation).
+
+\paragraph{Cumulative shear work.}
+Cumulative shear work represents the accumulated input energy per unit volume during cyclic shearing. It is defined as
+\begin{equation}
+W_s = \int_0^t \dot{\gamma}_{z\theta}\,\tau_{z\theta}\,dt,
+\label{eq:cumulative_shear_work}
+\end{equation}
+where $\dot{\gamma}_{z\theta}$ is the shear strain rate and $\tau_{z\theta}$ is the shear stress.
+
+Figure~\ref{fig:energy_work} summarizes the evolution of $\ru$ and $W_s$ for the three \Kzero{} states at CSR = 0.200.
+
+\begin{figure*}[t]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \safeincludegraphics[width=\linewidth]{energy_ru_vs_normalized_cycles.png}
+    \caption{$\ru$ vs. normalized cycle ratio $N_c/N_L$.}
+    \label{fig:energy_work_a}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \safeincludegraphics[width=\linewidth]{cumulative_work_vs_normalized_cycles.png}
+    \caption{$W_s$ vs. normalized cycle ratio $N_c/N_L$.}
+    \label{fig:energy_work_b}
+  \end{subfigure}
+
+  \vspace{0.5em}
+
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \safeincludegraphics[width=\linewidth]{cumulative_work_vs_cycles.png}
+    \caption{$W_s$ vs. actual number of cycles $N_c$.}
+    \label{fig:energy_work_c}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \safeincludegraphics[width=\linewidth]{ru_vs_cumulative_work.png}
+    \caption{$\ru$ vs. cumulative shear work $W_s$.}
+    \label{fig:energy_work_d}
+  \end{subfigure}
+  \caption{Excess pore pressure ratio and cumulative shear work evolution during cyclic shear, and their relationship for different \Kzero{} states (CSR = 0.200).}
+  \label{fig:energy_work}
+\end{figure*}
+
+Figure~\ref{fig:energy_work}(a) shows that all three states follow a similar growth pattern in normalized coordinates, but the compression-state specimen (\Kzero{} = 0.5) consistently exhibits lower $\ru$ than the extension-state specimen (\Kzero{} = 2.0) over the intermediate stage of the liquefaction process. Figure~\ref{fig:energy_work}(b) shows a similar convergence pattern in normalized cumulative shear work, suggesting that the total shear work required to trigger liquefaction is comparable among the three states when viewed against normalized cycle progression.
+
+However, the normalized representation obscures the actual energy input rate per cycle. In Fig.~\ref{fig:energy_work}(c), where $W_s$ is plotted against the actual cycle count $N_c$, the ordering reverses to match the liquefaction resistance trend: the \Kzero{} = 2.0 specimen accumulates energy fastest, \Kzero{} = 1.0 is intermediate, and \Kzero{} = 0.5 accumulates energy most slowly. This indicates that a key difference among anisotropic states lies in how rapidly energy is input during cyclic loading, rather than solely in the total energy required at liquefaction.
+
+Figure~\ref{fig:energy_work}(d) further shows that the \Kzero{} = 0.5 specimen exhibits a lower $\ru$ at a given $W_s$, which partially explains its greater liquefaction resistance. In contrast, the $\ru$--$W_s$ relationship does not clearly distinguish between \Kzero{} = 1.0 and 2.0 despite their different $N_L$ values. This limitation indicates that an energy-based interpretation alone is insufficient to fully explain the observed liquefaction resistance ordering.
+
+\paragraph{Shear-wave velocity evolution and stiffness degradation.}
+The inability of the energy-based approach to distinguish between \Kzero{} = 1.0 and 2.0 suggests that the difference in liquefaction resistance between these two states is primarily controlled by the energy input rate per cycle. Since the per-cycle energy input depends on strain amplitude, and strain amplitude is governed by shear stiffness, the evolution of \Vs{} is examined as a stiffness proxy.
+
+The shear-wave velocity is evaluated from the shear modulus $G$ and saturated density $\rho_{\mathrm{sat}}$ as
+\begin{equation}
+V_s = \sqrt{\frac{G}{\rho_{\mathrm{sat}}}}.
+\label{eq:vs_definition}
+\end{equation}
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.92\linewidth]{shear_wave_velocity_evolution.png}
+  \caption{Evolution of shear-wave velocity during cyclic shear for different \Kzero{} values, with loading and unloading stiffness shown separately (CSR = 0.200).}
+  \label{fig:vs_evolution}
+\end{figure}
+
+Figure~\ref{fig:vs_evolution} shows that unloading stiffness is consistently higher than loading stiffness for all three states, reflecting the hysteretic behavior of granular materials. The isotropic specimen (\Kzero{} = 1.0) exhibits the highest initial \Vs{}, while the \Kzero{} = 0.5 and 2.0 specimens have lower but comparable initial values. Despite the similar initial stiffness of the \Kzero{} = 0.5 and 2.0 states, their subsequent degradation trajectories differ markedly: stiffness degrades slowest for \Kzero{} = 0.5 and fastest for \Kzero{} = 2.0.
+
+These different degradation rates provide a unified macroscopic explanation for the liquefaction resistance ordering. The \Kzero{} = 0.5 specimen maintains higher stiffness for longer, develops smaller strain amplitudes per cycle, and therefore accumulates shear work more gradually; the \Kzero{} = 2.0 specimen exhibits the opposite trend. This interpretation is consistent with the cycle-based energy accumulation shown in Fig.~\ref{fig:energy_work}(c) and explains why an energy-only comparison based on $\ru$--$W_s$ does not fully resolve the difference between the isotropic and extension states.
 
 \subsection{Microscopic fabric interpretation}
 \label{subsec:micro_fabric_results}
 
-Present the evolution of \Zm{}, fabric anisotropy, contact density, and contact force/displacement fields.
-Highlight which microscopic indicators explain density effects versus \Kzero{}-direction effects.
+\paragraph{Mechanical coordination number.}
+The coordination number provides a scalar measure of contact network compactness. To focus on load-bearing particles, the mechanical coordination number \Zm{} excludes floaters (particles with fewer than two contacts), and is defined as
+\begin{equation}
+Z_m = \frac{2N_c - N_1}{N_p - N_1 - N_0},
+\label{eq:zm_definition}
+\end{equation}
+where $N_c$ is the total number of interparticle contacts, $N_p$ is the total number of particles, and $N_1$ and $N_0$ are the numbers of particles with one and zero contacts, respectively.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.92\linewidth]{coordination_number_evolution.png}
+  \caption{Mechanical coordination number evolution during cyclic shear and relationship between initial \Zm{} and the number of cycles to liquefaction (CSR = 0.200).}
+  \label{fig:zm_evolution}
+\end{figure}
+
+Figure~\ref{fig:zm_evolution} shows that the initial coordination number differs with stress anisotropy: the isotropically consolidated specimen (\Kzero{} = 1.0) exhibits the largest initial value, whereas the anisotropically consolidated specimens (\Kzero{} = 0.5 and 2.0) have slightly smaller and nearly identical values. This is consistent with the larger initial stiffness of the isotropic state observed in Fig.~\ref{fig:vs_evolution}. During cyclic loading, \Zm{} decreases gradually in the early stage and then drops more rapidly as liquefaction is approached, reflecting progressive loss of contacts and fabric integrity. Liquefaction is triggered when \Zm{} approaches a similar threshold value across the three states, and post-liquefaction \Zm{} fluctuates around comparable levels.
+
+However, the inset in Fig.~\ref{fig:zm_evolution} also indicates that \Zm{} alone cannot explain the \Kzero{} dependence of liquefaction resistance. In particular, the \Kzero{} = 0.5 and 2.0 specimens exhibit similar initial \Zm{} but markedly different $N_L$, implying that directional characteristics of the contact network, not only contact quantity, must be considered.
+
+\paragraph{Fabric anisotropy indicator.}
+To characterize the directional bias of contact orientations, the fabric anisotropy indicator $\alpha$ is used. Following prior DEM-based studies, $\alpha$ is expressed in terms of the vertical principal component $\varphi_v$ of the fabric tensor as
+\begin{equation}
+\alpha = \frac{5(3\varphi_v - 1)}{5\varphi_v + 1}.
+\label{eq:alpha_definition}
+\end{equation}
+Positive $\alpha$ indicates axially concentrated contacts (typically compression-state anisotropy, \Kzero{} < 1.0), whereas negative $\alpha$ indicates horizontally concentrated contacts (typically extension-state anisotropy, \Kzero{} > 1.0).
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.92\linewidth]{fabric_anisotropy_evolution.png}
+  \caption{Evolution of fabric anisotropy indicator $\alpha$ during cyclic shear for different \Kzero{} states (CSR = 0.200).}
+  \label{fig:alpha_evolution}
+\end{figure}
+
+Figure~\ref{fig:alpha_evolution} shows that the \Kzero{} = 0.5 specimen starts with positive $\alpha_0$, the \Kzero{} = 1.0 specimen with near-zero $\alpha_0$, and the \Kzero{} = 2.0 specimen with negative $\alpha_0$, confirming that anisotropic consolidation induces distinct directional fabrics. During most of cyclic loading, $\alpha$ remains relatively stable, whereas large fluctuations emerge near liquefaction and the three curves converge toward values close to zero. This convergence indicates progressive loss of directional fabric anisotropy as the contact network degrades.
+
+\paragraph{Contact density evolution and morphological interpretation.}
+The scalar indicator $\alpha$ captures directional bias but not the full morphology of the contact orientation distribution. To visualize the evolution of contact orientation and contact quantity simultaneously, contact density distributions are examined for the \Kzero{} = 0.5 and 2.0 specimens over the liquefaction process.
+
+\begin{figure*}[t]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{c c c c c}
+    & $N/N_L = 0.00$ & $N/N_L \approx 0.61$ & $N/N_L \approx 1.05$ & $N/N_L \approx 1.07$ \\
+    $\Kzero{} = 0.5$ &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_05_t0.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_05_t302.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_05_t523.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_05_t529.jpg} \\
+    $\Kzero{} = 2.0$ &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_20_t0.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_20_t226.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_20_t379.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{contact_density_k0_20_t386.jpg} \\
+  \end{tabular}
+  \caption{Evolution of contact density distribution during the liquefaction process for \Kzero{} = 0.5 and 2.0 specimens (CSR = 0.200).}
+  \label{fig:contact_density_sequence}
+\end{figure*}
+
+Figure~\ref{fig:contact_density_sequence} shows that the \Kzero{} = 0.5 specimen initially exhibits an axially extended contact-density distribution (higher density near the poles), consistent with its positive $\alpha_0$, whereas the \Kzero{} = 2.0 specimen shows a dimpled, equator-concentrated distribution, consistent with its negative $\alpha_0$. During the intermediate stage, the overall contact density decreases while the initial morphology is largely preserved. As liquefaction is approached and exceeded, the contact density becomes more diffuse and the direction of maximum concentration rotates with the principal stress axes; eventually, the two initially distinct distributions converge toward similar inclined patterns. This morphological convergence is consistent with the convergence of $\alpha$, \Vs{}, and \Zm{} near liquefaction.
+
+\paragraph{Interparticle force chains and particle displacement.}
+The same trend is observed in the evolution of interparticle force chains and particle displacements. The initial force-chain direction reflects the maximum principal stress direction induced by anisotropic consolidation (axially aligned for \Kzero{} = 0.5 and horizontally aligned for \Kzero{} = 2.0), and the contact network progressively weakens and reorganizes during cyclic loading.
+
+\begin{figure*}[t]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{c c c c c}
+    & $N/N_L = 0.00$ & $N/N_L \approx 0.61$ & $N/N_L \approx 1.05$ & $N/N_L \approx 1.07$ \\
+    $\Kzero{} = 0.5$ &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_05_t0.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_05_t302.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_05_t523.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_05_t529.jpg} \\
+    $\Kzero{} = 2.0$ &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_20_t0.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_20_t226.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_20_t379.jpg} &
+    \safeincludegraphics[width=0.17\textwidth]{force_disp_k0_20_t386.jpg} \\
+  \end{tabular}
+  \caption{Evolution of contact force chains (left half of each image) and particle displacement fields (right half) during the liquefaction process for \Kzero{} = 0.5 and 2.0 specimens (CSR = 0.200).}
+  \label{fig:force_disp_sequence}
+\end{figure*}
+
+Figure~\ref{fig:force_disp_sequence} shows a progressive reduction in both the number of strong contacts and the average force-chain intensity, accompanied by increasing particle displacements. Near liquefaction, force chains become sparse and reorient with the rotating principal stress direction. In the post-liquefaction state, the force distributions for the two initial anisotropic states converge toward similar configurations, providing microscopic support for the convergence trends observed in the scalar and morphological fabric indicators.
+
+\paragraph{Combined effect of contact density and directional anisotropy on liquefaction resistance.}
+To further disentangle density and anisotropy effects, additional simulations were performed for two relative densities ($D_r \approx 80\%$ and $D_r \approx 60\%$) and five \Kzero{} values (0.5, 0.67, 1.0, 1.5, 2.0) at CSR = 0.300. Figure~\ref{fig:fabric_liq_2d} shows the relationships between the number of cycles to liquefaction $N_L$ and the two initial microscopic parameters, $Z_{m0}$ and $\alpha_0$, while Fig.~\ref{fig:fabric_liq_3d} combines these variables in a three-dimensional view.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.95\linewidth]{fabric_liquefaction_2d.png}
+  \caption{Relationship between initial microscopic fabric parameters and liquefaction resistance $N_L$ for five \Kzero{} states at two relative densities (CSR = 0.300): (a) $Z_{m0}$ vs. $N_L$ and (b) $\alpha_0$ vs. $N_L$.}
+  \label{fig:fabric_liq_2d}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.95\linewidth]{fabric_liquefaction_3d.png}
+  \caption{Combined effect of initial coordination number $Z_{m0}$ and fabric anisotropy indicator $\alpha_0$ on liquefaction resistance $N_L$ in three-dimensional space (CSR = 0.300).}
+  \label{fig:fabric_liq_3d}
+\end{figure}
+
+Figure~\ref{fig:fabric_liq_2d}(a) shows that denser specimens have systematically larger $Z_{m0}$ and higher $N_L$, confirming that coordination number reflects the influence of packing compactness. However, within each density group, $Z_{m0}$ does not correlate monotonically with liquefaction resistance. By contrast, Fig.~\ref{fig:fabric_liq_2d}(b) shows a clear positive correlation between $\alpha_0$ and $N_L$ across both density levels: compression-state anisotropy (larger $\alpha_0$) is associated with higher liquefaction resistance, while extension-state anisotropy (smaller $\alpha_0$) is associated with lower liquefaction resistance.
+
+The three-dimensional view in Fig.~\ref{fig:fabric_liq_3d} clarifies the complementary roles of the two microscopic parameters. The two relative-density groups are primarily separated along the $Z_{m0}$ axis, whereas the variation in $N_L$ within each group is more strongly associated with $\alpha_0$. This indicates that $Z_{m0}$ mainly captures the packing-state effect, while $\alpha_0$ captures the directional fabric effect induced by anisotropic consolidation.
+
+The physical interpretation is that, in compression states (\Kzero{} < 1.0), a larger fraction of contact normals is oriented perpendicular to the horizontal cyclic shear direction, which tends to stabilize contacts against shear-induced sliding and slows fabric degradation. In extension states (\Kzero{} > 1.0), the contact normals are more aligned with the shear direction, promoting sliding and force-chain collapse, thereby accelerating pore-pressure accumulation and reducing liquefaction resistance. At the same time, the cross-density comparison in Fig.~\ref{fig:fabric_liq_3d} indicates that \Zm{} and $\alpha$ alone do not fully determine liquefaction resistance; macroscopic density-related mechanisms (e.g., particle interlocking and force-chain stability) remain important.
 
 \subsection{Implications and limitations}
 \label{subsec:limitations}
 
-Summarize modeling assumptions (e.g., contact model, constant-volume undrained approximation, specimen size, loading protocol) and discuss how they may affect generality.
+The results show that initial stress anisotropy influences liquefaction resistance through both macroscopic stiffness degradation and microscopic fabric evolution, and that the direction of anisotropy (compression versus extension) is as important as its magnitude. This provides a micro-mechanical interpretation for why specimens with similar initial contact density may still exhibit substantially different liquefaction resistance under cyclic torsional shear.
+
+Several limitations should be noted. First, the undrained condition is represented using a constant-volume DEM approximation rather than explicit fluid--particle coupling. Second, the conclusions are based on a specific particle-size range, contact model, specimen geometry, and loading protocol representative of the simulated HCA tests. Third, only a limited set of relative densities and \Kzero{} states is explored in detail for the expanded microscopic comparison. These limitations do not affect the internal consistency of the comparisons presented here, but they may influence quantitative generalization to other sands, stress levels, and loading histories.
+
+Despite these limitations, the combined use of macroscopic indicators (CSR--$N_L$, $W_s$, \Vs{}) and microscopic descriptors (\Zm{}, $\alpha$, and contact density morphology) provides a practical framework for interpreting \Kzero{}-dependent liquefaction resistance in DEM simulations of hollow cylinder tests.
