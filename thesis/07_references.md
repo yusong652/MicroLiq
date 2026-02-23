@@ -136,6 +136,8 @@ Morimoto, T., Otsubo, M., & Koseki, J. (2021). Microscopic investigation into li
 
 Nakai, T., Matsuoka, H., Okuno, N., & Tsuzuki, K. (1986). True triaxial tests on normally consolidated clay and analysis of the observed shear behavior using elastoplastic constitutive models. Soils and Foundations, 26(4), 67--78. https://doi.org/10.3208/sandf1972.26.4_67
 
+Nakata, Y., Hyodo, M., Murata, H., & Yasufuku, N. (1998). Flow deformation of sands subjected to principal stress rotation. *Soils and Foundations*, 38(2), 115--128. https://doi.org/10.3208/sandf.38.2_115
+
 Nguyen, H. B., Rahman, M. M., & Fourie, A. (2021). The critical state behaviour of granular material in triaxial and direct simple shear condition: A DEM approach. Computers and Geotechnics, 138, 104325. https://doi.org/10.1016/j.compgeo.2021.104325
 
 Oda, M., Nemat‐Nasser, S., & Mehrabadi, M. M. (1982). A statistical study of fabric in a random assembly of spherical granules. International Journal for Numerical and Analytical Methods in Geomechanics, 6(1), 77--94. https://doi.org/10.1002/nag.1610060106
