@@ -9,6 +9,11 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 # st.use("seaborn-deep")
 fig1 = plt.figure(figsize=(6,5.0))
 ax1 = plt.gca()
+FS_LABEL = 17
+FS_TICK = 16
+FS_LEGEND = 16
+FS_INSET = 14
+LW_MAIN = 1.6
 xmajorFormatter = FormatStrFormatter('%.1f')
 ymajorFormatter = FormatStrFormatter('%.3f')
 
@@ -42,12 +47,12 @@ def plt_ani_stress(k0=0.3, marker='o', color='tab:blue'):
 	stresses_p = (stresses_z + stresses_out + stresses_in) / 3.0
 	void_ratios = df1['void_ratio'][::interval]
 	markerfacecolor = 'None'
-	markersize=9
-	size_sct=80
+	markersize = 10
+	size_sct = 110
 	ax1.plot(stresses_p, void_ratios,
 		label=r'$%.2f$'%k0, markevery=len(stresses_p)/1.5e4, color=color,
 		marker=marker, markerfacecolor=markerfacecolor, markeredgecolor=color,
-		markersize=markersize,)
+		markersize=markersize, linewidth=LW_MAIN)
 	ax2.scatter([k0], [void_ratios.to_numpy()[-1]], color=color, marker=marker,
 		facecolors=markerfacecolor, s=size_sct)
 
@@ -60,9 +65,9 @@ for k0, marker, color in zip(k0s, markers, colors):
 # legends_plt=[r"$Isotropic\ consolidation$", ]
 
 xlabel = ax1.set_xlabel(r'$Mean\ effective\ stress(kPa)\ p\prime\ (kPa)$',
- fontsize=13)
-ylabel = ax1.set_ylabel(r'$Void\ ratio\ e$', fontsize=13)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ fontsize=FS_LABEL)
+ylabel = ax1.set_ylabel(r'$Void\ ratio\ e$', fontsize=FS_LABEL)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.tick_params(axis='both', which='minor', labelsize=3)
 ax1.set_ylim(0.730, 0.74)
 ax1.set_xlim(10.0, 110)
@@ -83,22 +88,23 @@ def set_ax2_format():
 
 
 	ax2.set_xticklabels(ticklabels)
-	ax2.set_xlabel(r'$K_0$', fontsize=13)
-	ax2.set_ylabel(r'$e\ after\ AC$', fontsize=13)
-	ax2.tick_params(axis='both', which='major', labelsize=13)
+	ax2.set_xlabel(r'$K_0$', fontsize=FS_INSET)
+	ax2.set_ylabel(r'$e\ after\ AC$', fontsize=FS_INSET)
+	ax2.tick_params(axis='both', which='major', labelsize=FS_INSET)
 	ax2.tick_params(axis='x', which='minor', labelsize=0)  # 保留x轴小刻度但不显示标签
 
 set_ax2_format()
 
 legend1 = ax1.legend(
-	title=r'$Target\ K_0\ after\ AC$', title_fontsize=13,
-	fontsize=13, framealpha=0.2, ncol=4,
+	title=r'$Target\ K_0\ after\ AC$', title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, framealpha=0.2, ncol=4,
 	borderpad=0.2, columnspacing=0.2, 
-	loc=(0.0, 1.08))
+	loc=(0.0, 1.02))
 legend1._legend_box.align = "left"  # type: ignore
 box = ax1.get_position()
-ax1.set_position((box.x0, box.y0, box.width, box.height*0.2))
+# Reserve some space for the top legend without compressing the plotting area too much.
+ax1.set_position((box.x0, box.y0, box.width, box.height*0.82))
 ax1.add_artist(legend1)
-plt.tight_layout(rect=(0, 0, 1, 0.72))
-plt.savefig("stress_void.png",dpi=500)
+plt.tight_layout(rect=(0, 0, 1, 0.84))
+plt.savefig("stress_void.png", dpi=500, bbox_inches="tight", pad_inches=0.02)
 plt.show()

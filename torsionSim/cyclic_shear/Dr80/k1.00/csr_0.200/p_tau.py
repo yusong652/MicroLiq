@@ -22,6 +22,10 @@ stresses_p = (stresses_in + stresses_out + stresses_z) / 3.0
 time = df1["time_duration"]
 fig1 = plt.figure(figsize=(6,4))
 ax1 = plt.gca()
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+LW_MAIN = 1.5
 # ax1.set_title(r"$Triaxial\ Compression$")
 # xmajorLocator = MultipleLocator(5)
 # xmajorFormatter = FormatStrFormatter('%5.0f')
@@ -44,10 +48,11 @@ ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 flt = time < 5.20
 ax1.plot(stresses_p[flt][::16],stresses_shear[flt][::16],linewidth=1.2,
 	label=r"$Stress\ relationship$", color='tab:blue')
-ax1.set_ylabel(r'$Shear\ stress\ \tau_{z\theta}\ (kPa)$', fontsize=13)
-ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$', fontsize=13)
-ax1.legend(fontsize=13, framealpha=0.2, loc='upper left')
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.lines[-1].set_linewidth(LW_MAIN)
+ax1.set_ylabel(r'$Shear\ stress\ \tau_{z\theta}\ (kPa)$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$', fontsize=FS_LABEL)
+ax1.legend(fontsize=FS_LEGEND, framealpha=0.2, loc='upper left')
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 # ax2 = ax1.twinx()
 # ax2.set_ylabel(r"$Stress_{x}(kPa)$")
 # ymajorLocator = MultipleLocator(1000)

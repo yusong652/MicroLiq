@@ -22,6 +22,10 @@ stresses_p = (stresses_in + stresses_out + stresses_z) / 3.0
 time = df1["time_duration"]
 fig1 = plt.figure(figsize=(6.0,4))
 ax1 = plt.gca()
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+LW_MAIN = 1.5
 # ax1.set_title(r"$Triaxial\ Compression$")
 # xmajorLocator = MultipleLocator(5)
 # xmajorFormatter = FormatStrFormatter('%5.0f')
@@ -41,14 +45,14 @@ ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 flt = time < 4.24
-ax1.plot(strains[flt][::20],stresses_shear[flt][::20],linewidth=1.2,
+ax1.plot(strains[flt][::20],stresses_shear[flt][::20],linewidth=LW_MAIN,
 	label=r"$Stress-strain$" + '\n' + r"$relationship$",)
-ax1.legend(fontsize=13, framealpha=0.2, loc='lower right')
-ax1.set_ylabel(r'$Shear\ stress\ \tau_{z\theta}\ (kPa)$', fontsize=13)
-ax1.set_xlabel(r'$Shear\ strain\ \gamma_{z\theta}\ (\%)$', fontsize=13)
+ax1.legend(fontsize=FS_LEGEND, framealpha=0.2, loc='lower right')
+ax1.set_ylabel(r'$Shear\ stress\ \tau_{z\theta}\ (kPa)$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Shear\ strain\ \gamma_{z\theta}\ (\%)$', fontsize=FS_LABEL)
 ax1.set_xlim(-4, 4)
 ax1.set_ylim(-30, 30)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 # ax1.legend(fontsize=8,loc=(0.55,0.38))
 
 # ax2 = ax1.twinx()

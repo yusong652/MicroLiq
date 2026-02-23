@@ -3,7 +3,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
-fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15.0, 4.5))
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15.0, 4.9))
+
+
+def add_panel_label(ax, label):
+	# Place panel labels just outside the axes frame to avoid overlap with
+	# legends/curves while keeping descriptive subcaptions in LaTeX.
+	ax.text(
+		-0.0, 1.005, label,
+		transform=ax.transAxes,
+		ha='left', va='bottom',
+		fontsize=16, fontweight='bold',
+		clip_on=False
+	)
 
 # ======================================================================
 # (a) Effective stress path: p'-q (dilatancy)
@@ -37,12 +49,12 @@ ax1.plot(stresses_p_ref, stresses_q_ref, label=r'$Nakata\ et\ al.,\ 1998$',
 	markeredgewidth=1.2, linewidth=1.2, markevery=2)
 ax1.set_xlim(0.0, 200.0)
 ax1.set_ylim(0, 200)
-ax1.set_xlabel(r"$Mean\ effective\ stress\ p'\ (kPa)$", fontsize=13)
-ax1.set_ylabel(r'$Deviatoric\ stress\ q\ (kPa)$', fontsize=13)
-ax1.legend(fontsize=10, loc='upper left')
-ax1.tick_params(axis='both', which='major', labelsize=12)
+ax1.set_xlabel(r"$Mean\ effective\ stress\ p'\ (kPa)$", fontsize=18)
+ax1.set_ylabel(r'$Deviatoric\ stress\ q\ (kPa)$', fontsize=18)
+ax1.legend(fontsize=14, loc='upper left')
+ax1.tick_params(axis='both', which='major', labelsize=15)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--', lw=0.35, alpha=0.8)
-ax1.set_title(r'$(a)\ Effective\ stress\ path$', fontsize=13, pad=8)
+add_panel_label(ax1, "(a)")
 
 # ======================================================================
 # (b) Stress-strain relationship (stiffness)
@@ -61,12 +73,12 @@ ax2.plot(strains_dev_ref, stresses_q_ref2, label=r'$Nakata\ et\ al.,\ 1998$',
 	markeredgewidth=1.2, linewidth=1.2, markevery=2)
 ax2.set_xlim(0.0, 2.0)
 ax2.set_ylim(0, 200)
-ax2.set_xlabel(r'$Deviatoric\ strain\ \epsilon_q\ (\%)$', fontsize=13)
-ax2.set_ylabel(r'$Deviatoric\ stress\ q\ (kPa)$', fontsize=13)
-ax2.legend(fontsize=10, loc='lower right')
-ax2.tick_params(axis='both', which='major', labelsize=12)
+ax2.set_xlabel(r'$Deviatoric\ strain\ \epsilon_q\ (\%)$', fontsize=18)
+ax2.set_ylabel(r'$Deviatoric\ stress\ q\ (kPa)$', fontsize=18)
+ax2.legend(fontsize=14, loc='lower right')
+ax2.tick_params(axis='both', which='major', labelsize=15)
 ax2.grid(axis='both', which='major', color='grey', linestyle='--', lw=0.35, alpha=0.8)
-ax2.set_title(r'$(b)\ Stress\text{-}strain\ relationship$', fontsize=13, pad=8)
+add_panel_label(ax2, "(b)")
 
 # ======================================================================
 # (c) CSR vs N_L (cyclic liquefaction resistance)
@@ -94,16 +106,17 @@ ax3.scatter(n_ref, csr_ref, label=r'$Ishihara\ et\ al.,\ 1985$',
 ax3.set_xlim(1, 500.0)
 ax3.set_ylim(0.10, 0.50)
 ax3.set_xscale("log")
-ax3.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_{L}$', fontsize=13)
-ax3.set_ylabel(r'$Cyclic\ stress\ ratio\ \tau_{z\theta,max}/p^\prime_{0}$', fontsize=13)
-ax3.legend(fontsize=10)
-ax3.tick_params(axis='both', which='major', labelsize=12)
+ax3.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_{L}$', fontsize=18)
+ax3.set_ylabel(r'$Cyclic\ stress\ ratio\ \tau_{z\theta,max}/p^\prime_{0}$', fontsize=18)
+ax3.legend(fontsize=14)
+ax3.tick_params(axis='both', which='major', labelsize=15)
 ax3.grid(axis='both', which='major', color='grey', linestyle='--', lw=0.35, alpha=0.8)
 ax3.annotate(r'$Liquefaction\ criterion:\ \gamma_{z\theta}=2.5\%$',
 	xy=(0.98, 0.02), xycoords='axes fraction',
-	fontsize=10, ha='right', va='bottom')
-ax3.set_title(r'$(c)\ Liquefaction\ resistance$', fontsize=13, pad=8)
+	fontsize=13, ha='right', va='bottom')
+add_panel_label(ax3, "(c)")
 
 plt.tight_layout()
-plt.savefig("validate_combined.png", dpi=700)
+plt.savefig("validate_combined.pdf", bbox_inches="tight")
+plt.savefig("validate_combined.png", dpi=700, bbox_inches="tight")
 plt.show()

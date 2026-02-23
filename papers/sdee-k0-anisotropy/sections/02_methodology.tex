@@ -33,16 +33,16 @@ The specimen geometry follows a laboratory-scale HCA configuration with inner di
 
 \begin{figure}[t]
   \centering
-  \begin{subfigure}[t]{0.48\linewidth}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{specimen_generation_pouring.jpg}
-    \caption{Particle generation by pouring.}
+    \safeincludegraphics[width=0.86\linewidth]{specimen_generation_pouring.jpg}
+    \caption{Particle generation modeling air-pluviation.}
     \label{fig:specimen_generation_a}
   \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\linewidth}
+  \vspace{6pt}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{specimen_generation_blade_insertion.jpg}
+    \safeincludegraphics[width=0.86\linewidth]{specimen_generation_blade_insertion.jpg}
     \caption{Insertion of torsional blades.}
     \label{fig:specimen_generation_b}
   \end{subfigure}
@@ -63,16 +63,16 @@ During the AC stage, both $\pmean$ and deviator stress increase simultaneously. 
 
 \begin{figure}[t]
   \centering
-  \begin{subfigure}[t]{0.48\linewidth}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{anisotropic_consolidation_stress_path.png}
+    \safeincludegraphics[width=0.75\linewidth]{anisotropic_consolidation_stress_path.png}
     \caption{$\pmean$--$q$ stress path.}
     \label{fig:ac_path_a}
   \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.48\linewidth}
+  \vspace{6pt}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{anisotropic_consolidation_void_ratio.png}
+    \safeincludegraphics[width=0.75\linewidth]{anisotropic_consolidation_void_ratio.png}
     \caption{$\pmean$--$e$ evolution.}
     \label{fig:ac_path_b}
   \end{subfigure}
@@ -82,23 +82,23 @@ During the AC stage, both $\pmean$ and deviator stress increase simultaneously. 
 
 \begin{figure}[t]
   \centering
-  \begin{subfigure}[t]{0.32\linewidth}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{specimen_k0_05_after_ac.jpg}
+    \safeincludegraphics[width=0.86\linewidth]{specimen_k0_05_after_ac.jpg}
     \caption{\Kzero{} = 0.5}
     \label{fig:ac_specimens_a}
   \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\linewidth}
+  \vspace{6pt}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{specimen_k0_10_after_ac.jpg}
+    \safeincludegraphics[width=0.86\linewidth]{specimen_k0_10_after_ac.jpg}
     \caption{\Kzero{} = 1.0}
     \label{fig:ac_specimens_b}
   \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\linewidth}
+  \vspace{6pt}
+  \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=\linewidth]{specimen_k0_20_after_ac.jpg}
+    \safeincludegraphics[width=0.86\linewidth]{specimen_k0_20_after_ac.jpg}
     \caption{\Kzero{} = 2.0}
     \label{fig:ac_specimens_c}
   \end{subfigure}
@@ -137,7 +137,7 @@ where $r_d$ is the distance from the rotation axis to the contact point, $k_n$ i
 
 \begin{figure}[t]
   \centering
-  \safeincludegraphics[width=0.72\linewidth]{servo_torsional_contact_geometry.png}
+  \safeincludegraphics[width=0.86\linewidth]{servo_torsional_contact_geometry.png}
   \caption{Contact geometry used to evaluate the rotational stiffness contribution for torsional servo control. $r_d$: distance to rotation axis; $\theta$: angle between contact normal and horizontal.}
   \label{fig:servo_geometry}
 \end{figure}
@@ -169,27 +169,8 @@ The calibrated parameter set was validated against HCA experiments for dense Toy
 
 \begin{figure*}[t]
   \centering
-  \begin{subfigure}[t]{0.32\textwidth}
-    \centering
-    \safeincludegraphics[width=\linewidth]{validation_monotonic_effective_stress_path.png}
-    \caption{Effective stress path.}
-    \label{fig:validation_a}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\textwidth}
-    \centering
-    \safeincludegraphics[width=\linewidth]{validation_monotonic_stress_strain.png}
-    \caption{Stress--strain relationship.}
-    \label{fig:validation_b}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.32\textwidth}
-    \centering
-    \safeincludegraphics[width=\linewidth]{validation_cyclic_liquefaction_resistance.png}
-    \caption{Cyclic liquefaction resistance curve.}
-    \label{fig:validation_c}
-  \end{subfigure}
-  \caption{Validation of the DEM-HCA model against experimental data for dense Toyoura sand under monotonic and cyclic loading conditions.}
+  \safeincludegraphics[width=\textwidth]{validate_combined.png}
+  \caption{Validation of the DEM-HCA model against experimental data for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0): (a) effective stress path and (b) stress--strain relationship from undrained monotonic shear \citep{Nakata1998}; (c) cyclic stress ratio versus number of cycles to liquefaction \citep{Ishihara1985}.}
   \label{fig:validation_combined}
 \end{figure*}
 

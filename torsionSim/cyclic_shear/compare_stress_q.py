@@ -14,6 +14,11 @@ linestyles = ['-.', ':', '-', '--', '-.']
 
 fig1 = plt.figure(figsize=(6,4))
 ax1 = plt.gca()
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+FS_ANN = 14
+LW_MAIN = 1.5
 
 def draw_dev(k0, lst, color):
 	for csr in csr_arr:
@@ -50,7 +55,7 @@ def draw_dev(k0, lst, color):
 		time_liq = time[ind_liq]
 		##################################
 		flt = time < 1.05 * time_liq
-		ax1.plot(stresses_p[flt][::16],stresses_dev[flt][::16],linewidth=1.2,
+		ax1.plot(stresses_p[flt][::16],stresses_dev[flt][::16],linewidth=LW_MAIN,
 			label=r"$K_0=%.2f$"%k0, color=color, linestyle=lst)
 
 def draw_csl():
@@ -88,7 +93,7 @@ def draw_csl():
 		slope = stresses_dev[ind_liq+80] / stresses_p[ind_liq+80] 
 		ax1.plot([0, 120.0],
 			[0, slope*120.0],
-			linewidth=1.2,label=r"$Critical\ state\ line$",
+			linewidth=LW_MAIN,label=r"$Critical\ state\ line$",
 			color='tab:red',linestyle='--')
 
 # ax1.set_title(r"$Triaxial\ Compression$")
@@ -111,7 +116,7 @@ draw_csl()
 # plt.annotate(r"$Dense\ state$" + "\n" + r"$CSR=0.200$",
 #  xy=(5, 75), fontsize=13)
 plt.annotate(r"$CSR=0.200$",
- xy=(80, 80), fontsize=13)
+ xy=(80, 80), fontsize=FS_ANN)
 
 ax1.set_xlim(0.0, 110.0)
 ax1.set_ylim((-0, 100))
@@ -119,10 +124,10 @@ ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
-ax1.set_ylabel(r'$Deviatoric\ stress\ \sigma_{vM}\ (kPa)$', fontsize=13)
-ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$', fontsize=13)
-ax1.legend(fontsize=13, framealpha=0.5, loc='upper left')
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.set_ylabel(r'$Deviatoric\ stress\ \sigma_{vM}\ (kPa)$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$', fontsize=FS_LABEL)
+ax1.legend(fontsize=FS_LEGEND, framealpha=0.5, loc='upper left')
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 
 plt.tight_layout()
 plt.savefig("stress_dev.png",dpi=350)

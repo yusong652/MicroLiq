@@ -12,6 +12,10 @@ colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
 
 fig1 = plt.figure(figsize=(6.0,4))
 ax1 = plt.gca()
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 13
+MARKER_SIZE = 100
 
 def plot_liq(k0, color, marker):
 	ns_liq = []
@@ -46,7 +50,8 @@ def plot_liq(k0, color, marker):
 		ns_liq.append(n_liq)
 		csrs.append(csr)
 	ax1.scatter(ns_liq, csrs, label=r'$K_0=%.2f$'%k0,
-				marker=marker, facecolors='None', edgecolors=color, s=86)
+				marker=marker, facecolors='None', edgecolors=color, s=MARKER_SIZE,
+				linewidths=1.4)
 
 for k0, marker, color in zip(k0s, markers, colors):
 	plot_liq(k0, color, marker )
@@ -72,13 +77,13 @@ ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 
 
 ax1.set_ylabel(r'$Cyclic\ stress\ ratio\ \tau_{z\theta,max}/p^\prime_{0}$',
- fontsize=13)
-ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_{L}$', fontsize=13)
-ax1.legend(fontsize=10, ncol=1)
+ fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_{L}$', fontsize=FS_LABEL)
+ax1.legend(fontsize=FS_LEGEND, ncol=1)
 ax1.set_xscale('log')
 ax1.set_xticks([5, 10, 20, 40, 80])
 ax1.set_xticklabels(['5', '10', '20', '40', '80'])
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 plt.tight_layout()
 plt.savefig("liq_res_cur.png",dpi=700)
 plt.show()

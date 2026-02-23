@@ -9,6 +9,10 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 # st.use("seaborn-deep")
 fig1 = plt.figure(figsize=(6,5.0))
 ax1 = plt.gca()
+FS_LABEL = 17
+FS_TICK = 16
+FS_LEGEND = 16
+LW_MAIN = 1.6
 xmajorFormatter = FormatStrFormatter('%.1f')
 ymajorFormatter = FormatStrFormatter('%.1f')
 ax1.xaxis.set_major_formatter(xmajorFormatter)
@@ -17,7 +21,7 @@ ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 # Anisotropic state scatter
 k0s = [0.5, 1.0, 2.0]
 markers = ['d', 'o', 'v']
@@ -52,19 +56,19 @@ def plt_ani_stress(k0=0.3, marker='o', color='tab:blue'):
 	# Marker settings
 	if k0 == 1.0:
 		markerfacecolor = color
-		markersize = 8
+		markersize = 10
 	else:
 		markerfacecolor = 'None'
-		markersize = 9
+		markersize = 11
 
 	# Plot full line
-	ax1.plot(stresses_p, stresses_q, color=color, linewidth=1.2)
+	ax1.plot(stresses_p, stresses_q, color=color, linewidth=LW_MAIN)
 
 	# Plot markers at target stress levels
 	if marker_indices:
 		ax1.scatter(stresses_p.iloc[marker_indices], stresses_q.iloc[marker_indices],
 			label=r'$%.2f$'%k0, marker=marker, s=markersize**2,
-			facecolors=markerfacecolor, edgecolors=color, linewidths=1.5)
+			facecolors=markerfacecolor, edgecolors=color, linewidths=1.8)
 
 # Isotropic compression line (initialization phase, before anisotropic consolidation)
 handles_plt = []
@@ -76,17 +80,18 @@ for k0, marker, color in zip(k0s, markers, colors):
 	plt_ani_stress(k0, marker, color=color)
 
 legend1 = ax1.legend(
-	title=r'$Target\ K_0\ after\ AC$', title_fontsize=13,
-	fontsize=13, framealpha=0.2, ncol=4,
-	borderpad=0.2, columnspacing=0.2,loc=(0.0, 1.08))
+	title=r'$Target\ K_0\ after\ AC$', title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, framealpha=0.2, ncol=4,
+	borderpad=0.2, columnspacing=0.2, loc=(0.0, 1.00))
 legend1._legend_box.align = "left"  # type: ignore
 xlabel = ax1.set_xlabel(r'$Mean\ effective\ stress(kPa)\ p\prime\ (kPa)$',
- fontsize=13)
-ylabel = ax1.set_ylabel(r'$Deviator\ stress\ q\ (kPa)$', fontsize=13)
+ fontsize=FS_LABEL)
+ylabel = ax1.set_ylabel(r'$Deviator\ stress\ q\ (kPa)$', fontsize=FS_LABEL)
 ax1.set_ylim(-100, 100)
 ax1.set_xlim(0.0, 110)
 
 ax1.add_artist(legend1)
-plt.tight_layout(rect=(0, 0, 1, 0.72))
-plt.savefig("aniso_stress.png",dpi=500)
+plt.tight_layout(rect=(0, 0, 1, 0.88))
+plt.savefig("aniso_stress.png", dpi=500, bbox_inches="tight", pad_inches=0.02,
+	bbox_extra_artists=(legend1,))
 plt.show()
