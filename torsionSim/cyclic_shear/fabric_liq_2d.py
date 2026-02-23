@@ -1,20 +1,30 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+BASE_DIR = Path(__file__).resolve().parent
+
 k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
 drs = ['Dr80', 'Dr60']
 dr_markers = {'Dr80': 'o', 'Dr60': 's'}
-dr_labels = {'Dr80': r'$D_r=80\%$', 'Dr60': r'$D_r=60\%$'}
+dr_labels = {'Dr80': r'$D_r=90\%$', 'Dr60': r'$D_r=60\%$'}
 period = 1.0 / 8.0
+
+FS_AX = 14
+FS_TICK = 13
+FS_LEG = 12
+FS_ANN = 14
+FS_PANEL = 12
 
 results = []
 
 for dr in drs:
 	for k0 in k0s:
-		shear_file = "%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr, k0)
-		cn_file = "%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr, k0)
-		alpha_file = "%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr, k0)
+		shear_file = BASE_DIR / ("%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr, k0))
+		cn_file = BASE_DIR / ("%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr, k0))
+		alpha_file = BASE_DIR / ("%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr, k0))
 		try:
 			df_shear = pd.read_csv(shear_file, header=0)
 			df_cn = pd.read_csv(cn_file, header=0)
@@ -43,8 +53,6 @@ for dr in drs:
 
 df = pd.DataFrame(results)
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.5))
-
 # --- (a) Z_{m0} vs N_L ---
 offsets_a = {
 	('Dr80', 0.50): (12, 6), ('Dr80', 0.67): (12, 6),
@@ -54,28 +62,32 @@ offsets_a = {
 	('Dr60', 1.00): (12, -3), ('Dr60', 1.50): (-36, -16),
 	('Dr60', 2.00): (12, -14),
 }
-for dr in drs:
-	mask = df['dr'] == dr
-	ax1.scatter(df[mask]['zm0'], df[mask]['n_liq'],
-		marker=dr_markers[dr], s=100, label=dr_labels[dr],
-		color='tab:blue' if dr == 'Dr80' else 'tab:orange',
-		edgecolors='black', linewidths=0.8)
-	for _, row in df[mask].iterrows():
-		ofs = offsets_a[(row['dr'], row['k0'])]
-		ax1.annotate('%.2f' % row['k0'],
-			xy=(row['zm0'], row['n_liq']),
-			xytext=ofs, textcoords='offset points', fontsize=13,
-			arrowprops=dict(arrowstyle='-', color='grey', lw=0.5))
 
-ax1.set_xlabel(r'$Z_{m0}$', fontsize=13)
-ax1.set_ylabel(r'$N_L$', fontsize=13)
-ax1.tick_params(axis='both', which='major', labelsize=12)
-ax1.grid(axis='both', which='major', color='grey', linestyle='--',
-	lw=0.35, alpha=0.8)
-ax1.legend(fontsize=11, loc='upper left')
-ax1.set_xlim(4.74, 5.02)
-ax1.set_ylim(3.0, 12.5)
-ax1.set_title('(a)', fontsize=11, loc='left')
+
+def plot_zm_vs_nl(ax, show_panel_label=True):
+	for dr in drs:
+		mask = df['dr'] == dr
+		ax.scatter(df[mask]['zm0'], df[mask]['n_liq'],
+			marker=dr_markers[dr], s=100, label=dr_labels[dr],
+			color='tab:blue' if dr == 'Dr80' else 'tab:orange',
+			edgecolors='black', linewidths=0.8)
+		for _, row in df[mask].iterrows():
+			ofs = offsets_a[(row['dr'], row['k0'])]
+			ax.annotate('%.2f' % row['k0'],
+				xy=(row['zm0'], row['n_liq']),
+				xytext=ofs, textcoords='offset points', fontsize=FS_ANN,
+				arrowprops=dict(arrowstyle='-', color='grey', lw=0.5))
+
+	ax.set_xlabel(r'$Z_{m0}$', fontsize=FS_AX)
+	ax.set_ylabel(r'$N_L$', fontsize=FS_AX)
+	ax.tick_params(axis='both', which='major', labelsize=FS_TICK)
+	ax.grid(axis='both', which='major', color='grey', linestyle='--',
+		lw=0.35, alpha=0.8)
+	ax.legend(fontsize=FS_LEG, loc='upper left')
+	ax.set_xlim(4.74, 5.02)
+	ax.set_ylim(3.0, 12.5)
+	if show_panel_label:
+		ax.set_title('(a)', fontsize=FS_PANEL, loc='left')
 
 # --- (b) alpha_0 vs N_L ---
 offsets_b = {
@@ -84,27 +96,51 @@ offsets_b = {
 	('Dr60', 0.50): (-18, -16), ('Dr60', 0.67): (-10, 8), ('Dr60', 1.00): (-10, 8),
 	('Dr60', 1.50): (-10, -16), ('Dr60', 2.00): (8, -14),
 }
-for dr in drs:
-	mask = df['dr'] == dr
-	ax2.scatter(df[mask]['alpha0'], df[mask]['n_liq'],
-		marker=dr_markers[dr], s=100, label=dr_labels[dr],
-		color='tab:blue' if dr == 'Dr80' else 'tab:orange',
-		edgecolors='black', linewidths=0.8)
-	for _, row in df[mask].iterrows():
-		ofs = offsets_b[(row['dr'], row['k0'])]
-		ax2.annotate('%.2f' % row['k0'],
-			xy=(row['alpha0'], row['n_liq']),
-			xytext=ofs, textcoords='offset points', fontsize=13)
 
-ax2.set_xlabel(r'$\alpha_0$', fontsize=13)
-ax2.set_ylabel(r'$N_L$', fontsize=13)
-ax2.tick_params(axis='both', which='major', labelsize=12)
-ax2.grid(axis='both', which='major', color='grey', linestyle='--',
-	lw=0.35, alpha=0.8)
-ax2.legend(fontsize=11, loc='upper left')
-ax2.set_ylim(3.0, 12.5)
-ax2.set_title('(b)', fontsize=11, loc='left')
 
+def plot_alpha_vs_nl(ax, show_panel_label=True):
+	for dr in drs:
+		mask = df['dr'] == dr
+		ax.scatter(df[mask]['alpha0'], df[mask]['n_liq'],
+			marker=dr_markers[dr], s=100, label=dr_labels[dr],
+			color='tab:blue' if dr == 'Dr80' else 'tab:orange',
+			edgecolors='black', linewidths=0.8)
+		for _, row in df[mask].iterrows():
+			ofs = offsets_b[(row['dr'], row['k0'])]
+			ax.annotate('%.2f' % row['k0'],
+				xy=(row['alpha0'], row['n_liq']),
+				xytext=ofs, textcoords='offset points', fontsize=FS_ANN)
+
+	ax.set_xlabel(r'$\alpha_0$', fontsize=FS_AX)
+	ax.set_ylabel(r'$N_L$', fontsize=FS_AX)
+	ax.tick_params(axis='both', which='major', labelsize=FS_TICK)
+	ax.grid(axis='both', which='major', color='grey', linestyle='--',
+		lw=0.35, alpha=0.8)
+	ax.legend(fontsize=FS_LEG, loc='upper left')
+	ax.set_xlim(-0.10, 0.10)
+	ax.set_xticks([-0.10, -0.05, 0.00, 0.05, 0.10])
+	ax.set_ylim(3.0, 12.5)
+	if show_panel_label:
+		ax.set_title('(b)', fontsize=FS_PANEL, loc='left')
+
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.5))
+plot_zm_vs_nl(ax1, show_panel_label=True)
+plot_alpha_vs_nl(ax2, show_panel_label=True)
 plt.tight_layout()
-plt.savefig("fabric_liq_2d.png", dpi=350)
+plt.savefig(BASE_DIR / "fabric_liq_2d.png", dpi=350, bbox_inches="tight", pad_inches=0.02)
+plt.close(fig)
+
+fig_zm, ax_zm = plt.subplots(1, 1, figsize=(5.6, 4.5))
+plot_zm_vs_nl(ax_zm, show_panel_label=False)
+plt.tight_layout()
+plt.savefig(BASE_DIR / "fabric_liq_2d_zm_nl.png", dpi=350, bbox_inches="tight", pad_inches=0.02)
+plt.close(fig_zm)
+
+fig_alpha, ax_alpha = plt.subplots(1, 1, figsize=(5.6, 4.5))
+plot_alpha_vs_nl(ax_alpha, show_panel_label=False)
+plt.tight_layout()
+plt.savefig(BASE_DIR / "fabric_liq_2d_alpha_nl.png", dpi=350, bbox_inches="tight", pad_inches=0.02)
+plt.close(fig_alpha)
+
 plt.show()

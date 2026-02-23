@@ -5,13 +5,20 @@ from pylab import style as st
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from mpl_toolkits.axes_grid1.inset_locator import (inset_axes, InsetPosition,
                                                   mark_inset)
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # setting style
 csr_arr = np.arange(0.200, 0.250, 0.05).tolist()
 # csr_arr.append(0.235)
-k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-markers = ['d', 's', 'o', '^', 'v']
-colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
+k0s = [0.5, 1.0, 2.0]
+markers = ['d', 'o', 'v']
+colors = ['tab:orange', 'tab:blue', 'tab:green']
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+FS_INSET = 12
 fig1 = plt.figure(figsize=(6.0, 5.0))
 ax1 = plt.gca()
 ax2 = plt.axes([0,1,0,1])
@@ -28,9 +35,9 @@ ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 
 def plot_CN(k0, color, marker, csr=0.200):
 	try:
-		df1 = pd.read_csv("Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr),
+		df1 = pd.read_csv(BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)),
 			header=0)
-		df2 = pd.read_csv("Dr80/k%.2f/csr_%.3f/MechCoordinationNumber.csv"%(k0, csr))
+		df2 = pd.read_csv(BASE_DIR / ("Dr80/k%.2f/csr_%.3f/MechCoordinationNumber.csv"%(k0, csr)))
 	except FileNotFoundError:
 		return
 	# overall data
@@ -84,23 +91,23 @@ for k0, marker, color in zip(k0s, markers, colors):
 
 # plot_CN('0.5', 0.400)
 
-legend1 = ax1.legend(title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=13,
-	fontsize=13, ncol=3, framealpha=0.2, columnspacing=0.8,
+legend1 = ax1.legend(title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, ncol=3, framealpha=0.2, columnspacing=0.8,
 	loc=(-0.0, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
-ax1.set_ylabel(r'$Coordination\ number\ Z_{m}$', fontsize=13)
+ax1.set_ylabel(r'$Coordination\ number\ Z_{m}$', fontsize=FS_LABEL)
 ax1.set_xlabel(r'$Normalized\ number\ of\ cyclic\ loading\ N_c/N_L$', 
-	fontsize=13)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+	fontsize=FS_LABEL)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.set_xlim(0, 1.05)
 ax1.set_ylim(3.8, 5.2)
-ax2.set_xlabel(r'$Z_{m0}$', fontsize=13)
-ax2.set_ylabel(r'$N_L$', fontsize=13)
-ax2.tick_params(axis='both', which='major', labelsize=13)
+ax2.set_xlabel(r'$Z_{m0}$', fontsize=FS_INSET)
+ax2.set_ylabel(r'$N_L$', fontsize=FS_INSET)
+ax2.tick_params(axis='both', which='major', labelsize=FS_INSET)
 ax2.set_yscale('log')
 ax2.set_yticks([20, 30, 50, 100])
 ax2.set_yticklabels(['20', '30', '50', '100'])
 ax2.yaxis.set_minor_formatter(plt.NullFormatter())
 plt.tight_layout(rect=[0, 0, 1, 1])
-plt.savefig("CoordNum.png",dpi=350)
+plt.savefig(BASE_DIR / "CoordNum.png",dpi=350)
 plt.show()

@@ -3,14 +3,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pylab import style as st
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # setting style
 # st.use("seaborn-deep")
 csr_arr = np.arange(0.200, 0.250, 0.05).tolist()
 # csr_arr.append(0.235)
-k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-markers = ['d', 's', 'o', '^', 'v']
-colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
+k0s = [0.5, 1.0, 2.0]
+markers = ['d', 'o', 'v']
+colors = ['tab:orange', 'tab:blue', 'tab:green']
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+FS_ANN = 14
+FS_INSET = 12
 # k0s = [0.33, 0.5,  1.0,
 #  2.0, 3.0]
 # markers = [ 'h', 'd', 'o', 'v', '>']
@@ -21,10 +29,10 @@ fig1 = plt.figure(figsize=(6.0, 4.5))
 ax1 = plt.gca()
 
 # inset axes for zoom region
-ax_inset = ax1.inset_axes([0.1, 0.45, 0.4, 0.35])
+ax_inset = ax1.inset_axes([0.14, 0.45, 0.4, 0.35])
 
 def plot_acc_energy(k0, color, marker, csr=0.200):
-	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr))
 	print(file_name)
 	try:
 		df1 = pd.read_csv(file_name,header=0)
@@ -80,28 +88,28 @@ for k0, marker, color in zip(k0s, markers, colors):
 	plot_acc_energy(k0, color, marker)
 
 legend1 = ax1.legend(
-	title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=13,
-	fontsize=13, ncol=5, framealpha=0.2, columnspacing=0.05, 
+	title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, ncol=3, framealpha=0.2, columnspacing=0.05, 
 	loc=(0.02, 0.8), handletextpad=0.1)
 legend1._legend_box.align = "left"
-ax1.set_ylabel(r'$Cumulative\ shear\ work\ W_s\ (kJ/m^3)$', fontsize=13)
+ax1.set_ylabel(r'$Cumulative\ shear\ work\ W_s\ (kJ/m^3)$', fontsize=FS_LABEL)
 ax1.set_xlabel(r'$Normalized\ number\ of\ cyclic\ loading\ N_c/N_L$', 
-	fontsize=13)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+	fontsize=FS_LABEL)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
-plt.annotate(r"$CSR=0.200$", xy=(0.6, 0.2), fontsize=13)
+plt.annotate(r"$CSR=0.200$", xy=(0.6, 0.2), fontsize=FS_ANN)
 # ax1.set_xlim(0)
 ax1.set_ylim(-0.02, 0.4)
 # inset zoom region
 ax_inset.set_xlim(0.6, 0.8)
 ax_inset.set_ylim(0.03, 0.10)
-ax_inset.tick_params(axis='both', which='major', labelsize=10)
+ax_inset.tick_params(axis='both', which='major', labelsize=FS_INSET)
 ax_inset.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
 ax1.indicate_inset_zoom(ax_inset, edgecolor='grey', linewidth=1.2)
 plt.tight_layout()
-plt.savefig("acc_energy.png",dpi=350)
+plt.savefig(BASE_DIR / "acc_energy.png",dpi=350)
 plt.show()

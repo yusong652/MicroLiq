@@ -2,11 +2,19 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # setting style
-k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-markers = ['d', 's', 'o', '^', 'v']
-colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
+k0s = [0.5, 1.0, 2.0]
+markers = ['d', 'o', 'v']
+colors = ['tab:orange', 'tab:blue', 'tab:green']
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+FS_ANN = 14
+FS_INSET = 12
 
 fig1 = plt.figure(figsize=(6.0, 5.0))
 ax1 = plt.gca()
@@ -16,7 +24,7 @@ ax2 = ax1.inset_axes([0.1, 0.15, 0.42, 0.36])
 
 def plot_shear_modulus(k0, color, marker):
 	csr = 0.200
-	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
+	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr))
 	try:
 		df1 = pd.read_csv(file_name, header=0)
 	except FileNotFoundError:
@@ -99,7 +107,7 @@ for k0, marker, color in zip(k0s, markers, colors):
 	plot_shear_modulus(k0, color, marker)
 
 # --- Inset: hysteresis loop schematic using K0=1.0, cycle 25 ---
-df_inset = pd.read_csv("Dr80/k1.00/csr_0.200/torsion_shear.csv", header=0)
+df_inset = pd.read_csv(BASE_DIR / "Dr80/k1.00/csr_0.200/torsion_shear.csv", header=0)
 strains_in = df_inset["strain_shear"].to_numpy() * 100  # percent
 stresses_in = df_inset["stress_shear"].to_numpy() / 1000.  # kPa
 time_in = df_inset["time_duration"].to_numpy()
@@ -130,35 +138,35 @@ for q in range(5):
 	ax2.plot(strains_in[iq[q]], stresses_in[iq[q]], 'ko', markersize=4, zorder=5)
 	ax2.annotate(labels[q],
 		xy=(strains_in[iq[q]] + offsets[q][0], stresses_in[iq[q]] + offsets[q][1]),
-		fontsize=9, ha=ha_list[q], fontweight='bold')
+		fontsize=FS_INSET-2, ha=ha_list[q], fontweight='bold')
 
 # G labels
-ax2.annotate(r'$G_{load}$', xy=(-0.0, 12), fontsize=10, color='tab:blue',
+ax2.annotate(r'$G_{load}$', xy=(-0.0, 12), fontsize=FS_INSET, color='tab:blue',
 	fontstyle='italic')
-ax2.annotate(r'$G_{unload}$', xy=(0.02, -2), fontsize=10, color='tab:red',
+ax2.annotate(r'$G_{unload}$', xy=(0.02, -2), fontsize=FS_INSET, color='tab:red',
 	fontstyle='italic')
 
-ax2.set_xlabel(r'$\gamma_{z\theta}\ (\%)$', fontsize=10)
-ax2.set_ylabel(r'$\tau_{z\theta}\ (kPa)$', fontsize=10, labelpad=-10)
-ax2.tick_params(axis='both', which='major', labelsize=10)
-ax2.set_title(r'$K_0=1.0,\ N_c=25$', fontsize=10)
+ax2.set_xlabel(r'$\gamma_{z\theta}\ (\%)$', fontsize=FS_INSET)
+ax2.set_ylabel(r'$\tau_{z\theta}\ (kPa)$', fontsize=FS_INSET, labelpad=-10)
+ax2.tick_params(axis='both', which='major', labelsize=FS_INSET)
+ax2.set_title(r'$K_0=1.0,\ N_c=25$', fontsize=FS_INSET)
 
 # main axes settings
 legend1 = ax1.legend(
 	title=r'$Initial\ K_0\ and\ load\ condition\ in\ cyclic\ shear$',
-	title_fontsize=13,
-	fontsize=13, ncol=3, framealpha=0.2, columnspacing=0.8,
+	title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, ncol=3, framealpha=0.2, columnspacing=0.8,
 	loc=(-0.0, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
-ax1.set_ylabel(r'$Shear\ wave\ velocity\ V_s\ (m/s)$', fontsize=13)
-ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_c$', fontsize=13)
+ax1.set_ylabel(r'$Shear\ wave\ velocity\ V_s\ (m/s)$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_c$', fontsize=FS_LABEL)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.set_xlim(0, 42)
 ax1.set_ylim(20, 220)
-plt.annotate(r"$CSR=0.200$", xy=(30, 180), fontsize=13)
+plt.annotate(r"$CSR=0.200$", xy=(30, 180), fontsize=FS_ANN)
 
 plt.tight_layout()
-plt.savefig("shear_modulus.png", dpi=350)
+plt.savefig(BASE_DIR / "shear_modulus.png", dpi=350)
 plt.show()

@@ -5,17 +5,25 @@ from pylab import style as st
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from mpl_toolkits.axes_grid1.inset_locator import (inset_axes, InsetPosition,
                                                   mark_inset)
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # setting style
 csr_arr = np.arange(0.200, 0.250, 0.05).tolist()
 # csr_arr.append(0.235)
-k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-markers = ['d', 's', 'o', '^', 'v']
-colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
+k0s = [0.5, 1.0, 2.0]
+markers = ['d', 'o', 'v']
+colors = ['tab:orange', 'tab:blue', 'tab:green']
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+FS_ANN = 14
+FS_INSET = 12
 
 fig1 = plt.figure(figsize=(6.0, 5.))
 ax1 = plt.gca()
-plt.annotate(r"$CSR=0.200$", xy=(0.03, 0.7), fontsize=13)
+plt.annotate(r"$CSR=0.200$", xy=(0.03, 0.7), fontsize=FS_ANN)
 ax2 = plt.axes([0,1,0,1])
 ax2.set_xlim((0.2, 4.0))
 ax2.set_ylim(0.0, 0.6)
@@ -26,7 +34,7 @@ ax2.set_axes_locator(ip)
 
 
 def plot_acc_energy(k0, color, marker, csr=0.200):
-	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr))
 	try:
 		df1 = pd.read_csv(file_name,header=0)
 	except FileNotFoundError:
@@ -82,14 +90,14 @@ for k0, marker, color in zip(k0s, markers, colors):
 	plot_acc_energy(k0, color, marker)
 
 legend1 = ax1.legend(
-	title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=13,
-	fontsize=13, ncol=3, framealpha=0.2, columnspacing=0.05, 
+	title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, ncol=3, framealpha=0.2, columnspacing=0.05, 
 	loc=(-0.00, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
-ax1.set_ylabel(r'$EPWP\ ratio\ r_u$', fontsize=13)
+ax1.set_ylabel(r'$EPWP\ ratio\ r_u$', fontsize=FS_LABEL)
 ax1.set_xlabel(r'$Cumulative\ shear\ work\ W_s\ (kJ/m^3)$', 
-	fontsize=13)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+	fontsize=FS_LABEL)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
@@ -100,15 +108,15 @@ ax1.set_xticks([0.0, 0.1, 0.2, 0.3, 0.4])
 ax1.plot((0.0, 0.45),(0.95, 0.95),
 	color='tab:red', linestyle='dashed', linewidth=1.4)
 ax1.text(-0.04, 0.92, r"$0.95$", color='tab:red',
-	fontsize=13)
-ax2.set_ylabel(r'$W_{sL}\ (kJ/m^3)$', fontsize=13)
-ax2.set_xlabel(r'$K_0$', fontsize=13)
-ax2.tick_params(axis='both', which='both', labelsize=13)
+	fontsize=FS_ANN)
+ax2.set_ylabel(r'$W_{sL}\ (kJ/m^3)$', fontsize=FS_INSET)
+ax2.set_xlabel(r'$K_0$', fontsize=FS_INSET)
+ax2.tick_params(axis='both', which='both', labelsize=FS_INSET)
 ax2.set_xscale('log')
 ticks = [0.3, 0.5, 1.0, 3.0]
 ax2.set_xticks(ticks)
 ax2.set_xticklabels(['0.3', '0.5', '1.0', '3.0'])
 
 plt.tight_layout()
-plt.savefig("acc_energy_EPWP.png",dpi=350)
+plt.savefig(BASE_DIR / "acc_energy_EPWP.png",dpi=350)
 plt.show()

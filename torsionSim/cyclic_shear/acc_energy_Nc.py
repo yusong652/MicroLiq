@@ -1,16 +1,23 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-markers = ['d', 's', 'o', '^', 'v']
-colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
+BASE_DIR = Path(__file__).resolve().parent
+
+k0s = [0.5, 1.0, 2.0]
+markers = ['d', 'o', 'v']
+colors = ['tab:orange', 'tab:blue', 'tab:green']
+FS_LABEL = 15
+FS_TICK = 14
+FS_LEGEND = 14
+FS_ANN = 14
 
 fig1 = plt.figure(figsize=(6.0, 4.5))
 ax1 = plt.gca()
 
 def plot_acc_energy_Nc(k0, color, marker, csr=0.200):
-	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
+	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr))
 	try:
 		df1 = pd.read_csv(file_name, header=0)
 	except FileNotFoundError:
@@ -46,17 +53,17 @@ for k0, marker, color in zip(k0s, markers, colors):
 	plot_acc_energy_Nc(k0, color, marker)
 
 legend1 = ax1.legend(
-	title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=13,
-	fontsize=13, ncol=3, framealpha=0.2, columnspacing=0.05,
+	title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=FS_LEGEND,
+	fontsize=FS_LEGEND, ncol=3, framealpha=0.2, columnspacing=0.05,
 	loc=(-0.00, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
-ax1.set_ylabel(r'$Cumulative\ shear\ work\ W_s\ (kJ/m^3)$', fontsize=13)
-ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_c$', fontsize=13)
-ax1.tick_params(axis='both', which='major', labelsize=13)
+ax1.set_ylabel(r'$Cumulative\ shear\ work\ W_s\ (kJ/m^3)$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_c$', fontsize=FS_LABEL)
+ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
-plt.annotate(r"$CSR=0.200$", xy=(15, 0.2), fontsize=13)
+plt.annotate(r"$CSR=0.200$", xy=(15, 0.2), fontsize=FS_ANN)
 ax1.set_ylim(-0.02, 0.4)
 plt.tight_layout()
-plt.savefig("acc_energy_Nc.png", dpi=350)
+plt.savefig(BASE_DIR / "acc_energy_Nc.png", dpi=350)
 plt.show()

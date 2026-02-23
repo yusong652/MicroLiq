@@ -1,21 +1,30 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+BASE_DIR = Path(__file__).resolve().parent
+
 k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
 drs = ['Dr80', 'Dr60']
 dr_markers = {'Dr80': 'o', 'Dr60': 's'}
-dr_labels = {'Dr80': r'$D_r=80\%$', 'Dr60': r'$D_r=60\%$'}
+dr_labels = {'Dr80': r'$D_r=90\%$', 'Dr60': r'$D_r=60\%$'}
 period = 1.0 / 8.0
+
+FS_AX = 16
+FS_TICK = 15
+FS_LEG = 14
+FS_ANN = 12
 
 results = []
 
 for dr in drs:
 	for k0 in k0s:
-		shear_file = "%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr, k0)
-		cn_file = "%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr, k0)
-		alpha_file = "%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr, k0)
+		shear_file = BASE_DIR / ("%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr, k0))
+		cn_file = BASE_DIR / ("%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr, k0))
+		alpha_file = BASE_DIR / ("%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr, k0))
 		try:
 			df_shear = pd.read_csv(shear_file, header=0)
 			df_cn = pd.read_csv(cn_file, header=0)
@@ -57,15 +66,19 @@ for dr in drs:
 	# annotate K0 values
 	for _, row in df[mask].iterrows():
 		ax.text(row['zm0'], row['alpha0'], row['n_liq'],
-			'  %.2f' % row['k0'], fontsize=8)
+			'  %.2f' % row['k0'], fontsize=FS_ANN)
 
 ax.view_init(elev=20, azim=-40)
-ax.set_xlabel(r'$Z_{m0}$', fontsize=13, labelpad=8)
-ax.set_ylabel(r'$\alpha_0$', fontsize=13, labelpad=8)
-ax.set_zlabel(r'$N_L$', fontsize=13, labelpad=8)
-ax.legend(fontsize=12)
-ax.tick_params(axis='both', which='major', labelsize=11)
+ax.set_xlabel(r'$Z_{m0}$', fontsize=FS_AX, labelpad=10)
+ax.set_ylabel(r'$\alpha_0$', fontsize=FS_AX, labelpad=10)
+ax.set_zlabel(r'$N_L$', fontsize=FS_AX, labelpad=10)
+ax.set_ylim(-0.10, 0.10)
+ax.set_yticks([-0.10, -0.05, 0.00, 0.05, 0.10])
+ax.legend(fontsize=FS_LEG)
+ax.tick_params(axis='x', which='major', labelsize=FS_TICK)
+ax.tick_params(axis='y', which='major', labelsize=FS_TICK)
+ax.tick_params(axis='z', which='major', labelsize=FS_TICK)
 
 plt.tight_layout()
-plt.savefig("fabric_liq_3d.png", dpi=350)
+plt.savefig(BASE_DIR / "fabric_liq_3d.png", dpi=350, bbox_inches="tight", pad_inches=0.02)
 plt.show()
