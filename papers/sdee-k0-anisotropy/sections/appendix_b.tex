@@ -9,8 +9,7 @@ From the constant-volume constraint (\cref{eq:const_volume_constraint}), the out
 \label{eq:dRdt_general}
 \end{equation}
 
-Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces a change in the outer radius through \cref{eq:dRdt_general}, which in turn affects both the radial and axial stress differences. Let $K_{r,i}=\sum_{c\in\mathrm{inner}} k_n$ and $K_{r,o}=\sum_{c\in\mathrm{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness, where the summations run over all particle--wall contacts on the respective rigid boundaries. The factor $\frac{1}{2}$ arises because the top and bottom plates move symmetrically (each by $dH/2$) to achieve the total height change $dH$. Since the contact normals on rigid cylindrical walls and flat plates are aligned with the radial and axial directions, respectively, no angular projection is required.
-
+Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces a change in the outer radius through \cref{eq:dRdt_general}, which in turn affects both the radial and axial stress differences. Let $K_{r,i}=\sum_{c\in\mathrm{inner}} k_n$ and $K_{r,o}=\sum_{c\in\mathrm{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness, where the summations run over all particle--wall contacts on the respective rigid boundaries. The factor $\frac{1}{2}$ arises because the top and bottom plates move symmetrically (each by $dH/2$) to achieve the total height change $dH$.
 The stress responses to the kinematic increments $dr$ and $dH$ can be expressed in matrix form:
 \begin{equation}
 \begin{pmatrix} \delta\sigma_{dif,r}^{\prime} \\[4pt] \delta\sigma_{dif,z}^{\prime} \end{pmatrix}
