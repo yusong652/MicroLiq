@@ -136,27 +136,27 @@ Fig. 4.3. Visualization of hollow cylindrical specimens after anisotropic consol
 
 In DEM simulations of undrained tests, the interaction between water and particles is disregarded, employing a constant volume approach to replicate the undrained condition. The effectiveness of this constant volume approach has been validated in numerous DEM simulations (Sitharam et al., 2002; Yimsiri and Soga, 2010). To simultaneously achieve the stress boundary conditions and undrained condition observed in laboratory HCA tests, a combined servo mechanism was first proposed by Han et al. (2024) for undrained cyclic torsional shear and subsequently generalized by Ma et al. (2024) to accommodate a broader range of loading conditions, including drained stress paths, combined axial--torsional loading, and strain-controlled modes.
 
-The key challenge in simulating undrained HCA tests lies in satisfying multiple conditions simultaneously. In laboratory tests, the inner and outer chamber pressures ($p_i$ and $p_o$) are maintained equal and constant, the additional axial pressure ($p_z$) or height ($H$) is controlled, and a target shear stress ($\tau_{z\theta,tar}$) is applied. Meanwhile, the undrained condition requires constant volume. This study addresses these challenges through a combined servo mechanism by controlling four kinematic variables: inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$), to satisfy four condition equations simultaneously.
+The key challenge in simulating undrained HCA tests lies in satisfying multiple conditions simultaneously. In laboratory tests, the inner and outer chamber pressures ($p_i$ and $p_o$) are maintained equal and constant, the additional axial pressure ($p_z$) or height ($H$) is controlled, and a target shear stress ($\tau_{z\theta,tar}$) is applied. Meanwhile, the undrained condition requires constant volume. This study addresses these challenges through a combined servo mechanism by controlling four kinematic variables: inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$), to satisfy four condition equations simultaneously. The servo operates on two effective stress differences measured from particle–wall contact forces: $\sigma_{dif,r}' = \sigma_o' - \sigma_i'$ (outer minus inner radial effective stress) and $\sigma_{dif,z}' = \sigma_z' - \sigma_r'$ (axial minus average radial effective stress). Their target values are prescribed as total stress differences from the HCA boundary conditions.
 
 **Condition 1: Target radial stress difference**
 
-The difference in effective stresses between the outer and inner cylinders is regulated by controlling the inner radius rate, as determined by Eq. (4-1), where $\sigma_{dif,r}'$ represents the effective stress difference between outer and inner cylinders, $p_o$ and $p_i$ are the outer and inner chamber pressures of the HCA, and $S_{cr}$ is the servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted.
+The inner radius rate is determined by the radial stress error, as expressed in Eq. (4-1), where $\sigma_{dif,r}^{tar} = p_o - p_i$ is the target value, $p_o$ and $p_i$ are the outer and inner chamber pressures of the HCA, and $S_{cr}$ is the servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted, so $\sigma_{dif,r}^{tar} = 0$.
 
-$$\frac{dr}{dt} = \frac{\left(\sigma_{dif,r}' - (p_o - p_i)\right)}{\Delta t}S_{cr}$$ (4-1)
+$$\frac{dr}{dt} = \frac{\sigma_{dif,r}' - \sigma_{dif,r}^{tar}}{\Delta t}S_{cr}$$ (4-1)
 
 **Condition 2: Axial boundary condition**
 
-Two modes are available. In stress-control mode, the height rate is governed by a servo equation targeting the additional axial pressure, as shown in Eq. (4-2), where $\sigma_{dif,z}'$ denotes the effective stress difference between axial and radial directions, $p_z$ is the target additional axial pressure, and $S_{cz}$ is the corresponding servo coefficient. This mode is used during anisotropic consolidation and monotonic shear validation (Section 4.2.3).
+Two modes are available. In stress-control mode, the height rate is governed by a servo equation targeting the additional axial pressure, as shown in Eq. (4-2), where $\sigma_{dif,z}^{tar} = p_z$ is the target additional axial pressure and $S_{cz}$ is the corresponding servo coefficient. This mode is used during anisotropic consolidation and monotonic shear validation (Section 4.2.3).
 
-$$\frac{dH}{dt} = \frac{\left(\sigma_{dif,z}' - p_z\right)}{\Delta t}S_{cz}$$ (4-2)
+$$\frac{dH}{dt} = \frac{\sigma_{dif,z}' - \sigma_{dif,z}^{tar}}{\Delta t}S_{cz}$$ (4-2)
 
 In displacement-control mode, the height is held constant ($dH/dt = 0$), which is adopted for all cyclic shear simulations in this study.
 
 **Condition 3: Target shear stress**
 
-The rotation angle rate is controlled to achieve the target shear stress through Eq. (4-3), where $T_{dif}$ represents the torque difference between target and current value, and $S_{cs}$ is the servo coefficient.
+The rotation angle rate is controlled to achieve the target shear stress through Eq. (4-3), where $T$ is the current torque, $T^{tar}$ is the target torque, and $S_{cs}$ is the servo coefficient.
 
-$$\frac{d\theta}{dt} = \frac{T_{dif}}{\Delta t}S_{cs}$$ (4-3)
+$$\frac{d\theta}{dt} = \frac{T - T^{tar}}{\Delta t}S_{cs}$$ (4-3)
 
 **Condition 4: Undrained condition (constant volume)**
 
@@ -194,11 +194,13 @@ where $K_{11} = K_{r,i} + \frac{r}{R}K_{r,o}$ and $K_{12} = \frac{R^2 - r^2}{2RH
 
 The determinant of the stiffness matrix is $\det(\mathbf{K}) = K_{11}(K_z - K_{12}) + K_{11}K_{12} = K_{11}K_z$, so the fully coupled servo equations are:
 
-$$\frac{dr}{dt} = \frac{K_z - K_{12}}{K_{11}K_z}\frac{\Delta\sigma'_{dif,r}}{\Delta t} - \frac{K_{12}}{K_{11}K_z}\frac{\Delta\sigma'_{dif,z}}{\Delta t}$$ (4-9)
+$$\frac{dr}{dt} = \frac{K_z - K_{12}}{K_{11}K_z}\frac{e_r}{\Delta t} - \frac{K_{12}}{K_{11}K_z}\frac{e_z}{\Delta t}$$ (4-9)
 
-$$\frac{dH}{dt} = \frac{1}{K_z}\frac{\Delta\sigma'_{dif,r}}{\Delta t} + \frac{1}{K_z}\frac{\Delta\sigma'_{dif,z}}{\Delta t}$$ (4-10)
+$$\frac{dH}{dt} = \frac{1}{K_z}\frac{e_r}{\Delta t} + \frac{1}{K_z}\frac{e_z}{\Delta t}$$ (4-10)
 
-Under the constant-height condition ($dH/dt = 0$) adopted for all cyclic shear simulations in this study, the axial stress difference $\sigma'_{dif,z}$ is not actively controlled, and only the radial condition remains. Setting $dH = 0$ eliminates the second-column contributions, and the radial servo coefficient simplifies to:
+where $e_r = \sigma'_{dif,r} - \sigma_{dif,r}^{tar}$ and $e_z = \sigma'_{dif,z} - \sigma_{dif,z}^{tar}$ are the stress errors for the radial and axial conditions, respectively. The remaining kinematic variable $dR/dt$ is then obtained by substituting $dr/dt$ and $dH/dt$ into Eq. (4-4).
+
+Under the constant-height condition ($dH/dt = 0$) adopted for all cyclic shear simulations in this study, only the radial condition remains active, and the servo coefficient simplifies to:
 
 $$S_{cr} = \frac{1}{K_{r,i} + \frac{r}{R}K_{r,o}}$$ (4-11)
 

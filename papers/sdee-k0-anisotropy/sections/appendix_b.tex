@@ -39,9 +39,10 @@ so the inverse is:
 
 The fully coupled servo equations are therefore:
 \begin{align}
-\frac{dr}{dt} &= \frac{K_z-K_{12}}{K_{11}\,K_z}\,\frac{\Delta\sigma_{dif,r}^{\prime}}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{\Delta\sigma_{dif,z}^{\prime}}{\Delta t}, \label{eq:dr_general}\\[6pt]
-\frac{dH}{dt} &= \frac{1}{K_z}\,\frac{\Delta\sigma_{dif,r}^{\prime}}{\Delta t} + \frac{1}{K_z}\,\frac{\Delta\sigma_{dif,z}^{\prime}}{\Delta t}. \label{eq:dH_general}
+\frac{dr}{dt} &= \frac{K_z-K_{12}}{K_{11}\,K_z}\,\frac{e_r}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{e_z}{\Delta t}, \label{eq:dr_general}\\[6pt]
+\frac{dH}{dt} &= \frac{1}{K_z}\,\frac{e_r}{\Delta t} + \frac{1}{K_z}\,\frac{e_z}{\Delta t}, \label{eq:dH_general}
 \end{align}
+where $e_r=\sigma_{dif,r}^{\prime}-\sigma_{dif,r}^{tar}$ and $e_z=\sigma_{dif,z}^{\prime}-\sigma_{dif,z}^{tar}$ are the stress errors defined in \cref{eq:cond1_radial,eq:cond2_axial}.
 
 Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations in this study, the axial stress difference $\sigma_{dif,z}^{\prime}$ is not actively controlled, and only the radial condition remains. Setting $dH=0$ in \cref{eq:stiffness_matrix} eliminates the $K_{12}$ and $K_z-K_{12}$ contributions from the second column, and the radial servo coefficient reduces to:
 \begin{equation}
