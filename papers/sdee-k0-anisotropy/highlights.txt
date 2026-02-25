@@ -1,6 +1,5 @@
 - DEM reproduces undrained cyclic HCA responses under anisotropic consolidation
-- Liquefaction resistance depends on both magnitude and direction of K0 anisotropy
-- Compression-state specimens show higher resistance than isotropic and extension states
+- Liquefaction resistance depends on both the level and direction of initial K0 anisotropy
+- Coupled macroscopic and microscopic mechanisms control liquefaction resistance
 - Coordination number and fabric anisotropy jointly explain K0-dependent trends
 - Fabric indicators converge toward similar values near post-liquefaction states
-

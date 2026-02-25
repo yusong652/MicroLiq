@@ -1,0 +1,44 @@
+\section{Derivation of servo coefficients}
+\label{sec:appendix_servo}
+
+This appendix derives the servo coefficients used in the combined servo mechanism. The torsional servo coefficient $S_{cs}$ is independent of the other conditions and has been defined in \cref{eq:irot_scs}. Below, the radial and axial servo coefficients are derived by considering the volume-coupling effect.
+
+From the constant-volume constraint (\cref{eq:const_volume_constraint}), the outer radius rate is determined by:
+\begin{equation}
+\frac{dR}{dt} = -\frac{r}{R}\frac{dr}{dt} - \frac{R^2-r^2}{2RH}\frac{dH}{dt}.
+\label{eq:dRdt_general}
+\end{equation}
+
+Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces a change in the outer radius through \cref{eq:dRdt_general}, which in turn affects the radial stress. Let $K_{r,i}=\sum_{c\in\mathrm{inner}} k_n$ and $K_{r,o}=\sum_{c\in\mathrm{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z=\sum_{c\in\mathrm{top/bottom}} k_n$ the aggregate normal contact stiffness at the top and bottom plates, where the summations run over all particle--wall contacts on the respective rigid boundaries. Since the contact normals on rigid cylindrical walls and flat plates are aligned with the radial and axial directions, respectively, no angular projection is required.
+
+The stress responses to the kinematic increments $dr$ and $dH$ can be expressed in matrix form:
+\begin{equation}
+\begin{pmatrix} \delta\sigma_{dif,r}^{\prime} \\[4pt] \delta\sigma_{dif,z}^{\prime} \end{pmatrix}
+=
+\underbrace{\begin{pmatrix} K_{r,i}+\dfrac{r}{R}\,K_{r,o} & \dfrac{R^2-r^2}{2RH}\,K_{r,o} \\[8pt] 0 & K_z \end{pmatrix}}_{\mathbf{K}}
+\begin{pmatrix} dr \\[4pt] dH \end{pmatrix},
+\label{eq:stiffness_matrix}
+\end{equation}
+where the off-diagonal term $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$ represents the cross-coupling: an axial displacement $dH$ induces an outer wall displacement through the volume constraint, which alters the radial stress. The axial stress is assumed to depend primarily on top/bottom plate contacts, so the lower-left entry is approximately zero.
+
+Since $\mathbf{K}$ is upper triangular, its inverse is:
+\begin{equation}
+\mathbf{K}^{-1}
+=
+\begin{pmatrix} 1/K_{11} & -K_{12}/(K_{11}\,K_z) \\[6pt] 0 & 1/K_z \end{pmatrix},
+\label{eq:stiffness_matrix_inv}
+\end{equation}
+where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$. The servo equations then become:
+\begin{align}
+\frac{dr}{dt} &= \frac{1}{K_{11}}\,\frac{\Delta\sigma_{dif,r}^{\prime}}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{\Delta\sigma_{dif,z}^{\prime}}{\Delta t}, \label{eq:dr_general}\\[6pt]
+\frac{dH}{dt} &= \frac{1}{K_z}\,\frac{\Delta\sigma_{dif,z}^{\prime}}{\Delta t}. \label{eq:dH_general}
+\end{align}
+
+The first term in \cref{eq:dr_general} is the direct radial correction, while the second term compensates for the cross-coupling from axial movement. The axial servo coefficient $S_{cz}=1/K_z$ remains independent of the volume coupling.
+
+Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations in this study, $K_{12}\,dH$ vanishes, and \cref{eq:dr_general} reduces to:
+\begin{equation}
+S_{cr} = \frac{1}{K_{r,i}+\dfrac{r}{R}\,K_{r,o}}.
+\label{eq:Scr_constantH}
+\end{equation}
+For the general case ($dH/dt\neq 0$), such as the monotonic shear validation in \cref{subsec:calibration_validation}, the decoupled servo equations (\cref{eq:cond1_radial,eq:cond2_axial}) with $S_{cr}=1/K_{11}$ and $S_{cz}=1/K_z$ are applied independently at each timestep, and convergence is achieved through iterative application of the servo mechanism. In practice, a relaxation factor less than unity is applied to the servo coefficients to ensure numerical stability and suppress oscillation.

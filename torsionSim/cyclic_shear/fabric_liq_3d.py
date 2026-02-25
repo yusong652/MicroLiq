@@ -8,9 +8,10 @@ from mpl_toolkits.mplot3d import Axes3D
 BASE_DIR = Path(__file__).resolve().parent
 
 k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-drs = ['Dr80', 'Dr60']
-dr_markers = {'Dr80': 'o', 'Dr60': 's'}
-dr_labels = {'Dr80': r'$D_r=90\%$', 'Dr60': r'$D_r=60\%$'}
+drs = ['Dr80', 'Dr75']
+dr_dirs = {'Dr80': 'Dr80', 'Dr75': 'Dr60'}
+dr_markers = {'Dr80': 'o', 'Dr75': 's'}
+dr_labels = {'Dr80': r'$D_r=90\%$', 'Dr75': r'$D_r=75\%$'}
 period = 1.0 / 8.0
 
 FS_AX = 16
@@ -22,9 +23,10 @@ results = []
 
 for dr in drs:
 	for k0 in k0s:
-		shear_file = BASE_DIR / ("%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr, k0))
-		cn_file = BASE_DIR / ("%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr, k0))
-		alpha_file = BASE_DIR / ("%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr, k0))
+		dr_dir = dr_dirs[dr]
+		shear_file = BASE_DIR / ("%s/k%.2f/csr_0.300/torsion_shear.csv" % (dr_dir, k0))
+		cn_file = BASE_DIR / ("%s/k%.2f/csr_0.300/MechCoordinationNumber.csv" % (dr_dir, k0))
+		alpha_file = BASE_DIR / ("%s/k%.2f/csr_0.300/alpha_mech.csv" % (dr_dir, k0))
 		try:
 			df_shear = pd.read_csv(shear_file, header=0)
 			df_cn = pd.read_csv(cn_file, header=0)
