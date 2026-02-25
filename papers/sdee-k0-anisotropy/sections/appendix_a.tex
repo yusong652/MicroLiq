@@ -1,7 +1,7 @@
 \section{Stress and strain equations for the hollow cylinder apparatus}
 \label{sec:appendix_hca}
 
-Table~\ref{tab:hca_equations} summarizes the stress and strain evaluation expressions used in the DEM-based hollow cylinder apparatus model. In the following, $R$ and $r$ denote the current outer and inner radii, $H$ and $H_0$ are the current and initial specimen heights, $W$ is the axial load, $M_T$ is the torque, $\theta$ is the twist angle, $p_i$ and $p_o$ are the inner and outer chamber pressures, $u_i$ and $u_o$ are the inner and outer radial displacements, and $f_{pw}^{i}$, $f_{pw}^{o}$ are particle--wall contact forces on the inner and outer cylinders. The values of $\sigma_z$ and $\sigma_\theta$ are derived from equilibrium relations, $\varepsilon_z$ and $\gamma_{z\theta}$ are based on strain compatibility, and the remaining stress and strain expressions follow the assumption of linear elasticity \citep{Hight1983}.
+Table~\ref{tab:hca_equations} summarizes the stress and strain evaluation expressions used in the DEM-based hollow cylinder apparatus model. In the following, $R$ and $r$ denote the current outer and inner radii, $H$ and $H_0$ are the current and initial specimen heights, $W$ is the axial load, $T$ is the torque, $\theta$ is the twist angle, $p_i$ and $p_o$ are the inner and outer chamber pressures, $u_i$ and $u_o$ are the inner and outer radial displacements, and $f_{pw}^{i}$, $f_{pw}^{o}$ are particle--wall contact forces on the inner and outer cylinders. The values of $\sigma_z$ and $\sigma_\theta$ are derived from equilibrium relations, $\varepsilon_z$ and $\gamma_{z\theta}$ are based on strain compatibility, and the remaining stress and strain expressions follow the assumption of linear elasticity \citep{Hight1983}.
 
 \begin{table*}[t]
   \centering
@@ -15,10 +15,10 @@ Table~\ref{tab:hca_equations} summarizes the stress and strain evaluation expres
     $\displaystyle\sigma_z = \frac{W}{\pi(R^2-r^2)}$ &
     $\displaystyle\varepsilon_z = -\frac{H-H_0}{H_0}$ \\[12pt]
     Inner pressure &
-    $\displaystyle p_i = \Sigma\sqrt{{f_{pw_x}^{i}}^2+{f_{pw_y}^{i}}^2}$ &
+    $\displaystyle p_i = \frac{\sum\!\sqrt{{f_{pw_x}^{i}}^2+{f_{pw_y}^{i}}^2}}{2\pi r H}$ &
     --- \\[12pt]
     Outer pressure &
-    $\displaystyle p_o = \Sigma\sqrt{{f_{pw_x}^{o}}^2+{f_{pw_y}^{o}}^2}$ &
+    $\displaystyle p_o = \frac{\sum\!\sqrt{{f_{pw_x}^{o}}^2+{f_{pw_y}^{o}}^2}}{2\pi R H}$ &
     --- \\[12pt]
     Circumferential &
     $\displaystyle\sigma_\theta = \frac{p_o R - p_i r}{R-r}$ &
@@ -27,7 +27,7 @@ Table~\ref{tab:hca_equations} summarizes the stress and strain evaluation expres
     $\displaystyle\sigma_r = \frac{p_o R + p_i r}{R+r}$ &
     $\displaystyle\varepsilon_r = -\frac{u_o-u_i}{R-r}$ \\[12pt]
     Shear &
-    $\displaystyle\tau_{z\theta} = \frac{3M_T}{2\pi(R^3-r^3)}$ &
+    $\displaystyle\tau_{z\theta} = \frac{3T}{2\pi(R^3-r^3)}$ &
     $\displaystyle\gamma_{z\theta} = \frac{\theta(R^3-r^3)}{3H(R^2-r^2)}$ \\[12pt]
     Major principal &
     $\displaystyle\sigma_1 = \frac{\sigma_z+\sigma_\theta}{2}+\sqrt{\left(\frac{\sigma_z-\sigma_\theta}{2}\right)^{\!2}+\tau_{z\theta}^2}$ &
