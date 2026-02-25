@@ -56,6 +56,8 @@ Green GE (1969) Strength and compressibility of granular materials under general
 
 Han, Y., Kato, S., & Kim, B. S. (2023). DEM analysis of fabric evolution and behavior of granular geomaterials in true triaxial test with flexible boundary. KSCE Journal of Civil Engineering, 27(8), 3341--3354. https://doi.org/10.1007/s12205-023-0336-1
 
+Han, Y., Uzuoka, R., Ueda, K., & Nakamura, M. (2024). Microscopic study of factors affecting liquefaction strength under anisotropic conditions. Japanese Geotechnical Society Special Publication, 10(46), 1717--1722. https://doi.org/10.3208/jgssp.v10.OS-35-03
+
 Hatanaka, M., Uchida, A., & Ohara, J. (1997). Liquefaction characteristics of a gravelly fill liquefied during the 1995 Hyogo-Ken Nanbu earthquake. Soils and Foundations, 37(3), 107--115. https://doi.org/10.3208/sandf.37.3_107
 
 Hight, D. W., Gens, A., & Symes, M. J. (1983). The development of a new hollow cylinder apparatus for investigating the effects of principal stress rotation in soils. Géotechnique, 33(4), 355--383. https://doi.org/10.1680/geot.1983.33.4.355
@@ -210,7 +212,7 @@ Tobita, Y. (1989). Fabric tensors in constitutive equations for granular materia
 
 Tokimatsu, K., & Uchida, A. (1990). Correlation between liquefaction resistance and shear wave velocity. Soils and Foundations, 30(2), 33--42. https://doi.org/10.3208/sandf1972.30.2_33
 
-Tori, S., Tatsuoka, F., Miura, S., Yoshimi, Y., Yasuda, S., & Makihara, Y. (1986). Cyclic undrained triaxial strength of sand by a cooperative test program. Soils and Foundations, 26(3), 117--128. https://doi.org/10.3208/sandf1972.26.3_117
+Toki, S., Tatsuoka, F., Miura, S., Yoshimi, Y., Yasuda, S., & Makihara, Y. (1986). Cyclic undrained triaxial strength of sand by a cooperative test program. Soils and Foundations, 26(3), 117--128. https://doi.org/10.3208/sandf1972.26.3_117
 
 Towhata, I., & Ishihara, K. (1985). Shear work and pore water pressure in undrained shear. Soils and Foundations, 25(3), 73--84. https://doi.org/10.3208/sandf1972.25.3_73
 
@@ -227,6 +229,8 @@ Wei, J., Ren, J., & Fu, H. (2022). The weakening of inter-particle friction and 
 Wen, Y., & Zhang, Y. (2023). Evidence of a unique critical fabric surface for granular soils. Géotechnique, 73(5), 439--454. https://doi.org/10.1680/jgeot.21.00126
 
 Wensrich, C. M., & Katterfeld, A. (2012). Rolling friction as a technique for modelling particle shape in Dem. Powder Technology, 217, 409--417. https://doi.org/10.1016/j.powtec.2011.10.057
+
+Wu, Q. X., & Yang, Z. X. (2022). Undrained responses of anisotropic granular material under rotational shear by DEM. Journal of Geotechnical and Geoenvironmental Engineering, 148(11), 04022099. https://doi.org/10.1061/(ASCE)GT.1943-5606.0002913
 
 Xie, X., Ye, B., Zhao, T., Feng, X., & Zhang, F. (2023). DEM investigation into the effects of liquefaction history--induced anisotropy on sand behaviors. International Journal of Geomechanics, 23(3). https://doi.org/10.1061/ijgnai.gmeng-7492
 
@@ -253,6 +257,8 @@ Yoshimi, Y., & Tokimatsu, K. (1977). Settlement of buildings on saturated sand d
 Yoshimi, Y., Tokimatsu, K., Kaneko, O., & Makihara, Y. (1984). Undrained cyclic shear strength of a dense Niigata Sand. Soils and Foundations, 24(4), 131--145. https://doi.org/10.3208/sandf1972.24.4_131
 
 Zhang, A., Jiang, M., & Wang, D. (2023). Effect of fabric anisotropy on the cyclic liquefaction of sands: Insight from DEM simulations. Computers and Geotechnics, 155, 105188. https://doi.org/10.1016/j.compgeo.2022.105188
+
+Zhao, F., Qiu, Z., Pan, K., Zheng, Y., & Wu, Q. (2024). Liquefaction resistance of anisotropically consolidated sand under monotonic and cyclic undrained torsional shear. Soil Dynamics and Earthquake Engineering, 179, 108553. https://doi.org/10.1016/j.soildyn.2024.108553
 
 Zhao, J., & Guo, N. (2013). Unique critical state characteristics in granular media considering fabric anisotropy. Géotechnique, 63(8), 695--704. https://doi.org/10.1680/geot.12.p.040
 
