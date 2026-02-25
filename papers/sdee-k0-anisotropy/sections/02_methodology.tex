@@ -117,7 +117,7 @@ The difference in effective stresses between the outer and inner cylinders is re
 \frac{dr}{dt} = \frac{\sigma_{dif,r}^{\prime} - (p_o - p_i)}{\Delta t}\,S_{cr},
 \label{eq:cond1_radial}
 \end{equation}
-where $\sigma_{dif,r}^{\prime}$ is the effective stress difference between the outer and inner cylinders, $p_o - p_i$ is the target difference in chamber pressures, and $S_{cr}$ is the radial servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted.
+where $\sigma_{dif,r}^{\prime}$ is the effective stress difference between the outer and inner cylinders, $p_o$ and $p_i$ are the outer and inner chamber pressures of the HCA, and $S_{cr}$ is the radial servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted.
 
 \paragraph{Condition 2: Axial boundary condition.}
 Two modes are available. In stress-control mode, the height rate is governed by a servo equation targeting the additional axial pressure:
@@ -153,7 +153,23 @@ The outer radius rate $dR/dt$ is determined from the constant-volume constraint:
 2\pi H\!\left(R\frac{dR}{dt} + r\frac{dr}{dt}\right) + \pi\!\left(R^2-r^2\right)\frac{dH}{dt} = 0.
 \label{eq:const_volume_constraint}
 \end{equation}
-With $dr/dt$ known from \cref{eq:cond1_radial} and $dH/dt$ from \cref{eq:cond2_axial} (or set to zero under constant height), \cref{eq:const_volume_constraint} is solved for $dR/dt$. Together, the four conditions form a closed system that uniquely determines the four kinematic variables at each timestep, thereby simultaneously realizing the stress boundary conditions and undrained constraint of laboratory HCA tests. The servo coefficients $S_{cr}$ and $S_{cz}$ are determined analogously to $S_{cs}$, as the inverse of the aggregate contact stiffness at the corresponding boundaries. In the general case ($dH/dt\neq 0$), the volume constraint introduces cross-coupling between the radial and axial servo; a full derivation is provided in \ref{sec:appendix_servo}. Under the constant-height condition adopted for all cyclic shear simulations in this study, the cross-coupling term vanishes and $S_{cr}$ reduces to $1/(K_{r,i}+\frac{r}{R}\,K_{r,o})$, where $K_{r,i}$ and $K_{r,o}$ are the aggregate radial contact stiffness at the inner and outer cylinders, respectively.
+With $dr/dt$ known from \cref{eq:cond1_radial} and $dH/dt$ from \cref{eq:cond2_axial} (or set to zero under constant height), \cref{eq:const_volume_constraint} is solved for $dR/dt$. Together, the four conditions form a closed system that uniquely determines the four kinematic variables at each timestep, thereby simultaneously realizing the stress boundary conditions and undrained constraint of laboratory HCA tests.
+
+\paragraph{Analytical servo solution.}
+The volume constraint couples the radial and axial servo responses. Let $K_{r,i}$ and $K_{r,o}$ denote the aggregate normal contact stiffness at the inner and outer cylinders, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness (the factor $\frac{1}{2}$ accounts for symmetric movement of the top and bottom plates). Substituting \cref{eq:const_volume_constraint} into the stress increments yields the coupled stiffness relation (derived in \ref{sec:appendix_servo}):
+\begin{equation}
+\begin{pmatrix} \delta\sigma_{dif,r}^{\prime} \\[4pt] \delta\sigma_{dif,z}^{\prime} \end{pmatrix}
+=
+\begin{pmatrix} K_{11} & K_{12} \\[6pt] -K_{11} & K_z - K_{12} \end{pmatrix}
+\begin{pmatrix} dr \\[4pt] dH \end{pmatrix},
+\label{eq:coupled_stiffness}
+\end{equation}
+where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$ and $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$. The lower-left entry $-K_{11}$ arises because changes in radial stress enter $\sigma_{dif,z}^{\prime}=\sigma_z^{\prime}-\sigma_r^{\prime}$ with opposite sign. Inverting \cref{eq:coupled_stiffness} (noting $\det=K_{11}K_z$) gives the analytical servo equations:
+\begin{align}
+\frac{dr}{dt} &= \frac{K_z-K_{12}}{K_{11}\,K_z}\,\frac{\Delta\sigma_{dif,r}^{\prime}}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{\Delta\sigma_{dif,z}^{\prime}}{\Delta t}, \label{eq:servo_dr}\\[6pt]
+\frac{dH}{dt} &= \frac{1}{K_z}\,\frac{\Delta\sigma_{dif,r}^{\prime}}{\Delta t} + \frac{1}{K_z}\,\frac{\Delta\sigma_{dif,z}^{\prime}}{\Delta t}. \label{eq:servo_dH}
+\end{align}
+Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations, only the radial condition remains active and the servo coefficient reduces to $S_{cr}=1/K_{11}$. A relaxation factor less than unity is applied to all servo coefficients to ensure numerical stability.
 
 \paragraph{Cyclic loading protocol.}
 Specimens are subjected to sinusoidal torsional shear under the constant-height condition ($dH/dt=0$). The cyclic stress ratio (CSR) is defined as the maximum applied torsional shear stress normalized by the initial mean effective stress. In the primary analyses, liquefaction is identified using a stress-based criterion, $\ru = 0.95$, where $\ru$ is the excess pore pressure ratio. A strain-based criterion (single-amplitude shear strain $\gamma_{z\theta}=2.5\%$) is adopted in the calibration/validation stage (\cref{subsec:calibration_validation}) to match the criterion used by \citet{Ishihara1985}. A comparison of the two criteria across all simulated cases confirms that they yield nearly identical $N_L$ values and the same resistance ordering among \Kzero{} states, so the stress-based criterion is used for all subsequent analyses.
@@ -186,14 +202,14 @@ Having validated the model under isotropic consolidation (\Kzero{} = 1.0), speci
 \subsection{Microscopic descriptors}
 \label{subsec:micro_descriptors}
 
-Three microscopic descriptors are used to interpret the observed \Kzero{} dependence of liquefaction resistance: the mechanical coordination number \Zm{}, the signed fabric anisotropy indicator $\alpha$, and the contact density $\rho_c$.
+While the macroscopic response characterizes the overall liquefaction behavior, a key advantage of DEM is its ability to access particle-scale information that is not directly measurable in laboratory tests. To exploit this advantage, three microscopic descriptors are introduced to probe the contact network from complementary perspectives: the mechanical coordination number \Zm{}, the signed fabric anisotropy indicator $\alpha$, and the contact density $\rho_c$.
 
 The mechanical coordination number \citep{Thornton2000,Oda1977} is defined as
 \begin{equation}
 Z_m = \frac{2N_c - N_1}{N_p - N_1 - N_0},
 \label{eq:zm_definition_method}
 \end{equation}
-where $N_c$ is the total number of interparticle contacts, $N_p$ is the total number of particles, and $N_1$ and $N_0$ are the numbers of particles with one and zero contacts, respectively. Floaters are excluded to focus on the load-bearing contact network.
+where $N_c$ is the total number of interparticle contacts, $N_p$ is the total number of particles, and $N_1$ and $N_0$ are the numbers of particles with one and zero contacts, respectively. Floaters are excluded to focus on the load-bearing contact network. $Z_m$ serves as a scalar measure of packing compactness and contact network connectivity.
 
 The directionality of the contact network is characterized through the fabric tensor \citep{Oda1982fabric,Oda1982stat}:
 \begin{equation}
@@ -205,13 +221,13 @@ where $n_i$ and $n_j$ are the components of the contact normal vector. To distin
 \alpha = \frac{5(3\varphi_v - 1)}{5\varphi_v + 1}.
 \label{eq:alpha_definition_method}
 \end{equation}
-Positive $\alpha$ indicates axial concentration of contact normals (compression-state anisotropy, \Kzero{} $< 1.0$), whereas negative $\alpha$ indicates circumferential concentration (extension-state anisotropy, \Kzero{} $> 1.0$).
+Positive $\alpha$ indicates that contact normals concentrate toward the vertical axis (compression-state anisotropy, \Kzero{} $< 1.0$), whereas negative $\alpha$ indicates concentration toward the horizontal plane (extension-state anisotropy, \Kzero{} $> 1.0$).
 
-The contact density \citep{Han2023} describes the average number of contacts per unit surface area on a particle with normalized radius:
+The contact density \citep{Han2023} describes the average number of contacts per unit solid angle on the unit sphere of contact normal orientations:
 \begin{equation}
-\rho_c(\theta_z,\,\phi_{\mathrm{cir}}) = \frac{2N_{\theta_z,\,\phi_{\mathrm{cir}}}}{N_p\displaystyle\int_{\phi_{\mathrm{cir}}}^{\phi_{\mathrm{cir}}+\Delta\phi_{\mathrm{cir}}}\!\sin\phi_{\mathrm{cir}}\,d\phi_{\mathrm{cir}}\int_{\theta_z}^{\theta_z+\Delta\theta_z}\!d\theta_z},
+\rho_c(\theta_z,\,\phi_{\mathrm{cir}}) = \frac{2\,N(\theta_z,\,\phi_{\mathrm{cir}})}{N_p\,\Delta\Omega},
 \label{eq:contact_density}
 \end{equation}
-where $\theta_z$ and $\phi_{\mathrm{cir}}$ are the polar and azimuthal angles in the spherical coordinate system, and $N_{\theta_z,\,\phi_{\mathrm{cir}}}$ is the number of contacts whose normals fall within the angular bin $(\theta_z,\,\theta_z+\Delta\theta_z)\times(\phi_{\mathrm{cir}},\,\phi_{\mathrm{cir}}+\Delta\phi_{\mathrm{cir}})$.
+where $\theta_z$ and $\phi_{\mathrm{cir}}$ are the polar and azimuthal angles in the spherical coordinate system, $N(\theta_z,\,\phi_{\mathrm{cir}})$ is the number of contacts whose normals fall within the angular bin of widths $\Delta\theta_z$ and $\Delta\phi_{\mathrm{cir}}$, and $\Delta\Omega = (\cos\phi_{\mathrm{cir}} - \cos(\phi_{\mathrm{cir}}+\Delta\phi_{\mathrm{cir}}))\,\Delta\theta_z$ is the solid angle subtended by that bin. Noting that the fabric tensor (\cref{eq:fabric_tensor}) is the second-order moment of the contact normal distribution, $\rho_c$ retains the full directional information---including higher-order features that the fabric tensor projects out---and thus provides a more complete picture of the evolving contact network.
 
-These descriptors are used together with force-chain visualizations to connect particle-scale fabric evolution to the macroscopic liquefaction resistance trends reported in \cref{sec:results}.
+Together, these three descriptors probe the contact network at increasing levels of directional detail: \Zm{} quantifies the overall connectivity (scalar), $\alpha$ captures the dominant anisotropy direction (signed scalar), and $\rho_c$ resolves the full directional distribution (field on the unit sphere). They are used alongside force-chain visualizations to connect particle-scale fabric evolution to the macroscopic liquefaction resistance trends reported in \cref{sec:results}.

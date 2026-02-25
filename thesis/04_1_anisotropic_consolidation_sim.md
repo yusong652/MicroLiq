@@ -140,7 +140,7 @@ The key challenge in simulating undrained HCA tests lies in satisfying multiple 
 
 **Condition 1: Target radial stress difference**
 
-The difference in effective stresses between the outer and inner cylinders is regulated by controlling the inner radius rate, as determined by Eq. (4-1), where $\sigma_{dif,r}'$ represents the effective stress difference between outer and inner cylinders, $p_o - p_i$ is the target difference in chamber pressures, and $S_{cr}$ is the servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted.
+The difference in effective stresses between the outer and inner cylinders is regulated by controlling the inner radius rate, as determined by Eq. (4-1), where $\sigma_{dif,r}'$ represents the effective stress difference between outer and inner cylinders, $p_o$ and $p_i$ are the outer and inner chamber pressures of the HCA, and $S_{cr}$ is the servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted.
 
 $$\frac{dr}{dt} = \frac{\left(\sigma_{dif,r}' - (p_o - p_i)\right)}{\Delta t}S_{cr}$$ (4-1)
 
@@ -164,7 +164,7 @@ The undrained condition is ensured by maintaining constant volume throughout the
 
 $$2\pi H\left(R\frac{dR}{dt} + r\frac{dr}{dt}\right) + \pi(R^2 - r^2)\frac{dH}{dt} = 0$$ (4-4)
 
-By combining these four equations, the system of four kinematic variables ($dr/dt$, $dR/dt$, $dH/dt$, $d\theta/dt$) and four constraints is solved simultaneously at each timestep, achieving both the stress conditions and undrained condition in DEM simulation of HCA tests. This combined servo mechanism (Ma et al., 2024) elegantly replicates the boundary conditions observed in laboratory undrained cyclic torsional shear tests.
+By combining these four equations, the system of four kinematic variables ($dr/dt$, $dR/dt$, $dH/dt$, $d\theta/dt$) and four constraints is solved simultaneously at each timestep, achieving both the stress conditions and undrained condition in DEM simulation of HCA tests. This combined servo mechanism (Han et al., 2024; Ma et al., 2024) replicates the boundary conditions observed in laboratory undrained cyclic torsional shear tests. The analytical solution of the coupled radial–axial servo is derived below.
 
 **Determination of servo coefficients**
 
@@ -184,27 +184,25 @@ The servo coefficients $S_{cr}$ and $S_{cz}$ for the radial and axial directions
 
 $$\frac{dR}{dt} = -\frac{r}{R}\frac{dr}{dt} - \frac{R^2 - r^2}{2RH}\frac{dH}{dt}$$ (4-7)
 
-Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces outer wall displacement through Eq. (4-7), which in turn affects the radial stress. Let $K_{r,i} = \sum_{c \in \text{inner}} k_n$ and $K_{r,o} = \sum_{c \in \text{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z = \sum_{c \in \text{top/bottom}} k_n$ the aggregate normal contact stiffness at the top and bottom plates, where the summations run over all particle–wall contacts on the respective rigid boundaries. Since the contact normals on rigid cylindrical walls and flat plates are aligned with the radial and axial directions, respectively, no angular projection is required.
+Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces outer wall displacement through Eq. (4-7), which in turn affects both the radial and axial stress differences. Let $K_{r,i} = \sum_{c \in \text{inner}} k_n$ and $K_{r,o} = \sum_{c \in \text{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z = \frac{1}{2}\sum_{c \in \text{top/bottom}} k_n$ the effective axial contact stiffness, where the summations run over all particle–wall contacts on the respective rigid boundaries. The factor $\frac{1}{2}$ arises because the top and bottom plates move symmetrically (each by $dH/2$) to achieve the total height change $dH$. Since the contact normals on rigid cylindrical walls and flat plates are aligned with the radial and axial directions, respectively, no angular projection is required.
 
 The stress responses to the kinematic increments $dr$ and $dH$ can be expressed in matrix form:
 
-$$\begin{pmatrix} \delta\sigma'_{dif,r} \\ \delta\sigma'_{dif,z} \end{pmatrix} = \begin{pmatrix} K_{r,i} + \frac{r}{R}K_{r,o} & \frac{R^2 - r^2}{2RH}K_{r,o} \\ 0 & K_z \end{pmatrix} \begin{pmatrix} dr \\ dH \end{pmatrix}$$ (4-8)
+$$\begin{pmatrix} \delta\sigma'_{dif,r} \\ \delta\sigma'_{dif,z} \end{pmatrix} = \begin{pmatrix} K_{11} & K_{12} \\ -K_{11} & K_z - K_{12} \end{pmatrix} \begin{pmatrix} dr \\ dH \end{pmatrix}$$ (4-8)
 
-where the off-diagonal term $K_{12} = \frac{R^2 - r^2}{2RH}K_{r,o}$ represents the cross-coupling: an axial displacement $dH$ induces an outer wall displacement through the volume constraint, which alters the radial stress. The axial stress depends primarily on top/bottom plate contacts, so the lower-left entry is approximately zero.
+where $K_{11} = K_{r,i} + \frac{r}{R}K_{r,o}$ and $K_{12} = \frac{R^2 - r^2}{2RH}K_{r,o}$. The off-diagonal term $K_{12}$ represents the cross-coupling from the volume constraint: an axial displacement $dH$ induces an outer wall displacement through Eq. (4-7), which alters the radial stress. Since $\sigma'_{dif,z} = \sigma'_z - \sigma'_r$, the axial stress difference is affected by both the axial displacement (through $K_z$) and the radial displacement (through $-K_{11}$), because changes in the radial stress enter $\sigma'_{dif,z}$ with opposite sign. Similarly, $dH$ affects $\sigma'_{dif,z}$ through both the direct axial stiffness $K_z$ and the volume-constraint-induced radial stress change $-K_{12}$.
 
-Since the stiffness matrix is upper triangular, its inverse yields the servo equations in the general case:
+The determinant of the stiffness matrix is $\det(\mathbf{K}) = K_{11}(K_z - K_{12}) + K_{11}K_{12} = K_{11}K_z$, so the fully coupled servo equations are:
 
-$$\frac{dr}{dt} = \frac{1}{K_{11}}\frac{\Delta\sigma'_{dif,r}}{\Delta t} - \frac{K_{12}}{K_{11}K_z}\frac{\Delta\sigma'_{dif,z}}{\Delta t}$$ (4-9)
+$$\frac{dr}{dt} = \frac{K_z - K_{12}}{K_{11}K_z}\frac{\Delta\sigma'_{dif,r}}{\Delta t} - \frac{K_{12}}{K_{11}K_z}\frac{\Delta\sigma'_{dif,z}}{\Delta t}$$ (4-9)
 
-$$\frac{dH}{dt} = \frac{1}{K_z}\frac{\Delta\sigma'_{dif,z}}{\Delta t}$$ (4-10)
+$$\frac{dH}{dt} = \frac{1}{K_z}\frac{\Delta\sigma'_{dif,r}}{\Delta t} + \frac{1}{K_z}\frac{\Delta\sigma'_{dif,z}}{\Delta t}$$ (4-10)
 
-where $K_{11} = K_{r,i} + \frac{r}{R}K_{r,o}$. The first term in Eq. (4-9) is the direct radial correction, while the second term compensates for the cross-coupling from axial movement. The axial servo coefficient $S_{cz} = 1/K_z$ remains independent of the volume coupling.
-
-Under the constant-height condition ($dH/dt = 0$) adopted for all cyclic shear simulations in this study, the cross-coupling term $K_{12}\,dH$ vanishes, and the radial servo coefficient simplifies to:
+Under the constant-height condition ($dH/dt = 0$) adopted for all cyclic shear simulations in this study, the axial stress difference $\sigma'_{dif,z}$ is not actively controlled, and only the radial condition remains. Setting $dH = 0$ eliminates the second-column contributions, and the radial servo coefficient simplifies to:
 
 $$S_{cr} = \frac{1}{K_{r,i} + \frac{r}{R}K_{r,o}}$$ (4-11)
 
-For the general case ($dH/dt \neq 0$), such as the monotonic shear validation in Section 4.2.3, the decoupled servo equations (Eq. 4-1 and 4-2) with $S_{cr} = 1/K_{11}$ and $S_{cz} = 1/K_z$ are applied independently at each timestep, and convergence is achieved through iterative application of the servo mechanism. In practice, a relaxation factor less than unity is applied to the servo coefficients to ensure numerical stability and suppress oscillation.
+For the general case ($dH/dt \neq 0$), such as the monotonic shear validation in Section 4.2.3, the fully coupled servo equations (Eq. 4-9 and 4-10) are applied at each timestep. In practice, a relaxation factor less than unity is applied to the servo coefficients to ensure numerical stability and suppress oscillation.
 
 **Excess pore water pressure calculation**
 
