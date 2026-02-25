@@ -1,0 +1,51 @@
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{DEM model and specimen preparation}
+\label{subsec:dem_model}
+
+% PFC3D, rolling resistance contact model, periodic boundaries
+% Particle size distribution (1.0--3.0 mm, Toyoura sand analogue)
+% Ribbed shear walls for applying shear force
+% Isotropic consolidation to p' = 100 kPa
+% Undrained (constant-volume) condition via servo mechanism
+% DEM parameters table (shared with K0 paper)
+
+\subsection{Loading path design}
+\label{subsec:loading_paths}
+
+% Core methodological contribution: systematic elimination of confounding factors
+
+\paragraph{Single-8 shear stress path.}
+% Eqs for tau_8x, tau_8y
+% Figure-8 pattern in tau_x--tau_y space
+
+\paragraph{Equivalent-magnitude unidirectional path.}
+% Key innovation: tau_uni = sign(tau_8x) * sqrt(tau_8x^2 + tau_8y^2)
+% Ensures identical shear stress magnitude at every instant
+% Only difference: direction is fixed
+
+\paragraph{Double-8 shear stress path.}
+% Swaps x and y components in alternating cycles
+% Preserves: (1) magnitude, (2) rate of change
+% Only difference vs single-8: loading history (axis alternation)
+
+\paragraph{Summary of controlled variables.}
+% Table or diagram summarizing what is controlled between each pair of comparisons
+% Uni vs single-8: same magnitude, different direction and rate
+% Single-8 vs double-8: same magnitude and rate, different directional history
+
+\subsection{Parameter calibration and validation}
+\label{subsec:calibration_validation}
+
+% Validation against Nakata et al. (1998) monotonic HCA data
+% Clarify: validation targets contact model parameters, not boundary conditions
+% Parameters inherited from K0 paper (cross-reference)
+
+\subsection{Microscopic descriptors}
+\label{subsec:micro_descriptors}
+
+% Zm: mechanical coordination number (same definition as K0 paper)
+% Fc: invariant of anisotropic fabric tensor (unsigned scalar -- appropriate here
+%     because the question is degree of anisotropy, not its direction)
+% rho_c: contact density distribution

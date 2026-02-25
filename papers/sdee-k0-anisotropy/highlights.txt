@@ -1,5 +1,5 @@
-- DEM reproduces undrained cyclic HCA responses under anisotropic consolidation
+- Analytical servo coefficients derived for volume-coupled undrained HCA boundary control in DEM
 - Liquefaction resistance depends on both the level and direction of initial K0 anisotropy
-- Coupled macroscopic and microscopic mechanisms control liquefaction resistance
+- Stiffness degradation rate, not cumulative shear work, governs resistance ordering among K0 states
 - Coordination number and fabric anisotropy jointly explain K0-dependent trends
-- Fabric indicators converge toward similar values near post-liquefaction states
+- Initially distinct fabric morphologies converge toward similar configurations near liquefaction
