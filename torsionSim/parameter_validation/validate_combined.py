@@ -111,7 +111,7 @@ ax3.set_ylabel(r'$Cyclic\ stress\ ratio\ \tau_{z\theta,max}/p^\prime_{0}$', font
 ax3.legend(fontsize=14)
 ax3.tick_params(axis='both', which='major', labelsize=15)
 ax3.grid(axis='both', which='major', color='grey', linestyle='--', lw=0.35, alpha=0.8)
-ax3.annotate(r'$Liquefaction\ criterion:\ \gamma_{z\theta}=2.5\%$',
+ax3.annotate(r'$Liquefaction\ criterion:\ \gamma_{SA}=2.5\%$',
 	xy=(0.98, 0.02), xycoords='axes fraction',
 	fontsize=13, ha='right', va='bottom')
 add_panel_label(ax3, "(c)")
