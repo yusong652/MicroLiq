@@ -10,9 +10,6 @@ colors = ['tab:orange', 'tab:red', 'tab:blue', 'tab:purple', 'tab:green']
 fig, axes = plt.subplots(1, 3, figsize=(15.0, 4.5))
 ax_a, ax_b, ax_c = axes
 
-# inset for W_sL vs K_0
-ax_inset = inset_axes(ax_c, width="40%", height="35%", loc='lower right',
-	borderpad=2.0)
 
 def compute_and_plot(k0, color, marker, csr=0.200):
 	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
@@ -60,9 +57,6 @@ def compute_and_plot(k0, color, marker, csr=0.200):
 		color=color, marker=marker, markerfacecolor='None',
 		markevery=mevery, markersize=9, label=label)
 
-	# inset: W_sL vs K_0
-	ax_inset.scatter([k0], [ws_liq], color=color, marker=marker,
-		facecolors='None', s=80)
 
 for k0, marker, color in zip(k0s, markers, colors):
 	compute_and_plot(k0, color, marker)
@@ -116,17 +110,6 @@ legend_c._legend_box.align = "left"
 ax_c.annotate(r"$CSR=0.200$", xy=(0.03, 0.7), fontsize=13)
 ax_c.text(0.02, 0.02, '(c)', transform=ax_c.transAxes, fontsize=14,
 	fontweight='bold', va='bottom')
-
-# inset formatting
-ax_inset.set_ylabel(r'$W_{sL}\ (kJ/m^3)$', fontsize=11)
-ax_inset.set_xlabel(r'$K_0$', fontsize=11)
-ax_inset.tick_params(axis='both', which='both', labelsize=11)
-ax_inset.set_xscale('log')
-ticks = [0.3, 0.5, 1.0, 3.0]
-ax_inset.set_xticks(ticks)
-ax_inset.set_xticklabels(['0.3', '0.5', '1.0', '3.0'])
-ax_inset.set_xlim((0.2, 4.0))
-ax_inset.set_ylim(0.0, 0.6)
 
 plt.tight_layout()
 plt.savefig("fig4_12_combined.png", dpi=350)
