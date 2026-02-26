@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 BASE_DIR = Path(__file__).resolve().parent
 
 k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-drs = ['Dr80', 'Dr75']
-dr_dirs = {'Dr80': 'Dr80', 'Dr75': 'Dr60'}
-dr_markers = {'Dr80': 'o', 'Dr75': 's'}
-dr_labels = {'Dr80': r'$D_r=90\%$', 'Dr75': r'$D_r=75\%$'}
+drs = ['Dr90', 'Dr75']
+dr_dirs = {'Dr90': 'Dr90', 'Dr75': 'Dr75'}
+dr_markers = {'Dr90': 'o', 'Dr75': 's'}
+dr_labels = {'Dr90': r'$D_r=90\%$', 'Dr75': r'$D_r=75\%$'}
 period = 1.0 / 8.0
 
 FS_AX = 14
@@ -57,9 +57,9 @@ df = pd.DataFrame(results)
 
 # --- (a) Z_{m0} vs N_L ---
 offsets_a = {
-	('Dr80', 0.50): (12, 6), ('Dr80', 0.67): (12, 6),
-	('Dr80', 1.00): (12, -3), ('Dr80', 1.50): (12, -12),
-	('Dr80', 2.00): (12, 6),
+	('Dr90', 0.50): (12, 6), ('Dr90', 0.67): (12, 6),
+	('Dr90', 1.00): (12, -3), ('Dr90', 1.50): (12, -12),
+	('Dr90', 2.00): (12, 6),
 	('Dr75', 0.50): (12, 6), ('Dr75', 0.67): (12, 6),
 	('Dr75', 1.00): (12, -3), ('Dr75', 1.50): (-36, -16),
 	('Dr75', 2.00): (12, -14),
@@ -71,7 +71,7 @@ def plot_zm_vs_nl(ax, show_panel_label=True):
 		mask = df['dr'] == dr
 		ax.scatter(df[mask]['zm0'], df[mask]['n_liq'],
 			marker=dr_markers[dr], s=100, label=dr_labels[dr],
-			color='tab:blue' if dr == 'Dr80' else 'tab:orange',
+			color='tab:blue' if dr == 'Dr90' else 'tab:orange',
 			edgecolors='black', linewidths=0.8)
 		for _, row in df[mask].iterrows():
 			ofs = offsets_a[(row['dr'], row['k0'])]
@@ -93,8 +93,8 @@ def plot_zm_vs_nl(ax, show_panel_label=True):
 
 # --- (b) alpha_0 vs N_L ---
 offsets_b = {
-	('Dr80', 0.50): (-18, -16), ('Dr80', 0.67): (-10, 8), ('Dr80', 1.00): (-10, 8),
-	('Dr80', 1.50): (-10, 8), ('Dr80', 2.00): (8, -14),
+	('Dr90', 0.50): (-18, -16), ('Dr90', 0.67): (-10, 8), ('Dr90', 1.00): (-10, 8),
+	('Dr90', 1.50): (-10, 8), ('Dr90', 2.00): (8, -14),
 	('Dr75', 0.50): (-18, -16), ('Dr75', 0.67): (-10, 8), ('Dr75', 1.00): (-10, 8),
 	('Dr75', 1.50): (-10, -16), ('Dr75', 2.00): (8, -14),
 }
@@ -105,7 +105,7 @@ def plot_alpha_vs_nl(ax, show_panel_label=True):
 		mask = df['dr'] == dr
 		ax.scatter(df[mask]['alpha0'], df[mask]['n_liq'],
 			marker=dr_markers[dr], s=100, label=dr_labels[dr],
-			color='tab:blue' if dr == 'Dr80' else 'tab:orange',
+			color='tab:blue' if dr == 'Dr90' else 'tab:orange',
 			edgecolors='black', linewidths=0.8)
 		for _, row in df[mask].iterrows():
 			ofs = offsets_b[(row['dr'], row['k0'])]

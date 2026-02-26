@@ -24,7 +24,7 @@ def plot_liq(k0, color, marker, state='AC'):
 	ns_liq = []
 	k0s = []
 	csr=0.200
-	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+	file_name = "Dr90/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
 	facecolors = 'None'
 	label = r'$K_0=:%.2f$'%k0
 	size = 86

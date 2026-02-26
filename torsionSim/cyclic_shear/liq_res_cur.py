@@ -28,7 +28,7 @@ FS_INSET = 9
 MARKER_SIZE = 100
 
 def get_n_liq(k0, csr):
-	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr))
+	file_name = BASE_DIR / ("Dr90/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr))
 	try:
 		df1 = pd.read_csv(file_name,header=0)
 	except FileNotFoundError:

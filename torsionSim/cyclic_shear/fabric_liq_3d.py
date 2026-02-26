@@ -8,10 +8,10 @@ from mpl_toolkits.mplot3d import Axes3D
 BASE_DIR = Path(__file__).resolve().parent
 
 k0s = [0.5, 0.67, 1.0, 1.5, 2.0]
-drs = ['Dr80', 'Dr75']
-dr_dirs = {'Dr80': 'Dr80', 'Dr75': 'Dr60'}
-dr_markers = {'Dr80': 'o', 'Dr75': 's'}
-dr_labels = {'Dr80': r'$D_r=90\%$', 'Dr75': r'$D_r=75\%$'}
+drs = ['Dr90', 'Dr75']
+dr_dirs = {'Dr90': 'Dr90', 'Dr75': 'Dr75'}
+dr_markers = {'Dr90': 'o', 'Dr75': 's'}
+dr_labels = {'Dr90': r'$D_r=90\%$', 'Dr75': r'$D_r=75\%$'}
 period = 1.0 / 8.0
 
 FS_AX = 16

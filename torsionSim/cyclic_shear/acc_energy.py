@@ -32,7 +32,7 @@ ax1 = plt.gca()
 ax_inset = ax1.inset_axes([0.14, 0.45, 0.4, 0.35])
 
 def plot_acc_energy(k0, color, marker, csr=0.200):
-	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr))
+	file_name = BASE_DIR / ("Dr90/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr))
 	print(file_name)
 	try:
 		df1 = pd.read_csv(file_name,header=0)

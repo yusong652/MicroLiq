@@ -8,10 +8,11 @@ def plot_csr_N_result():
 	cycles = []
 	for csr in csrs:
 		df1 = pd.read_csv(f"cyclic_dense/csr_{csr:.3f}/torsion_shear.csv",header=0)
-		strains = df1["strain_shear"] * 100.0
-		strains_abs = abs(strains)
-		threshold = 2.5
-		index = np.argmax(strains_abs > threshold)
+		# strain_shear in CSV is tensorial shear strain epsilon_ztheta; gamma = 2 * epsilon
+		epsilon = df1["strain_shear"] * 100.0
+		gamma = epsilon * 2.0
+		threshold = 2.5  # gamma_SA = 2.5%
+		index = np.argmax(abs(gamma) > threshold)
 		time = df1["time_duration"][index]
 		cycle = time * 8.0
 		cycles.append(cycle)
@@ -40,7 +41,7 @@ ax1.tick_params(axis='both', which='major', labelsize=13)
 ax1.legend(fontsize=12, ncol=1)
 
 # Annotate liquefaction criterion
-ax1.annotate(r'$Liquefaction\ criterion:\ \gamma_{z\theta}=2.5\%$',
+ax1.annotate(r'$Liquefaction\ criterion:\ \gamma_{SA}=2.5\%$',
 	xy=(0.98, 0.02), xycoords='axes fraction',
 	fontsize=11, ha='right', va='bottom',
 	)

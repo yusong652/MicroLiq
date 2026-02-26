@@ -87,10 +87,11 @@ csrs = [0.200, 0.250, 0.300, 0.350, 0.400]
 cycles = []
 for csr in csrs:
 	df_c = pd.read_csv(f"undrained_cyclic/cyclic_dense/csr_{csr:.3f}/torsion_shear.csv", header=0)
-	strains_c = df_c["strain_shear"] * 100.0
-	strains_abs = abs(strains_c)
-	threshold = 2.5
-	index = np.argmax(strains_abs > threshold)
+	# strain_shear in CSV is tensorial shear strain epsilon_ztheta; gamma = 2 * epsilon
+	epsilon_c = df_c["strain_shear"] * 100.0
+	gamma_c = epsilon_c * 2.0
+	threshold = 2.5  # gamma_SA = 2.5%
+	index = np.argmax(abs(gamma_c) > threshold)
 	time_c = df_c["time_duration"][index]
 	cycle = time_c * 8.0
 	cycles.append(cycle)

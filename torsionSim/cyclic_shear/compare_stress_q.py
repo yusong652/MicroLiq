@@ -22,7 +22,7 @@ LW_MAIN = 1.5
 
 def draw_dev(k0, lst, color):
 	for csr in csr_arr:
-		file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
+		file_name = "Dr90/k%.2f/csr_%.3f/torsion_shear.csv"%(k0, csr)
 		print(file_name)
 		try:
 			df1 = pd.read_csv(file_name,header=0)
@@ -60,7 +60,7 @@ def draw_dev(k0, lst, color):
 
 def draw_csl():
 	for csr in csr_arr:
-		file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv"%(0.5, 0.200)
+		file_name = "Dr90/k%.2f/csr_%.3f/torsion_shear.csv"%(0.5, 0.200)
 		try:
 			df1 = pd.read_csv(file_name,header=0)
 			print("Found")
@@ -124,7 +124,7 @@ ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
-ax1.set_ylabel(r'$Deviatoric\ stress\ \sigma_{vM}\ (kPa)$', fontsize=FS_LABEL)
+ax1.set_ylabel(r'$Deviatoric\ stress\ q\ (kPa)$', fontsize=FS_LABEL)
 ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$', fontsize=FS_LABEL)
 ax1.legend(fontsize=FS_LEGEND, framealpha=0.5, loc='upper left')
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)

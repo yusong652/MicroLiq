@@ -24,7 +24,7 @@ ax2 = ax1.inset_axes([0.1, 0.15, 0.42, 0.36])
 
 def plot_shear_modulus(k0, color, marker):
 	csr = 0.200
-	file_name = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr))
+	file_name = BASE_DIR / ("Dr90/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr))
 	try:
 		df1 = pd.read_csv(file_name, header=0)
 	except FileNotFoundError:
@@ -107,7 +107,7 @@ for k0, marker, color in zip(k0s, markers, colors):
 	plot_shear_modulus(k0, color, marker)
 
 # --- Inset: hysteresis loop schematic using K0=1.0, cycle 25 ---
-df_inset = pd.read_csv(BASE_DIR / "Dr80/k1.00/csr_0.200/torsion_shear.csv", header=0)
+df_inset = pd.read_csv(BASE_DIR / "Dr90/k1.00/csr_0.200/torsion_shear.csv", header=0)
 strains_in = df_inset["strain_shear"].to_numpy() * 100  # percent
 stresses_in = df_inset["stress_shear"].to_numpy() / 1000.  # kPa
 time_in = df_inset["time_duration"].to_numpy()

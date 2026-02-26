@@ -8,7 +8,9 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 # st.use("seaborn-deep")
 
 df1 = pd.read_csv("torsion_shear.csv",header=0)
-strains = df1["strain_shear"] * 100.
+# strain_shear in CSV is tensorial shear strain epsilon_ztheta; gamma = 2 * epsilon
+epsilon = df1["strain_shear"] * 100.
+gamma = epsilon * 2.0
 # overall data
 stresses_shear = df1["stress_shear"] / 1000.
 stresses_out = df1["stress_outer"] / 1000.
@@ -45,12 +47,12 @@ ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 flt = time < 4.24
-ax1.plot(strains[flt][::20],stresses_shear[flt][::20],linewidth=LW_MAIN,
+ax1.plot(gamma[flt][::20],stresses_shear[flt][::20],linewidth=LW_MAIN,
 	label=r"$Stress-strain$" + '\n' + r"$relationship$",)
 ax1.legend(fontsize=FS_LEGEND, framealpha=0.2, loc='lower right')
 ax1.set_ylabel(r'$Shear\ stress\ \tau_{z\theta}\ (kPa)$', fontsize=FS_LABEL)
 ax1.set_xlabel(r'$Shear\ strain\ \gamma_{z\theta}\ (\%)$', fontsize=FS_LABEL)
-ax1.set_xlim(-4, 4)
+ax1.set_xlim(-8, 8)
 ax1.set_ylim(-30, 30)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 # ax1.legend(fontsize=8,loc=(0.55,0.38))

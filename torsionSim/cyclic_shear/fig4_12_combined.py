@@ -12,7 +12,7 @@ ax_a, ax_b, ax_c = axes
 
 
 def compute_and_plot(k0, color, marker, csr=0.200):
-	file_name = "Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
+	file_name = "Dr90/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr)
 	try:
 		df1 = pd.read_csv(file_name, header=0)
 	except FileNotFoundError:

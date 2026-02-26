@@ -22,8 +22,8 @@ ax2 = ax1.inset_axes([0.68, 0.74, 0.30, 0.22])
 
 def plot_fabric_anisotropy(k0, color, marker):
 	csr = 0.200
-	shear_file = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr))
-	alpha_file = BASE_DIR / ("Dr80/k%.2f/csr_%.3f/alpha_mech.csv" % (k0, csr))
+	shear_file = BASE_DIR / ("Dr90/k%.2f/csr_%.3f/torsion_shear.csv" % (k0, csr))
+	alpha_file = BASE_DIR / ("Dr90/k%.2f/csr_%.3f/alpha_mech.csv" % (k0, csr))
 
 	try:
 		df_shear = pd.read_csv(shear_file, header=0)

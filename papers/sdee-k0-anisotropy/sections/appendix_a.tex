@@ -28,7 +28,7 @@ Table~\ref{tab:hca_equations} summarizes the stress and strain evaluation expres
     $\displaystyle\varepsilon_r = -\frac{u_o-u_i}{R-r}$ \\[12pt]
     Shear &
     $\displaystyle\tau_{z\theta} = \frac{3T}{2\pi(R^3-r^3)}$ &
-    $\displaystyle\gamma_{z\theta} = \frac{\theta(R^3-r^3)}{3H(R^2-r^2)}$ \\[12pt]
+    $\displaystyle\gamma_{z\theta} = \frac{2\theta(R^3-r^3)}{3H(R^2-r^2)}$ \\[12pt]
     Major principal &
     $\displaystyle\sigma_1 = \frac{\sigma_z+\sigma_\theta}{2}+\sqrt{\left(\frac{\sigma_z-\sigma_\theta}{2}\right)^{\!2}+\tau_{z\theta}^2}$ &
     $\displaystyle\varepsilon_1 = \frac{\varepsilon_z+\varepsilon_\theta}{2}+\sqrt{\left(\frac{\varepsilon_z-\varepsilon_\theta}{2}\right)^{\!2}+\left(\frac{\gamma_{z\theta}}{2}\right)^{\!2}}$ \\[12pt]
@@ -37,7 +37,10 @@ Table~\ref{tab:hca_equations} summarizes the stress and strain evaluation expres
     $\varepsilon_2 = \varepsilon_r$ \\[12pt]
     Minor principal &
     $\displaystyle\sigma_3 = \frac{\sigma_z+\sigma_\theta}{2}-\sqrt{\left(\frac{\sigma_z-\sigma_\theta}{2}\right)^{\!2}+\tau_{z\theta}^2}$ &
-    $\displaystyle\varepsilon_3 = \frac{\varepsilon_z+\varepsilon_\theta}{2}-\sqrt{\left(\frac{\varepsilon_z-\varepsilon_\theta}{2}\right)^{\!2}+\left(\frac{\gamma_{z\theta}}{2}\right)^{\!2}}$ \\[6pt]
+    $\displaystyle\varepsilon_3 = \frac{\varepsilon_z+\varepsilon_\theta}{2}-\sqrt{\left(\frac{\varepsilon_z-\varepsilon_\theta}{2}\right)^{\!2}+\left(\frac{\gamma_{z\theta}}{2}\right)^{\!2}}$ \\[12pt]
+    Deviatoric &
+    $\displaystyle q = \sqrt{\tfrac{1}{2}\!\left[(\sigma_1-\sigma_2)^2+(\sigma_2-\sigma_3)^2+(\sigma_3-\sigma_1)^2\right]}$ &
+    $\displaystyle\varepsilon_q = \sqrt{\tfrac{2}{9}\!\left[(\varepsilon_1-\varepsilon_2)^2+(\varepsilon_2-\varepsilon_3)^2+(\varepsilon_3-\varepsilon_1)^2\right]}$ \\[6pt]
     \bottomrule
   \end{tabular}
 \end{table*}

@@ -17,7 +17,7 @@ LW_MAIN = 1.5
 LW_REF = 1.6
 def plot_pwp(k0, time_lmt, color, linestyle):
 	try:
-		df1 = pd.read_csv("Dr80/k%.2f/csr_0.200/torsion_shear.csv"%k0,header=0)
+		df1 = pd.read_csv("Dr90/k%.2f/csr_0.200/torsion_shear.csv"%k0,header=0)
 	except FileNotFoundError:
 		print(f"Missing data for K0={k0:.2f}, skipped")
 		return
