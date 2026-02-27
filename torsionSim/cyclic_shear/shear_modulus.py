@@ -73,7 +73,8 @@ def plot_shear_modulus(k0, color, marker):
 		d_stress = stresses_shear[ind_end] - stresses_shear[ind_start]
 
 		if abs(d_strain) > 1e-11:
-			G = abs(d_stress / d_strain) * 1000.  # Pa
+			# d_strain is tensorial strain epsilon; G = tau / gamma = tau / (2*epsilon)
+			G = abs(d_stress / d_strain) * 1000. / 2.0  # Pa
 			Vs = np.sqrt(G / density_sat)  # m/s
 
 			if i % 2 == 0:  # loading
@@ -108,7 +109,8 @@ for k0, marker, color in zip(k0s, markers, colors):
 
 # --- Inset: hysteresis loop schematic using K0=1.0, cycle 25 ---
 df_inset = pd.read_csv(BASE_DIR / "Dr90/k1.00/csr_0.200/torsion_shear.csv", header=0)
-strains_in = df_inset["strain_shear"].to_numpy() * 100  # percent
+# strain_shear is tensorial epsilon; convert to gamma = 2*epsilon for plotting
+strains_in = df_inset["strain_shear"].to_numpy() * 100 * 2.0  # gamma in percent
 stresses_in = df_inset["stress_shear"].to_numpy() / 1000.  # kPa
 time_in = df_inset["time_duration"].to_numpy()
 
@@ -132,7 +134,7 @@ for q in range(4):
 
 # mark quarter points
 labels = [r'$0$', r'$T/4$', r'$T/2$', r'$3T/4$', r'$T$']
-offsets = [(0.002, -1.6), (-0.006, -8), (0.003, 2.0), (0.01, 6.0), (-0.006, 0.8)]
+offsets = [(0.004, -4), (-0.016, -8), (0.016, -8.0), (0.0, 4.0), (-0.01, 0.6)]
 ha_list = ['left', 'left', 'right', 'right', 'left']
 for q in range(5):
 	ax2.plot(strains_in[iq[q]], stresses_in[iq[q]], 'ko', markersize=4, zorder=5)
@@ -141,13 +143,15 @@ for q in range(5):
 		fontsize=FS_INSET-2, ha=ha_list[q], fontweight='bold')
 
 # G labels
-ax2.annotate(r'$G_{load}$', xy=(-0.0, 12), fontsize=FS_INSET, color='tab:blue',
+ax2.annotate(r'$G_{load}$', xy=(-0.02, 14), fontsize=FS_INSET, color='tab:blue',
 	fontstyle='italic')
-ax2.annotate(r'$G_{unload}$', xy=(0.02, -2), fontsize=FS_INSET, color='tab:red',
+ax2.annotate(r'$G_{unload}$', xy=(0.04, -2), fontsize=FS_INSET, color='tab:red',
 	fontstyle='italic')
 
-ax2.set_xlabel(r'$\gamma_{z\theta}\ (\%)$', fontsize=FS_INSET)
-ax2.set_ylabel(r'$\tau_{z\theta}\ (kPa)$', fontsize=FS_INSET, labelpad=-10)
+ax2.set_xlabel(r'$\gamma_{z\theta}\ (\%)$', fontsize=FS_INSET, labelpad=-2)
+ax2.set_ylabel(r'$\tau_{z\theta}\ (kPa)$', fontsize=FS_INSET, labelpad=-14)
+ax2.set_xlim(-0.15, 0.15)
+ax2.set_ylim(-25, 25)
 ax2.tick_params(axis='both', which='major', labelsize=FS_INSET)
 ax2.set_title(r'$K_0=1.0,\ N_c=25$', fontsize=FS_INSET)
 
@@ -164,8 +168,8 @@ ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.set_xlim(0, 42)
-ax1.set_ylim(20, 220)
-plt.annotate(r"$CSR=0.200$", xy=(30, 180), fontsize=FS_ANN)
+ax1.set_ylim(10, 160)
+plt.annotate(r"$CSR=0.200$", xy=(30, 135), fontsize=FS_ANN)
 
 plt.tight_layout()
 plt.savefig(BASE_DIR / "shear_modulus.png", dpi=350)
