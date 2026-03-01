@@ -14,6 +14,8 @@ submission/
 *.synctex.gz
 *.toc
 *.xdv
+*.abs
+*.pdf
 !figures/*.pdf
 !figures/*.png
 !figures/*.jpg
