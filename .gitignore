@@ -11,9 +11,10 @@ __pycache__/
 *$py.class
 .ipynb_checkpoints/
 
-# IDE
+# IDE / tool config
 .vscode/
 .idea/
+.mcp.json
 
 # Temporary files
 *.tmp

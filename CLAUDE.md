@@ -81,4 +81,5 @@ Each paper under `papers/<slug>/` is a self-contained LaTeX project:
 
 ## Related Projects
 
-- **aiNagisa** (`/Users/hanyusong/aiNagisa`) — LLM-driven PFC simulation assistant; "Script is Context" workflow with WebSocket integration to ITASCA PFC
+- **toyoura-nagisa** (`/Users/hanyusong/toyoura-nagisa`) — AI agent platform for PFC simulations; FastAPI + React, multi-provider LLM, real-time WebSocket to ITASCA PFC (formerly aiNagisa)
+- **pfc-mcp** (`/Users/hanyusong/pfc-mcp`) — MCP server for PFC workflows + bridge runtime inside PFC GUI; provides documentation tools and script-based task execution
