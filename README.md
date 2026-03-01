@@ -1,6 +1,6 @@
 # Microscopic Analysis of Fabric Evolution in Liquefaction Using DEM
 
-PhD thesis research project investigating microscopic mechanisms of soil liquefaction through Discrete Element Method (DEM) simulations.
+PhD thesis research investigating microscopic mechanisms of soil liquefaction through Discrete Element Method (DEM) simulations, with an emerging research line on LLM-driven workflows for numerical simulations.
 
 ## Thesis Chapters
 
@@ -33,12 +33,17 @@ Ray tracing fundamentals for high-fidelity particle visualization, including ref
 
 [ray-tracing](https://github.com/yusong652/ray-tracing)
 
-### Appendix 3: AI-Assisted Workflow for DEM Simulations
-Application of LLM-based agents to numerical simulation workflows. Introduces aiNagisa, a documentation-driven AI assistant for PFC simulations.
+### Appendix 3: LLM-Driven Workflow for DEM Simulations
+Application of LLM-based agents to numerical simulation workflows. Addresses the gap between general-purpose AI agents and domain-specific scientific computing tools (PFC, FLAC, ABAQUS) through documentation-driven approaches.
+
+Two standalone projects have been developed from this research:
+
+- **[toyoura-nagisa](https://github.com/yusong652/toyoura-nagisa)** — AI agent platform for PFC simulations. FastAPI + React frontend, multi-provider LLM support, real-time WebSocket connection to ITASCA PFC.
+- **[pfc-mcp](https://github.com/yusong652/pfc-mcp)** — MCP (Model Context Protocol) server extracted from toyoura-nagisa. Provides PFC documentation browsing/search tools and a bridge runtime for script-based task execution inside PFC GUI. Usable with any MCP-compatible client (Claude Code, Claude Desktop, etc.).
 
 ## Interactive Visualizations
 
-This repository includes web-based interactive visualizations for each chapter:
+Web-based interactive visualizations for each chapter:
 
 - `index.html` - Main landing page with chapter navigation
 - `triaxial/` - True triaxial apparatus simulation
@@ -52,21 +57,22 @@ The complete thesis is available in Markdown format under `thesis/` for use with
 
 ```
 thesis/
-├── index.md                    # Navigation hub
+├── index.md
 ├── 00_front_matter.md
 ├── 01_introduction.md
 ├── 02_literature_review.md
 ├── 03_fabric_evolution.md
-├── 04_anisotropic_consolidation.md
+├── 04_1_anisotropic_consolidation_sim.md
+├── 04_2_anisotropic_consolidation_exp.md
 ├── 05_multidirectional_shear.md
 ├── 06_conclusions.md
 ├── 07_references.md
 ├── 08_appendix1_hpc.md
 ├── 09_appendix2_raytracing.md
-├── 10_appendix3_aiNagisa.md
-└── assets/media/               # Figures and images
+├── 10_appendix3_toyouraNagisa.md
+└── assets/media/
 ```
 
 ## Keywords
 
-Liquefaction, Discrete Element Method, Fabric Anisotropy, Coordination Number, Multi-directional Shear Stress, $K_0$ Consolidation
+Liquefaction, Discrete Element Method, Fabric Anisotropy, Coordination Number, Multi-directional Shear Stress, $K_0$ Consolidation, LLM Agent, Model Context Protocol
