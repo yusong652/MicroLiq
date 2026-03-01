@@ -1,41 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 主题切换功能
     const themeToggle = document.getElementById('theme-toggle');
     const switchWrapper = document.querySelector('.theme-switch-wrapper');
-    const canvas = document.querySelector('#animation-container');
-    
-    // 添加初始类名
-    switchWrapper.classList.add('initial');
-    
-    // 从 localStorage 恢复主题状态
+
+    // Restore theme from localStorage
     if (localStorage.getItem('dark-mode') === 'true') {
         document.body.classList.add('dark-mode');
         themeToggle.checked = true;
     }
 
-    // 主题切换事件监听
+    // Toggle handler
     themeToggle.addEventListener('change', () => {
         document.body.classList.toggle('dark-mode');
         localStorage.setItem('dark-mode', themeToggle.checked);
     });
-    
-    // 处理滚动事件
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (scrollTimeout) {
-            window.cancelAnimationFrame(scrollTimeout);
-        }
 
-        scrollTimeout = window.requestAnimationFrame(() => {
-            const canvasBottom = canvas.getBoundingClientRect().bottom;
-            
-            if (canvasBottom <= window.innerHeight) {
-                switchWrapper.classList.remove('initial');
-                switchWrapper.classList.add('scrolled');
-            } else {
-                switchWrapper.classList.remove('scrolled');
-                switchWrapper.classList.add('initial');
-            }
-        });
-    });
-}); 
+    // Update toggle appearance on scroll (transparent over hero → solid over content)
+    const container = document.getElementById('animation-container');
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const heroBottom = container.getBoundingClientRect().bottom;
+                if (heroBottom <= 60) {
+                    switchWrapper.classList.add('scrolled');
+                } else {
+                    switchWrapper.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+});

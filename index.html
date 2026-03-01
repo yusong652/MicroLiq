@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en-EN">
+<html lang="en">
 <head>
-	<title>Microscopic analysis of fabric evolution in liquefaction using discrete element method</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Yusong Han — PhD researcher in computational geomechanics, DEM simulation development, and AI-powered scientific computing workflows. Kyoto University, DPRI.">
+	<meta property="og:title" content="Yusong Han — DEM Research & Tools">
+	<meta property="og:description" content="Computational geomechanics, DEM development, and AI for scientific computing.">
+	<meta property="og:type" content="website">
+	<title>Yusong Han — DEM Research &amp; Tools</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<script src="quadTree/p5.min.js" defer></script>
 	<script src="quadTree/quadtree.js" defer></script>
 	<script src="quadTree/particle.js" defer></script>
 	<script src="quadTree/sketch.js" defer></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<script src="js/tooltip.js" defer></script>
 </head>
 <body>
-	<!-- 在 body 的开始部分添加 -->
-	<div id="tooltip" class="floating-tooltip"></div>
 
-	<!-- 主题切换滑块 -->
+	<!-- Theme toggle -->
 	<div class="theme-switch-wrapper">
 		<label class="theme-switch" for="theme-toggle">
 			<input type="checkbox" id="theme-toggle" />
@@ -25,198 +28,279 @@
 		</label>
 	</div>
 
-	<!-- 动画展示区域 -->
+	<!-- ═══════════════ HERO ═══════════════ -->
 	<div id="animation-container">
 		<div id="canvas-placeholder">
-			<div class="loading-spinner">
-				<div class="spinner"></div>
+			<div class="loading-spinner"><div class="spinner"></div></div>
+		</div>
+		<main><!-- p5.js canvas injected here --></main>
+		<div class="hero-overlay">
+			<div class="hero-content">
+				<h1 class="hero-name">Yusong Han</h1>
+				<p class="hero-tagline">Computational Geomechanics · DEM Development · AI for Scientific Computing</p>
+				<p class="hero-affiliation">Disaster Prevention Research Institute, Kyoto University</p>
+				<div class="hero-links">
+					<a href="https://github.com/yusong652" target="_blank" rel="noopener">
+						<i class="fab fa-github"></i> GitHub
+					</a>
+					<a href="https://scholar.google.com/citations?user=v8vkIjMAAAAJ" target="_blank" rel="noopener">
+						<i class="fas fa-graduation-cap"></i> Scholar
+					</a>
+					<a href="mailto:yusong.han.652@gmail.com">
+						<i class="fas fa-envelope"></i> Email
+					</a>
+				</div>
 			</div>
 		</div>
-		<main>
-			<!-- p5.js 会自动在这里创建 canvas -->
-		</main>
-		<div class="button-wrapper">
-			<button id="clearParticles" type="button" class="clear-button">Clear particles</button>
-		</div>
 	</div>
 
-	<!-- 主标题 -->
-	<div class="title-container">
-		<h1>Microscopic analysis of fabric evolution in liquefaction using discrete element method</h1>
-	</div>
-
-	<!-- 标签导航栏 -->
-	<nav class="tab-navigation">
-		<div class="tab-container">
-			<button class="tab-button active" data-section="section1" data-tooltip="Chapter 1. Fabric evolution under general stress states">
-				1. Fabric evolution
-			</button>
-			<button class="tab-button" data-section="section2" data-tooltip="Chapter 2. Study on factors affecting liquefaction resistance during anisotropic consolidation">
-				2. HCA simulation
-			</button>
-			<button class="tab-button" data-section="section3" data-tooltip="Chapter 3. Experimental validation of K0 effects on liquefaction resistance">
-				3. Experimental validation
-			</button>
-			<button class="tab-button" data-section="section4" data-tooltip="Chapter 4. Effects of multi-directional shear stress on liquefaction resistance">
-				4. Multi-directional effects
-			</button>
-			<button class="tab-button" data-section="section5" data-tooltip="Chapter 5. Implementation of high performance computing in DEM accelerated with GPU">
-				5. HPC-DEM
-			</button>
-			<button class="tab-button" data-section="section6" data-tooltip="Chapter 6. Ray tracing: refining every pixel in DEM visualization">
-				6. Visualization
-			</button>
-		</div>
-	</nav>
-
-	<!-- 内容区域 -->
+	<!-- ═══════════════ CONTENT ═══════════════ -->
 	<div class="page-content">
-		<!-- 主内容区域 -->
-		<main id="main-content">
-			<!-- 第一章 -->
-			<div id="section1" class="content-section active">
-				<h2 class="chapter-title">Chapter 1. Fabric evolution under general stress states</h2>
-				<div class="image-gallery">
-					<div class="gallery-item">
-						<a href="triaxial/triaxial.html">
-							<img src="triaxial/demo/trueTriaxial.png" alt="icon" width="220" height="220"/>
-						</a>
-						<p class="caption">True triaxial apparatus using DEM</p>
-					</div>
-					<div class="gallery-item">
-						<a href="triaxial/triaxial.html">
-							<img src="triaxial/demo/failureCriterion.png" alt="icon" width="220" height="220"/>
-						</a>
-						<p class="caption">M-N Failure Criterion</p>
-					</div>
-				</div>
-				<div class="gallery-link">
-					<a href="triaxial/triaxial.html">(Click for details)</a>
-				</div>
-				<p>
-					This chapter describes the characteristics of fabric evolution of sand soil by conducting a series of drained true triaxial shear tests using DEM. The difference in fabric under general stress conditions inspired and motivated the study on its influence on liquefaction resistance.
-				</p>
 
-				<p>Han, Y., Kato, S. & Kim, BS. DEM Analysis of Fabric Evolution and Behavior of Granular Geomaterials in True Triaxial Test with Flexible Boundary. KSCE J Civ Eng 27, 3341–3354 (2023). <a href="https://doi.org/10.1007/s12205-023-0336-1">https://doi.org/10.1007/s12205-023-0336-1</a>
-				</p>
-			</div>
+		<!-- ── Research ── -->
+		<section class="content-section">
+			<p class="section-label">Research</p>
+			<h2 class="section-title">From particle contacts to earthquake response</h2>
+			<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;max-width:680px;margin-bottom:3rem;">
+				My research traces a single thread: understanding why soil loses strength during earthquakes, at the scale of individual particle contacts. Along the way, I developed new simulation methods, validated them experimentally, and built AI tools to accelerate the entire workflow.
+			</p>
 
-			<!-- 第二章 -->
-			<div id="section2" class="content-section">
-				<h2 class="chapter-title">Chapter 2. Study on factors affecting liquefaction resistance during anisotropic consolidation</h2>
-				<p>
-					This chapter introduces an innovative DEM simulation method of the hollow cylindrical apparatus (HCA). This algorithm simultaneously replicates undrained and stress conditions using a combined-servo-mechanism. 
-				</p>
-				<p>
-					With the proposed method, specimens with the same p under different horizontal to vertical stress ratio K<sub>0</sub> were subjected to different cyclic shear stress ratios, and typical stress-strain relationships observed in laboratory test were reproduced. The effects of K<sub>0</sub> on liquefaction resistance were studied from both macroscopic and microscopic perspectives.
-				</p>
-
-				<div class="image-gallery">
-					<div class="gallery-item">
-						<a href="torsionSim/torsionSim.html">
-							<img src="torsionSim/demo/force.png" alt="icon" width="300" height="200"/>
+			<!-- Card 1: Fabric -->
+			<div class="research-card">
+				<a href="triaxial/triaxial.html" class="research-card-media">
+					<img src="triaxial/demo/trueTriaxial.png" alt="True triaxial DEM apparatus" loading="lazy">
+				</a>
+				<div class="research-card-body">
+					<span class="research-card-number">01</span>
+					<h3 class="research-card-title">Microscopic Fabric Analysis</h3>
+					<p class="research-card-text">
+						Investigated fabric evolution in granular soils through true triaxial DEM simulations under various stress paths and Lode angles. Revealed that the mechanical coordination number Z<sub>m</sub> exhibits uniqueness at critical state — while void ratio and fabric anisotropy do not.
+					</p>
+					<div class="research-card-meta">
+						<a href="triaxial/triaxial.html" class="card-link">
+							Details <i class="fas fa-arrow-right"></i>
 						</a>
-						<p class="caption">Contact force and particle displacement in HCA</p>
+						<span class="card-citation">Han et al. (2023) KSCE J Civ Eng</span>
 					</div>
-				</div>
-				<div class="gallery-link">
-					<a href="torsionSim/torsionSim.html">(Click for animation and details)</a>
-				</div>
-
-				<p>Ma, Q., He, X., Zhou, Y.-G., Chen, Y.-M., & Han, Y.-S. (2024). An approach to DEM simulation of hollow torsional shear tests for achieving general loading paths. Computers and Geotechnics, 172, 106402. <a href="https://doi.org/10.1016/j.compgeo.2024.106402">https://doi.org/10.1016/j.compgeo.2024.106402</a>
-				</p>
-			</div>
-
-			<!-- 第三章 -->
-			<div id="section3" class="content-section">
-				<h2 class="chapter-title">Chapter 3. Experimental validation of K0 effects on liquefaction resistance</h2>
-				<p>
-					The purpose of this chapter is to validate the results obtained in chapter 2 by providing experimental evidence. The effects of K<sub>0</sub> and preparation protocols, including the stress paths in consolidation stage, are discussed.
-				</p>
-				<a target="_blank" rel="noopener noreferrer" href="experiment/experiment.html">Experiment Data</a>
-			</div>
-
-			<!-- 第四章 -->
-			<div id="section4" class="content-section">
-				<h2 class="chapter-title">Chapter 4. Effects of multi-directional shear stress on liquefaction resistance</h2>
-				<p>
-					Besides the anisotropy of soil, directionality of seismic loading also matters in liquefaction analyses. This chapter examines the multi-directional effects on liquefaction resistance. These effects are quantitatively studied by applying different loading paths while maintaining the magitudes of shear stress.
-				</p>
-				<div class="image-gallery">
-					<div class="gallery-item">
-						<a href="multiDirection/multiDirection.html">
-							<img src="multiDirection/demo/stress_unidirectional.jpg" alt="icon" width="200" height="200"/>
-						</a>
-						<p class="caption">Unidirectional</p>
-					</div>
-					<div class="gallery-item">
-						<a href="multiDirection/multiDirection.html">
-							<img src="multiDirection/demo/stress_single8.jpg" alt="icon" width="200" height="200"/>
-						</a>
-						<p class="caption">Single-8</p>
-					</div>
-					<div class="gallery-item">
-						<a href="multiDirection/multiDirection.html">
-							<img src="multiDirection/demo/stress_double8.jpg" alt="icon" width="200" height="200"/>
-						</a>
-						<p class="caption">Double-8</p>
-						<p class="caption">Shear and mean effective stress evolution</p>
-					</div>
-				</div>
-				<div class="gallery-link">
-					<a href="multiDirection/multiDirection.html">(Click for animation and details)</a>
 				</div>
 			</div>
 
-			<!-- 第五章 -->
-			<div id="section5" class="content-section">
-				<h2 class="chapter-title">Chapter 5. Implementation of high performance computing in DEM accelerated with GPU</h2>
-				<p>
-					This chapter demonstrates the implementation of high-performance computing (HPC) in DEM using TaichiLang. This repository includes a basic linear contact model and a simple cuboidal boundary, with plans to incorporate additional contact models.
-				</p>
-				<div class="video-container">
-					<video width="400" height="280" controls>
-						<source src="taichiDEM/demo/animation.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<p class="caption">An example of generating a slope using taichiDEM</p>
-				</div>
-				<p>
-					<a href="https://github.com/yusong652/taichiDEM">View this repository</a>
-				</p>
-			</div>
-
-			<!-- 第六章 -->
-			<div id="section6" class="content-section">
-				<h2 class="chapter-title">Chapter 6. Ray tracing: refining every pixel in DEM visualization</h2>
-				<p>
-					Utilizing a visualization software such as Paraview is not strictly necessary. Offline rendering can accurately capture pixels in DEM scenes featuring spherical objects, including effects like reflection and refraction. TaichiLang offers efficient GPU interaction, facilitating rapid development of high-performance renderers.
-				</p>
-				<div class="image-gallery">
-					<div class="gallery-item">
-						<a href="graphics/ray_tracer/demo/particleRayTracing.png">
-							<img src="graphics/ray_tracer/demo/particleRayTracing.png" alt="taichiDEM_demo" width="420" height="200"/>
+			<!-- Card 2: HCA -->
+			<div class="research-card">
+				<a href="torsionSim/torsionSim.html" class="research-card-media">
+					<img src="torsionSim/demo/force.png" alt="HCA DEM simulation" loading="lazy">
+				</a>
+				<div class="research-card-body">
+					<span class="research-card-number">02</span>
+					<h3 class="research-card-title">DEM-Based HCA Simulation</h3>
+					<p class="research-card-text">
+						Developed a combined servo mechanism that simultaneously replicates undrained conditions and complex stress states in hollow cylinder apparatus simulations. This novel approach enables DEM-based cyclic shear analysis under arbitrary K<sub>0</sub> consolidation — revealing non-monotonic effects of stress anisotropy on liquefaction resistance.
+					</p>
+					<div class="research-card-meta">
+						<a href="torsionSim/torsionSim.html" class="card-link">
+							Details <i class="fas fa-arrow-right"></i>
 						</a>
-						<p class="caption">An example of ray tracing of particle objects</p>
+						<span class="card-citation">Ma, Han et al. (2024) Comput Geotech</span>
 					</div>
 				</div>
-				<p>
-					<a href="https://github.com/yusong652/ray-tracing">View this repository</a>
-				</p>
 			</div>
-		</main>
+
+			<!-- Card 3: Experimental -->
+			<div class="research-card">
+				<a href="experiment/experiment.html" class="research-card-media">
+					<img src="experiment/k0_effect.png" alt="Experimental K0 effects on liquefaction" loading="lazy">
+				</a>
+				<div class="research-card-body">
+					<span class="research-card-number">03</span>
+					<h3 class="research-card-title">Experimental Validation</h3>
+					<p class="research-card-text">
+						Conducted 16 undrained cyclic torsional shear tests on Toyoura sand using a hollow cylinder apparatus across K<sub>0</sub> = 0.20–3.0. Validated the DEM-predicted non-monotonic relationship between K<sub>0</sub> and liquefaction resistance with physical evidence.
+					</p>
+					<div class="research-card-meta">
+						<a href="experiment/experiment.html" class="card-link">
+							Test data <i class="fas fa-arrow-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 4: Multi-directional -->
+			<div class="research-card">
+				<a href="multiDirection/multiDirection.html" class="research-card-media triple">
+					<img src="multiDirection/demo/stress_unidirectional.jpg" alt="Unidirectional loading" loading="lazy">
+					<img src="multiDirection/demo/stress_single8.jpg" alt="Single-8 loading" loading="lazy">
+					<img src="multiDirection/demo/stress_double8.jpg" alt="Double-8 loading" loading="lazy">
+				</a>
+				<div class="research-card-body">
+					<span class="research-card-number">04</span>
+					<h3 class="research-card-title">Multi-Directional Seismic Loading</h3>
+					<p class="research-card-text">
+						Introduced the double-8 loading path to quantitatively isolate multi-directional shear effects on liquefaction. By maintaining equal shear stress magnitudes across different loading patterns, demonstrated that multi-directional shear accelerates liquefaction through enhanced fabric disruption.
+					</p>
+					<div class="research-card-meta">
+						<a href="multiDirection/multiDirection.html" class="card-link">
+							Animations <i class="fas fa-arrow-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 5: AI Workflow -->
+			<div class="research-card">
+				<div class="research-card-media" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:var(--tag-bg);">
+					<div style="text-align:center;padding:2rem;">
+						<i class="fas fa-robot" style="font-size:3rem;color:var(--accent);opacity:0.6;margin-bottom:1rem;display:block;"></i>
+						<span style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-tertiary);">LLM + DEM = ?</span>
+					</div>
+				</div>
+				<div class="research-card-body">
+					<span class="research-card-number">05</span>
+					<h3 class="research-card-title">AI-Powered DEM Workflow</h3>
+					<p class="research-card-text">
+						Bridging the gap between LLM agents and domain-specific numerical simulation. Built an AI agent platform that connects to PFC through real-time WebSocket, and extracted the documentation/execution layer into a standalone MCP server usable with any compatible client.
+					</p>
+					<div class="research-card-meta">
+						<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="card-link">
+							toyoura-nagisa <i class="fas fa-arrow-right"></i>
+						</a>
+						<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="card-link">
+							pfc-mcp <i class="fas fa-arrow-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ── Technical Stack ── -->
+		<section class="content-section fade-in">
+			<p class="section-label">Expertise</p>
+			<h2 class="section-title">Technical stack</h2>
+			<div class="stack-grid stagger-children">
+				<div class="stack-row">
+					<span class="stack-label">DEM Theory</span>
+					<div class="stack-tags">
+						<span class="stack-tag">PFC3D</span>
+						<span class="stack-tag">TaichiLang</span>
+						<span class="stack-tag">Contact Models</span>
+						<span class="stack-tag">Fabric Tensor</span>
+						<span class="stack-tag">Critical State</span>
+					</div>
+				</div>
+				<div class="stack-row">
+					<span class="stack-label">Simulation</span>
+					<div class="stack-tags">
+						<span class="stack-tag">True Triaxial</span>
+						<span class="stack-tag">HCA</span>
+						<span class="stack-tag">Cyclic Shear</span>
+						<span class="stack-tag">Multi-directional</span>
+						<span class="stack-tag">Servo Control</span>
+					</div>
+				</div>
+				<div class="stack-row">
+					<span class="stack-label">Experiment</span>
+					<div class="stack-tags">
+						<span class="stack-tag">Hollow Cylinder Apparatus</span>
+						<span class="stack-tag">Toyoura Sand</span>
+						<span class="stack-tag">Undrained Cyclic</span>
+					</div>
+				</div>
+				<div class="stack-row">
+					<span class="stack-label">Computing</span>
+					<div class="stack-tags">
+						<span class="stack-tag">Python</span>
+						<span class="stack-tag">GPU / Taichi</span>
+						<span class="stack-tag">Ray Tracing</span>
+						<span class="stack-tag">QuadTree</span>
+						<span class="stack-tag">LaTeX</span>
+					</div>
+				</div>
+				<div class="stack-row">
+					<span class="stack-label">AI / Tooling</span>
+					<div class="stack-tags">
+						<span class="stack-tag">LLM Agents</span>
+						<span class="stack-tag">MCP</span>
+						<span class="stack-tag">FastAPI</span>
+						<span class="stack-tag">React</span>
+						<span class="stack-tag">WebSocket</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ── Publications ── -->
+		<section class="content-section fade-in">
+			<p class="section-label">Publications</p>
+			<h2 class="section-title">Selected papers</h2>
+			<div class="pub-list">
+				<div class="pub-item">
+					<p class="pub-authors"><strong>Han, Y.</strong>, Kato, S. &amp; Kim, B.S.</p>
+					<p class="pub-title-text">DEM Analysis of Fabric Evolution and Behavior of Granular Geomaterials in True Triaxial Test with Flexible Boundary</p>
+					<p class="pub-venue">KSCE Journal of Civil Engineering, 27, 3341–3354 (2023). <a href="https://doi.org/10.1007/s12205-023-0336-1" target="_blank" rel="noopener">DOI</a></p>
+				</div>
+				<div class="pub-item">
+					<p class="pub-authors">Ma, Q., He, X., Zhou, Y.-G., Chen, Y.-M. &amp; <strong>Han, Y.-S.</strong></p>
+					<p class="pub-title-text">An approach to DEM simulation of hollow torsional shear tests for achieving general loading paths</p>
+					<p class="pub-venue">Computers and Geotechnics, 172, 106402 (2024). <a href="https://doi.org/10.1016/j.compgeo.2024.106402" target="_blank" rel="noopener">DOI</a></p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ── Open Source ── -->
+		<section class="content-section fade-in">
+			<p class="section-label">Open Source</p>
+			<h2 class="section-title">Projects</h2>
+			<div class="projects-grid stagger-children">
+				<a href="https://github.com/yusong652/taichiDEM" target="_blank" rel="noopener" class="project-card">
+					<div class="project-card-header">
+						<i class="fab fa-github"></i>
+						<span class="project-card-name">taichiDEM</span>
+					</div>
+					<p class="project-card-desc">GPU-accelerated DEM engine built with TaichiLang. Linear contact model, neighbor search, and boundary handling from scratch.</p>
+					<div class="project-card-tags">
+						<span>Python</span><span>Taichi</span><span>GPU</span>
+					</div>
+				</a>
+				<a href="https://github.com/yusong652/ray-tracing" target="_blank" rel="noopener" class="project-card">
+					<div class="project-card-header">
+						<i class="fab fa-github"></i>
+						<span class="project-card-name">ray-tracing</span>
+					</div>
+					<p class="project-card-desc">Offline particle renderer with reflection, refraction, and lighting. High-fidelity DEM visualization without Paraview.</p>
+					<div class="project-card-tags">
+						<span>Python</span><span>Taichi</span><span>Rendering</span>
+					</div>
+				</a>
+				<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="project-card">
+					<div class="project-card-header">
+						<i class="fab fa-github"></i>
+						<span class="project-card-name">toyoura-nagisa</span>
+					</div>
+					<p class="project-card-desc">AI agent platform for PFC simulations. Multi-provider LLM, real-time WebSocket bridge to ITASCA PFC, React frontend.</p>
+					<div class="project-card-tags">
+						<span>FastAPI</span><span>React</span><span>LLM</span><span>WebSocket</span>
+					</div>
+				</a>
+				<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="project-card">
+					<div class="project-card-header">
+						<i class="fab fa-github"></i>
+						<span class="project-card-name">pfc-mcp</span>
+					</div>
+					<p class="project-card-desc">MCP server for PFC workflows. Documentation browsing, command search, and task execution via any MCP-compatible client.</p>
+					<div class="project-card-tags">
+						<span>MCP</span><span>Python</span><span>PFC</span>
+					</div>
+				</a>
+			</div>
+		</section>
+
 	</div>
 
-	<!-- 页脚 -->
+	<!-- ═══════════════ FOOTER ═══════════════ -->
 	<footer class="footer">
-		<div class="footer-content">
-			<p>&copy; 2024 Yusong Han with Nagisa Toyoura. All rights reserved.</p>
-			<p>Division of Geotechnics, Disaster Prevention Research Institute, Kyoto University</p>
-		</div>
+		<p>&copy; 2026 Yusong Han &middot; Kyoto University, DPRI</p>
 	</footer>
 
-	<script src="js/navigation.js" defer></script>
 	<script src="js/theme.js" defer></script>
-	<script src="js/tooltip.js" defer></script>
+	<script src="js/navigation.js" defer></script>
 </body>
 </html>
