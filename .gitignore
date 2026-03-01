@@ -21,11 +21,22 @@ __pycache__/
 *.temp
 *~
 
+# Word lock files
+~$*
+
 # Images (tracked separately or too large for git)
 *.jpg
 *.jpeg
 *.png
 *.svg
+
+# Large media (managed by Git LFS)
+*.gif
+*.mp4
+*.docx
+
+# Build outputs
+pdf_outputs/
 
 # Data files
 *.csv
