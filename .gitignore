@@ -30,6 +30,11 @@ __pycache__/
 *.png
 *.svg
 
+# Exception: demo images used by the website
+!*/demo/*.png
+!*/demo/*.jpg
+!experiment/k0_effect.png
+
 # Large media (managed by Git LFS)
 *.gif
 *.mp4
