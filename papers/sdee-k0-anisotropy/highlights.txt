@@ -1,5 +1,5 @@
 - Analytical servo coefficients derived for volume-coupled undrained HCA boundary control in DEM
-- Liquefaction resistance depends on both the level and direction of initial K0 anisotropy
+- Liquefaction resistance decreases monotonically from compression-state to extension-state K0 anisotropy
 - Stiffness degradation rate, not cumulative shear work, governs resistance ordering among K0 states
-- Coordination number and fabric anisotropy jointly explain K0-dependent trends
-- Initially distinct fabric morphologies converge toward similar configurations near liquefaction
+- Fabric tensor decomposition shows contacts on the z-theta shear plane resist torsional liquefaction
+- Initially distinct fabric morphologies converge toward a common dynamic equilibrium post-liquefaction

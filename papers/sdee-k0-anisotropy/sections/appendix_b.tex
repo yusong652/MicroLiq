@@ -9,16 +9,27 @@ From the constant-volume constraint (\cref{eq:const_volume_constraint}), the out
 \label{eq:dRdt_general}
 \end{equation}
 
-Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces a change in the outer radius through \cref{eq:dRdt_general}, which in turn affects both the radial and axial stress differences. Let $K_{r,i}=\sum_{c\in\mathrm{inner}} k_n$ and $K_{r,o}=\sum_{c\in\mathrm{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness, where the summations run over all particle--wall contacts on the respective rigid boundaries. The factor $\frac{1}{2}$ arises because the top and bottom plates move symmetrically (each by $dH/2$) to achieve the total height change $dH$.
-The stress responses to the kinematic increments $dr$ and $dH$ can be expressed in matrix form:
+Movement of both the inner wall ($dr$) and the top/bottom plates ($dH$) induces a change in the outer radius through \cref{eq:dRdt_general}, which in turn affects both $p_{dif,r}^{\prime}$ and $p_{dif,z}^{\prime}$. Although the vertical pressure $p_z^{\prime}$ depends only on the top/bottom contacts, the axial pressure difference $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ is coupled to radial wall movements through $\sigma_r^{\prime}$.
+
+Let $K_{r,i}=\sum_{c\in\mathrm{inner}} k_n$ and $K_{r,o}=\sum_{c\in\mathrm{outer}} k_n$ denote the aggregate normal contact stiffness at the inner and outer cylinders, respectively, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness, where the summations run over all particle--wall contacts on the respective rigid boundaries. The factor $\frac{1}{2}$ arises because the top and bottom plates move symmetrically (each by $dH/2$) to achieve the total height change $dH$.
+
+The individual contributions of the three kinematic increments $dr$, $dR$, and $dH$ to the two pressure quantities are:
+\begin{align}
+\delta p_{dif,r}^{\prime} &= K_{r,i}\,dr - K_{r,o}\,dR, \label{eq:dp_r_three}\\[4pt]
+\delta p_{dif,z}^{\prime} &= K_z\,dH - \bigl(-K_{r,i}\,dr + K_{r,o}\,dR\bigr) \notag\\
+                          &= K_{r,i}\,dr - K_{r,o}\,dR + K_z\,dH, \label{eq:dp_z_three}
+\end{align}
+where the sign convention follows from the definitions: an inward movement of the inner wall ($dr > 0$) increases $\sigma_r^{\prime}$ through $K_{r,i}$, while an outward movement of the outer wall ($dR > 0$) decreases $\sigma_r^{\prime}$ through $K_{r,o}$. The radial pressure difference $p_{dif,r}^{\prime} = p_o^{\prime} - p_i^{\prime}$ therefore receives contributions of opposite sign from the two cylinders. The axial pressure difference $p_{dif,z}^{\prime} = p_z^{\prime} - \sigma_r^{\prime}$ includes a direct axial contribution ($K_z\,dH$) and the radial contribution with reversed sign ($-\delta\sigma_r^{\prime}$).
+
+Substituting \cref{eq:dRdt_general} into \cref{eq:dp_r_three,eq:dp_z_three} to eliminate $dR$ yields the pressure responses in terms of only $dr$ and $dH$:
 \begin{equation}
-\begin{pmatrix} \delta\sigma_{dif,r}^{\prime} \\[4pt] \delta\sigma_{dif,z}^{\prime} \end{pmatrix}
+\begin{pmatrix} \delta p_{dif,r}^{\prime} \\[4pt] \delta p_{dif,z}^{\prime} \end{pmatrix}
 =
 \underbrace{\begin{pmatrix} K_{11} & K_{12} \\[8pt] -K_{11} & K_z - K_{12} \end{pmatrix}}_{\mathbf{K}}
 \begin{pmatrix} dr \\[4pt] dH \end{pmatrix},
 \label{eq:stiffness_matrix}
 \end{equation}
-where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$ and $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$. The off-diagonal term $K_{12}$ represents the cross-coupling from the volume constraint: an axial displacement $dH$ induces an outer wall displacement through \cref{eq:dRdt_general}, which alters the radial stress. Since $\sigma_{dif,z}^{\prime}=\sigma_z^{\prime}-\sigma_r^{\prime}$, the axial stress difference is affected by both the axial displacement (through $K_z$) and the radial displacement (through $-K_{11}$), because changes in the radial stress enter $\sigma_{dif,z}^{\prime}$ with opposite sign. Similarly, $dH$ affects $\sigma_{dif,z}^{\prime}$ through both the direct axial stiffness $K_z$ and the volume-constraint-induced radial stress change $-K_{12}$.
+where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$ and $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$. The off-diagonal term $K_{12}$ represents the cross-coupling from the volume constraint: an axial displacement $dH$ induces an outer wall displacement through \cref{eq:dRdt_general}, which alters $p_{dif,r}^{\prime}$. The lower-left entry $-K_{11}$ arises because changes in radial pressure enter $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ with opposite sign: a radial wall movement that increases $\sigma_r^{\prime}$ decreases $p_{dif,z}^{\prime}$ by the same amount, while $p_z^{\prime}$ remains unaffected. Similarly, $dH$ affects $p_{dif,z}^{\prime}$ through both the direct axial stiffness $K_z$ and the volume-constraint-induced radial pressure change $-K_{12}$.
 
 The determinant of $\mathbf{K}$ is:
 \begin{equation}
@@ -41,12 +52,12 @@ The fully coupled servo equations are therefore:
 \frac{dr}{dt} &= \frac{K_z-K_{12}}{K_{11}\,K_z}\,\frac{e_r}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{e_z}{\Delta t}, \label{eq:dr_general}\\[6pt]
 \frac{dH}{dt} &= \frac{1}{K_z}\,\frac{e_r}{\Delta t} + \frac{1}{K_z}\,\frac{e_z}{\Delta t}, \label{eq:dH_general}
 \end{align}
-where $e_r=\sigma_{dif,r}^{\prime}-\sigma_{dif,r}^{tar}$ and $e_z=\sigma_{dif,z}^{\prime}-\sigma_{dif,z}^{tar}$ are the stress errors defined in \cref{eq:cond1_radial,eq:cond2_axial}.
+where $e_r=p_{dif,r}^{\prime}-p_{dif,r}^{tar}$ and $e_z=p_{dif,z}^{\prime}-p_{dif,z}^{tar}$ are the pressure errors defined in \cref{eq:cond1_radial,eq:cond2_axial}.
 
-Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations in this study, the axial stress difference $\sigma_{dif,z}^{\prime}$ is not actively controlled, and only the radial condition remains. Setting $dH=0$ in \cref{eq:stiffness_matrix} eliminates the $K_{12}$ and $K_z-K_{12}$ contributions from the second column, and the radial servo coefficient reduces to:
+Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations in this study, the axial pressure difference $p_{dif,z}^{\prime}$ is not actively controlled, and only the radial condition remains. Setting $dH=0$ in \cref{eq:stiffness_matrix} eliminates the $K_{12}$ and $K_z-K_{12}$ contributions from the second column, and the radial servo coefficient reduces to:
 \begin{equation}
 S_{cr} = \frac{1}{K_{r,i}+\dfrac{r}{R}\,K_{r,o}}.
 \label{eq:Scr_constantH}
 \end{equation}
 
-For the general case ($dH/dt\neq 0$), such as the monotonic shear validation in \cref{subsec:calibration_validation}, the fully coupled servo equations (\cref{eq:dr_general,eq:dH_general}) are applied at each timestep. In practice, a relaxation factor less than unity is applied to the servo coefficients to ensure numerical stability and suppress oscillation.
+For the general case ($dH/dt\neq 0$), such as the monotonic shear calibration in \cref{subsec:calibration_validation}, the fully coupled servo equations (\cref{eq:dr_general,eq:dH_general}) are applied at each timestep. In practice, a relaxation factor less than unity is applied to the servo coefficients to ensure numerical stability and suppress oscillation.

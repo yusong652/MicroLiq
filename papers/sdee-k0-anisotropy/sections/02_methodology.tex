@@ -109,31 +109,40 @@ During the AC stage, both $\pmean$ and deviator stress increase simultaneously. 
 \subsection{Undrained cyclic torsional shear loading}
 \label{subsec:cyclic_loading}
 
-Undrained conditions are represented using the standard constant-volume approximation in DEM, without explicit fluid--particle coupling \citep{YimsiriSoga2010}. The key challenge in simulating undrained HCA tests lies in satisfying multiple boundary conditions simultaneously. In laboratory tests, the inner and outer chamber pressures are maintained equal, the axial condition is controlled, a target shear stress is applied, and the specimen volume remains constant. This study addresses these challenges through a combined servo mechanism \citep{Han2024jgs,Ma2024} that controls four kinematic variables---inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$)---to satisfy four condition equations simultaneously at each timestep. The servo operates on two effective stress differences measured from particle--wall contact forces: $\sigma_{dif,r}^{\prime}=\sigma_o^{\prime}-\sigma_i^{\prime}$ (outer minus inner radial effective stress) and $\sigma_{dif,z}^{\prime}=\sigma_z^{\prime}-\sigma_r^{\prime}$ (axial minus average radial effective stress). Their target values are prescribed as total stress differences from the HCA boundary conditions.
-
-\paragraph{Condition 1: Target radial stress difference.}
-The inner radius rate is determined by the radial stress error:
+Undrained conditions are represented using the standard constant-volume approximation in DEM, without explicit fluid--particle coupling \citep{YimsiriSoga2010}. The key challenge in simulating undrained HCA tests lies in satisfying multiple boundary conditions simultaneously. The HCA specimen has four kinematic degrees of freedom---inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$)---which must be determined at each timestep to satisfy four conditions: a prescribed radial stress difference, a prescribed axial stress condition, a target shear stress, and constant specimen volume. A combined servo mechanism \citep{Han2024jgs,Ma2024} is employed to solve for these four unknowns. The servo controls two pressure quantities measured from particle--wall contact forces: the radial pressure difference $p_{dif,r}^{\prime}=p_o^{\prime}-p_i^{\prime}$ and the vertical pressure $p_z^{\prime}$ (see Table~\ref{tab:hca_equations} for definitions). 
+\paragraph{Radial condition.}
+The radial condition controls the pressure difference between the outer and inner cylinders. The radial pressure difference and its servo error are defined as:
 \begin{equation}
-\frac{dr}{dt} = \frac{\sigma_{dif,r}^{\prime} - \sigma_{dif,r}^{tar}}{\Delta t}\,S_{cr},
+p_{dif,r}^{\prime} = p_o^{\prime} - p_i^{\prime}, \qquad e_r = p_{dif,r}^{\prime} - p_{dif,r}^{tar},
 \label{eq:cond1_radial}
 \end{equation}
-where $\sigma_{dif,r}^{tar}=p_o-p_i$ is the target value, $p_o$ and $p_i$ are the outer and inner chamber pressures of the HCA, and $S_{cr}$ is the radial servo coefficient. In the present study, $p_o = p_i$ (equal chamber pressures) is adopted, so $\sigma_{dif,r}^{tar}=0$.
-
-\paragraph{Condition 2: Axial boundary condition.}
-Two modes are available. In stress-control mode, the height rate is governed by a servo equation targeting the additional axial pressure:
+where $p_o^{\prime}$ and $p_i^{\prime}$ are the outer and inner radial effective pressures (Table~\ref{tab:hca_equations}) and $p_{dif,r}^{tar}$ is the target radial pressure difference. The inner cylinder radius rate is adjusted at each timestep to eliminate the radial error:
 \begin{equation}
-\frac{dH}{dt} = \frac{\sigma_{dif,z}^{\prime} - \sigma_{dif,z}^{tar}}{\Delta t}\,S_{cz},
+\frac{dr}{dt} = \frac{e_r}{\Delta t}\,S_{cr},
+\label{eq:servo_radial}
+\end{equation}
+where $\Delta t$ is the simulation timestep and $S_{cr}$ is the radial servo coefficient.
+
+\paragraph{Axial condition.}
+The axial condition controls the difference between the vertical and radial effective stresses. The axial pressure difference and its servo error are defined as:
+\begin{equation}
+p_{dif,z}^{\prime} = p_z^{\prime} - \sigma_r^{\prime}, \qquad e_z = p_{dif,z}^{\prime} - p_{dif,z}^{tar},
 \label{eq:cond2_axial}
 \end{equation}
-where $\sigma_{dif,z}^{tar}=p_z$ is the target additional axial pressure and $S_{cz}$ is the axial servo coefficient. This mode is used during anisotropic consolidation and monotonic shear validation (Section~\ref{subsec:calibration_validation}). In displacement-control mode, the height is held constant ($dH/dt = 0$), which is adopted for all cyclic shear simulations in this study.
+where $p_z^{\prime}$ is the vertical effective pressure (Table~\ref{tab:hca_equations}), $\sigma_r^{\prime}$ is the average radial effective stress, and $p_{dif,z}^{tar}$ is the target axial pressure difference. The specimen height rate is adjusted accordingly:
+\begin{equation}
+\frac{dH}{dt} = \frac{e_z}{\Delta t}\,S_{cz},
+\label{eq:servo_axial}
+\end{equation}
+where $S_{cz}$ is the axial servo coefficient. In stress-control mode, $p_{dif,z}^{tar}$ is prescribed by the loading protocol. This mode is used during anisotropic consolidation and monotonic shear validation (Section~\ref{subsec:calibration_validation}). In displacement-control mode, the height is held constant ($dH/dt = 0$), which is adopted for all cyclic shear simulations in this study.
 
-\paragraph{Condition 3: Target shear stress.}
+\paragraph{Torsional condition.}
 The rotation angle rate is controlled to achieve the target shear stress:
 \begin{equation}
 \frac{d\theta}{dt} = \frac{T - T^{tar}}{\Delta t}\,S_{cs},
 \label{eq:cond3_torsion}
 \end{equation}
-where $T$ is the current torque, $T^{tar}$ is the target torque, and $S_{cs}$ is the torsional servo coefficient. The coefficient $S_{cs}$ is determined from the contact-stiffness-weighted rotational stiffness $I_{rot}$ about the specimen axis (Fig.~\ref{fig:servo_geometry}):
+where $T$ is the current torque, $T^{tar}$ is the target torque, $\Delta t$ is the simulation timestep, and $S_{cs}$ is the torsional servo coefficient. The coefficient $S_{cs}$ is determined from the contact-stiffness-weighted rotational stiffness $I_{rot}$ about the specimen axis (Fig.~\ref{fig:servo_geometry}):
 \begin{equation}
 I_{rot} = \sum r_d^2\,k_n\cos^2\!\theta, \qquad S_{cs} = \frac{1}{I_{rot}},
 \label{eq:irot_scs}
@@ -147,30 +156,34 @@ where $r_d$ is the distance from the rotation axis to the contact point, $k_n$ i
   \label{fig:servo_geometry}
 \end{figure}
 
-\paragraph{Condition 4: Undrained condition (constant volume).}
-The outer radius rate $dR/dt$ is determined from the constant-volume constraint:
+\paragraph{Volume constraint.}
+The undrained (constant-volume) condition requires:
 \begin{equation}
 2\pi H\!\left(R\frac{dR}{dt} + r\frac{dr}{dt}\right) + \pi\!\left(R^2-r^2\right)\frac{dH}{dt} = 0.
 \label{eq:const_volume_constraint}
 \end{equation}
-With $dr/dt$ known from \cref{eq:cond1_radial} and $dH/dt$ from \cref{eq:cond2_axial} (or set to zero under constant height), \cref{eq:const_volume_constraint} is solved for $dR/dt$. Together, the four conditions form a closed system that uniquely determines the four kinematic variables at each timestep, thereby simultaneously realizing the stress boundary conditions and undrained constraint of laboratory HCA tests.
 
-\paragraph{Analytical servo solution.}
-The volume constraint couples the radial and axial servo responses. Let $K_{r,i}$ and $K_{r,o}$ denote the aggregate normal contact stiffness at the inner and outer cylinders, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness (the factor $\frac{1}{2}$ accounts for symmetric movement of the top and bottom plates). Substituting \cref{eq:const_volume_constraint} into the stress increments yields the coupled stiffness relation (derived in \ref{sec:appendix_servo}):
+\paragraph{Analytical servo.}
+Although \cref{eq:servo_radial,eq:servo_axial} are written as if the radial and axial servos act independently, they are in fact coupled through two mechanisms: (i) the constant-volume constraint (\cref{eq:const_volume_constraint}) links $dR/dt$ to $dr/dt$ and $dH/dt$, so that a radial wall movement alters the outer radius; and (ii) the axial pressure difference $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ depends on $\sigma_r^{\prime}$, which is affected by radial wall movements. An analytical solution is obtained by reducing the four unknowns to two through two successive eliminations:
+\begin{enumerate}
+\item \emph{Torsion.} The torsional servo (\cref{eq:cond3_torsion}) does not enter the kinematic constraints that govern $dr/dt$, $dR/dt$, and $dH/dt$. It is therefore solved independently at each timestep, leaving three unknowns ($dr/dt$, $dR/dt$, $dH/dt$) and three conditions.
+\item \emph{Volume constraint.} \Cref{eq:const_volume_constraint} expresses $dR/dt$ as a function of $dr/dt$ and $dH/dt$, reducing the system to two unknowns with two target conditions (\cref{eq:cond1_radial,eq:cond2_axial}).
+\end{enumerate}
+
+Let $K_{r,i}$ and $K_{r,o}$ denote the aggregate normal contact stiffness at the inner and outer cylinders, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness (the factor $\frac{1}{2}$ accounts for symmetric movement of the top and bottom plates). Substituting \cref{eq:const_volume_constraint} into the pressure increments yields the coupled stiffness relation (derived in Appendix~\ref{sec:appendix_servo}):
 \begin{equation}
-\begin{pmatrix} \delta\sigma_{dif,r}^{\prime} \\[4pt] \delta\sigma_{dif,z}^{\prime} \end{pmatrix}
+\begin{pmatrix} \delta p_{dif,r}^{\prime} \\[4pt] \delta p_{dif,z}^{\prime} \end{pmatrix}
 =
 \begin{pmatrix} K_{11} & K_{12} \\[6pt] -K_{11} & K_z - K_{12} \end{pmatrix}
 \begin{pmatrix} dr \\[4pt] dH \end{pmatrix},
 \label{eq:coupled_stiffness}
 \end{equation}
-where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$ and $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$. The lower-left entry $-K_{11}$ arises because changes in radial stress enter $\sigma_{dif,z}^{\prime}=\sigma_z^{\prime}-\sigma_r^{\prime}$ with opposite sign. Inverting \cref{eq:coupled_stiffness} (noting $\det=K_{11}K_z$) gives the analytical servo equations:
+where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$ and $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$. The lower-left entry $-K_{11}$ arises because changes in radial pressure enter $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ with opposite sign. Setting $(\delta p_{dif,r}^{\prime},\,\delta p_{dif,z}^{\prime})=(e_r,\,e_z)$ and inverting \cref{eq:coupled_stiffness} (noting $\det=K_{11}K_z$) yields the coupled servo equations that replace the uncoupled forms of \cref{eq:servo_radial,eq:servo_axial}:
 \begin{align}
 \frac{dr}{dt} &= \frac{K_z-K_{12}}{K_{11}\,K_z}\,\frac{e_r}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{e_z}{\Delta t}, \label{eq:servo_dr}\\[6pt]
 \frac{dH}{dt} &= \frac{1}{K_z}\,\frac{e_r}{\Delta t} + \frac{1}{K_z}\,\frac{e_z}{\Delta t}, \label{eq:servo_dH}
 \end{align}
-where $e_r=\sigma_{dif,r}^{\prime}-\sigma_{dif,r}^{tar}$ and $e_z=\sigma_{dif,z}^{\prime}-\sigma_{dif,z}^{tar}$ are the stress errors for the radial and axial conditions, respectively.
-The remaining kinematic variable $dR/dt$ is then obtained by substituting $dr/dt$ and $dH/dt$ into \cref{eq:const_volume_constraint}. Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations, only the radial condition remains active and the servo coefficient reduces to $S_{cr}=1/K_{11}$. A relaxation factor less than unity is applied to all servo coefficients to ensure numerical stability.
+The remaining kinematic variable $dR/dt$ is then obtained by substituting $dr/dt$ and $dH/dt$ into \cref{eq:const_volume_constraint}. A relaxation factor less than unity is applied to all servo coefficients to ensure numerical stability. In the present study, equal chamber pressures are adopted ($p_{dif,r}^{tar}=0$), and the constant-height condition ($dH/dt=0$) is used for all cyclic shear simulations, so that only the radial condition remains active and the servo coefficient reduces to $S_{cr}=1/K_{11}$.
 
 \paragraph{Cyclic loading protocol.}
 Specimens are subjected to sinusoidal torsional shear under the constant-height condition ($dH/dt=0$). The cyclic stress ratio (CSR) is defined as the maximum applied torsional shear stress normalized by the initial mean effective stress. In the primary analyses, liquefaction is identified using a stress-based criterion, $\ru = 0.95$, where $\ru$ is the excess pore pressure ratio. A strain-based criterion (single-amplitude shear strain $\gamma_{SA}=2.5\%$) is adopted in the calibration/validation stage (\cref{subsec:calibration_validation}) to match the criterion used by \citet{Ishihara1985}. A comparison of the two criteria across all simulated cases confirms that they yield nearly identical $N_L$ values and the same resistance ordering among \Kzero{} states, so the stress-based criterion is used for all subsequent analyses.
@@ -185,20 +198,20 @@ where $u$ is the excess pore water pressure, $\sigma_r^{\prime}$ is the current 
 \subsection{Parameter calibration and validation}
 \label{subsec:calibration_validation}
 
-The micro-parameters listed in Table~\ref{tab:dem_parameters} were determined through a systematic iterative calibration against experimental data from HCA tests on dense Toyoura sand. Because the micro-parameters collectively influence shear stiffness, dilatancy, and liquefaction resistance, the calibration targeted these behaviors in sequence. Starting from a base parameter set at a given void ratio, the contact Young's modulus $E$ and rolling friction coefficient $\mu_r$ were adjusted while keeping the normal-to-shear stiffness ratio $\kappa$ constant, aiming to reproduce the shear stiffness observed in undrained monotonic shear tests. The effective stress path in $\pmean$--$\tau_{z\theta}$ space was then examined to assess dilatancy. If the simulated dilatancy was insufficient---i.e., the mean effective stress at phase transformation was lower than the experimental value---the specimen was further compacted to a lower void ratio, which increased both dilatancy and shear stiffness; $E$ was then reduced accordingly to restore the target shear stiffness. This iterative process between void ratio, contact modulus, and rolling friction was repeated until both the shear stiffness and dilatancy simultaneously matched the monotonic experimental data. The calibrated parameters were then verified against cyclic liquefaction resistance curves, with minor adjustments made as needed to achieve satisfactory agreement across all three aspects.
+The micro-parameters listed in Table~\ref{tab:dem_parameters} were calibrated against the undrained monotonic torsional shear data of \citet{Nakata1998} for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0). Because the micro-parameters collectively influence shear stiffness, dilatancy, and liquefaction resistance, the calibration targeted these behaviors in sequence. Starting from a base parameter set at a given void ratio, the contact Young's modulus $E$ and rolling friction coefficient $\mu_r$ were adjusted while keeping the normal-to-shear stiffness ratio $\kappa$ constant, aiming to reproduce the shear stiffness observed in the monotonic shear tests. The effective stress path in $\pmean$--$\tau_{z\theta}$ space was then examined to assess dilatancy. If the simulated dilatancy was insufficient---i.e., the mean effective stress at phase transformation was lower than the experimental value---the specimen was further compacted to a lower void ratio, which increased both dilatancy and shear stiffness; $E$ was then reduced accordingly to restore the target shear stiffness. This iterative process between void ratio, contact modulus, and rolling friction was repeated until both the shear stiffness and dilatancy simultaneously matched the monotonic experimental data. During the monotonic calibration, the axial pressure difference was maintained at zero ($p_{dif,z}^{tar}=0$ in \cref{eq:cond2_axial}) to ensure $\sigma_z^{\prime}=\sigma_r^{\prime}$ during shearing.
 
-The resulting parameter set was validated against HCA experiments for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0) under both monotonic and cyclic loading conditions. For monotonic validation, undrained torsional shear simulations were compared with data reported by \citet{Nakata1998}, where the additional axial pressure $p_z$ was maintained at zero (i.e., $\sigma_{dif,z}^{\prime}=0$ in \cref{eq:cond2_axial}) to ensure the axial effective stress equals the radial effective stress during shearing. For cyclic validation, specimens were subjected to sinusoidal torsional shear at five CSR levels (0.20, 0.25, 0.30, 0.35, and 0.40) and compared with the classical data of \citet{Ishihara1985}, with liquefaction defined by single-amplitude shear strain $\gamma_{SA}=2.5\%$.
+The calibrated parameter set was then validated against the cyclic liquefaction resistance data of \citet{Ishihara1985} for the same sand under identical conditions. Specimens were subjected to sinusoidal torsional shear at five CSR levels (0.20, 0.25, 0.30, 0.35, and 0.40), with liquefaction defined by single-amplitude shear strain $\gamma_{SA}=2.5\%$.
 
 \begin{figure*}[t]
   \centering
   \safeincludegraphics[width=\textwidth]{validate_combined.png}
-  \caption{Validation of the DEM-HCA model against experimental data for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0): (a) effective stress path and (b) stress--strain relationship from undrained monotonic shear \citep{Nakata1998}; (c) cyclic stress ratio versus number of cycles to liquefaction \citep{Ishihara1985}.}
+  \caption{Calibration and validation of the DEM-HCA model for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0): (a) effective stress path and (b) stress--strain relationship from undrained monotonic shear, calibrated against \citet{Nakata1998}; (c) cyclic stress ratio versus number of cycles to liquefaction, validated against \citet{Ishihara1985}.}
   \label{fig:validation_combined}
 \end{figure*}
 
-Fig.~\ref{fig:validation_combined} demonstrates that the DEM model simultaneously reproduces three key aspects of undrained behavior. The effective stress path (Fig.~\ref{fig:validation_combined}a) captures the initial contraction followed by dilation towards the critical state line, matching the experimental trend. The stress--strain relationship (Fig.~\ref{fig:validation_combined}b) reproduces the shear stiffness and strain-hardening behavior. The liquefaction resistance curve (Fig.~\ref{fig:validation_combined}c) shows good agreement across the full range of CSR. The simultaneous agreement across stiffness, dilatancy, and cyclic liquefaction resistance validates both the micro-parameters (Table~\ref{tab:dem_parameters}) and the combined servo mechanism described in \cref{subsec:cyclic_loading}.
+Fig.~\ref{fig:validation_combined} summarizes the calibration and validation results. The effective stress path (Fig.~\ref{fig:validation_combined}a) captures the initial contraction followed by dilation towards the critical state line, matching the experimental trend. The stress--strain relationship (Fig.~\ref{fig:validation_combined}b) reproduces the shear stiffness and strain-hardening behavior. These two aspects confirm a successful calibration against the monotonic data. The liquefaction resistance curve (Fig.~\ref{fig:validation_combined}c) shows good agreement with the cyclic data across the full range of CSR, validating the calibrated parameters under cyclic loading conditions without further adjustment. The simultaneous agreement across stiffness, dilatancy, and cyclic liquefaction resistance confirms the reliability of both the micro-parameters (Table~\ref{tab:dem_parameters}) and the combined servo mechanism described in \cref{subsec:cyclic_loading}.
 
-Having validated the model under isotropic consolidation (\Kzero{} = 1.0), specimens with different \Kzero{} values obtained from the IC--AC protocol were subjected to undrained cyclic torsional shear. Unlike the monotonic validation where zero additional axial pressure was maintained, constant height ($dH/dt=0$) is adopted for all cyclic shear simulations to match typical HCA test protocols.
+Having calibrated and validated the model under isotropic consolidation (\Kzero{} = 1.0), specimens with different \Kzero{} values obtained from the IC--AC protocol were subjected to undrained cyclic torsional shear. Unlike the monotonic calibration where $p_{dif,z}^{\prime}$ was actively controlled, constant height ($dH/dt=0$) is adopted for all cyclic shear simulations to match typical HCA test protocols.
 
 \subsection{Microscopic descriptors}
 \label{subsec:micro_descriptors}
