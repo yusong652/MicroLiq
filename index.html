@@ -54,6 +54,23 @@
 		</div>
 	</div>
 
+	<!-- ═══════════════ SHOWCASE ═══════════════ -->
+	<section class="showcase">
+		<div class="showcase-inner">
+			<div class="showcase-text">
+				<span class="showcase-label">pfc-mcp</span>
+				<h2 class="showcase-title">AI meets particle simulation</h2>
+				<p class="showcase-desc">An open-source MCP server that lets any LLM agent browse PFC documentation, execute simulations, and capture results — directly inside a running PFC instance.</p>
+				<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="showcase-link">
+					<i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i>
+				</a>
+			</div>
+			<div class="showcase-media">
+				<img src="https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif" alt="pfc-mcp: AI agent driving PFC simulation" loading="eager">
+			</div>
+		</div>
+	</section>
+
 	<!-- ═══════════════ CONTENT ═══════════════ -->
 	<div class="page-content">
 
@@ -227,6 +244,71 @@
 			</div>
 		</section>
 
+		<!-- ── Featured Project ── -->
+		<section class="content-section fade-in">
+			<p class="section-label">Featured Project</p>
+			<h2 class="section-title">pfc-mcp</h2>
+			<div class="featured-project">
+				<div class="featured-project-main">
+					<p class="featured-project-desc">
+						An open-source <strong>Model Context Protocol server</strong> that brings LLM-powered workflows to ITASCA PFC. Born from years of working with PFC's domain-specific command language, this tool solves a real pain point: bridging the gap between modern AI assistants and specialized numerical simulation software.
+					</p>
+					<div class="featured-project-features">
+						<div class="feature-item">
+							<i class="fas fa-book"></i>
+							<div>
+								<strong>Documentation Intelligence</strong>
+								<span>Browse and search PFC command docs, Python API, and reference materials — contact models, range elements — through structured tools</span>
+							</div>
+						</div>
+						<div class="feature-item">
+							<i class="fas fa-terminal"></i>
+							<div>
+								<strong>Task Execution Bridge</strong>
+								<span>Submit Python scripts to a running PFC instance via WebSocket, monitor progress, and capture plot output — all from any MCP client</span>
+							</div>
+						</div>
+						<div class="feature-item">
+							<i class="fas fa-plug"></i>
+							<div>
+								<strong>Universal Compatibility</strong>
+								<span>Works with Claude Code, Claude Desktop, VS Code, or any MCP-compatible client. No vendor lock-in</span>
+							</div>
+						</div>
+					</div>
+					<div class="featured-project-links">
+						<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="featured-link primary">
+							<i class="fab fa-github"></i> View on GitHub
+						</a>
+						<a href="https://github.com/yusong652/pfc-mcp#readme" target="_blank" rel="noopener" class="featured-link">
+							<i class="fas fa-book-open"></i> Documentation
+						</a>
+					</div>
+				</div>
+				<div class="featured-project-aside">
+					<div class="aside-block">
+						<span class="aside-label">Stack</span>
+						<div class="aside-tags">
+							<span>Python</span><span>MCP</span><span>WebSocket</span><span>PFC</span>
+						</div>
+					</div>
+					<div class="aside-block">
+						<span class="aside-label">Architecture</span>
+						<div class="aside-detail">
+							<code>MCP Client</code> <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--text-tertiary);"></i>
+							<code>pfc-mcp</code> <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--text-tertiary);"></i>
+							<code>PFC Bridge</code> <i class="fas fa-arrow-right" style="font-size:0.65rem;color:var(--text-tertiary);"></i>
+							<code>PFC GUI</code>
+						</div>
+					</div>
+					<div class="aside-block">
+						<span class="aside-label">Why it matters</span>
+						<p class="aside-text">PFC uses a specialized command syntax poorly represented in LLM training data. This server provides structured, verified documentation — eliminating hallucination and enabling reliable AI-assisted simulation workflows.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- ── Publications ── -->
 		<section class="content-section fade-in">
 			<p class="section-label">Publications</p>
@@ -280,10 +362,11 @@
 						<span>FastAPI</span><span>React</span><span>LLM</span><span>WebSocket</span>
 					</div>
 				</a>
-				<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="project-card">
+				<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="project-card featured">
 					<div class="project-card-header">
 						<i class="fab fa-github"></i>
 						<span class="project-card-name">pfc-mcp</span>
+						<span class="project-badge">Featured</span>
 					</div>
 					<p class="project-card-desc">MCP server for PFC workflows. Documentation browsing, command search, and task execution via any MCP-compatible client.</p>
 					<div class="project-card-tags">
