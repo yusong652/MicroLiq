@@ -34,6 +34,8 @@ __pycache__/
 !*/demo/*.png
 !*/demo/*.jpg
 !experiment/k0_effect.png
+!site/assets/*.png
+!site/assets/*.jpg
 
 # Large media (managed by Git LFS)
 *.gif
