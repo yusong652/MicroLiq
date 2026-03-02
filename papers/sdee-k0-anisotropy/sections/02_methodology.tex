@@ -35,14 +35,14 @@ The specimen geometry (Fig.~\ref{fig:specimen_generation}) follows a laboratory-
   \centering
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=0.86\linewidth]{specimen_generation_pouring.jpg}
+    \safeincludegraphics[width=0.5\linewidth]{specimen_generation_pouring.jpg}
     \caption{Particle generation modeling air-pluviation.}
     \label{fig:specimen_generation_a}
   \end{subfigure}
   \vspace{6pt}
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=0.86\linewidth]{specimen_generation_blade_insertion.jpg}
+    \safeincludegraphics[width=0.5\linewidth]{specimen_generation_blade_insertion.jpg}
     \caption{Insertion of torsional blades.}
     \label{fig:specimen_generation_b}
   \end{subfigure}
@@ -84,21 +84,21 @@ During the AC stage, both $\pmean$ and deviator stress increase simultaneously. 
   \centering
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=0.86\linewidth]{specimen_k0_05_after_ac.jpg}
+    \safeincludegraphics[width=0.5\linewidth]{specimen_k0_05_after_ac.jpg}
     \caption{\Kzero{} = 0.5}
     \label{fig:ac_specimens_a}
   \end{subfigure}
   \vspace{6pt}
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=0.86\linewidth]{specimen_k0_10_after_ac.jpg}
+    \safeincludegraphics[width=0.5\linewidth]{specimen_k0_10_after_ac.jpg}
     \caption{\Kzero{} = 1.0}
     \label{fig:ac_specimens_b}
   \end{subfigure}
   \vspace{6pt}
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \safeincludegraphics[width=0.86\linewidth]{specimen_k0_20_after_ac.jpg}
+    \safeincludegraphics[width=0.5\linewidth]{specimen_k0_20_after_ac.jpg}
     \caption{\Kzero{} = 2.0}
     \label{fig:ac_specimens_c}
   \end{subfigure}
@@ -109,9 +109,9 @@ During the AC stage, both $\pmean$ and deviator stress increase simultaneously. 
 \subsection{Undrained cyclic torsional shear loading}
 \label{subsec:cyclic_loading}
 
-Undrained conditions are represented using the standard constant-volume approximation in DEM, without explicit fluid--particle coupling \citep{YimsiriSoga2010}. The key challenge in simulating undrained HCA tests lies in satisfying multiple boundary conditions simultaneously. The HCA specimen has four kinematic degrees of freedom---inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$)---which must be determined at each timestep to satisfy four conditions: a prescribed radial stress difference, a prescribed axial stress condition, a target shear stress, and constant specimen volume. A combined servo mechanism \citep{Han2024jgs,Ma2024} is employed to solve for these four unknowns. The servo controls two pressure quantities measured from particle--wall contact forces: the radial pressure difference $p_{dif,r}^{\prime}=p_o^{\prime}-p_i^{\prime}$ and the vertical pressure $p_z^{\prime}$ (see Table~\ref{tab:hca_equations} for definitions). 
+Undrained conditions are represented using the standard constant-volume approximation in DEM, without explicit fluid--particle coupling \citep{YimsiriSoga2010}. The key challenge in simulating undrained HCA tests lies in satisfying multiple boundary conditions simultaneously. The HCA specimen has four kinematic degrees of freedom---inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$)---which must be determined at each timestep to satisfy four conditions: a prescribed radial stress difference, a prescribed axial stress condition, a target shear stress, and constant specimen volume. Earlier DEM-based HCA models adopted simplified servo strategies: \citet{Han2024jgs} solved only the radial and torsional conditions while keeping the specimen height fixed, thereby bypassing the axial degree of freedom entirely; \citet{Ma2024} introduced an axial servo but treated the radial and axial conditions as independent, neglecting their coupling through the volume constraint and the shared dependence on radial stress. In this study, a fully coupled analytical servo is derived that simultaneously satisfies all four conditions---radial pressure difference, axial pressure difference, constant volume, and cyclic torsional shear---with the cross-coupling between degrees of freedom accounted for exactly. The servo controls two pressure quantities measured from particle--wall contact forces: the radial pressure difference $p_{dif,r}^{\prime}=p_o^{\prime}-p_i^{\prime}$ and the vertical pressure $p_z^{\prime}$ (see Table~\ref{tab:hca_equations} for definitions). 
 \paragraph{Radial condition.}
-The radial condition controls the pressure difference between the outer and inner cylinders. The radial pressure difference and its servo error are defined as:
+In a laboratory HCA, the outer and inner cell pressures are applied independently through separate pressure lines; the radial condition reproduces this capability by controlling the pressure difference between the outer and inner cylinders. The radial pressure difference and its servo error are defined as:
 \begin{equation}
 p_{dif,r}^{\prime} = p_o^{\prime} - p_i^{\prime}, \qquad e_r = p_{dif,r}^{\prime} - p_{dif,r}^{tar},
 \label{eq:cond1_radial}
@@ -124,7 +124,7 @@ where $p_o^{\prime}$ and $p_i^{\prime}$ are the outer and inner radial effective
 where $\Delta t$ is the simulation timestep and $S_{cr}$ is the radial servo coefficient.
 
 \paragraph{Axial condition.}
-The axial condition controls the difference between the vertical and radial effective stresses. The axial pressure difference and its servo error are defined as:
+In a laboratory HCA, a vertical load is applied through the loading piston independently of the cell pressures; the axial condition reproduces this capability by controlling the difference between the vertical and radial effective stresses. The axial pressure difference and its servo error are defined as:
 \begin{equation}
 p_{dif,z}^{\prime} = p_z^{\prime} - \sigma_r^{\prime}, \qquad e_z = p_{dif,z}^{\prime} - p_{dif,z}^{tar},
 \label{eq:cond2_axial}
@@ -151,39 +151,46 @@ where $r_d$ is the distance from the rotation axis to the contact point, $k_n$ i
 
 \begin{figure}[t]
   \centering
-  \safeincludegraphics[width=0.86\linewidth]{servo_torsional_contact_geometry.png}
+  \safeincludegraphics[width=0.5\linewidth]{servo_torsional_contact_geometry.png}
   \caption{Contact geometry used to evaluate the rotational stiffness contribution for torsional servo control. $r_d$: distance to rotation axis; $\theta$: angle between contact normal and horizontal.}
   \label{fig:servo_geometry}
 \end{figure}
 
 \paragraph{Volume constraint.}
-The undrained (constant-volume) condition requires:
+The undrained (constant-volume) condition requires (with the outward-positive sign convention $dr>0$, $dR>0$ denoting radius increases):
 \begin{equation}
-2\pi H\!\left(R\frac{dR}{dt} + r\frac{dr}{dt}\right) + \pi\!\left(R^2-r^2\right)\frac{dH}{dt} = 0.
+2\pi H\!\left(R\frac{dR}{dt} - r\frac{dr}{dt}\right) + \pi\!\left(R^2-r^2\right)\frac{dH}{dt} = 0.
 \label{eq:const_volume_constraint}
 \end{equation}
 
 \paragraph{Analytical servo.}
-Although \cref{eq:servo_radial,eq:servo_axial} are written as if the radial and axial servos act independently, they are in fact coupled through two mechanisms: (i) the constant-volume constraint (\cref{eq:const_volume_constraint}) links $dR/dt$ to $dr/dt$ and $dH/dt$, so that a radial wall movement alters the outer radius; and (ii) the axial pressure difference $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ depends on $\sigma_r^{\prime}$, which is affected by radial wall movements. An analytical solution is obtained by reducing the four unknowns to two through two successive eliminations:
+Although \cref{eq:servo_radial,eq:servo_axial} are written in uncoupled form for clarity, the radial and axial conditions are in fact coupled through two mechanisms: (i) the constant-volume constraint (\cref{eq:const_volume_constraint}) links $dR/dt$ to $dr/dt$ and $dH/dt$, so that an inner-cylinder wall movement alters the outer radius; and (ii) the axial pressure difference $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ depends on $\sigma_r^{\prime}=({p_o^{\prime}R+p_i^{\prime}r})/({R+r})$ (Table~\ref{tab:hca_equations}), which is a weighted average of the inner and outer pressures affected by both cylinder wall movements. An analytical solution is obtained by reducing the four unknowns to two through two successive eliminations:
 \begin{enumerate}
 \item \emph{Torsion.} The torsional servo (\cref{eq:cond3_torsion}) does not enter the kinematic constraints that govern $dr/dt$, $dR/dt$, and $dH/dt$. It is therefore solved independently at each timestep, leaving three unknowns ($dr/dt$, $dR/dt$, $dH/dt$) and three conditions.
-\item \emph{Volume constraint.} \Cref{eq:const_volume_constraint} expresses $dR/dt$ as a function of $dr/dt$ and $dH/dt$, reducing the system to two unknowns with two target conditions (\cref{eq:cond1_radial,eq:cond2_axial}).
+\item \emph{Volume constraint.} \Cref{eq:const_volume_constraint} expresses $dR/dt$ as a function of $dr/dt$ and $dH/dt$, reducing the system to two unknowns ($dr/dt$, $dH/dt$) with two target conditions ($e_r=0$ and $e_z=0$ in \cref{eq:cond1_radial,eq:cond2_axial}).
 \end{enumerate}
 
-Let $K_{r,i}$ and $K_{r,o}$ denote the aggregate normal contact stiffness at the inner and outer cylinders, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness (the factor $\frac{1}{2}$ accounts for symmetric movement of the top and bottom plates). Substituting \cref{eq:const_volume_constraint} into the pressure increments yields the coupled stiffness relation (derived in Appendix~\ref{sec:appendix_servo}):
+Let $K_{r,i}$ and $K_{r,o}$ denote the aggregate normal contact stiffness at the inner and outer cylinders, $A_i=2\pi rH$ and $A_o=2\pi RH$ the corresponding wall areas, and $K_z=\frac{1}{2}\sum_{c\in\mathrm{top/bottom}} k_n$ the effective axial contact stiffness with area $A_z=2\pi(R^2-r^2)$. Substituting \cref{eq:const_volume_constraint} into the pressure increments yields the coupled stiffness relation (derived in Appendix~\ref{sec:appendix_servo}):
 \begin{equation}
 \begin{pmatrix} \delta p_{dif,r}^{\prime} \\[4pt] \delta p_{dif,z}^{\prime} \end{pmatrix}
 =
-\begin{pmatrix} K_{11} & K_{12} \\[6pt] -K_{11} & K_z - K_{12} \end{pmatrix}
+\underbrace{\begin{pmatrix} \hat{K}_{11} & \hat{K}_{12} \\[6pt] \hat{K}_{21} & \hat{K}_{22} \end{pmatrix}}_{\hat{\mathbf{K}}}
 \begin{pmatrix} dr \\[4pt] dH \end{pmatrix},
 \label{eq:coupled_stiffness}
 \end{equation}
-where $K_{11}=K_{r,i}+\frac{r}{R}\,K_{r,o}$ and $K_{12}=\frac{R^2-r^2}{2RH}\,K_{r,o}$. The lower-left entry $-K_{11}$ arises because changes in radial pressure enter $p_{dif,z}^{\prime}=p_z^{\prime}-\sigma_r^{\prime}$ with opposite sign. Setting $(\delta p_{dif,r}^{\prime},\,\delta p_{dif,z}^{\prime})=(e_r,\,e_z)$ and inverting \cref{eq:coupled_stiffness} (noting $\det=K_{11}K_z$) yields the coupled servo equations that replace the uncoupled forms of \cref{eq:servo_radial,eq:servo_axial}:
+where
+\begin{alignat}{2}
+\hat{K}_{11} &= -\frac{K_{r,i}}{A_i}-\frac{r}{R}\,\frac{K_{r,o}}{A_o}, &\qquad
+\hat{K}_{12} &= \frac{R^2-r^2}{2RH}\,\frac{K_{r,o}}{A_o}, \label{eq:Khat_main_row1}\\[4pt]
+\hat{K}_{21} &= -\frac{K_{r,i}-\frac{r}{R}\,K_{r,o}}{A_i+A_o}, &\qquad
+\hat{K}_{22} &= -\frac{K_z}{A_z}-\frac{(R^2-r^2)\,K_{r,o}}{2RH\,(A_i+A_o)}. \label{eq:Khat_main_row2}
+\end{alignat}
+The entries carry dimensions of Pa/m (see Appendix~\ref{sec:appendix_servo} for the full derivation). Three entries are negative, reflecting the outward-positive convention, while $\hat{K}_{12}>0$ arises from the volume-constraint-induced cross-coupling. Setting $(\delta p_{dif,r}^{\prime},\,\delta p_{dif,z}^{\prime})=(-e_r,\,-e_z)$ and inverting \cref{eq:coupled_stiffness} yields the coupled servo equations that replace the uncoupled forms of \cref{eq:servo_radial,eq:servo_axial}:
 \begin{align}
-\frac{dr}{dt} &= \frac{K_z-K_{12}}{K_{11}\,K_z}\,\frac{e_r}{\Delta t} - \frac{K_{12}}{K_{11}\,K_z}\,\frac{e_z}{\Delta t}, \label{eq:servo_dr}\\[6pt]
-\frac{dH}{dt} &= \frac{1}{K_z}\,\frac{e_r}{\Delta t} + \frac{1}{K_z}\,\frac{e_z}{\Delta t}, \label{eq:servo_dH}
+\frac{dr}{dt} &= \frac{1}{\det(\hat{\mathbf{K}})}\!\left(-\hat{K}_{22}\,\frac{e_r}{\Delta t} + \hat{K}_{12}\,\frac{e_z}{\Delta t}\right), \label{eq:servo_dr}\\[6pt]
+\frac{dH}{dt} &= \frac{1}{\det(\hat{\mathbf{K}})}\!\left(\hat{K}_{21}\,\frac{e_r}{\Delta t} - \hat{K}_{11}\,\frac{e_z}{\Delta t}\right), \label{eq:servo_dH}
 \end{align}
-The remaining kinematic variable $dR/dt$ is then obtained by substituting $dr/dt$ and $dH/dt$ into \cref{eq:const_volume_constraint}. A relaxation factor less than unity is applied to all servo coefficients to ensure numerical stability. In the present study, equal chamber pressures are adopted ($p_{dif,r}^{tar}=0$), and the constant-height condition ($dH/dt=0$) is used for all cyclic shear simulations, so that only the radial condition remains active and the servo coefficient reduces to $S_{cr}=1/K_{11}$.
+The remaining kinematic variable $dR/dt$ is then obtained by substituting $dr/dt$ and $dH/dt$ into \cref{eq:const_volume_constraint}. A relaxation factor less than unity is applied to all servo coefficients to ensure numerical stability. In the present study, equal inner and outer cell pressures are adopted ($p_{dif,r}^{tar}=0$), and the constant-height condition ($dH/dt=0$) is used for all cyclic shear simulations, so that only the radial condition remains active and the servo coefficient reduces to $S_{cr}=-1/\hat{K}_{11}$.
 
 \paragraph{Cyclic loading protocol.}
 Specimens are subjected to sinusoidal torsional shear under the constant-height condition ($dH/dt=0$). The cyclic stress ratio (CSR) is defined as the maximum applied torsional shear stress normalized by the initial mean effective stress. In the primary analyses, liquefaction is identified using a stress-based criterion, $\ru = 0.95$, where $\ru$ is the excess pore pressure ratio. A strain-based criterion (single-amplitude shear strain $\gamma_{SA}=2.5\%$) is adopted in the calibration/validation stage (\cref{subsec:calibration_validation}) to match the criterion used by \citet{Ishihara1985}. A comparison of the two criteria across all simulated cases confirms that they yield nearly identical $N_L$ values and the same resistance ordering among \Kzero{} states, so the stress-based criterion is used for all subsequent analyses.
