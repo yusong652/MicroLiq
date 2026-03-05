@@ -50,7 +50,7 @@ def plt_ani_stress(k0=0.3, marker='o', color='tab:blue'):
 	markersize = 10
 	size_sct = 110
 	ax1.plot(stresses_p, void_ratios,
-		label=r'$%.2f$'%k0, markevery=len(stresses_p)/1.5e4, color=color,
+		label=r'$K_0=%.1f$'%k0, markevery=len(stresses_p)/1.5e4, color=color,
 		marker=marker, markerfacecolor=markerfacecolor, markeredgecolor=color,
 		markersize=markersize, linewidth=LW_MAIN)
 	ax2.scatter([k0], [void_ratios.to_numpy()[-1]], color=color, marker=marker,
@@ -64,7 +64,7 @@ for k0, marker, color in zip(k0s, markers, colors):
 # handles_plt.append(plt_line)
 # legends_plt=[r"$Isotropic\ consolidation$", ]
 
-xlabel = ax1.set_xlabel(r'$Mean\ effective\ stress(kPa)\ p\prime\ (kPa)$',
+xlabel = ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$',
  fontsize=FS_LABEL)
 ylabel = ax1.set_ylabel(r'$Void\ ratio\ e$', fontsize=FS_LABEL)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
@@ -96,15 +96,11 @@ def set_ax2_format():
 set_ax2_format()
 
 legend1 = ax1.legend(
-	title=r'$Target\ K_0\ after\ AC$', title_fontsize=FS_LEGEND,
 	fontsize=FS_LEGEND, framealpha=0.2, ncol=4,
-	borderpad=0.2, columnspacing=0.2, 
-	loc=(0.0, 1.02))
-legend1._legend_box.align = "left"  # type: ignore
-box = ax1.get_position()
-# Reserve some space for the top legend without compressing the plotting area too much.
-ax1.set_position((box.x0, box.y0, box.width, box.height*0.82))
+	borderpad=0.3, columnspacing=0.5, handletextpad=0.3,
+	loc='upper center', bbox_to_anchor=(0.5, 1.10))
 ax1.add_artist(legend1)
-plt.tight_layout(rect=(0, 0, 1, 0.84))
-plt.savefig("stress_void.png", dpi=500, bbox_inches="tight", pad_inches=0.02)
+plt.tight_layout()
+plt.savefig("stress_void.png", dpi=500, bbox_inches="tight", pad_inches=0.05,
+	bbox_extra_artists=(legend1,))
 plt.show()
