@@ -16,7 +16,7 @@ PhD thesis research on **microscopic analysis of fabric evolution in liquefactio
 ```
 thesis/           Thesis chapters in Markdown (Obsidian vault)
 papers/           Journal paper manuscripts (LaTeX)
-  sdee-k0-anisotropy/   Paper 1: K₀ anisotropic consolidation → SDEE (near complete)
+  cg-coupled-servo/    Paper 1: Coupled servo for undrained HCA → Computers and Geotechnics (near complete)
   multidirectional-shear/ Paper 2: Multi-directional shear (planned)
   shared/               Common macros, bib entries, scripts
 triaxial/         Ch3: True triaxial apparatus simulation
