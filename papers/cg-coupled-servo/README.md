@@ -1,6 +1,6 @@
-# Paper LaTeX Skeleton (Elsevier / SDEE)
+# Paper LaTeX Skeleton (Elsevier / Computers and Geotechnics)
 
-This directory is a local authoring skeleton for preparing a manuscript for **Soil Dynamics and Earthquake Engineering** (Elsevier) using LaTeX.
+This directory is a local authoring skeleton for preparing a manuscript for **Computers and Geotechnics** (Elsevier) using LaTeX.
 
 ## Structure
 
@@ -27,7 +27,7 @@ Before uploading to Editorial Manager, Elsevier support indicates that **LaTeX s
 ## Compile (example)
 
 ```bash
-cd papers/sdee-k0-anisotropy
+cd papers/cg-coupled-servo
 latexmk -pdf -interaction=nonstopmode -output-directory=build main.tex
 ```
 
@@ -39,7 +39,7 @@ latexmk -pdf -interaction=nonstopmode -output-directory=build main.tex
 
 ## Multi-paper Repository Layout
 
-This manuscript now lives under `papers/sdee-k0-anisotropy/`.
+This manuscript now lives under `papers/cg-coupled-servo/`.
 Shared assets for multiple papers (macros, common bibliography entries, helper scripts) live under `papers/shared/`.
 An Editorial Manager flattening helper script skeleton is provided at `papers/shared/scripts/flatten_for_em.sh`.
 
