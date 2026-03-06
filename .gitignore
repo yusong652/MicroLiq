@@ -14,6 +14,7 @@ __pycache__/
 # IDE / tool config
 .vscode/
 .idea/
+.toyoura-nagisa
 .mcp.json
 
 # Temporary files
