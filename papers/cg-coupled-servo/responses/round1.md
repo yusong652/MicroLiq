@@ -40,21 +40,33 @@ speculative language about transient overshoots.
 
 ### Response
 
-The contribution of the servo mechanism is a mathematically rigorous
-formulation that (a) makes the volume-constraint coupling explicit
-in the servo coefficients, (b) uses effective pressure differences
-as servo targets to match the independent control channels of a
-laboratory HCA, and (c) analytically captures the radial–axial
-interaction. This is a theoretical/methodological advance; the
-advantage lies in the correctness of the formulation rather than
-in a numerical comparison with a previous approximate scheme.
+The contribution of the servo mechanism is threefold: (a) the
+volume-constraint coupling is made explicit in the servo
+coefficients, (b) effective pressure differences — matching the
+physically independent control channels of a laboratory HCA — are
+adopted as servo targets, and (c) the resulting coupled system is
+inverted analytically, yielding exact servo coefficients at every
+timestep. Analytical correctness of the servo coefficients is a
+prerequisite for numerical stability: because the radial and axial
+boundary conditions are coupled through both the constant-volume
+constraint and the shared dependence on wall contact forces, an
+approximate or decoupled gain inevitably introduces residual errors
+that accumulate over many thousands of timesteps in undrained cyclic
+shear. The closed-form solution eliminates this source of error by
+construction.
 
-The introduction now clearly articulates these three points. The
-validation in Section 2.4 — simultaneous agreement with published
-monotonic data (Nakata et al., 1998) and cyclic liquefaction
-resistance data (Ishihara, 1985) — confirms that the coupled
-servo accurately maintains the prescribed stress conditions
-throughout both calibration and cyclic loading stages.
+The introduction now clearly articulates these three points. Beyond
+the mathematical formulation, the monotonic shear calibration
+(Section 2.4) provides direct experimental validation: in this
+stage the full coupled servo operates in stress-control mode,
+simultaneously adjusting both the inner-cylinder radius and the
+specimen height to maintain σ'_z = σ'_r throughout shearing. The
+accurate reproduction of the experimental effective stress path and
+stress–strain relationship of Nakata et al. (1998), together with
+the subsequent agreement with the cyclic liquefaction resistance
+data of Ishihara (1985) under constant-height mode, confirms that
+the coupled servo accurately maintains the prescribed boundary
+conditions across both operating modes.
 
 ---
 
@@ -215,21 +227,26 @@ $K_0$ states (already established in Section 3.1).
 
 ### Response
 
-The $r_u$–$W_s$ relationship is a direct plot of two evolving
-quantities during cyclic loading; it is independent of which
-criterion is used to define the liquefaction endpoint. Since both
-the stress-based and strain-based criteria yield the same $N_L$
-ordering (Section 3.1), the conclusion that the energy-based
-interpretation alone cannot fully distinguish $K_0 = 1.0$ from 2.0
-remains unchanged.
+The $r_u$–$W_s$ relationship plotted in Fig. 8(d) traces the
+co-evolution of two quantities throughout cyclic loading and does
+not depend on a specific liquefaction criterion. The conclusion
+drawn from it — that the energy-based interpretation alone cannot
+fully distinguish $K_0 = 1.0$ from 2.0 — holds regardless of
+whether the stress-based ($r_u = 0.95$) or strain-based
+($\gamma_{SA} = 2.5\%$) criterion is adopted, because both
+criteria yield the same $N_L$ ordering among $K_0$ states
+(Section 3.1). A sentence confirming this has been added at the
+end of the $r_u$–$W_s$ paragraph.
 
-Regarding the nature of $W_s$: Eq. (18) computes total shear work
-input from boundary stress and strain rate, consistent with the
-original formulation of Towhata and Ishihara (1985). It includes
-both dissipated and elastically stored components. We have added a
-clarification that the elastic portion becomes negligible relative
-to the cumulative total as loading progresses, so the distinction
-does not affect the observed trends or conclusions.
+Regarding the nature of $W_s$: the definition in Eq. (18) computes
+total shear work input from boundary stress and strain rate, which
+is the same quantity originally proposed by Towhata and Ishihara
+(1985). Their formulation was likewise defined as cumulative input
+energy rather than the dissipated (plastic) component alone. We
+have added a clarification that the recoverable elastic strain
+energy becomes negligibly small relative to the cumulative total
+as loading progresses, so the two measures follow closely similar
+trends and the distinction does not affect the conclusions.
 
 ---
 
@@ -267,3 +284,90 @@ the evolving particle contact network. This bridging role motivates
 the microscopic fabric analysis in Section 3.3, where the
 particle-scale origin of the different degradation rates is
 examined.
+
+---
+
+## Q12: Section 3.3 — does this suggest microscopic indicators are inadequate and macroscopic ones are preferable?
+
+### Changes made
+
+**Section 3.3 (Combined effect paragraph)**: Rewrote the
+interpretation of the cross-density comparison. The previous
+wording ("macroscopic relative density contributes to liquefaction
+resistance beyond what is captured by $Z_{m0}$ and $\alpha_0$")
+implied that microscopic descriptors are insufficient and that
+conventional macroscopic indicators are needed instead. The revised
+text emphasizes the complementary roles of the two microscopic
+parameters: $Z_{m0}$ is strongly coupled to macroscopic relative
+density and governs the baseline resistance level across density
+groups, while $\alpha_0$ captures the directional fabric effect
+that differentiates $K_0$ states within a given density. Together,
+they provide a two-parameter microscopic characterization in which
+$Z_{m0}$ reflects packing compactness and $\alpha_0$ reflects the
+directional concentration of torsion-resisting contacts.
+
+**Section 3.4 (Limitation)**: Reframed accordingly — the limitation
+is no longer that microscopic parameters are inadequate, but that
+the strong coupling between $Z_{m0}$ and relative density prevents
+full isolation of each descriptor's independent contribution within
+the present dataset.
+
+**Conclusions (item 4)**: Updated to use the "complementary roles"
+framework consistent with the revised Section 3.3.
+
+### Response
+
+We do not intend to suggest that microscopic indicators are
+inadequate. Rather, the two descriptors capture different aspects
+of the contact network and play complementary roles. The mechanical
+coordination number $Z_{m0}$ is strongly coupled to macroscopic
+relative density (denser packing → more contacts), so the
+cross-density difference in $N_L$ is already reflected at the
+particle scale through $Z_{m0}$. Within a given density group,
+where $Z_{m0}$ varies only weakly with $K_0$, the signed fabric
+anisotropy indicator $\alpha_0$ effectively discriminates the
+$K_0$-dependent liquefaction resistance: specimens with larger
+$\alpha_0$ (compression-state consolidation) consistently exhibit
+higher $N_L$. The fabric tensor decomposition further confirms that
+$\alpha_0$ tracks the fraction of contacts on the $z$–$\theta$
+shear plane that directly resist torsional shear. The revised text
+and conclusions now clearly present $Z_{m0}$ and $\alpha_0$ as
+complementary microscopic characterizations rather than as
+indicators that fall short of macroscopic measures.
+
+---
+
+## Q13: Sections 3.3–3.4 — can figures or illustrations enhance the clarity of the physical explanation?
+
+### Changes made
+
+**New Figure (Fig. 15)**: Added a two-panel schematic figure to
+accompany the fabric tensor decomposition discussion:
+
+- Panel (a): 3D cylindrical element in $(r, \theta, z)$ coordinates
+  with $\tau_{z\theta}$ arrows on the top and side faces. The $z$
+  and $\theta$ axes are colored blue (torsion-resisting) and the
+  $r$ axis red (mechanically neutral), visually conveying the key
+  distinction that only contacts with normals in the $z$ or
+  $\theta$ directions resist torsional shear.
+
+- Panel (b): Zoomed bar chart of the torsion-resisting fraction
+  $1 - \Phi_{rr}$ for five $K_0$ states at two relative densities
+  (data from Table 3 / Appendix C). The y-axis is scaled to
+  0.650–0.670 to clearly reveal the monotonic decrease with
+  increasing $K_0$ in both density groups. The 2/3 reference line
+  marks the isotropic value.
+
+**Section 3.3**: Added a cross-reference to the new figure at the
+opening of the fabric tensor decomposition paragraph.
+
+### Response
+
+A new schematic figure (Fig. 15) has been added to illustrate the
+physical mechanism discussed in Sections 3.3 and 3.4. Panel (a)
+shows which contact orientations are active versus neutral for
+torsional resistance in the HCA geometry, and Panel (b) quantifies
+the monotonic decrease of the torsion-resisting fraction
+$1 - \Phi_{rr}$ with $K_0$ using data from both density groups.
+This figure provides the visual support that was previously missing
+from the purely text-based explanation.
