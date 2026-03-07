@@ -256,7 +256,7 @@ ax2.set_ylabel(r'Torsion-resisting fraction $1 - \Phi_{rr}$')
 ax2.set_ylim(0.650, 0.670)
 ax2.legend(loc='upper right', fontsize=7.5, framealpha=0.9)
 ax2.set_title('(b)', fontsize=10, loc='left')
-plt.savefig('/Users/hanyusong/thesis/MicroLiq/papers/cg-coupled-servo/figures/fabric_mechanism_schematic.jpg',
+plt.savefig('/Users/hanyusong/thesis/MicroLiq/papers/cg-coupled-servo/figures/fabric_mechanism_schematic.png',
             dpi=300, bbox_inches='tight', facecolor='white')
-print("Saved to figures/fabric_mechanism_schematic.jpg")
+print("Saved to figures/fabric_mechanism_schematic.png")
 plt.show()
