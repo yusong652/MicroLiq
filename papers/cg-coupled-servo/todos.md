@@ -1,8 +1,8 @@
-# SDEE Paper: Task List
+# Computers and Geotechnics (CG) Paper: Task List
 
 Paper: *Influence of Initial Stress Anisotropy on Liquefaction Resistance in Undrained Cyclic Torsional Shear: DEM Simulation of Hollow Cylinder Tests*
 
-Target: Soil Dynamics and Earthquake Engineering (Elsevier, CAS template)
+Target: Computers and Geotechnics (Elsevier, CAS template)
 
 Source: `thesis/04_1_anisotropic_consolidation_sim.md`
 
@@ -100,6 +100,6 @@ Source: `thesis/04_1_anisotropic_consolidation_sim.md`
 
 ## Reference
 
-- SDEE Guide for Authors: https://www.sciencedirect.com/journal/soil-dynamics-and-earthquake-engineering/publish/guide-for-authors
+- CG Guide for Authors: https://www.sciencedirect.com/journal/computers-and-geotechnics/publish/guide-for-authors
 - CAS template docs: `els-cas-templates/doc/`
 - Thesis source: `thesis/04_1_anisotropic_consolidation_sim.md`
