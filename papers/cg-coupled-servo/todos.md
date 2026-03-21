@@ -8,72 +8,98 @@ Source: `thesis/04_1_anisotropic_consolidation_sim.md`
 
 ---
 
-## Priority 1: Must Fix (Submission Blockers)
+## Round 2 Revision (Current)
 
-- [x] **Switch to CAS template (`cas-dc`)** ✓
-  - ✓ Replaced `elsarticle` document class with `cas-dc`
-  - ✓ Switched bibliography style to `cas-model2-names` (author-year with natbib)
-  - Note: citations are currently plain text — will convert to `\citep{}`/`\citet{}` when refs.bib is complete
-  - ✓ Adapted frontmatter to CAS format (`\shorttitle`, `\shortauthors`, `\cormark`, `\credit`, etc.)
-  - ✓ Integrated highlights into `\begin{highlights}` environment
-  - ✓ Copied `cas-dc.cls`, `cas-common.sty`, `cas-model2-names.bst` to paper root
-  - ✓ Removed duplicate `graphicx` (loaded by `cas-dc.cls`)
-  - ✓ Added `\printcredits` for CRediT statement
+### Completed
 
-- [x] **Complete refs.bib** ✓
-  - ✓ 25 complete bib entries (12 cited, 13 reserve)
-  - ✓ All placeholders replaced with full bibliographic info + DOI
-  - ✓ Nakata et al. (1998) verified and added to thesis refs too
+- [x] **Section 2.3 narrative restructure**
+  - Rewrote lab→DEM transition: lab paragraph introduces all 4 loading components ($p_i$, $p_o$, $p_z$, $T$) with symbols
+  - Added pore water pressure measurement context ("monitored by pressure transducers")
+  - Introduced effective pressures ($p_o'$, $p_i'$, $p_z'$) together with difference equations as foreshadowing
+  - DEM paragraph: constant-volume method → 4 DOF vs 4 conditions → difference equations resolve the mapping
+  - "Because $u$ drops out" narrative thread: introduction (b) → methodology §2.3 → consistent throughout
 
-- [x] **Write Abstract** ✓
-  - ✓ ~230 words covering objective, method, macro findings, micro interpretation, convergence
+- [x] **Servo coefficient notation update**
+  - $S_{cs}$ → $S_T$ (torsional, consistent with $e_T$)
+  - Introduced $S_{rr}$, $S_{rz}$, $S_{zr}$, $S_{zz}$ for coupled servo (diagonal = direct, off-diagonal = coupling)
+  - $S_{cr}$ → $S_{rr}$ (constant-height special case)
+  - Updated both main text and Appendix B
 
-- [x] **Add DEM parameter table** ✓
-  - ✓ Table 1 added to 02_methodology.tex with all 9 parameters from thesis Table 4-1
-  - ✓ Footnotes for friction coefficient change (IC vs AC/cyclic)
+- [x] **Torsional condition: unified error definition**
+  - Added $e_T = T - T^{tar}$ to match $e_r$, $e_z$ style
 
-- [x] **Fill in Author / Affiliation / Corresponding author** ✓
-  - ✓ Han (Kyoto U), Uzuoka (DPRI), Nakamura (MAEDA), Ueda (DPRI, corresponding)
-  - ✓ CRediT statements assigned per author
-  - Note: ORCID can be added later if needed
+- [x] **Torsional servo expression clarified**
+  - Stated explicitly that the torsional condition is solved independently because it does not enter the radial--axial kinematic constraints
+  - Defined the torsional update as $d\theta/dt = (e_T/\Delta t) S_T$
+  - Introduced the contact-stiffness-weighted rotational stiffness $I_{rot}$ and the coefficient relation $S_T = 1/I_{rot}$
+  - Kept the notation consistent between the main text, flowchart, and Appendix B
 
----
+- [x] **Removed uncoupled servo equations from Radial/Axial paragraphs**
+  - Conditions now define targets/errors only; servo equations appear after coupled derivation
 
-## Priority 2: Content Completeness
+- [x] **Moved prior-work comparison to end of §2.3**
+  - Han2024/Ma2024 comparison as concise closing paragraph, not interrupting derivation
 
-- [x] **Add HCA stress/strain equations as Appendix** ✓
-  - ✓ Created `sections/appendix_a.tex` with Table A.1 (9 rows: vertical, inner/outer pressure, circumferential, radial, shear, major/intermediate/minor principal)
-  - ✓ Added Hight (1983) citation for HCA equations derivation
-  - ✓ Updated methodology text to reference Appendix A instead of "omitted for brevity"
+- [x] **Cyclic loading protocol split**
+  - CSR definition removed (common knowledge)
+  - Liquefaction criteria moved to §3.1
+  - $u$ inference formula retained in §2.3
 
-- [x] **Add contact density definition** ✓
-  - ✓ Eq. ρc(θz, φcir) added to microscopic descriptors subsection with citation
+- [x] **Added servo flowchart (TikZ)**
+  - Fig. 5: 7-step timestep loop with cycle arrow
+  - Referenced after $u$ and $r_u$ definitions
 
-- [x] **Add fabric tensor definition** ✓
-  - ✓ Φij definition (Eq. 4) added before α definition, with Oda (1982) citations
+- [x] **Introduction (b) revised**
+  - "Individual effective pressures cannot serve as independent servo targets"
+  - "Because the pore water pressure drops out of any difference of effective pressures"
+  - Echoes methodology narrative
 
-- [x] **Supplement key numerical values in results** ✓
-  - ✓ Vs: initial and 28-cycle values for all three K0 states
-  - ✓ Zm0: 4.98 (K0=1.0), 4.89 (K0=0.5), 4.88 (K0=2.0)
-  - ✓ α0: +0.07 (K0=0.5), +0.02 (K0=1.0), -0.05 (K0=2.0)
+- [x] **Tightened the Introduction statement of the prior limitation**
+  - Clarified that the difficulty is not merely the number of variables, but the mismatch between laboratory boundary conditions and DEM-accessible quantities
+  - Stated that a naive formulation using four kinematic unknowns together with four effective-stress conditions plus the undrained condition is not a physically consistent closed system
 
-- [x] **Add Data Availability Statement** ✓
+- [x] **Clarified boundary-condition mapping and pore-pressure elimination**
+  - Stated explicitly that DEM provides effective stresses directly, not pore water pressure
+  - Emphasized that the individual effective stresses cannot be used directly as laboratory control inputs because each contains the unknown pore-pressure offset
+  - Highlighted that the pressure-difference relations eliminate $u$ and provide the valid independent equations needed for closure
 
-- [x] **Add Declaration of Competing Interests** ✓
+- [x] **Emphasized the rigorous coupled elastic/stiffness coefficient system**
+  - Presented the servo coefficients as analytically derived from the coupled elastic stiffness equations under the constant-volume constraint
+  - Contrasted the present formulation with the independent-control approximation used in earlier approaches
 
-- [ ] **Add Acknowledgements section**
-  - Funding sources, computational resources, etc.
+- [x] **Synchronized the Conclusions with the full servo formulation**
+  - Updated the methodology conclusion to include laboratory-to-DEM boundary-condition mapping, pressure-difference servo targets, the constant-volume coupling, and the analytically closed servo system
+  - Matched the conclusion wording to the revised derivation in Section 2.3
+
+- [x] **Conclusions optimized**
+  - Item 1: simplified, removed "in undrained cyclic shear"
+  - Item 4: "two" → "three" descriptors, explicitly named $\rho_c$
+
+- [x] **Figure widths adjusted for single-column**
+  - Figs 2, 8, 10, 11, 12 → 0.7\linewidth
+
+- [x] **Appendix B cleaned**
+  - Removed experiment-specific conditions
+  - $S_{cs}$ → $S_T$, $S_{cr}$ → $S_{rr}$
+
+- [x] **Uzuoka sensei Comment 1**: Citation format fixed (longnamesfirst removed)
+
+- [x] **Uzuoka sensei Comment 2**: HCA schematic and geometry definitions added
+  - Added schematic figure defining $r$, $R$, and $H$
+  - Clarified the four DEM kinematic degrees of freedom ($dr/dt$, $dR/dt$, $dH/dt$, $d\theta/dt$)
+  - Introduced the figure at the start of §2.3 and aligned the text with the lab-to-DEM mapping discussion
+
+- [x] **Responded to Ueda sensei comments**
+  - Added a confirmation note regarding the final corresponding-author arrangement in `responses/round2_ueda_sensei.md`
+
+- [x] **Responded to Uzuoka sensei comments**
+  - The Round 2 response file contains the two requested items (citation format and definition of $r$, $R$, and $H$), and no additional response items remain
+
+### TODO
 
 ---
 
 ## Priority 3: Quality & Polish
-
-- [x] **Formalize in-text citations** ✓
-  - ✓ All 12 plain-text citations replaced with `\citep{}`/`\citet{}` commands
-  - ✓ Zero undefined citation warnings
-
-- [x] **Numbered conclusions** ✓
-  - ✓ Reformatted to 5 numbered findings (enumerate environment)
 
 - [ ] **Review figure quality for submission**
   - Current figures are PNG/JPG; prefer vector PDF for line plots
@@ -83,18 +109,41 @@ Source: `thesis/04_1_anisotropic_consolidation_sim.md`
 
 - [ ] **Check self-plagiarism risk**
   - Run text similarity check between thesis and paper
-  - Ensure results/conclusions are independently worded even when conveying same findings
-  - Particular attention to Introduction and Conclusions sections
+  - Ensure results/conclusions are independently worded
 
 - [ ] **Proofread and language check**
   - Consistent terminology: "liquefaction resistance" vs "liquefaction strength"
   - Consistent notation: K0 always as \Kzero{} macro
-  - Check for orphaned cross-references after template switch
+  - Check for orphaned cross-references
 
 - [ ] **Prepare submission package**
-  - Flatten directory structure for Editorial Manager (use `papers/shared/scripts/flatten_for_em.sh`)
-  - Prepare separate files: highlights, cover letter, graphical abstract (if applicable)
-  - Verify compiled PDF matches all Elsevier formatting requirements
+  - Flatten directory structure for Editorial Manager
+  - Prepare separate files: highlights, cover letter, graphical abstract
+  - Verify compiled PDF matches Elsevier formatting requirements
+
+---
+
+## Completed (Round 1 & Initial)
+
+<details>
+<summary>Click to expand</summary>
+
+- [x] Switch to CAS template (cas-dc → cas-sc)
+- [x] Complete refs.bib (25 entries)
+- [x] Write Abstract (~230 words)
+- [x] Add DEM parameter table
+- [x] Fill in Author/Affiliation/Corresponding author
+- [x] Add HCA stress/strain equations as Appendix A
+- [x] Add contact density definition
+- [x] Add fabric tensor definition
+- [x] Supplement key numerical values in results
+- [x] Add Data Availability Statement
+- [x] Add Declaration of Competing Interests
+- [x] Add Acknowledgements section
+- [x] Formalize in-text citations
+- [x] Numbered conclusions
+
+</details>
 
 ---
 

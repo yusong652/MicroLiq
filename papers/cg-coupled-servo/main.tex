@@ -1,7 +1,7 @@
 \documentclass[a4paper,fleqn]{cas-sc}
 
 % Bibliography: author-year style for Computers and Geotechnics (CG)
-\usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage[authoryear]{natbib}
 
 % Core math and symbols
 \usepackage{amsmath,amssymb,mathtools}
@@ -13,6 +13,10 @@
 \usepackage{multirow}
 \usepackage{siunitx}
 \usepackage{xcolor}
+
+% Flowcharts
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
 
 % Cross-references (must load after hyperref, which cas-dc loads internally)
 \usepackage[capitalize,nameinlink,noabbrev]{cleveref}
@@ -62,18 +66,18 @@
 
 % ---------- Authors ----------
 \author[1]{Yusong Han}
+\cormark[1]
+\ead{han.yusong.25z@st.kyoto-u.ac.jp}
 \credit{Conceptualization, Methodology, Software, Visualization, Writing -- Original draft}
 
 \author[2]{Ryosuke Uzuoka}
-\credit{Supervision, Writing -- Review \& Editing}
+\credit{Supervision, Writing -- Review \& Editing, Funding acquisition}
 
 \author[3]{Manta Nakamura}
-\credit{Writing -- Review \& Editing}
+\credit{Methodology, Software}
 
 \author[2]{Kyohei Ueda}
-\cormark[1]
-\ead{ueda.kyohei.2v@kyoto-u.ac.jp}
-\credit{Supervision, Writing -- Review \& Editing}
+\credit{Supervision, Writing -- Review \& Editing, Funding acquisition}
 
 \affiliation[1]{organization={Graduate School of Engineering, Kyoto University},
             addressline={Gokasho},
@@ -97,7 +101,7 @@
 
 % ---------- Abstract ----------
 \begin{abstract}
-The influence of initial stress anisotropy on liquefaction resistance was investigated using three-dimensional discrete element method (DEM) simulations of undrained cyclic torsional shear in hollow cylindrical specimens. A coupled analytical servo mechanism was developed in which the servo coefficients are derived from a volume-constrained stiffness matrix that accounts for the cross-coupling between radial and axial wall movements, enabling direct reproduction of laboratory hollow cylinder apparatus (HCA) boundary conditions. The investigation proceeded in two stages. First, specimens at a dense state were consolidated to a mean effective stress of 100~kPa at three representative lateral-to-vertical effective stress ratios (\Kzero{} = 0.5, 1.0, and 2.0) and subjected to cyclic loading across multiple cyclic stress ratios. The results show that liquefaction resistance exhibits a clear directional dependency: compression-state specimens (\Kzero{} = 0.5) require the most loading cycles to liquefy, isotropic specimens (\Kzero{} = 1.0) show intermediate resistance, and extension-state specimens (\Kzero{} = 2.0) liquefy fastest. Macroscopic analysis reveals that this ordering is governed by differences in stiffness degradation rate rather than the total cumulative shear work at liquefaction. Second, the simulation matrix was expanded to two relative densities and five \Kzero{} values (0.5, 0.67, 1.0, 1.5, and 2.0), yielding ten cases to separate the respective roles of relative density and stress anisotropy. Microscopic analysis demonstrates that, while the mechanical coordination number primarily reflects packing compactness, the signed fabric anisotropy indicator correlates more directly with the variation in liquefaction resistance among different \Kzero{} states. Decomposition of the fabric tensor in the cylindrical coordinate system shows that contacts whose normals lie on the $z$--$\theta$ plane (the plane on which the torsional shear stress acts) directly resist torsional shear, and compression-state consolidation concentrates a larger fraction of contacts onto this plane. Contact-density distributions and force-chain visualizations further show that initially distinct fabric morphologies progressively converge toward a common dynamic equilibrium in the post-liquefaction stage, regardless of the initial stress anisotropy.
+The influence of initial stress anisotropy on liquefaction resistance was investigated using three-dimensional discrete element method (DEM) simulations of undrained cyclic torsional shear in hollow cylindrical specimens. A coupled analytical servo mechanism was developed in which the servo coefficients are derived from a volume-constrained stiffness matrix that accounts for the cross-coupling between radial and axial wall movements, enabling direct reproduction of laboratory hollow cylinder apparatus (HCA) boundary conditions. The investigation proceeded in two stages. First, specimens at a dense state were consolidated to a mean effective stress of 100~kPa at three representative lateral-to-vertical effective stress ratios (\Kzero{} = 0.5, 1.0, and 2.0) and subjected to cyclic loading across multiple cyclic stress ratios. The results show that liquefaction resistance exhibits a clear directional dependency: compression-state specimens (\Kzero{} = 0.5) require the most loading cycles to liquefy, isotropic specimens (\Kzero{} = 1.0) show intermediate resistance, and extension-state specimens (\Kzero{} = 2.0) liquefy fastest. Macroscopic analysis reveals that the three \Kzero{} states exhibit distinct shear-wave velocity degradation trajectories, with the compression-state specimen maintaining higher stiffness for longer, which explains the observed resistance ordering. Second, the investigation was expanded to combinations of two relative densities and five \Kzero{} values (0.5, 0.67, 1.0, 1.5, and 2.0), yielding ten cases to separate the respective roles of relative density and stress anisotropy. Microscopic analysis demonstrates that, while the mechanical coordination number primarily reflects packing compactness, the signed fabric anisotropy indicator correlates more directly with the variation in liquefaction resistance among different \Kzero{} states. Decomposition of the fabric tensor in the cylindrical coordinate system shows that contacts whose normals lie on the $z$--$\theta$ plane (the plane on which the torsional shear stress acts) directly resist torsional shear, and compression-state consolidation concentrates a larger fraction of contacts onto this plane. Contact-density distributions and force-chain visualizations further show that initially distinct fabric morphologies progressively converge toward a common dynamic equilibrium in the post-liquefaction stage, regardless of the initial stress anisotropy.
 \end{abstract}
 
 % ---------- Highlights (rendered as a separate page-0 by CAS template) ----------
@@ -106,7 +110,7 @@ The influence of initial stress anisotropy on liquefaction resistance was invest
 \begin{highlights}
 \item Coupled servo coefficients derived from volume-constrained stiffness matrix reproducing laboratory HCA boundary conditions in DEM
 \item Liquefaction resistance decreases monotonically from compression-state to extension-state \Kzero{} anisotropy
-\item Stiffness degradation rate, not cumulative shear work, governs resistance ordering among \Kzero{} states
+\item Distinct shear-wave velocity degradation trajectories explain the resistance ordering among \Kzero{} states
 \item Fabric tensor decomposition shows contacts on the $z$--$\theta$ shear plane resist torsional liquefaction
 \item Initially distinct fabric morphologies converge toward a common dynamic equilibrium post-liquefaction
 \end{highlights}
@@ -133,8 +137,9 @@ in this paper.
 \section*{Data availability}
 Data will be made available on request.
 
-% \section*{Acknowledgements}
-% TODO: Funding sources, computational resources, etc.
+\section*{Acknowledgements}
+The first author acknowledges the financial support provided by the Japan Science and Technology Agency (JST) SPRING program (Grant Number JPMJSP2110). The computational results presented in this work were partially obtained using the supercomputing resources at the Academic Center for Computing and Media Studies (ACCMS), Kyoto University. 
+
 
 % CRediT author statement
 \printcredits

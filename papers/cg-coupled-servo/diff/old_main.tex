@@ -1,0 +1,151 @@
+\documentclass[a4paper,fleqn]{cas-sc}
+
+% Bibliography: author-year style for Computers and Geotechnics (CG)
+\usepackage[authoryear,longnamesfirst]{natbib}
+
+% Core math and symbols
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+
+% Figures and tables (graphicx and hyperref already loaded by cas-dc)
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{xcolor}
+
+% Cross-references (must load after hyperref, which cas-dc loads internally)
+\usepackage[capitalize,nameinlink,noabbrev]{cleveref}
+
+% Optional review line numbers (uncomment for internal review)
+\usepackage{lineno}
+\linenumbers
+
+% ---------- Project macros ----------
+\newcommand{\Kzero}{\ensuremath{K_0}}
+\newcommand{\Zm}{\ensuremath{Z_m}}
+\newcommand{\Vs}{\ensuremath{V_s}}
+\newcommand{\ru}{\ensuremath{r_u}}
+\newcommand{\pmean}{\ensuremath{p^\prime}}
+\newcommand{\safeincludegraphics}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \IfFileExists{figures/#2}{%
+      \includegraphics[#1]{#2}%
+    }{%
+      \fcolorbox{gray}{white}{%
+        \begin{minipage}[c][0.22\textheight][c]{0.95\linewidth}
+          \centering
+          \textbf{Missing figure}\\
+          \texttt{\detokenize{#2}}
+        \end{minipage}
+      }%
+    }%
+  }%
+}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+% Short running headers
+\shorttitle{Stress anisotropy effects on liquefaction resistance: DEM-HCA study}
+\shortauthors{Y.~Han et~al.}
+
+% ---------- Title ----------
+\title[mode=title]{Influence of Initial Stress Anisotropy on Liquefaction Resistance
+  in Undrained Cyclic Torsional Shear: DEM Simulation of Hollow Cylinder Tests}
+
+% ---------- Authors ----------
+\author[1]{Yusong Han}
+\credit{Conceptualization, Methodology, Software, Visualization, Writing -- Original draft}
+
+\author[2]{Ryosuke Uzuoka}
+\credit{Supervision, Writing -- Review \& Editing}
+
+\author[3]{Manta Nakamura}
+\credit{Writing -- Review \& Editing}
+
+\author[2]{Kyohei Ueda}
+\cormark[1]
+\ead{ueda.kyohei.2v@kyoto-u.ac.jp}
+\credit{Supervision, Writing -- Review \& Editing}
+
+\affiliation[1]{organization={Graduate School of Engineering, Kyoto University},
+            addressline={Gokasho},
+            city={Uji, Kyoto},
+            postcode={611-0011},
+            country={Japan}}
+
+\affiliation[2]{organization={Disaster Prevention Research Institute, Kyoto University},
+            addressline={Gokasho},
+            city={Uji, Kyoto},
+            postcode={611-0011},
+            country={Japan}}
+
+\affiliation[3]{organization={MAEDA Corporation},
+            addressline={Fujimi, Chiyoda-ku},
+            city={Tokyo},
+            postcode={102-8151},
+            country={Japan}}
+
+\cortext[cor1]{Corresponding author}
+
+% ---------- Abstract ----------
+\begin{abstract}
+The influence of initial stress anisotropy on liquefaction resistance was investigated using three-dimensional discrete element method (DEM) simulations of undrained cyclic torsional shear in hollow cylindrical specimens. A coupled analytical servo mechanism was developed in which the servo coefficients are derived from a volume-constrained stiffness matrix that accounts for the cross-coupling between radial and axial wall movements, enabling direct reproduction of laboratory hollow cylinder apparatus (HCA) boundary conditions. The investigation proceeded in two stages. First, specimens at a dense state were consolidated to a mean effective stress of 100~kPa at three representative lateral-to-vertical effective stress ratios (\Kzero{} = 0.5, 1.0, and 2.0) and subjected to cyclic loading across multiple cyclic stress ratios. The results show that liquefaction resistance exhibits a clear directional dependency: compression-state specimens (\Kzero{} = 0.5) require the most loading cycles to liquefy, isotropic specimens (\Kzero{} = 1.0) show intermediate resistance, and extension-state specimens (\Kzero{} = 2.0) liquefy fastest. Macroscopic analysis reveals that this ordering is governed by differences in stiffness degradation rate rather than the total cumulative shear work at liquefaction. Second, the simulation matrix was expanded to two relative densities and five \Kzero{} values (0.5, 0.67, 1.0, 1.5, and 2.0), yielding ten cases to separate the respective roles of relative density and stress anisotropy. Microscopic analysis demonstrates that, while the mechanical coordination number primarily reflects packing compactness, the signed fabric anisotropy indicator correlates more directly with the variation in liquefaction resistance among different \Kzero{} states. Decomposition of the fabric tensor in the cylindrical coordinate system shows that contacts whose normals lie on the $z$--$\theta$ plane (the plane on which the torsional shear stress acts) directly resist torsional shear, and compression-state consolidation concentrates a larger fraction of contacts onto this plane. Contact-density distributions and force-chain visualizations further show that initially distinct fabric morphologies progressively converge toward a common dynamic equilibrium in the post-liquefaction stage, regardless of the initial stress anisotropy.
+\end{abstract}
+
+% ---------- Highlights (rendered as a separate page-0 by CAS template) ----------
+% Highlights are provided in highlights.txt for journal submission;
+% uncomment the block below to render highlights in the compiled PDF.
+\begin{highlights}
+\item Coupled servo coefficients derived from volume-constrained stiffness matrix reproducing laboratory HCA boundary conditions in DEM
+\item Liquefaction resistance decreases monotonically from compression-state to extension-state \Kzero{} anisotropy
+\item Stiffness degradation rate, not cumulative shear work, governs resistance ordering among \Kzero{} states
+\item Fabric tensor decomposition shows contacts on the $z$--$\theta$ shear plane resist torsional liquefaction
+\item Initially distinct fabric morphologies converge toward a common dynamic equilibrium post-liquefaction
+\end{highlights}
+
+% ---------- Keywords ----------
+\begin{keywords}
+Liquefaction resistance \sep Stress anisotropy \sep Hollow cylinder apparatus \sep
+Discrete element method \sep Fabric anisotropy
+\end{keywords}
+
+\maketitle
+
+% ---------------- Main text ----------------
+\input{sections/01_introduction}
+\input{sections/02_methodology}
+\input{sections/03_results_discussion}
+\input{sections/04_conclusions}
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or
+personal relationships that could have appeared to influence the work reported
+in this paper.
+
+\section*{Data availability}
+Data will be made available on request.
+
+% \section*{Acknowledgements}
+% TODO: Funding sources, computational resources, etc.
+
+% CRediT author statement
+\printcredits
+
+\appendix
+\input{sections/appendix_a}
+\input{sections/appendix_b}
+\input{sections/appendix_c}
+
+% ---------- Bibliography ----------
+\bibliographystyle{cas-model2-names}
+\bibliography{refs}
+
+\end{document}

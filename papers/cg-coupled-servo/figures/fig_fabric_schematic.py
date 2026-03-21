@@ -214,7 +214,7 @@ ax1.set_ylim(0.0, 0.85)
 ax1.set_zlim(0.42, 1.32)
 ax1.set_axis_off()
 ax1.view_init(elev=30, azim=-0)
-ax1.set_title('(a)', fontsize=10, loc='left', pad=-12)
+ax1.set_title('(a)', fontsize=8, loc='left', pad=-12)
 
 # ═══════════════════════════════════════════════════════════════
 # Panel (b): Zoomed bar chart of 1 - Φ_rr (resisting fraction)
@@ -251,12 +251,13 @@ ax2.yaxis.set_major_formatter(plt.FuncFormatter(
 
 ax2.set_xticks(x)
 ax2.set_xticklabels([f'{k0:.2g}' for k0 in K0_vals])
-ax2.set_xlabel(r'$K_0$')
-ax2.set_ylabel(r'Torsion-resisting fraction $1 - \Phi_{rr}$')
+ax2.set_xlabel(r'$K_0$', fontsize=8)
+ax2.set_ylabel(r'Torsion-resisting fraction $1 - \Phi_{rr}$', fontsize=8)
+ax2.tick_params(axis='both', labelsize=7)
 ax2.set_ylim(0.650, 0.670)
-ax2.legend(loc='upper right', fontsize=7.5, framealpha=0.9)
-ax2.set_title('(b)', fontsize=10, loc='left')
+ax2.legend(loc='upper right', fontsize=7, framealpha=0.9)
+ax2.set_title('(b)', fontsize=8, loc='left')
 plt.savefig('/Users/hanyusong/thesis/MicroLiq/papers/cg-coupled-servo/figures/fabric_mechanism_schematic.png',
-            dpi=300, bbox_inches='tight', facecolor='white')
+            dpi=600, bbox_inches='tight', facecolor='white')
 print("Saved to figures/fabric_mechanism_schematic.png")
 plt.show()

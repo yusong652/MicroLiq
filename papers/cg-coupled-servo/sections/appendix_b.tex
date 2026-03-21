@@ -1,7 +1,7 @@
 \section{Derivation of servo coefficients}
 \label{sec:appendix_servo}
 
-This appendix derives the servo coefficients used in the combined servo mechanism. The torsional servo coefficient $S_{cs}$ is independent of the other conditions and has been defined in \cref{eq:irot_scs}. Below, the radial and axial servo coefficients are derived by considering the volume-coupling effect.
+This appendix derives the servo coefficients used in the combined servo mechanism. The torsional servo coefficient $S_T$ is independent of the other conditions and has been defined in \cref{eq:irot_scs}. Below, the radial and axial servo coefficients are derived by considering the volume-coupling effect.
 
 From the constant-volume constraint (\cref{eq:const_volume_constraint}), the outer radius rate is determined by:
 \begin{equation}
@@ -82,10 +82,10 @@ The servo must apply wall movements that eliminate the current pressure errors $
 \end{align}
 where $e_r=p_{dif,r}^{\prime}-p_{dif,r}^{tar}$ and $e_z=p_{dif,z}^{\prime}-p_{dif,z}^{tar}$ are the pressure errors defined in \cref{eq:cond1_radial,eq:cond2_axial}.
 
-Under the constant-height condition ($dH/dt=0$) adopted for all cyclic shear simulations in this study, the axial pressure difference $p_{dif,z}^{\prime}$ is not actively controlled, and only the radial condition remains. Setting $dH=0$ in \cref{eq:stiffness_matrix}, the radial servo coefficient reduces to:
+Under the constant-height condition ($dH/dt=0$), the axial pressure difference $p_{dif,z}^{\prime}$ is not actively controlled, and only the radial condition remains. Setting $dH=0$ in \cref{eq:stiffness_matrix}, the radial servo coefficient reduces to:
 \begin{equation}
-S_{cr} = -\frac{1}{\hat{K}_{11}} = \frac{1}{\dfrac{K_{r,i}}{A_i}+\dfrac{r}{R}\,\dfrac{K_{r,o}}{A_o}}.
-\label{eq:Scr_constantH}
+S_{rr} = -\frac{1}{\hat{K}_{11}} = \frac{1}{\dfrac{K_{r,i}}{A_i}+\dfrac{r}{R}\,\dfrac{K_{r,o}}{A_o}}.
+\label{eq:Srr_constantH}
 \end{equation}
 
-For the general case ($dH/dt\neq 0$), such as the monotonic shear calibration in \cref{subsec:calibration_validation}, the fully coupled servo equations (\cref{eq:dr_general,eq:dH_general}) are applied at each timestep. In practice, a relaxation factor less than unity is applied to the servo coefficients to ensure numerical stability and suppress oscillation.
+For the general case ($dH/dt\neq 0$), the fully coupled servo equations (\cref{eq:dr_general,eq:dH_general}) are applied at each timestep.
