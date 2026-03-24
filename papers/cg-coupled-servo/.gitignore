@@ -16,7 +16,4 @@ submission/
 *.xdv
 *.abs
 *.pdf
-!figures/*.pdf
-!figures/*.png
-!figures/*.jpg
 els-cas-templates*/
