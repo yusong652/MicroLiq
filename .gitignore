@@ -17,6 +17,9 @@ __pycache__/
 .toyoura-nagisa
 .mcp.json
 
+# Personal / private
+career/
+
 # Temporary files
 *.tmp
 *.temp
@@ -43,7 +46,11 @@ __pycache__/
 *.mp4
 *.docx
 
+# Paper figure PDFs (generated, not source)
+papers/*/figures/*.pdf
+
 # Build outputs
+papers/*/build/
 pdf_outputs/
 
 # Data files
