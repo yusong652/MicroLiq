@@ -24,6 +24,8 @@ career/
 *.tmp
 *.temp
 *~
+shell_state.json
+texput.log
 
 # Word lock files
 ~$*
