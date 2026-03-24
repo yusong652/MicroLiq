@@ -83,7 +83,7 @@ legend1 = ax1.legend(title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=
 	loc=(-0.0, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
 ax1.set_ylabel(r'$Fabric\ anisotropy\ indicator\ \alpha$', fontsize=FS_LABEL)
-ax1.set_xlabel(r'$Normalized\ number\ of\ cycles\ N_c/N_L$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Normalized\ number\ of\ cycles\ N/N_L$', fontsize=FS_LABEL)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)

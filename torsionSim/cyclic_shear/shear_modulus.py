@@ -153,7 +153,7 @@ ax2.set_ylabel(r'$\tau_{z\theta}\ (kPa)$', fontsize=FS_INSET, labelpad=-14)
 ax2.set_xlim(-0.15, 0.15)
 ax2.set_ylim(-25, 25)
 ax2.tick_params(axis='both', which='major', labelsize=FS_INSET)
-ax2.set_title(r'$K_0=1.0,\ N_c=25$', fontsize=FS_INSET)
+ax2.set_title(r'$K_0=1.0,\ N=25$', fontsize=FS_INSET)
 
 # main axes settings
 legend1 = ax1.legend(
@@ -163,7 +163,7 @@ legend1 = ax1.legend(
 	loc=(-0.0, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
 ax1.set_ylabel(r'$Shear\ wave\ velocity\ V_s\ (m/s)$', fontsize=FS_LABEL)
-ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_c$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N$', fontsize=FS_LABEL)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)

@@ -19,12 +19,11 @@ EXTRA_STYLE = {
 	1.5: ('^', 'tab:purple'),
 }
 
-fig1 = plt.figure(figsize=(6.0,4))
+fig1 = plt.figure(figsize=(7.0, 4.5))
 ax1 = plt.gca()
 FS_LABEL = 15
 FS_TICK = 14
 FS_LEGEND = 13
-FS_INSET = 9
 MARKER_SIZE = 100
 
 def get_n_liq(k0, csr):
@@ -108,7 +107,7 @@ ax1.set_xticklabels(['5', '10', '20', '40', '80'])
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 
 # Inset: expanded K0 set at CSR = 0.300
-axins = ax1.inset_axes([0.08, 0.10, 0.36, 0.28])
+axins = ax1.inset_axes([0.12, 0.14, 0.26, 0.32])
 k0_to_style = {k0: (marker, color) for k0, marker, color in zip(k0s, markers, colors)}
 k0_to_style.update(EXTRA_STYLE)
 inset_x = []
@@ -122,23 +121,25 @@ for k0 in K0_INSET:
 	if k0 in k0_to_style:
 		marker, color = k0_to_style[k0]
 		axins.scatter(k0, n_liq, marker=marker, facecolors='None', edgecolors=color,
-					  s=34, linewidths=1.1, zorder=3)
+					  s=70, linewidths=1.3, zorder=3)
 	else:
-		axins.scatter(k0, n_liq, marker='o', color='0.35', s=18, zorder=3)
+		axins.scatter(k0, n_liq, marker='o', color='0.35', s=40, zorder=3)
 if len(inset_x) > 1:
 	order = np.argsort(np.array(inset_x))
 	axins.plot(np.array(inset_x)[order], np.array(inset_y)[order], color='0.65',
 			   lw=0.8, ls='--', zorder=1)
-axins.set_title(r'CSR = 0.300', fontsize=FS_INSET, pad=2)
-axins.set_xlabel(r'$K_0$', fontsize=FS_INSET, labelpad=1)
-axins.set_ylabel(r'$N_L$', fontsize=FS_INSET, labelpad=1)
-axins.tick_params(axis='both', which='major', labelsize=FS_INSET-1, pad=1)
+axins.set_title(r'CSR = 0.300', fontsize=FS_LABEL, pad=3)
+axins.set_xlabel(r'$K_0$', fontsize=FS_LABEL, labelpad=2)
+axins.set_ylabel(r'$N_L$', fontsize=FS_LABEL, labelpad=2)
+axins.tick_params(axis='both', which='major', labelsize=FS_TICK, pad=2)
 axins.grid(axis='both', which='major', color='0.8', linestyle='--', lw=0.25, alpha=0.7)
-axins.set_xlim((0.40, 2.10))
+axins.set_xlim((0.30, 2.20))
+axins.set_xticks([0.5, 1.0, 1.5, 2.0])
 if inset_y:
-	ymin = max(1.0, min(inset_y) * 0.85)
-	ymax = max(inset_y) * 1.10
+	ymin = max(1.0, min(inset_y) * 0.80)
+	ymax = max(inset_y) * 1.15
 	axins.set_ylim((ymin, ymax))
+	axins.set_yticks([8, 10, 12])
 
 plt.tight_layout()
 plt.savefig(BASE_DIR / "liq_res_cur.png", dpi=700)

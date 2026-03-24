@@ -6,9 +6,7 @@ from matplotlib.lines import Line2D
 
 fig1 = plt.figure(figsize=(6, 5.0))
 ax1 = plt.gca()
-FS_LABEL = 17
-FS_TICK = 16
-FS_LEGEND = 14
+FS = 14
 LW_MAIN = 1.6
 xmajorFormatter = FormatStrFormatter('%.1f')
 ymajorFormatter = FormatStrFormatter('%.1f')
@@ -18,7 +16,7 @@ ax1.grid(axis='both', which='major', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
 ax1.grid(axis='y', which='minor', color='grey', linestyle='--',
 	lw=0.35, alpha=0.8)
-ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
+ax1.tick_params(axis='both', which='major', labelsize=FS)
 
 # Anisotropic state scatter
 k0s = [0.5, 1.0, 2.0]
@@ -91,13 +89,13 @@ for k0, m, c in zip(k0s, markers, colors):
 
 legend1 = ax1.legend(
 	legend_handles, legend_labels,
-	fontsize=FS_LEGEND, framealpha=0.2, ncol=4,
+	fontsize=FS, framealpha=0.2, ncol=4,
 	borderpad=0.3, columnspacing=0.5, handletextpad=0.3,
-	loc='upper center', bbox_to_anchor=(0.5, 1.12))
+	loc='upper left', bbox_to_anchor=(0.0, 1.10))
 
 xlabel = ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$',
-	fontsize=FS_LABEL)
-ylabel = ax1.set_ylabel(r'$Deviator\ stress\ q\ (kPa)$', fontsize=FS_LABEL)
+	fontsize=FS)
+ylabel = ax1.set_ylabel(r'$Deviator\ stress\ q\ (kPa)$', fontsize=FS)
 ax1.set_ylim(-100, 100)
 ax1.set_xlim(0.0, 110)
 

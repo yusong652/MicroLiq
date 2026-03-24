@@ -3,8 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pylab import style as st
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
-from mpl_toolkits.axes_grid1.inset_locator import (inset_axes, InsetPosition,
-                                                  mark_inset)
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -21,13 +20,9 @@ FS_LEGEND = 14
 FS_INSET = 12
 fig1 = plt.figure(figsize=(6.0, 5.0))
 ax1 = plt.gca()
-ax2 = plt.axes([0,1,0,1])
+ax2 = ax1.inset_axes([0.15, 0.15, 0.35, 0.35])
 ax2.set_ylim(20, 100)
 ax2.set_xlim(4.7, 5.3)
-
-# Manually set the position and relative size of the inset axes within ax1
-ip = InsetPosition(ax1, [0.18,0.18,0.3,0.3])
-ax2.set_axes_locator(ip)
 ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
@@ -96,7 +91,7 @@ legend1 = ax1.legend(title=r'$Initial\ K_0\ in\ cyclic\ shear$', title_fontsize=
 	loc=(-0.0, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
 ax1.set_ylabel(r'$Coordination\ number\ Z_{m}$', fontsize=FS_LABEL)
-ax1.set_xlabel(r'$Normalized\ number\ of\ cyclic\ loading\ N_c/N_L$', 
+ax1.set_xlabel(r'$Normalized\ number\ of\ cyclic\ loading\ N/N_L$', 
 	fontsize=FS_LABEL)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.set_xlim(0, 1.05)

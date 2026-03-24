@@ -57,7 +57,7 @@ legend1 = ax1.legend(
 	loc=(-0.00, 1.02), handletextpad=0.1)
 legend1._legend_box.align = "left"
 ax1.set_ylabel(r'$EPWP\ ratio\ r_u$', fontsize=FS_LABEL)
-ax1.set_xlabel(r'$Normalized\ number\ of\ cyclic\ loading\ N_c/N_L$',
+ax1.set_xlabel(r'$Normalized\ number\ of\ cyclic\ loading\ N/N_L$',
 	fontsize=FS_LABEL)
 ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
 ax1.grid(axis='both', which='major', color='grey', linestyle='--',

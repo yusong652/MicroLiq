@@ -65,7 +65,7 @@ ax1.grid(axis='both',which='major',color='grey',linestyle='--',
 ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 ax1.set_ylabel(r'$EPWP\ ratio\ r_u$', fontsize=FS_LABEL)
-ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N_{c}$', fontsize=FS_LABEL)
+ax1.set_xlabel(r'$Number\ of\ cyclic\ loading\ N$', fontsize=FS_LABEL)
 legend1 = ax1.legend(
 	title=r'$EPWP\ ratio\ r_u$', title_fontsize=FS_LEGEND,
 	fontsize=FS_LEGEND, ncol=1, framealpha=0.2, columnspacing=0.05, 

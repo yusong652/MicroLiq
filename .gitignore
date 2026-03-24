@@ -41,10 +41,15 @@ career/
 !site/assets/*.png
 !site/assets/*.jpg
 
-# Large media (managed by Git LFS)
+# Large media
 *.gif
 *.mp4
 *.docx
+*.blend
+*.blend1
+
+# Blender working directories (large renders and data)
+*/blender-work/
 
 # Paper figure PDFs (generated, not source)
 papers/*/figures/*.pdf

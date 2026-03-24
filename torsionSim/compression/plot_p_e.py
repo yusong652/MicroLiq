@@ -9,10 +9,7 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 # st.use("seaborn-deep")
 fig1 = plt.figure(figsize=(6,5.0))
 ax1 = plt.gca()
-FS_LABEL = 17
-FS_TICK = 16
-FS_LEGEND = 16
-FS_INSET = 14
+FS = 14
 LW_MAIN = 1.6
 xmajorFormatter = FormatStrFormatter('%.1f')
 ymajorFormatter = FormatStrFormatter('%.3f')
@@ -27,7 +24,7 @@ ax1.grid(axis='y',which='minor',color='grey',linestyle='--',
 	lw=0.35,alpha=0.8)
 # Manually set the position and relative size of the inset axes within ax1
 # [left, bottom, width, height] in axes coordinates (0-1)
-ax2 = ax1.inset_axes([0.5, 0.52, 0.4, 0.4])
+ax2 = ax1.inset_axes([0.5, 0.55, 0.4, 0.35])
 
 # Anisotropic state scatter
 k0s = [0.5, 1.0, 2.0]
@@ -65,9 +62,9 @@ for k0, marker, color in zip(k0s, markers, colors):
 # legends_plt=[r"$Isotropic\ consolidation$", ]
 
 xlabel = ax1.set_xlabel(r'$Mean\ effective\ stress\ p\prime\ (kPa)$',
- fontsize=FS_LABEL)
-ylabel = ax1.set_ylabel(r'$Void\ ratio\ e$', fontsize=FS_LABEL)
-ax1.tick_params(axis='both', which='major', labelsize=FS_TICK)
+ fontsize=FS)
+ylabel = ax1.set_ylabel(r'$Void\ ratio\ e$', fontsize=FS)
+ax1.tick_params(axis='both', which='major', labelsize=FS)
 ax1.tick_params(axis='both', which='minor', labelsize=3)
 ax1.set_ylim(0.730, 0.74)
 ax1.set_xlim(10.0, 110)
@@ -88,19 +85,19 @@ def set_ax2_format():
 
 
 	ax2.set_xticklabels(ticklabels)
-	ax2.set_xlabel(r'$K_0$', fontsize=FS_INSET)
-	ax2.set_ylabel(r'$e\ after\ AC$', fontsize=FS_INSET)
-	ax2.tick_params(axis='both', which='major', labelsize=FS_INSET)
+	ax2.set_xlabel(r'$K_0$', fontsize=FS)
+	ax2.set_ylabel(r'$e\ after\ AC$', fontsize=FS)
+	ax2.tick_params(axis='both', which='major', labelsize=FS)
 	ax2.tick_params(axis='x', which='minor', labelsize=0)  # 保留x轴小刻度但不显示标签
 
 set_ax2_format()
 
 legend1 = ax1.legend(
-	fontsize=FS_LEGEND, framealpha=0.2, ncol=4,
+	fontsize=FS, framealpha=0.2, ncol=4,
 	borderpad=0.3, columnspacing=0.5, handletextpad=0.3,
-	loc='upper center', bbox_to_anchor=(0.5, 1.10))
+	loc='upper left', bbox_to_anchor=(0.0, 1.10))
 ax1.add_artist(legend1)
-plt.tight_layout()
+plt.tight_layout(rect=(0, 0, 1, 0.92))
 plt.savefig("stress_void.png", dpi=500, bbox_inches="tight", pad_inches=0.05,
 	bbox_extra_artists=(legend1,))
 plt.show()
