@@ -1,4 +1,4 @@
-\documentclass[a4paper,fleqn]{cas-dc}
+\documentclass[a4paper,fleqn]{cas-sc}
 
 % Bibliography: author-year style
 \usepackage[authoryear,longnamesfirst]{natbib}
@@ -52,22 +52,21 @@
 \def\textpagefraction{.001}
 
 % Short running headers
-\shorttitle{Double-8 loading method for multidirectional liquefaction: DEM study}
+\shorttitle{Shear stress directionality effects on liquefaction: DEM study}
 \shortauthors{Y.~Han et~al.}
 
 % ---------- Title ----------
-\title[mode=title]{A Double-8 Loading Method for Isolating the Effect of
-  Shear Stress Directionality on Liquefaction Resistance: DEM Simple Shear Simulations}
+\title[mode=title]{Isolating the Effect of Shear Stress Directionality on
+  Liquefaction Resistance through Controlled Multidirectional DEM Simulations}
 
 % ---------- Authors ----------
 \author[1]{Yusong Han}
+\ead{han.yusong.53f@st.kyoto-u.ac.jp}
 \credit{Conceptualization, Methodology, Software, Visualization, Writing -- Original draft}
 
 \author[2]{Ryosuke Uzuoka}
+\ead{uzuoka.ryosuke.6z@kyoto-u.ac.jp}
 \credit{Supervision, Writing -- Review \& Editing}
-
-\author[3]{Manta Nakamura}
-\credit{Writing -- Review \& Editing}
 
 \author[2]{Kyohei Ueda}
 \cormark[1]
@@ -86,17 +85,11 @@
             postcode={611-0011},
             country={Japan}}
 
-\affiliation[3]{organization={MAEDA Corporation},
-            addressline={Fujimi, Chiyoda-ku},
-            city={Tokyo},
-            postcode={102-8151},
-            country={Japan}}
-
 \cortext[cor1]{Corresponding author}
 
 % ---------- Abstract ----------
 \begin{abstract}
-TODO: Write abstract.
+Earthquakes impose multidirectional cyclic shear on soil, yet liquefaction assessment relies predominantly on unidirectional testing. Previous comparisons between unidirectional and multidirectional loading paths are complicated by confounding factors---unequal instantaneous stress magnitudes, different rates of stress change, and differences in whether the effective stress can reach zero. This study proposes a systematic loading path design that progressively eliminates these confounders, isolating shear stress directionality as the sole variable. Three loading types are compared through constant-volume discrete element method (DEM) simulations: (i)~a single-8 (figure-8) multidirectional path, (ii)~an equivalent-magnitude unidirectional path whose instantaneous resultant stress matches the single-8 path at every moment, and (iii)~a double-8 path that further matches the rate of stress change by swapping the orthogonal components in alternating cycles. Results show that liquefaction resistance follows the ordering unidirectional $>$ single-8 $>$ double-8 across all cyclic stress ratios examined, confirming that shear stress directionality alone significantly reduces the number of cycles to liquefaction. The total cumulative shear work at liquefaction is approximately equal for all three paths, indicating that directionality affects the efficiency of energy conversion to excess pore pressure rather than the energy threshold itself. Microscopic analyses reveal that directional changes accelerate the degradation of the mechanical coordination number and promote stronger fabric anisotropy development, with the double-8 path producing the fastest contact network destruction due to repeated disruption and realignment of the fabric. These findings demonstrate that conventional unidirectional testing may substantially underestimate the liquefaction susceptibility of soils under real earthquake loading.
 \end{abstract}
 
 % ---------- Highlights ----------
@@ -106,7 +99,7 @@ TODO: Write abstract.
 
 % ---------- Keywords ----------
 \begin{keywords}
-Liquefaction resistance \sep Multidirectional shear \sep Double-8 loading \sep
+Liquefaction resistance \sep Multidirectional shear \sep
 Discrete element method \sep Fabric anisotropy
 \end{keywords}
 

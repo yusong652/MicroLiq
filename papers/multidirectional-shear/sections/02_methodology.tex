@@ -4,48 +4,170 @@
 \subsection{DEM model and specimen preparation}
 \label{subsec:dem_model}
 
-% PFC3D, rolling resistance contact model, periodic boundaries
-% Particle size distribution (1.0--3.0 mm, Toyoura sand analogue)
-% Ribbed shear walls for applying shear force
-% Isotropic consolidation to p' = 100 kPa
-% Undrained (constant-volume) condition via servo mechanism
-% DEM parameters table (shared with K0 paper)
+DEM simulations were performed using \textsc{PFC3D} \citep{Itasca2021}. Spherical particles with diameters ranging from \SIrange{1.0}{3.0}{mm}, approximating the grain size distribution of Toyoura sand (Fig.~\ref{fig:specimen_configuration}a), were generated within a cuboidal domain enclosed by periodic boundaries in the two horizontal directions and rigid ribbed shear walls in the vertical direction. A rolling-resistance contact model \citep{IwashitaOda1998,WensrichKatterfeld2012} was adopted to capture the mechanical effects of non-spherical grain shape. The DEM parameters are summarized in Table~\ref{tab:dem_parameters}.
+
+Specimen preparation followed a two-stage procedure. First, particles were deposited under gravity, and the specimen was then compacted to an isotropic stress state with $p'_0 = \SI{100}{kPa}$ using a servo-controlled wall adjustment. Six vertically oriented shear blades were inserted through the specimen to transmit torsional shear force (Fig.~\ref{fig:specimen_configuration}b). Undrained (constant-volume) conditions were enforced throughout cyclic loading via a servo mechanism, and excess pore water pressure was computed from the difference between the current and initial mean effective stresses.
+
+\begin{table}[t]
+  \centering
+  \caption{DEM simulation parameters.}
+  \label{tab:dem_parameters}
+  \begin{tabular}{@{}lr@{}}
+    \toprule
+    Description & Value \\
+    \midrule
+    Number of particles, $N_p$                          & 10{,}000 \\
+    Particle density, $\rho_s$ (\si{kg/m^3})            & 2650 \\
+    Young's modulus, $E$ (\si{GPa})                     & 0.3 \\
+    Normal-to-shear stiffness ratio, $\kappa$           & 2.0 \\
+    Interparticle friction, $\mu_{pp}$                  & 0.50 \\
+    Particle--wall friction, $\mu_{pw}$                 & 0.0 \\
+    Normal critical damping ratio, $\beta_n$            & 0.7 \\
+    Shear critical damping ratio, $\beta_s$             & 0.5 \\
+    Rolling friction coefficient, $\mu_r$               & 0.1 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  % TODO: compose subfigures from grain_size_distribution.png and specimen_configuration.png
+  \safeincludegraphics[width=0.48\linewidth]{grain_size_distribution.png}%
+  \hfill
+  \safeincludegraphics[width=0.48\linewidth]{specimen_configuration.png}
+  \caption{(a)~Grain size distribution curves of Toyoura sand and DEM simulation.
+    (b)~Particle and contact force distribution after isotropic consolidation,
+    along with periodic boundary and shearing rib configuration.}
+  \label{fig:specimen_configuration}
+\end{figure}
+
 
 \subsection{Loading path design}
 \label{subsec:loading_paths}
 
-% Core methodological contribution: systematic elimination of confounding factors
+The central methodological contribution of this study is a systematic loading path design that progressively eliminates confounding factors, allowing shear stress directionality to be isolated as the sole variable. Three loading types are compared: single-8, equivalent-magnitude unidirectional, and double-8.
 
 \paragraph{Single-8 shear stress path.}
-% Eqs for tau_8x, tau_8y
-% Figure-8 pattern in tau_x--tau_y space
+The multidirectional single-8 (figure-8) path consists of a sinusoidal component in the $x$-direction and a second sinusoidal component in the $y$-direction at half the amplitude and twice the frequency:
+\begin{align}
+  \tau_{8,x} &= \mathrm{CSR} \cdot \sin\!\left(\frac{2\pi t}{T}\right) p'_0
+  \label{eq:tau_8x} \\
+  \tau_{8,y} &= \frac{\mathrm{CSR}}{2} \cdot \sin\!\left(\frac{4\pi t}{T}\right) p'_0
+  \label{eq:tau_8y}
+\end{align}
+where $T$ is the loading period, $\mathrm{CSR}$ is the cyclic stress ratio, and $p'_0$ is the initial mean effective stress. The resulting stress path traces a figure-8 pattern in the $\tau_x$--$\tau_y$ plane (Fig.~\ref{fig:stress_paths}c).
 
 \paragraph{Equivalent-magnitude unidirectional path.}
-% Key innovation: tau_uni = sign(tau_8x) * sqrt(tau_8x^2 + tau_8y^2)
-% Ensures identical shear stress magnitude at every instant
-% Only difference: direction is fixed
+To ensure that the instantaneous shear stress magnitude is identical between unidirectional and multidirectional loading at every moment, the unidirectional stress is defined as:
+\begin{equation}
+  \tau_{\mathrm{uni},x}
+    = \mathrm{sign}(\tau_{8,x})\,
+      \sqrt{\tau_{8,x}^2 + \tau_{8,y}^2}
+  \label{eq:tau_uni}
+\end{equation}
+This ensures that the only difference between the unidirectional and single-8 paths is the direction of the shear stress (Fig.~\ref{fig:stress_paths}a,\,b).
 
 \paragraph{Double-8 shear stress path.}
-% Swaps x and y components in alternating cycles
-% Preserves: (1) magnitude, (2) rate of change
-% Only difference vs single-8: loading history (axis alternation)
+Although the magnitudes of the unidirectional and single-8 stresses are equal, their rates of change differ fundamentally because the multidirectional path includes continuous directional variation. To eliminate this confounding factor, the double-8 path swaps the $x$- and $y$-components between odd and even cycles:
+\begin{align}
+  \tau_{d8,x} &= \begin{cases}
+    \tau_{8,x}, & 2nT < t \leq (2n+1)T \\
+    \tau_{8,y}, & (2n+1)T < t \leq 2(n+1)T
+  \end{cases}
+  \label{eq:tau_d8x} \\[4pt]
+  \tau_{d8,y} &= \begin{cases}
+    \tau_{8,y}, & 2nT < t \leq (2n+1)T \\
+    \tau_{8,x}, & (2n+1)T < t \leq 2(n+1)T
+  \end{cases}
+  \label{eq:tau_d8y}
+\end{align}
+where $n \in \{0, 1, 2, \ldots\}$. This construction ensures that (1)~the stress magnitude of the double-8 path equals that of the single-8 path at every instant, (2)~the rates of change are equal in magnitude (opposite in sign during even cycles), and (3)~the phase transition between odd and even cycles produces a smooth, continuous stress history (Fig.~\ref{fig:stress_paths}d).
 
 \paragraph{Summary of controlled variables.}
-% Table or diagram summarizing what is controlled between each pair of comparisons
-% Uni vs single-8: same magnitude, different direction and rate
-% Single-8 vs double-8: same magnitude and rate, different directional history
+Table~\ref{tab:controlled_variables} summarizes the variables controlled in each pairwise comparison. By comparing unidirectional versus single-8, the combined effect of stress directionality and rate variation is assessed. By comparing single-8 versus double-8---where both magnitude and rate are matched---the isolated effect of loading history (periodic axis alternation) is revealed.
+
+\begin{table}[t]
+  \centering
+  \caption{Controlled variables in pairwise loading path comparisons.}
+  \label{tab:controlled_variables}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Comparison & Magnitude & Rate & Direction \\
+    \midrule
+    Uni vs.\ single-8   & Same & Different & Different \\
+    Single-8 vs.\ double-8 & Same & Same      & Different \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure*}[t]
+  \centering
+  \safeincludegraphics[width=0.24\linewidth]{stress_path_uni_evolution.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{stress_path_uni.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{stress_path_single8.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{stress_path_double8.png}
+  \caption{Shear stress paths for the three loading types:
+    (a)~unidirectional shear stress evolution,
+    (b)~unidirectional shear stress path,
+    (c)~single-8 shear stress path,
+    (d)~double-8 shear stress path.}
+  \label{fig:stress_paths}
+\end{figure*}
+
 
 \subsection{Parameter calibration and validation}
 \label{subsec:calibration_validation}
 
-% Validation against Nakata et al. (1998) monotonic HCA data
-% Clarify: validation targets contact model parameters, not boundary conditions
-% Parameters inherited from K0 paper (cross-reference)
+The DEM micro-parameters were calibrated using monotonic undrained shear test data on dense Toyoura sand ($D_r \approx 80\%$, $p'_0 = \SI{100}{kPa}$) reported by \citet{Nakata1998}. Despite inherent differences between the DEM model (periodic boundaries, idealized particle shapes) and the laboratory hollow cylinder specimens (non-uniform stress distribution across specimen thickness), the comparison remains meaningful as both configurations target simple shear deformation under undrained conditions.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.48\linewidth]{validation_effective_stress_path.png}%
+  \hfill
+  \safeincludegraphics[width=0.48\linewidth]{validation_stress_strain.png}
+  \caption{Validation of DEM simulation against monotonic undrained shear tests
+    \citep{Nakata1998}: dense Toyoura sand with $D_r \approx 80\%$,
+    $p'_0 = \SI{100}{kPa}$.
+    (a)~Effective stress path. (b)~Stress--strain relationship.}
+  \label{fig:validation}
+\end{figure}
+
+As shown in Fig.~\ref{fig:validation}, the simulation successfully reproduces the characteristic undrained response of dense sand: (1)~dilative behavior in effective stress space, with the stress path initially moving leftward as $p'$ decreases, then reversing as dilation develops; and (2)~strain-hardening, with deviatoric stress $q$ increasing monotonically with strain. Close agreement is achieved in the small-strain regime ($\varepsilon_q < 0.5\%$), where both the initial stiffness and the contractive--dilative transition are well captured. At larger strains, the simulation follows the experimental trend while exhibiting slightly higher deviatoric stress, which is attributed to the idealized periodic boundary conditions.
+
 
 \subsection{Microscopic descriptors}
 \label{subsec:micro_descriptors}
 
-% Zm: mechanical coordination number (same definition as K0 paper)
-% Fc: invariant of anisotropic fabric tensor (unsigned scalar -- appropriate here
-%     because the question is degree of anisotropy, not its direction)
-% rho_c: contact density distribution
+Three microscopic quantities are used to characterize fabric evolution during cyclic loading.
+
+\paragraph{Mechanical coordination number.}
+The mechanical coordination number $\Zm$ measures the average number of load-bearing contacts per particle, excluding floaters (particles with fewer than two contacts):
+\begin{equation}
+  \Zm = \frac{2N_c - N_1}{N_p - N_1 - N_0}
+  \label{eq:zm}
+\end{equation}
+where $N_c$ is the total number of contacts, $N_p$ is the total number of particles, and $N_1$ and $N_0$ are the numbers of particles with one and zero contacts, respectively \citep{Thornton2000}.
+
+\paragraph{Fabric anisotropy invariant.}
+The second-order fabric tensor $\Phi_{ij}$ is computed as the average outer product of contact normal vectors over all contacts:
+\begin{equation}
+  \Phi_{ij} = \frac{1}{N_c} \sum_{k=1}^{N_c} n_i^{(k)} n_j^{(k)}
+  \label{eq:fabric_tensor}
+\end{equation}
+The deviatoric (anisotropic) part is defined as:
+\begin{equation}
+  F_{ij} = \frac{15}{2}\!\left(\Phi_{ij} - \frac{\delta_{ij}}{3}\right)
+  \label{eq:deviatoric_fabric}
+\end{equation}
+and its scalar invariant quantifies the degree of contact anisotropy:
+\begin{equation}
+  \Fc = \sqrt{\tfrac{3}{2}\, F_{ij}\, F_{ij}}
+  \label{eq:fc}
+\end{equation}
+Higher values of $\Fc$ indicate stronger directional preference in the contact network \citep{Oda1982fabric}.
+
+\paragraph{Contact density distribution.}
+The three-dimensional distribution of contact orientations is visualized using spherical histograms, providing a direct representation of fabric directionality beyond the scalar measures above.

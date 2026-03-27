@@ -4,37 +4,165 @@
 \subsection{Macroscopic response}
 \label{subsec:macro_response}
 
-% Effective stress paths and stress-strain for uni, single-8, double-8
-% Liquefaction resistance curves (CSR vs N_L)
-% Key result: uni > single-8 > double-8 in N_L
-% Strain path development: single-8 vs double-8 differences
+\subsubsection{Effective stress paths and stress--strain behavior}
+
+Fig.~\ref{fig:macro_response} shows the shear stress paths and mean effective stress evolution under unidirectional, single-8, and double-8 cyclic loading at $\mathrm{CSR} = 0.25$. Under all three paths, the mean effective stress $p'$ gradually decreases with each loading cycle. When $p'$ drops below approximately 50\% of its initial value, an increase in shear load produces a slight rise in $p'$, while a decrease in shear load leads to a rapid reduction, eventually driving $p'$ toward zero and triggering liquefaction. Despite the progressive reduction in $p'$, the applied stress paths maintain their intended shapes throughout: linear for unidirectional, figure-8 for single-8, and alternating figure-8 for double-8.
+
+\begin{figure*}[t]
+  \centering
+  \safeincludegraphics[width=0.32\linewidth]{macro_response_uni.jpeg}%
+  \hfill
+  \safeincludegraphics[width=0.32\linewidth]{macro_response_single8.jpeg}%
+  \hfill
+  \safeincludegraphics[width=0.32\linewidth]{macro_response_double8.jpeg}
+  \caption{Shear stress path and mean effective stress evolution under cyclic loading
+    at $\mathrm{CSR} = 0.25$:
+    (a)~unidirectional, (b)~single-8, (c)~double-8.}
+  \label{fig:macro_response}
+\end{figure*}
+
+\subsubsection{Liquefaction resistance}
+
+Fig.~\ref{fig:liq_resistance} presents the liquefaction resistance curves for the three loading types, where liquefaction is defined as the state at which the excess pore water pressure reaches 95\% of the initial confining stress ($\ru = 0.95$). Unidirectional loading requires the highest number of cycles $N_L$ to reach liquefaction at any given CSR, followed by single-8 and then double-8. For example, at $\mathrm{CSR} = 0.25$, single-8 loading requires approximately 30 cycles, whereas double-8 requires only about 22 cycles. This ordering---unidirectional $>$ single-8 $>$ double-8---demonstrates that both the introduction of multidirectional shear and the periodic rotation of loading axes accelerate liquefaction.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.8\linewidth]{liquefaction_resistance_curves.png}
+  \caption{Liquefaction resistance curves under unidirectional, single-8,
+    and double-8 cyclic shear.}
+  \label{fig:liq_resistance}
+\end{figure}
+
+\subsubsection{Strain path development}
+
+The strain development behaviors of single-8 and double-8 loading exhibit distinct differences (Fig.~\ref{fig:strain_evolution}). Under single-8 loading, the strain path maintains a consistent figure-8 orientation throughout the cycles, with each successive cycle expanding outward and gradually shifting in a direction perpendicular to the primary loading axis. Under double-8 loading, the strain path alternates orientation with each cycle due to the axis swap, producing more complex and irregular strain accumulation with less directional offset over time.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.48\linewidth]{strain_evolution_single8.jpeg}%
+  \hfill
+  \safeincludegraphics[width=0.48\linewidth]{strain_evolution_double8.jpeg}
+  \caption{Comparison of strain path evolution between
+    (a)~single-8 and (b)~double-8 loading ($\mathrm{CSR} = 0.25$).}
+  \label{fig:strain_evolution}
+\end{figure}
+
 
 \subsection{Energy interpretation}
 \label{subsec:energy}
 
-% Cumulative shear work comparison
-% Similar total energy at liquefaction despite different N_L
-% Implication: directionality affects rate of energy input, not total energy threshold
+To evaluate the macroscopic energetic differences among the three loading paths, the cumulative shear work---defined as the work performed by the shearing ribs on the specimen---is examined against excess pore water pressure development (Fig.~\ref{fig:cumulative_work}). Before the excess pore water pressure ratio reaches approximately $\ru = 0.6$, the double-8 path generates the highest $\ru$ at equivalent shear work levels, followed by single-8, with unidirectional exhibiting the lowest. This ordering is inversely related to the number of cycles required for liquefaction.
 
-\subsection{Microscopic fabric interpretation}
+Despite these differences in the rate of pore pressure build-up, the total cumulative shear work at liquefaction is approximately equal for all three loading types. This finding indicates that shear stress directionality affects the efficiency of energy transfer to pore pressure generation---multidirectional paths convert shear work into excess pore pressure more rapidly---but does not alter the total energy threshold required to trigger liquefaction.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.8\linewidth]{cumulative_shear_work.jpeg}
+  \caption{Cumulative shear work versus excess pore water pressure ratio
+    under unidirectional, single-8, and double-8 cyclic loading.}
+  \label{fig:cumulative_work}
+\end{figure}
+
+
+\subsection{Microscopic fabric evolution}
 \label{subsec:micro_fabric}
 
-\paragraph{Coordination number evolution.}
-% Zm degradation rates differ: double-8 fastest, uni slowest
-% Consistent with N_L ordering
+\subsubsection{Coordination number}
 
-\paragraph{Fabric anisotropy evolution.}
-% Fc evolution: double-8 develops highest anisotropy
-% Physical interpretation: directional changes promote contact alignment
+Fig.~\ref{fig:zm_evolution} shows the evolution of the mechanical coordination number $\Zm$ against the normalized cycle count $N_{\mathrm{cyc}}/N_L$. All three paths begin with $\Zm \approx 5.0$, indicating a well-structured granular skeleton. As cyclic loading progresses, $\Zm$ decreases in all cases, reflecting progressive loss of load-bearing contacts. However, the rate and extent of $\Zm$ reduction differ among the three paths.
 
-\paragraph{Contact density distribution.}
-% Full directional evolution for three loading paths
-% Morphological differences during loading, convergence near liquefaction
+Unidirectional loading maintains a relatively higher $\Zm$ throughout, indicating greater structural integrity under fixed-direction cyclic loading. Single-8 loading exhibits a moderate rate of $\Zm$ degradation, while double-8 loading shows the most rapid reduction, indicating that periodic axis alternation promotes more frequent structural rearrangements and more efficient destruction of the contact network. This ordering of $\Zm$ degradation rates ($\text{double-8} > \text{single-8} > \text{unidirectional}$) is consistent with the observed ordering of liquefaction resistance.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.8\linewidth]{coordination_number_evolution.png}
+  \caption{Mechanical coordination number evolution under unidirectional,
+    single-8, and double-8 cyclic loading. The horizontal axis is normalized
+    by the number of cycles to liquefaction $N_L$.}
+  \label{fig:zm_evolution}
+\end{figure}
+
+\subsubsection{Fabric anisotropy}
+
+Fig.~\ref{fig:fc_evolution} presents the evolution of the fabric anisotropy invariant $\Fc$. Under all three loading paths, $\Fc$ exhibits cyclic oscillation with progressively increasing peak values as liquefaction approaches: within each cycle, $\Fc$ rises to a peak before decreasing, and the envelope of these peaks grows as the contact network progressively aligns under repeated shearing.
+
+The double-8 path develops the highest $\Fc$ values, indicating that frequent directional changes promote pronounced contact alignment and structural anisotropy. The single-8 path shows intermediate anisotropy, while the unidirectional path produces the weakest anisotropy development. The absence of directional change in unidirectional loading limits particle rearrangement, preserving a more isotropic structure that can better resist cyclic loading.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.8\linewidth]{fabric_anisotropy_evolution.png}
+  \caption{Fabric anisotropy invariant $\Fc$ evolution under unidirectional,
+    single-8, and double-8 cyclic loading.}
+  \label{fig:fc_evolution}
+\end{figure}
+
+\subsubsection{Contact density distribution}
+
+Figs.~\ref{fig:contact_density_uni}--\ref{fig:contact_density_d8} display the three-dimensional contact density distributions for the three loading paths at four stages: initial state ($N_{\mathrm{cyc}}/N_L = 0$), pre-liquefaction ($N_{\mathrm{cyc}}/N_L = 0.81$), and two post-liquefaction stages ($N_{\mathrm{cyc}}/N_L = 1.03$ and $1.08$). Across all paths, the overall contact density decreases with cycling, and contact orientations become increasingly concentrated along preferred directions, reflecting the development of fabric anisotropy.
+
+At $N_{\mathrm{cyc}}/N_L = 0.81$, notable differences emerge. Under unidirectional loading, the contact density remains relatively uniform with limited directional preference, consistent with the lower $\Fc$ values. Under single-8 loading, moderate alignment develops along certain directions. Under double-8 loading, the most pronounced concentration of contacts is observed, consistent with its highest $\Fc$ and lowest liquefaction resistance.
+
+After liquefaction, the differences among the three paths diminish. A notable feature of the double-8 path is a slight anisotropic alignment toward the $y$-axis, corresponding to the periodic axis alternation characteristic of this loading pattern.
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_uni_t0.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_uni_t081.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_uni_t103.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_uni_t108.png}
+  \caption{Contact density evolution under unidirectional cyclic loading at
+    (a)~$N_{\mathrm{cyc}}/N_L = 0$,
+    (b)~$0.81$,
+    (c)~$1.03$,
+    (d)~$1.08$.}
+  \label{fig:contact_density_uni}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_s8_t0.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_s8_t081.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_s8_t103.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_s8_t108.png}
+  \caption{Contact density evolution under single-8 cyclic loading at
+    (a)~$N_{\mathrm{cyc}}/N_L = 0$,
+    (b)~$0.81$,
+    (c)~$1.03$,
+    (d)~$1.08$.}
+  \label{fig:contact_density_s8}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_d8_t0.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_d8_t081.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_d8_t103.png}%
+  \hfill
+  \safeincludegraphics[width=0.24\linewidth]{contact_density_d8_t108.png}
+  \caption{Contact density evolution under double-8 cyclic loading at
+    (a)~$N_{\mathrm{cyc}}/N_L = 0$,
+    (b)~$0.81$,
+    (c)~$1.03$,
+    (d)~$1.08$.}
+  \label{fig:contact_density_d8}
+\end{figure}
+
 
 \subsection{Discussion}
 \label{subsec:discussion}
 
-% Why does directional change accelerate liquefaction?
-% Connection between loading history and fabric degradation rate
-% Comparison with previous DEM studies (Wei et al., Yang et al.)
-% Implications for seismic hazard assessment
+The results reveal a consistent picture linking loading path directionality to microscopic fabric degradation and macroscopic liquefaction resistance. The key mechanism can be summarized as follows.
+
+Under unidirectional loading, the shear direction remains fixed, and the contact network adapts to a quasi-stable configuration aligned with the loading direction. This limits the rate of contact loss and fabric evolution, producing the highest liquefaction resistance. Under single-8 loading, the continuously varying shear direction prevents the contact network from reaching a stable configuration, promoting faster contact loss ($\Zm$ degradation) and greater anisotropy development ($\Fc$ increase). Under double-8 loading, the periodic axis swap introduces an additional perturbation: contacts that have partially aligned with the loading axis during one cycle are disrupted when the axis rotates in the next cycle. This repeated disruption and realignment accelerates fabric degradation and results in the lowest liquefaction resistance.
+
+The energy analysis provides a complementary perspective. Although the total shear work at liquefaction is approximately equal for all three paths, the rate at which this work is converted into excess pore pressure differs. Multidirectional paths, and particularly the double-8 path, convert shear work into pore pressure more efficiently because each directional change mobilizes a different set of contacts, maximizing the fraction of the contact network that undergoes irreversible rearrangement within each cycle.
+
+These findings are consistent with previous observations. \citet{Wei2020} reported that fabric anisotropy evolved progressively toward liquefaction under multidirectional loading, and \citet{Yang2022} found that certain paths produced temporary loss of structural constraint. The present study extends these observations by demonstrating that, when confounding factors (magnitude and rate differences) are systematically eliminated, shear stress directionality alone accounts for a significant reduction in liquefaction resistance. The practical implication is that conventional unidirectional testing may substantially underestimate the liquefaction susceptibility of soils subjected to real earthquake loading, where multidirectional shear is inherent.
