@@ -1,0 +1,70 @@
+\section{System Design}
+\label{sec:design}
+
+\subsection{Architecture Overview}
+\label{sec:design:overview}
+
+% TODO: Figure 1 — two-layer architecture diagram
+% Top layer: MCP server (Python 3.10+) — tool registry, doc subsystem, WebSocket client
+% Bottom layer: pfc-mcp-bridge (Python 3.6+) — runs inside PFC GUI process, WebSocket server
+% Arrow: MCP client (Claude Code / any MCP host) → MCP server → bridge → PFC
+
+\texttt{pfc-mcp} is structured as two independent runtime components connected by a WebSocket channel (\Cref{fig:architecture}). The \emph{MCP server} (\texttt{pfc-mcp}, Python $\geq 3.10$) registers tools with any MCP-compatible client and handles documentation retrieval locally, without network access. The \emph{bridge} (\texttt{pfc-mcp-bridge}, Python $\geq 3.6$) runs as a WebSocket server inside the PFC GUI process, where it has direct access to the ITASCA Python SDK. Both components are published as independent PyPI packages and communicate through a structured JSON envelope (\texttt{\{ok, data, error\}}) that provides consistent parsing and machine-readable error codes across all tools.
+
+This two-layer separation ensures that documentation tools remain available offline and that the bridge can be upgraded independently of the MCP server. The Python version split (3.10 vs.\ 3.6) reflects a practical constraint: PFC embeds Python 3.6 in its console environment, which is incompatible with modern dependencies required by the MCP server.
+
+\subsection{Documentation Subsystem}
+\label{sec:design:docs}
+
+% TODO: Table 1 — five documentation tools with input/output summary
+
+The documentation subsystem exposes five tools that operate entirely on a bundled knowledge base, requiring no connection to the bridge:
+
+\begin{enumerate}
+  \item \texttt{pfc\_browse\_commands} — hierarchical navigation of PFC commands (category $\to$ command $\to$ full documentation with examples);
+  \item \texttt{pfc\_query\_command} — BM25 full-text search over command names and descriptions;
+  \item \texttt{pfc\_browse\_python\_api} — navigation of the ITASCA Python SDK (module $\to$ method $\to$ signature and docstring);
+  \item \texttt{pfc\_query\_python\_api} — keyword search over the Python API;
+  \item \texttt{pfc\_browse\_reference} — structured access to contact model properties, range filter syntax, and plot item configuration.
+\end{enumerate}
+
+The knowledge base is packaged at build time as indexed JSON documents and searched using BM25 ranking \citep{Robertson1994}. Progressive disclosure---browsing from root to leaf before retrieving full documentation---reduces the amount of context consumed per query and lowers the risk of hallucinated command syntax.
+
+\subsection{Execution Subsystem}
+\label{sec:design:execution}
+
+% TODO: Table 2 — five execution tools with input/output summary
+
+The execution subsystem exposes five tools that require a running bridge instance:
+
+\begin{enumerate}
+  \item \texttt{pfc\_execute\_code} — synchronous REPL: submits a Python snippet for immediate execution in the PFC process and returns \texttt{stdout} and an optional result variable;
+  \item \texttt{pfc\_execute\_task} — asynchronous task: submits a script file for background execution and returns a \texttt{task\_id} immediately;
+  \item \texttt{pfc\_check\_task\_status} — polls task output with pagination (\texttt{limit}, \texttt{skip\_newest}) and substring filtering (\texttt{filter});
+  \item \texttt{pfc\_interrupt\_task} — requests graceful task cancellation;
+  \item \texttt{pfc\_list\_tasks} — browses persisted task history.
+\end{enumerate}
+
+The distinction between \texttt{pfc\_execute\_code} and \texttt{pfc\_execute\_task} reflects two complementary modes of interaction. REPL execution is suitable for short queries and development-stage parameter adjustment; task execution provides a reproducible, auditable record of production simulation runs. Script files submitted via \texttt{pfc\_execute\_task} function as immutable snapshots: once submitted, the simulation proceeds from a fixed script state, ensuring that results can be reproduced by rerunning the same file. Live parameter adjustment during a running task is intentionally not supported through the task interface; such adjustments belong to the development phase and are performed through \texttt{pfc\_execute\_code} before the final script is submitted.
+
+\subsection{Bridge Runtime and Scheduling}
+\label{sec:design:bridge}
+
+% TODO: Figure 2 — callback scheduling diagram
+% Two states: cycling (callback at position 51.0) and idle (Qt Timer 20ms)
+% execute_code path vs. execute_task path
+
+The bridge attaches to the PFC process through two mechanisms depending on whether the solver is actively cycling. During cycling, PFC invokes registered callbacks at specified positions in its internal loop. The bridge registers a script executor callback at position 51.0, which batch-executes queued code submissions between solver steps. An interrupt callback at position 50.0 checks for cancellation flags before each batch execution. When the solver is idle, a Qt timer fires every 20\,ms to drain the same task queue. In both cases, code execution occurs on the PFC main thread, which owns the ITASCA SDK, ensuring that all API calls are thread-safe.
+
+This scheduling design has a practical consequence that is central to the system's utility: \texttt{pfc\_execute\_code} remains functional whether PFC is cycling or idle. An LLM agent can issue status queries---ball counts, contact numbers, stress state---concurrently with a running simulation task without interrupting the solver. The task output buffer is written incrementally to disk, enabling \texttt{pfc\_check\_task\_status} to return partial results from long-running jobs at any time.
+
+\subsection{Design Rationale}
+\label{sec:design:rationale}
+
+Several design decisions warrant brief justification.
+
+\textbf{MCP over custom REST API.} The MCP protocol provides self-describing tool definitions that the LLM client reads at connection time, reducing hallucinated command syntax. The stdio transport integrates transparently with LLM terminal clients. Any MCP-compatible host---Claude Code, or future clients---can consume \texttt{pfc-mcp} tools without modification.
+
+\textbf{Domain-specific bridge over custom orchestration layer.} An earlier version of this system (\texttt{toyoura-nagisa}) included a full agent platform with conversation management, multi-provider LLM routing, and a custom WebSocket protocol. As general-purpose agent frameworks from model providers have matured, maintaining a parallel orchestration layer has become unnecessary. The present design retains only the component that requires domain expertise---the bridge runtime inside PFC---and delegates all orchestration to the upstream platform. This reflects a broader principle: in rapidly evolving AI ecosystems, vertical tool depth creates more durable value than horizontal platform breadth.
+
+\textbf{Python 3.6 compatibility in the bridge.} PFC's embedded interpreter version cannot be changed by the user. The bridge is written to be compatible with Python 3.6, using pinned dependencies and avoiding modern syntax features. The MCP server, which runs in a user-controlled environment, targets Python 3.10 and uses current tooling.

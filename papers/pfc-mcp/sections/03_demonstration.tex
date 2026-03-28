@@ -1,0 +1,65 @@
+\section{Demonstration: Liquefaction Simulation Workflow}
+\label{sec:demonstration}
+
+\subsection{Simulation Setup}
+\label{sec:demo:setup}
+
+% TODO: Figure 3 — specimen geometry and loading schematic
+% Periodic boundary box, blade walls (top/bottom pairs in x and y), double-8 stress path
+
+The demonstration uses a constant-volume cyclic shear simulation designed to study multi-directional liquefaction. The specimen comprises \num{29273} spherical particles in a periodic boundary domain at void ratio $e = 0.671$, consolidated isotropically to $p'_0 = \SI{100}{kPa}$. Shear is applied through four pairs of blade walls (two in $x$, two in $y$) that are moved by a proportional servo to track a target shear stress path. Constant-volume conditions are enforced by fixing domain strain rates to zero in all directions, replicating undrained behavior \citep{Thornton2000}. The loading mode is a double-8 path at cyclic stress ratio CSR$= 0.40$, in which the $x$- and $y$-components of the figure-8 stress path are swapped in alternating cycles to introduce periodic axis rotation.
+
+Gravity is set to zero throughout, consistent with the use of periodic boundaries in which body forces are irrelevant. This creates a specific numerical condition at advanced liquefaction stages: as particle contacts are progressively lost, the PFC adaptive timestep---which scales inversely with the square root of the maximum contact stiffness---tends toward arbitrarily large values. The interaction of a growing timestep with the servo feedback loop was identified as the source of stress spikes observed in earlier simulation runs.
+
+\subsection{Agent-Assisted Diagnosis and Fix}
+\label{sec:demo:diagnosis}
+
+% TODO: Figure 4 — agent interaction sequence diagram
+% Step 1: Read script → identify it.timestep() calls
+% Step 2: pfc_browse_commands("model mechanical") → discover timestep fix
+% Step 3: Edit script → dt_fixed, model mechanical timestep fix
+% Step 4: pfc_execute_task → submit
+% Step 5: pfc_execute_code (while cycling) → monitor contacts
+% Step 6: pfc_check_task_status filter="Contacts" → track evolution
+
+The workflow began with the LLM agent reading the simulation script and identifying three locations in which \texttt{it.timestep()} was called: within the servo velocity calculation, within the shear strain accumulation, and for time tracking. The agent inferred that an unbounded timestep under zero-gravity conditions could destabilize the servo loop.
+
+To verify and resolve this, the agent issued \texttt{pfc\_browse\_commands("model mechanical")}, retrieving the full documentation for the \texttt{model mechanical timestep} keyword group. The returned documentation confirmed the existence of \texttt{model mechanical timestep fix <f>}, which fixes the PFC solver timestep to a specified value and skips all subsequent timestep recalculations. The agent then modified the script to record the initial timestep at construction time (\texttt{self.dt\_fixed = it.timestep()}), apply \texttt{model mechanical timestep fix} with this value, and replace all three \texttt{it.timestep()} calls with \texttt{self.dt\_fixed}. This change was accomplished without leaving the conversation context and without manual reference to the PFC manual.
+
+\subsection{Task Execution and Live Monitoring}
+\label{sec:demo:monitoring}
+
+% TODO: Figure 5 — time series of p', contact count, shear stress during simulation
+% Three panels: p' vs time, contact count vs time, tau_x-tau_y stress path
+
+The corrected script was submitted via \texttt{pfc\_execute\_task}, which returned a \texttt{task\_id} immediately. During execution, the agent used \texttt{pfc\_execute\_code} to query the model state directly while the solver was cycling:
+
+\begin{verbatim}
+import itasca as it
+print(f"Balls: {it.ball.count()}")
+print(f"Contacts: {it.contact.count()}")
+\end{verbatim}
+
+This query returned \num{29273} balls and \num{54608} contacts within the callback gap, confirming that the solver continued uninterrupted. The agent subsequently monitored the simulation progress using \texttt{pfc\_check\_task\_status} with the \texttt{filter} parameter to isolate specific output fields without retrieving the full log:
+
+\begin{verbatim}
+pfc_check_task_status(task_id=..., filter="Contacts", limit=13)
+pfc_check_task_status(task_id=..., filter="Time (s)", limit=13)
+\end{verbatim}
+
+At elapsed wall time of approximately \SI{60}{min}, the simulation had reached $t = \SI{0.018}{s}$ of simulated time, with $p'$ reduced from \SI{100}{kPa} to approximately \SI{78}{kPa} and contact count declining steadily from \num{53512} to \num{52300}, consistent with the onset of liquefaction.
+
+\subsection{Workflow Comparison}
+\label{sec:demo:comparison}
+
+% TODO: Table 3 — manual vs agent-assisted workflow steps
+
+\Cref{tab:workflow} compares the agent-assisted workflow with the equivalent manual procedure. The primary productivity gains are in documentation retrieval---which required a single tool call instead of manual navigation of the PFC reference manual---and in live monitoring, which is not possible through the standard PFC console during active cycling. The complete diagnosis-fix-submit-monitor loop was accomplished within a single conversational session without switching between application windows.
+
+% \begin{table}[htbp]
+% \caption{Comparison of manual and agent-assisted simulation workflows.}
+% \label{tab:workflow}
+% ...
+% \end{table}
+
+A secondary benefit is reproducibility. The submitted script file constitutes an immutable record of the exact simulation that was run; the \texttt{pfc-mcp-bridge} persists task logs to disk at \texttt{.pfc-mcp-bridge/}, providing a timestamped audit trail of all submitted tasks, output buffers, and completion status. This is in contrast to interactive PFC console sessions, which leave no automatic record of commands issued or results observed.

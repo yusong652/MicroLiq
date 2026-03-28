@@ -1,0 +1,20 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+This study presented \texttt{pfc-mcp}, an open-source Model Context Protocol server that enables real-time bidirectional integration between LLM agents and the PFC discrete element simulation software. The system was demonstrated through a complete liquefaction simulation workflow in which an agent diagnosed a numerical instability, retrieved the relevant fix from the PFC documentation, modified and submitted the corrected simulation, and monitored the results during active cycling. The main contributions are summarized as follows:
+
+\begin{enumerate}
+
+  \item A two-layer architecture was designed in which an MCP server handles documentation retrieval and tool registration locally, while a bridge process running inside the PFC GUI provides execution capabilities through a WebSocket channel. This separation allows either component to be upgraded independently and permits the documentation tools to function without a running PFC instance.
+
+  \item A callback-based scheduling mechanism enables the REPL interface (\texttt{pfc\_execute\_code}) to remain available whether the PFC solver is actively cycling or idle. Code snippets are executed within callback gaps during cycling and through a timer-driven queue during idle periods, without interrupting the solver or compromising thread safety. This scheduling design, to the best of the authors' knowledge, has not been demonstrated in any prior LLM--simulation integration for geotechnical software.
+
+  \item The task execution interface (\texttt{pfc\_execute\_task}) treats submitted scripts as immutable snapshots, ensuring reproducibility of production simulation runs. A clear workflow boundary is established between the development phase---in which REPL interaction and parameter adjustment are appropriate---and the production phase, in which the script constitutes the sole record of the simulation.
+
+  \item A bundled documentation subsystem with BM25 search and progressive browsing provides structured access to PFC commands, Python API, and reference documentation without network access. Progressive disclosure reduces context consumption per query and lowers the frequency of hallucinated command syntax in agent responses.
+
+  \item The demonstration with a multi-directional liquefaction simulation shows that the complete diagnosis--documentation--modification--execution--monitoring loop can be accomplished within a single conversational session. The agent correctly identified an unbounded-timestep instability under zero-gravity conditions, retrieved the \texttt{model mechanical timestep fix} command from the documentation, and implemented the fix without manual reference to the PFC manual.
+
+\end{enumerate}
+
+The \texttt{pfc-mcp} design illustrates a broader principle for LLM integration in specialist simulation software: domain-specific value lies in the bridge runtime---which requires knowledge of the simulator's internal scheduling, threading model, and SDK---not in custom orchestration layers that are rapidly superseded by general-purpose agent frameworks. Future development will focus on expanding the documentation knowledge base, supporting multi-user task queues, and extending the bridge pattern to other commercial DEM and FEM solvers.

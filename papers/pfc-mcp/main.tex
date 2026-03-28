@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+
+% Bibliography
+\usepackage[authoryear]{natbib}
+
+% Core math and symbols
+\usepackage{amsmath,amssymb}
+
+% Figures and tables
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+
+% Code listings
+\usepackage{verbatim}
+
+% Hyperlinks
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Cross-references
+\usepackage[capitalize,nameinlink,noabbrev]{cleveref}
+
+% Line numbers for review
+\usepackage{lineno}
+\linenumbers
+
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\title{\texttt{pfc-mcp}: A Model Context Protocol Server for\\
+Real-Time LLM Integration with Discrete Element Simulations}
+
+\author{
+  Han, Yusong\textsuperscript{1} \and
+  % co-authors TBD
+}
+
+\date{}
+
+\maketitle
+
+\begin{abstract}
+% TODO
+% ~150 words: background (LLM + simulation gap), method (MCP + bridge), results (liquefaction workflow), significance (first DEM MCP server, real-time bidirectional)
+\end{abstract}
+
+\begin{keyword}
+Discrete element method \sep
+Liquefaction \sep
+Large language model \sep
+Model Context Protocol \sep
+Scientific computing workflow
+\end{keyword}
+
+\input{sections/01_introduction}
+\input{sections/02_design}
+\input{sections/03_demonstration}
+\input{sections/04_conclusions}
+
+\section*{Declaration of Competing Interest}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Data Availability}
+The \texttt{pfc-mcp} source code is available at \url{https://github.com/yusong652/pfc-mcp} under the MIT licence. The \texttt{pfc-mcp-bridge} package is available at \url{https://pypi.org/project/pfc-mcp-bridge/}. Simulation scripts used in the demonstration workflow are available in the supplementary material.
+
+\bibliographystyle{elsarticle-harv}
+\bibliography{refs}
+
+\end{document}
