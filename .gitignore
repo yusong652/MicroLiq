@@ -16,6 +16,8 @@ __pycache__/
 .idea/
 .toyoura-nagisa
 .mcp.json
+.claude/
+.codex/
 
 # Personal / private
 career/
