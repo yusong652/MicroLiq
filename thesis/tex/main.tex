@@ -1,0 +1,46 @@
+% ============================================================
+% Microscopic Analysis of Fabric Evolution in Liquefaction
+% Using Discrete Element Method
+%
+% Doctoral Thesis — Kyoto University
+% Author: HAN Yusong
+% ============================================================
+\documentclass[a4paper,12pt,twoside,openright]{report}
+
+\input{preamble}
+
+% ============================================================
+\begin{document}
+
+% ---------- Front matter ----------
+\pagenumbering{roman}
+
+\subfile{chapters/front_matter}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+% ---------- Main chapters ----------
+\subfile{chapters/ch01_introduction}
+\subfile{chapters/ch02_literature_review}
+\subfile{chapters/ch03_fabric_evolution}
+\subfile{chapters/ch04_anisotropic_consolidation}
+\subfile{chapters/ch05_multidirectional_shear}
+\subfile{chapters/ch06_conclusions}
+
+% ---------- Bibliography ----------
+\cleardoublepage
+\addcontentsline{toc}{chapter}{References}
+\bibliography{refs}
+
+% ---------- Appendices ----------
+\appendix
+\subfile{chapters/appendix_a_hpc}
+\subfile{chapters/appendix_b_raytracing}
+\subfile{chapters/appendix_c_ai_workflow}
+
+\end{document}

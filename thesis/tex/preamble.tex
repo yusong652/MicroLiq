@@ -1,0 +1,99 @@
+% ============================================================
+% Shared preamble for thesis
+% Loaded by main.tex; also used by subfiles for standalone compilation
+% ============================================================
+
+% ---------- Encoding & fonts ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ---------- Page geometry ----------
+\usepackage[
+  top=30mm, bottom=30mm,
+  inner=30mm, outer=25mm,
+  headheight=15pt
+]{geometry}
+
+% ---------- Math ----------
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+
+% ---------- Figures & tables ----------
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{float}
+
+% ---------- Colors ----------
+\usepackage{xcolor}
+
+% ---------- TikZ (flowcharts, schematics) ----------
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
+
+% ---------- Headers & footers ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---------- Bibliography ----------
+\usepackage[authoryear,round]{natbib}
+\bibliographystyle{plainnat}
+
+% ---------- Hyperlinks ----------
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=green!50!black,
+  urlcolor=blue!70!black
+]{hyperref}
+
+% ---------- Cross-references ----------
+\usepackage[capitalize,nameinlink,noabbrev]{cleveref}
+
+% ---------- Line spacing ----------
+\usepackage{setspace}
+\onehalfspacing
+
+% ---------- Chapter title formatting ----------
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% ---------- Subfiles ----------
+\usepackage{subfiles}
+
+% ---------- Project macros ----------
+\newcommand{\Kzero}{\ensuremath{K_0}}
+\newcommand{\Zm}{\ensuremath{Z_m}}
+\newcommand{\Vs}{\ensuremath{V_s}}
+\newcommand{\ru}{\ensuremath{r_u}}
+\newcommand{\pmean}{\ensuremath{p'}}
+\newcommand{\Fc}{\ensuremath{F_c}}
+\newcommand{\rhoc}{\ensuremath{\rho_c}}
+
+% Safe includegraphics (shows placeholder for missing figures)
+\newcommand{\safeincludegraphics}[2][]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fcolorbox{gray}{white}{%
+      \begin{minipage}[c][0.20\textheight][c]{0.90\linewidth}
+        \centering
+        \textbf{[Figure placeholder]}\\[4pt]
+        \texttt{\detokenize{#2}}
+      \end{minipage}
+    }%
+  }%
+}
+
+\graphicspath{{figures/}{../assets/media/}{../assets/images/}}
