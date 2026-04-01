@@ -1,0 +1,80 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+% ============================================================
+% Chapter 3: LLM-Assisted DEM Simulation Framework
+% ============================================================
+\chapter{LLM-Assisted DEM Simulation Framework}
+\label{ch:computational_framework}
+
+\section{Introduction}
+\label{sec:ch3_intro}
+
+\subsection{Rise of LLM-based agents in scientific computing}
+\label{subsec:ch3_llm_agents}
+
+% TODO: LLM agent landscape, gap in numerical simulation domain
+
+\subsection{Challenges in applying LLM agents to DEM simulations}
+\label{subsec:ch3_challenges}
+
+% TODO: Domain-specific syntax, long-running simulations, reliability requirements
+
+\section{Architecture: documentation-driven agent framework}
+\label{sec:ch3_architecture}
+
+\subsection{Model Context Protocol as the integration layer}
+\label{subsec:ch3_mcp}
+
+% TODO: MCP overview, why it fits scientific simulation
+
+\subsection{Documentation-driven code generation}
+\label{subsec:ch3_docdriven}
+
+% TODO: Query-before-generate paradigm, BM25 search engine, structured knowledge base
+
+\subsection{Dual-execution model}
+\label{subsec:ch3_execution}
+
+% TODO: Synchronous REPL vs asynchronous task submission, bridge architecture
+
+\section{Implementation: pfc-mcp for ITASCA PFC}
+\label{sec:ch3_pfcmcp}
+
+\subsection{MCP server and tool design}
+\label{subsec:ch3_pfc_tools}
+
+% TODO: 5 documentation tools + 5 execution tools
+
+\subsection{Knowledge system}
+\label{subsec:ch3_pfc_knowledge}
+
+% TODO: 177 command docs, 38 API docs, 49 reference docs; multi-version support (PFC 6/7/9)
+
+\subsection{Bridge runtime inside PFC GUI}
+\label{subsec:ch3_pfc_bridge}
+
+% TODO: WebSocket bridge, thread-safe execution, task lifecycle
+
+\section{Cross-platform portability: yade-mcp for YADE}
+\label{sec:ch3_yademcp}
+
+\subsection{Architecture reuse and adaptation}
+\label{subsec:ch3_yade_reuse}
+
+% TODO: Same pattern, different engine; validates generalizability
+
+\subsection{Dynamic documentation via source code introspection}
+\label{subsec:ch3_yade_introspection}
+
+% TODO: Subprocess-isolated introspection, 351 API classes, automatic docstring extraction
+
+\section{Application to thesis research}
+\label{sec:ch3_application}
+
+% TODO: How pfc-mcp accelerated Ch4/Ch5 simulation workflows
+% Servo mechanism setup, multi-stage loading, post-processing automation
+
+\section{Summary}
+\label{sec:ch3_summary}
+
+\end{document}
