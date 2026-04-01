@@ -46,6 +46,12 @@ Manuscript: COMGE-D-26-01109 | Status: Under Review (2026-03-25)
   - If reviewer asks: option to add one stress-control cyclic case
   - Caveat: requires deviatoric strain criterion, not $r_u = 0.95$
 
+- [x] **Fix bibliography metadata errors (refs.bib)**
+  - WuYang2022: issue 11→12, pages 04022099→04022112
+  - YangTaiebat2024: added missing pages=04024028
+  - Xie2023: added missing pages=04022312
+  - Verified all other entries against Crossref (2026-04-01)
+
 ---
 
 ## Reference
