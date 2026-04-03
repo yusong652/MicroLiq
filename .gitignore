@@ -58,6 +58,9 @@ texput.log
 # Paper figure PDFs (generated, not source)
 papers/*/figures/*.pdf
 
+# Paper reference PDFs
+papers/*/ref/*.pdf
+
 # Build outputs
 papers/*/build/
 pdf_outputs/
