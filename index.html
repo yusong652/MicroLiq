@@ -65,21 +65,28 @@
 				My research traces a single thread: understanding why soil loses strength during earthquakes, at the scale of individual particle contacts. Along the way, I developed new simulation methods, validated them experimentally, and built AI tools to accelerate the entire workflow.
 			</p>
 
-			<!-- Card 1: pfc-mcp -->
+			<!-- Card 1: AI tools ecosystem -->
 			<div class="research-card">
-				<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="research-card-media contain">
-					<img src="https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif" alt="pfc-mcp: AI agent driving PFC simulation" loading="eager">
-				</a>
+				<div class="research-card-media dual">
+					<img src="https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif" alt="pfc-mcp demo" loading="eager">
+					<img src="https://raw.githubusercontent.com/yusong652/yade-mcp/assets/assets/demo.gif" alt="yade-mcp demo" loading="eager">
+				</div>
 				<div class="research-card-body">
-					<span class="research-card-label">pfc-mcp</span>
+					<span class="research-card-label">pfc-mcp · yade-mcp · toyoura-nagisa</span>
 					<span class="research-card-number">01</span>
-					<h3 class="research-card-title">AI meets particle simulation</h3>
+					<h3 class="research-card-title">AI agents for DEM simulation</h3>
 					<p class="research-card-text">
-						An open-source MCP server that lets any LLM agent browse versioned PFC documentation (6.0 / 7.0 / 9.0), execute code interactively, and run simulations — directly inside a running PFC instance. 10 tools, 177 commands, one-script bootstrap.
+						An ecosystem of open-source tools that bring AI into discrete element simulation. Two MCP servers connect any LLM agent directly to ITASCA PFC and open-source YADE — with BM25-powered doc search, interactive code execution, and live bridges to running simulation instances. Toyoura-nagisa goes further: a full-stack agent platform with multi-agent architecture, multi-provider LLM support, and git-versioned execution for full reproducibility.
 					</p>
 					<div class="research-card-meta">
 						<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="card-link">
-							<i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+							<i class="fab fa-github"></i> pfc-mcp <i class="fas fa-arrow-right"></i>
+						</a>
+						<a href="https://github.com/yusong652/yade-mcp" target="_blank" rel="noopener" class="card-link">
+							<i class="fab fa-github"></i> yade-mcp <i class="fas fa-arrow-right"></i>
+						</a>
+						<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="card-link">
+							<i class="fab fa-github"></i> toyoura-nagisa <i class="fas fa-arrow-right"></i>
 						</a>
 					</div>
 				</div>
@@ -149,28 +156,6 @@
 				</div>
 			</div>
 
-			<!-- Card 5: AI Workflow -->
-			<div class="research-card">
-				<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="research-card-media contain">
-					<img src="site/assets/toyoura-nagisa-header.png" alt="toyoura-nagisa: LLM-driven PFC simulation" loading="lazy">
-				</a>
-				<div class="research-card-body">
-					<span class="research-card-label">toyoura-nagisa</span>
-					<span class="research-card-number">05</span>
-					<h3 class="research-card-title">Agentic DEM Workflow</h3>
-					<p class="research-card-text">
-						A full-stack AI agent platform for autonomous DEM simulation. Features a multi-agent architecture (main agent + specialized sub-agents for documentation exploration and visual diagnostics), multi-provider LLM support, and both web and terminal frontends — built from scratch with a "Script is Context" philosophy where every PFC execution is git-versioned for reproducibility.
-					</p>
-					<div class="research-card-meta">
-						<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="card-link">
-							toyoura-nagisa <i class="fas fa-arrow-right"></i>
-						</a>
-						<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="card-link">
-							pfc-mcp <i class="fas fa-arrow-right"></i>
-						</a>
-					</div>
-				</div>
-			</div>
 		</section>
 
 		<!-- ── Technical Stack ── -->
@@ -192,6 +177,7 @@
 					<span class="stack-label">DEM</span>
 					<div class="stack-tags">
 						<span class="stack-tag">Itasca PFC</span>
+						<span class="stack-tag">YADE</span>
 						<span class="stack-tag">Contact Models</span>
 						<span class="stack-tag">Collision Detection</span>
 						<span class="stack-tag">Fabric Tensor</span>
@@ -203,7 +189,6 @@
 						<span class="stack-tag">AI Agent</span>
 						<span class="stack-tag">Model Context Protocol</span>
 						<span class="stack-tag">Multi-Provider LLM</span>
-						<span class="stack-tag">WebSocket Bridge</span>
 					</div>
 				</div>
 				<div class="stack-row">
@@ -226,27 +211,8 @@
 			<p class="section-label">Open Source</p>
 			<h2 class="section-title">Projects</h2>
 			<div class="projects-grid stagger-children">
-				<a href="https://github.com/yusong652/taichiDEM" target="_blank" rel="noopener" class="project-card">
-					<div class="project-card-header">
-						<i class="fab fa-github"></i>
-						<span class="project-card-name">taichiDEM</span>
-					</div>
-					<p class="project-card-desc">GPU-accelerated DEM engine built with TaichiLang. Linear contact model, neighbor search, and boundary handling from scratch.</p>
-					<div class="project-card-tags">
-						<span>Python</span><span>Taichi</span><span>GPU</span>
-					</div>
-				</a>
-				<a href="https://github.com/yusong652/ray-tracing" target="_blank" rel="noopener" class="project-card">
-					<div class="project-card-header">
-						<i class="fab fa-github"></i>
-						<span class="project-card-name">ray-tracing</span>
-					</div>
-					<p class="project-card-desc">Offline particle renderer with reflection, refraction, and lighting. High-fidelity DEM visualization without Paraview.</p>
-					<div class="project-card-tags">
-						<span>Python</span><span>Taichi</span><span>Rendering</span>
-					</div>
-				</a>
-				<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="project-card">
+<a href="https://github.com/yusong652/toyoura-nagisa" target="_blank" rel="noopener" class="project-card">
+					<img src="site/assets/toyoura-nagisa-header.png" alt="toyoura-nagisa header" class="project-card-img" loading="lazy">
 					<div class="project-card-header">
 						<i class="fab fa-github"></i>
 						<span class="project-card-name">toyoura-nagisa</span>
@@ -257,6 +223,7 @@
 					</div>
 				</a>
 				<a href="https://github.com/yusong652/pfc-mcp" target="_blank" rel="noopener" class="project-card">
+					<img src="https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/header.gif" alt="pfc-mcp header" class="project-card-img" loading="lazy">
 					<div class="project-card-header">
 						<i class="fab fa-github"></i>
 						<span class="project-card-name">pfc-mcp</span>
@@ -264,6 +231,17 @@
 					<p class="project-card-desc">MCP server for PFC workflows. Versioned docs (PFC 6/7/9), interactive code execution, and simulation management via any MCP-compatible client.</p>
 					<div class="project-card-tags">
 						<span>MCP</span><span>Python</span><span>PFC</span>
+					</div>
+				</a>
+				<a href="https://github.com/yusong652/yade-mcp" target="_blank" rel="noopener" class="project-card">
+					<img src="https://raw.githubusercontent.com/yusong652/yade-mcp/assets/assets/header.gif" alt="yade-mcp header" class="project-card-img" loading="lazy">
+					<div class="project-card-header">
+						<i class="fab fa-github"></i>
+						<span class="project-card-name">yade-mcp</span>
+					</div>
+					<p class="project-card-desc">MCP server for YADE, the open-source DEM engine. BM25-powered API search and a live bridge to the YADE runtime — run simulations through any MCP-compatible AI agent.</p>
+					<div class="project-card-tags">
+						<span>MCP</span><span>Python</span><span>YADE</span>
 					</div>
 				</a>
 			</div>
