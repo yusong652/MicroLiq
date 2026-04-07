@@ -8,7 +8,7 @@
 
 Fig.~\ref{fig:macro_response} shows the shear stress paths and mean effective stress evolution under unidirectional, single-8, and double-8 cyclic loading at $\mathrm{CSR} = 0.25$. Under all three paths, the mean effective stress $p'$ gradually decreases with each loading cycle. When $p'$ drops below approximately 50\% of its initial value, an increase in shear load produces a slight rise in $p'$, while a decrease in shear load leads to a rapid reduction, eventually driving $p'$ toward zero and triggering liquefaction. Despite the progressive reduction in $p'$, the applied stress paths maintain their intended shapes throughout: linear for unidirectional, figure-8 for single-8, and alternating figure-8 for double-8.
 
-\begin{figure*}[t]
+\begin{figure*}
   \centering
   \safeincludegraphics[width=0.32\linewidth]{macro_response_uni.jpeg}%
   \hfill
@@ -25,7 +25,7 @@ Fig.~\ref{fig:macro_response} shows the shear stress paths and mean effective st
 
 Fig.~\ref{fig:liq_resistance} presents the liquefaction resistance curves for the three loading types, where liquefaction is defined as the state at which the excess pore water pressure reaches 95\% of the initial confining stress ($\ru = 0.95$). Unidirectional loading requires the highest number of cycles $N_L$ to reach liquefaction at any given CSR, followed by single-8 and then double-8. For example, at $\mathrm{CSR} = 0.25$, single-8 loading requires approximately 30 cycles, whereas double-8 requires only about 22 cycles. This ordering---unidirectional $>$ single-8 $>$ double-8---demonstrates that both the introduction of multidirectional shear and the periodic rotation of loading axes accelerate liquefaction.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.8\linewidth]{liquefaction_resistance_curves.png}
   \caption{Liquefaction resistance curves under unidirectional, single-8,
@@ -37,7 +37,7 @@ Fig.~\ref{fig:liq_resistance} presents the liquefaction resistance curves for th
 
 The strain development behaviors of single-8 and double-8 loading exhibit distinct differences (Fig.~\ref{fig:strain_evolution}). Under single-8 loading, the strain path maintains a consistent figure-8 orientation throughout the cycles, with each successive cycle expanding outward and gradually shifting in a direction perpendicular to the primary loading axis. Under double-8 loading, the strain path alternates orientation with each cycle due to the axis swap, producing more complex and irregular strain accumulation with less directional offset over time.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.48\linewidth]{strain_evolution_single8.jpeg}%
   \hfill
@@ -55,7 +55,7 @@ To evaluate the macroscopic energetic differences among the three loading paths,
 
 Despite these differences in the rate of pore pressure build-up, the total cumulative shear work at liquefaction is approximately equal for all three loading types. This finding indicates that shear stress directionality affects the efficiency of energy transfer to pore pressure generation---multidirectional paths convert shear work into excess pore pressure more rapidly---but does not alter the total energy threshold required to trigger liquefaction.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.8\linewidth]{cumulative_shear_work.jpeg}
   \caption{Cumulative shear work versus excess pore water pressure ratio
@@ -73,7 +73,7 @@ Fig.~\ref{fig:zm_evolution} shows the evolution of the mechanical coordination n
 
 Unidirectional loading maintains a relatively higher $\Zm$ throughout, indicating greater structural integrity under fixed-direction cyclic loading. Single-8 loading exhibits a moderate rate of $\Zm$ degradation, while double-8 loading shows the most rapid reduction, indicating that periodic axis alternation promotes more frequent structural rearrangements and more efficient destruction of the contact network. This ordering of $\Zm$ degradation rates ($\text{double-8} > \text{single-8} > \text{unidirectional}$) is consistent with the observed ordering of liquefaction resistance.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.8\linewidth]{coordination_number_evolution.png}
   \caption{Mechanical coordination number evolution under unidirectional,
@@ -88,7 +88,7 @@ Fig.~\ref{fig:fc_evolution} presents the evolution of the fabric anisotropy inva
 
 The double-8 path develops the highest $\Fc$ values, indicating that frequent directional changes promote pronounced contact alignment and structural anisotropy. The single-8 path shows intermediate anisotropy, while the unidirectional path produces the weakest anisotropy development. The absence of directional change in unidirectional loading limits particle rearrangement, preserving a more isotropic structure that can better resist cyclic loading.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.8\linewidth]{fabric_anisotropy_evolution.png}
   \caption{Fabric anisotropy invariant $\Fc$ evolution under unidirectional,
@@ -104,7 +104,7 @@ At $N_{\mathrm{cyc}}/N_L = 0.81$, notable differences emerge. Under unidirection
 
 After liquefaction, the differences among the three paths diminish. A notable feature of the double-8 path is a slight anisotropic alignment toward the $y$-axis, corresponding to the periodic axis alternation characteristic of this loading pattern.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.24\linewidth]{contact_density_uni_t0.png}%
   \hfill
@@ -121,7 +121,7 @@ After liquefaction, the differences among the three paths diminish. A notable fe
   \label{fig:contact_density_uni}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.24\linewidth]{contact_density_s8_t0.png}%
   \hfill
@@ -138,7 +138,7 @@ After liquefaction, the differences among the three paths diminish. A notable fe
   \label{fig:contact_density_s8}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \safeincludegraphics[width=0.24\linewidth]{contact_density_d8_t0.png}%
   \hfill
