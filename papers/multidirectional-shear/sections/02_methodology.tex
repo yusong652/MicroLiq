@@ -4,9 +4,9 @@
 \subsection{DEM model and specimen preparation}
 \label{subsec:dem_model}
 
-DEM simulations were performed using \textsc{PFC3D} \citep{Itasca2021}. Spherical particles with diameters ranging from \SIrange{1.0}{3.0}{mm}, approximating the grain size distribution of Toyoura sand (Fig.~\ref{fig:specimen_configuration}a), were generated within a cuboidal domain enclosed by periodic boundaries in the two horizontal directions and rigid ribbed shear walls in the vertical direction. A rolling-resistance contact model \citep{IwashitaOda1998,WensrichKatterfeld2012} was adopted to capture the mechanical effects of non-spherical grain shape. The DEM parameters are summarized in Table~\ref{tab:dem_parameters}.
+DEM simulations were performed using \textsc{PFC3D} \citep{Itasca2021}. A total of 31{,}582 spherical particles with diameters ranging from \SIrange{1.0}{3.8}{mm}, following the measured grain size distribution of Toyoura sand scaled by a factor of 10 (Fig.~\ref{fig:specimen_configuration}a), were generated within a cuboidal periodic domain. Periodic boundaries were applied in the two horizontal directions to create a representative volume element free of lateral boundary effects. In the vertical direction, shear force was transmitted by rigid ribbed walls: two pairs of vertically oriented blades, inserted from the top and bottom plates into the specimen along the $x$- and $y$-directions respectively, drove cyclic shear in a manner analogous to the ribbed end platens of a laboratory simple shear apparatus (Fig.~\ref{fig:specimen_configuration}b). This blade-based loading differs from approaches that prescribe uniform affine deformation on all particles \citep{Thornton2000} or that fix a layer of boundary particles, and provides stress-controlled shearing consistent with experimental servo mechanisms. A rolling-resistance linear contact model \citep{IwashitaOda1998,WensrichKatterfeld2012} was adopted to capture the rotational resistance arising from non-spherical grain shape. The DEM parameters are summarized in Table~\ref{tab:dem_parameters}.
 
-Specimen preparation followed a two-stage procedure. First, particles were deposited under gravity, and the specimen was then compacted to an isotropic stress state with $p'_0 = \SI{100}{kPa}$ using a servo-controlled wall adjustment. Six vertically oriented shear blades were inserted through the specimen to transmit torsional shear force (Fig.~\ref{fig:specimen_configuration}b). Undrained (constant-volume) conditions were enforced throughout cyclic loading via a servo mechanism, and excess pore water pressure was computed from the difference between the current and initial mean effective stresses.
+Specimen preparation followed a three-stage procedure. First, particles were generated in a loose state and compacted to the target void ratio with zero interparticle friction ($\mu_{pp} = 0$, Table~\ref{tab:dem_parameters}\textsuperscript{a}) to achieve a uniform packing at the desired density. The interparticle friction was then restored to $\mu_{pp} = 0.50$ (Table~\ref{tab:dem_parameters}\textsuperscript{b}), and the specimen was isotropically consolidated to $p'_0 = \SI{100}{kPa}$ via servo-controlled boundary adjustment. Finally, the specimen was stabilized at the target stress state with a tight tolerance. Undrained (constant-volume) conditions were enforced throughout cyclic loading, and excess pore water pressure was computed from the difference between the current and initial mean effective stresses.
 
 \begin{table}[t]
   \centering
@@ -16,16 +16,18 @@ Specimen preparation followed a two-stage procedure. First, particles were depos
     \toprule
     Description & Value \\
     \midrule
-    Number of particles, $N_p$                          & 10{,}000 \\
+    Number of particles, $N_p$                          & 31{,}582 \\
     Particle density, $\rho_s$ (\si{kg/m^3})            & 2650 \\
     Young's modulus, $E$ (\si{GPa})                     & 0.3 \\
     Normal-to-shear stiffness ratio, $\kappa$           & 2.0 \\
-    Interparticle friction, $\mu_{pp}$                  & 0.50 \\
+    Interparticle friction, $\mu_{pp}$                  & 0.0\textsuperscript{a}\,/\,0.50\textsuperscript{b} \\
     Particle--wall friction, $\mu_{pw}$                 & 0.0 \\
     Normal critical damping ratio, $\beta_n$            & 0.7 \\
     Shear critical damping ratio, $\beta_s$             & 0.5 \\
     Rolling friction coefficient, $\mu_r$               & 0.1 \\
     \bottomrule
+    \multicolumn{2}{@{}l}{\footnotesize \textsuperscript{a}Compaction to target void ratio.} \\
+    \multicolumn{2}{@{}l}{\footnotesize \textsuperscript{b}Consolidation and cyclic shear stages.}
   \end{tabular}
 \end{table}
 
