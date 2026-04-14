@@ -22,7 +22,7 @@ papers/           Journal paper manuscripts (LaTeX)
 triaxial/         Ch3: True triaxial apparatus simulation
 torsionSim/       Ch4: HCA simulation with combined-servo-mechanism
 experiment/       Ch4: Experimental data and analysis scripts
-multiDirection/   Ch5: Multi-directional shear effects
+multidirection/   Ch5: Multi-directional shear effects
 taichiDEM/        Appendix: GPU-accelerated DEM (TaichiLang)
 graphics/         Appendix: Ray tracing visualization
 quadTree/         Landing page particle animation (p5.js)

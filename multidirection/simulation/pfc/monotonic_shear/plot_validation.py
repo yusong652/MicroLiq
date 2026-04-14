@@ -10,7 +10,8 @@ Usage:
 """
 
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '../..')))
 
 import numpy as np
 import pandas as pd
@@ -89,7 +90,7 @@ ax2.set_xlabel(r'Deviatoric strain $\varepsilon_q$ (%)')
 ax2.set_ylabel(r'Deviatoric stress $q$ (kPa)')
 ax2.set_xlim(0, 2.0)
 ax2.set_ylim(0, None)
-ax2.legend(frameon=False)
+ax2.legend(frameon=False, loc='lower right')
 ax2.grid(True, linewidth=0.3, alpha=0.5)
 fig2.tight_layout(pad=0.3)
 fig2.savefig(os.path.join(FIGURES_DIR, 'validation_stress_strain.png'),

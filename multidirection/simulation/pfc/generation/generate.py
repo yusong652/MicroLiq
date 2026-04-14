@@ -4,32 +4,20 @@ Creates periodic domain, top/bottom plates, blade walls, and generates
 particles matching the Toyoura sand GSD (scaled by SCALE_FACTOR).
 
 Usage in PFC IPython console:
-    %run generate/generate.py
+    %run pfc/generation/generate.py
 """
 
+import os
+import sys
+
 import itasca as it
-import numpy as np
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.abspath(os.path.join(_HERE, '../..')))
+from gsd.toyoura import TOYOURA_GSD, radii_range, target_radii
 
 
 # ── Configuration ─────────────────────────────────────────────
-
-# Toyoura sand GSD control points: (diameter_mm, percentage_finer)
-# Edit plot_gsd.py to visualize and calibrate these values.
-TOYOURA_GSD = [
-    (0.10,    0),
-    (0.125,   5),
-    (0.15,   10),
-    (0.1638, 20),
-    (0.18,   30),
-    (0.20,   40),
-    (0.21,   50),
-    (0.225,  60),
-    (0.24,   70),
-    (0.26,   80),
-    (0.30,   90),
-    (0.34,   95),
-    (0.38,  100),
-]
 
 SCALE_FACTOR = 10.0            # DEM particle size = Toyoura × SCALE_FACTOR
 DOMAIN_LENGTH = 0.08           # x dimension [m]
@@ -38,7 +26,7 @@ DOMAIN_HEIGHT = 0.08           # z dimension [m]
 POROSITY_INITIAL = 0.40        # initial porosity for loose packing
 BLADE_HEIGHT = 10.0e-3         # blade extension beyond plate [m]
 PARTICLE_DENSITY = 2650.0      # kg/m^3
-RANDOM_SEED = 1024
+RANDOM_SEED = 2048
 DISSIPATE_CYCLES = 100000      # dissipation cycles
 DISSIPATE_CALM = 5000          # calm interval
 
@@ -64,49 +52,22 @@ CMAT_BALL_FACET = {
 }
 
 
-# ── GSD utilities ─────────────────────────────────────────────
-
-def gsd_to_radii_range(gsd, scale):
-    """Convert GSD control points to DEM radius range [m]."""
-    diameters = [d * scale for d, _ in gsd]
-    r_min = min(diameters) / 2.0 / 1000.0
-    r_max = max(diameters) / 2.0 / 1000.0
-    return r_min, r_max
-
-
-def gsd_to_cdf(gsd, scale):
-    """Convert GSD to CDF arrays (radius_m, fraction)."""
-    radii = []
-    fractions = []
-    for d_mm, pct in gsd:
-        r_m = d_mm * scale / 2.0 / 1000.0
-        radii.append(r_m)
-        fractions.append(pct / 100.0)
-    return np.array(radii), np.array(fractions)
-
+# ── Radius reassignment (PFC-side) ────────────────────────────
 
 def reassign_radii_to_gsd(gsd, scale):
     """Reassign existing ball radii to match target GSD.
 
-    Sorts balls by current radius, then assigns new radii sampled
-    from the target CDF. Preserves rank order (smallest stays smallest).
+    Sorts balls by current radius, then assigns new radii sampled from
+    the target CDF. Preserves rank order (smallest stays smallest).
     """
-    target_r, target_cdf = gsd_to_cdf(gsd, scale)
-    balls = list(it.ball.list())
-    n = len(balls)
-
-    # Sort balls by current radius
-    balls.sort(key=lambda b: b.radius())
-
-    # Generate target radii: uniform quantiles mapped through inverse CDF
-    quantiles = np.linspace(0.0, 1.0, n + 2)[1:-1]  # exclude 0% and 100%
-    new_radii = np.interp(quantiles, target_cdf, target_r)
+    balls = sorted(it.ball.list(), key=lambda b: b.radius())
+    new_radii = target_radii(gsd, scale, len(balls))
 
     for ball, r in zip(balls, new_radii):
         ball.set_radius(r)
 
     print("Radii reassigned: n=%d, r_min=%.4e, r_max=%.4e, r_mean=%.4e" % (
-        n, new_radii.min(), new_radii.max(), new_radii.mean()))
+        len(balls), new_radii.min(), new_radii.max(), new_radii.mean()))
 
 
 # ── Domain and wall creation ──────────────────────────────────
@@ -211,7 +172,7 @@ def generate_particles(length, width, height, r_min, r_max, porosity, density):
 # ── Main ──────────────────────────────────────────────────────
 
 def main():
-    r_min, r_max = gsd_to_radii_range(TOYOURA_GSD, SCALE_FACTOR)
+    r_min, r_max = radii_range(TOYOURA_GSD, SCALE_FACTOR)
 
     print("=" * 60)
     print("Particle Generation - Toyoura GSD x%.0f" % SCALE_FACTOR)

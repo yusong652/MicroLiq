@@ -31,7 +31,7 @@ thesis/           Thesis chapters (Markdown/Obsidian)
 triaxial/         Ch3: True triaxial apparatus simulation
 torsionSim/       Ch4: HCA simulation with coupled servo mechanism
 experiment/       Ch4: Experimental data and analysis
-multiDirection/   Ch5: Multi-directional shear effects
+multidirection/   Ch5: Multi-directional shear effects
 taichiDEM/        Appendix: GPU-accelerated DEM (TaichiLang)
 graphics/         Appendix: Ray tracing visualization
 site/             Static site assets (animation, CSS, JS)

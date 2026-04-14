@@ -76,11 +76,11 @@ To validate the micro-parameters and numerical implementation, simulations were 
 
 It should be noted that inherent differences exist between the DEM simulation and laboratory experiments. The DEM model employs periodic boundaries to eliminate wall friction effects and simulate an idealized infinite medium, whereas the HCA tests involve hollow cylindrical specimens with inner and outer radii creating non-uniform stress distributions across the specimen thickness. Despite these fundamental differences in boundary conditions and specimen geometry, the comparison remains meaningful as both configurations aim to achieve simple shear deformation under undrained conditions.
 
-![](multiDirection/validation/validate_p_q_dense.png)
+![](multidirection/validation/validate_p_q_dense.png)
 
 (a) Effective stress path
 
-![](multiDirection/validation/validate_gamma_q_dense.png)
+![](multidirection/validation/validate_gamma_q_dense.png)
 
 (b) Stress-strain relationship
 

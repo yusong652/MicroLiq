@@ -1,40 +1,22 @@
-"""Plot GSD comparison: Toyoura sand vs DEM (×10 scaling).
+"""Plot GSD comparison: Toyoura sand vs DEM (scaled)."""
 
-Edit the TOYOURA_GSD control points below, then run to compare.
-Once satisfied, the DEM_GSD will be used for particle generation.
-"""
-
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import os
+import sys
 
 import numpy as np
 import matplotlib.pyplot as plt
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.abspath(os.path.join(_HERE, '..')))
 from plot_style import apply_style
+from toyoura import TOYOURA_GSD
+
 apply_style()
 
-# ── Control points: (particle diameter mm, percentage finer %) ──
-TOYOURA_GSD = [
-    (0.10,   0),
-    (0.125,   5),
-    (0.15,  10),
-    (0.1638,  20),
-    (0.18,  30),
-    (0.20,  40),
-    (0.21,  50),
-    (0.225,  60),
-    (0.24,  70),
-    (0.26,  80),
-    (0.30,  90),
-    (0.34,  95),
-    (0.38, 100),
-]
+SCALE_FACTOR = 10.0
 
-SCALE_FACTOR = 10.0  # DEM = Toyoura × 10
-
-# ── Derived DEM GSD ──
 DEM_GSD = [(d * SCALE_FACTOR, pct) for d, pct in TOYOURA_GSD]
 
-# ── Plot ──
 fig, ax = plt.subplots(figsize=(3.5, 2.8))
 
 toyoura_d = [p[0] for p in TOYOURA_GSD]
@@ -57,10 +39,10 @@ ax.grid(True, which='both', linewidth=0.3, alpha=0.5)
 ax.legend(loc='upper left', frameon=False)
 
 fig.tight_layout(pad=0.3)
-fig.savefig('grain_size_distribution.png', dpi=300, bbox_inches='tight')
+fig.savefig(os.path.join(_HERE, 'grain_size_distribution.png'),
+            dpi=300, bbox_inches='tight')
 plt.show()
 
-# Print DEM GSD info
 print("DEM GSD control points (diameter mm, finer %):")
 for d, pct in DEM_GSD:
     print("  D=%.2f mm  ->  %3.0f%%" % (d, pct))
