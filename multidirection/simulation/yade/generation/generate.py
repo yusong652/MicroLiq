@@ -201,17 +201,26 @@ def _max_vel():
     return (max(vs), float(np.mean(vs))) if vs else (0.0, 0.0)
 
 
-def run_async(n_cycles, poll_interval=2.0):
-    """Run n_cycles in YADE background thread, polling so GUI stays responsive.
+def run_async(n_cycles, poll_interval=0.05):
+    """Run n_cycles in YADE background thread; pump Qt events while waiting.
 
-    O.run(N, True) would block the main Python thread, freezing the Qt viewer.
-    O.run(N) without wait returns immediately; we sleep-poll until iter target
-    is reached so the script doesn't exit before the simulation finishes.
+    O.run(N, True) would block in C++; O.run(N) returns immediately and the
+    sim runs in YADE's worker thread. Plain `time.sleep` here would still
+    starve the Qt event loop (3D viewer wouldn't refresh) — so we explicitly
+    process Qt events between short sleeps.
     """
     import time
+    try:
+        from PyQt5.QtCore import QCoreApplication
+        process = QCoreApplication.processEvents
+    except Exception:
+        process = None
+
     target = O.iter + n_cycles
     O.run(n_cycles)
-    while O.iter < target:
+    while O.iter < target and O.running:
+        if process is not None:
+            process()
         time.sleep(poll_interval)
 
 

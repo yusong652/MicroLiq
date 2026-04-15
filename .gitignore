@@ -67,3 +67,20 @@ pdf_outputs/
 
 # Data files
 *.csv
+
+# YADE / PFC simulation state files (large, regenerable)
+*.yade.gz
+*.yade.bz2
+*.yade
+*.sav
+post_generate*
+post_consolidate*
+post_shear*
+
+# Docker compose (local paths hardcoded, not portable)
+docker-compose.yml
+docker-compose.override.yml
+
+# MCP bridge runtime state
+.yade-mcp/
+.pfc-mcp/
