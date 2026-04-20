@@ -1,0 +1,487 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{framed}
+\usepackage{soul}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage[authoryear,round]{natbib}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black,
+}
+
+% ---------------------------------------------------------------
+% Response-letter environments and macros
+% ---------------------------------------------------------------
+
+% Reviewer's comment: left bar, italic, grey
+\definecolor{reviewerbar}{gray}{0.55}
+\definecolor{reviewerbg}{gray}{0.96}
+
+\newenvironment{rcomment}
+  {\begin{leftbar}\color{black!75}\itshape}
+  {\end{leftbar}\vspace{0.3em}}
+
+% Author's response: normal style, marked with a bold tag
+\newcommand{\response}{\par\noindent\textbf{Response:}\ \ignorespaces}
+
+% Manuscript change pointer
+\newcommand{\changed}[1]{\par\noindent\textbf{Manuscript changes:}\ #1\par}
+
+% Cross-reference helpers
+\newcommand{\manref}[1]{(#1)}                  % e.g., \manref{p.~4, l.~112}
+\newcommand{\secref}[1]{Section~#1}
+\newcommand{\figref}[1]{Fig.~#1}
+\newcommand{\eqnref}[1]{Eq.~#1}
+
+% Commonly needed symbols in this paper
+\newcommand{\Kzero}{K_0}
+\newcommand{\Zm}{Z_m}
+\newcommand{\Zmz}{Z_{m0}}
+\newcommand{\Vs}{V_s}
+\newcommand{\pmean}{p^{\prime}}
+\newcommand{\ru}{r_u}
+
+% ---------------------------------------------------------------
+
+\title{Response to Reviewers\\
+  \large Manuscript COMGE-D-26-01109}
+\author{Yusong Han, Ryosuke Uzuoka, Kyohei Ueda}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Cover letter}
+
+Dear Editor,
+
+Thank you for the opportunity to revise our manuscript
+``\emph{[paper title]}'' (COMGE-D-26-01109) submitted to
+\emph{Computers and Geotechnics}. We sincerely thank both reviewers for their
+thoughtful and constructive comments, which have helped us to substantially
+improve the manuscript.
+
+We have carefully addressed every comment. A point-by-point response is
+provided below. In the revised manuscript, added or modified text is marked
+using \texttt{latexdiff} against the submitted version (also provided).
+
+%% -------- Summary of major changes --------
+
+\section*{Summary of major revisions}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Clarified the relative-density definition} as a
+    behavior-matching label calibrated against \citet{...} and
+    \citet{...} data, and added a new CSR=0.40 cyclic validation point at
+    $D_r \approx 75\%$.
+  \item \textbf{Expanded the Introduction} with a review of prior DEM-HCA
+    models and the boundary-condition taxonomy (rigid wall, stacked wall,
+    flexible membrane).
+  \item \textbf{Added a consolidated case table} listing all
+    ($D_r$, $\Kzero$, CSR) combinations and the resulting $N_L$.
+  \item \textbf{Added a quantitative quasi-static check} through the
+    inertial number.
+  \item \textbf{Added contact-force anisotropy analysis} to complement the
+    existing contact-density analysis.
+  \item \textbf{Quantified the differences} in Fig.~15 via ... .
+  \item Minor clarifications and additional references throughout.
+\end{itemize}
+
+All line and figure numbers below refer to the revised manuscript unless
+noted otherwise.
+
+\clearpage
+
+%% ===============================================================
+%% Reviewer 1
+%% ===============================================================
+
+\section*{Response to Reviewer 1}
+
+We thank Reviewer~1 for the detailed and constructive feedback. Our
+responses to each point are given below.
+
+%% ---------------- R1.1 ----------------
+\subsection*{R1.1 --- Particle size scaling adequacy}
+
+\begin{rcomment}
+Lines 112--114: Particle size may influence macroscopic mechanical responses
+such as dilatancy, peak friction angle, and liquefaction resistance. Please
+clarify the adequacy of this scaling factor (e.g., whether the specimen
+size-to-particle size ratio meets the requirement) or provide supporting
+references.
+\end{rcomment}
+
+\response
+We thank the reviewer for raising this important point. The specimen is an
+annular hollow cylinder with inner diameter \SI{60}{mm}, outer diameter
+\SI{100}{mm}, height \SI{100}{mm}, and a particle-size distribution of
+\SIrange{1.0}{3.0}{mm} ($d_{\max}=\SI{3}{mm}$). The radial thickness
+$R-r=\SI{20}{mm}$ is inherently the smallest coherent dimension of any HCA
+specimen; we acknowledge this openly as a structural feature of the test
+geometry rather than a modelling oversight. The corresponding specimen-to-%
+$d_{\max}$ ratios are 6.7 radially, 33 axially, and 84 in the mid-radius
+circumferential direction. We address the adequacy of the radial ratio
+through the following independent considerations.
+
+\begin{enumerate}[leftmargin=*,label=(\arabic*)]
+  \item \textbf{Codified laboratory guideline.} The most geometrically
+    analogous standardised guideline for cohesive-soil triaxial testing is
+    ASTM~D4767, which stipulates that the largest particle size shall be
+    smaller than one-sixth of the specimen diameter. The present radial
+    ratio of 6.7 satisfies this 6:1 threshold; the axial and circumferential
+    ratios satisfy it by a wide margin.
+
+  \item \textbf{Consistency with DEM-HCA peer literature.} Among prior DEM-%
+    HCA studies employing rigid-wall boundaries, \citet{Shi2021}, using a
+    bonded-particle model of sandstone under HCA torsional loading, adopted
+    a radial/$d_{\max}$ ratio of 7.5 --- directly comparable to the present
+    6.7. Separately, the 10$\times$ up-scaling of the Toyoura grading adopted
+    here follows the same computational-efficiency rationale as in the DEM-%
+    HCA Toyoura-sand study of \citet{Song2024}. The present choices ---
+    both in size ratio and in scaling strategy --- are therefore consistent
+    with peer-reviewed DEM-HCA practice.
+
+  \item \textbf{Liquefaction is an end-state problem, and our comparison
+    is differential.} Liquefaction is defined at a finite strain level
+    ($\gamma_{SA}=2.5\%$ in the \citealt{Ishihara1985} protocol, which we
+    follow) and is governed by end-state fabric collapse rather than small-%
+    strain elastic response. Classical critical-state soil mechanics holds
+    that ultimate shear strength is a material property that is independent
+    of specimen size. Moreover, the principal interest of the present work
+    is the \emph{variation} of $N_L$ across \Kzero{} states rather than its
+    absolute value: any size-induced bias applies uniformly across the
+    compared \Kzero{} states and therefore does not distort the relative
+    trends that form the paper's conclusions.
+
+  \item \textbf{HCA-specific geometric argument.} The primary shear strain
+    $\gamma_{z\theta}$ developed during cyclic torsional loading lies in the
+    tangential--axial plane. The smallest dimension (radial) is therefore
+    \emph{perpendicular} to the primary deformation mode, unlike direct-%
+    shear tests in which loading acts across the thinnest dimension. Wall-%
+    induced inhomogeneity in the radial direction affects
+    $\sigma'_r$ measurement, which we address through annulus averaging,
+    but does not directly distort the primary $\gamma_{z\theta}$ response.
+    Representative-volume-element guidelines developed for cubic or solid-%
+    cylindrical specimens under axial loading do not apply cleanly to the
+    HCA configuration.
+
+  \item \textbf{Empirical corroboration.} The calibrated parameter set
+    simultaneously reproduces three independent experimental behaviours of
+    Toyoura sand: the monotonic effective stress path and stress--strain
+    response of \citet{Nakata1998}, the associated dilatancy, and the
+    cyclic liquefaction-resistance curve of \citet{Ishihara1985} across
+    five CSR levels. This triple behavioural match provides empirical
+    evidence that the adopted particle sizing is adequate for the stress
+    regime and loading mode investigated.
+
+  \item \textbf{Computational trade-off.} A further reduction of the
+    particle size (e.g., halving $d_{50}$ to meet the more stringent
+    representative-volume-element ratios developed for axial-compression
+    specimens) would increase the computational cost by approximately 16$\times$
+    --- an 8-fold increase in particle number in three dimensions combined
+    with an approximately 2-fold reduction in the critical timestep ---
+    with limited incremental scientific return for a comparative study of
+    \Kzero{} effects. We note this refinement as a direction for future
+    work rather than pursue it here.
+\end{enumerate}
+
+\changed{In the revised manuscript we have (i) expanded the DEM-HCA
+literature review in the Introduction (Section~\ref{sec:introduction}, last
+paragraph) to introduce \citet{LiGuoZhang2014} (the reference specifically
+highlighted by the reviewers), \citet{Shi2021}, and \citet{Song2024}
+alongside the previously cited \citet{LiZhangGutierrez2015} and
+\citet{Liu2021}, and (ii) added a brief note in
+Section~\ref{subsec:dem_hca} citing \citet{Song2024} as precedent for the
+10$\times$ scaling of the Toyoura-sand grading.}
+
+%% ---------------- R1.2 ----------------
+\subsection*{R1.2 --- Void ratio range and ``dense''/``medium-dense'' labels}
+
+\begin{rcomment}
+For the case where the authors have defined relative density states of
+$D_r \approx 90\%$ and $D_r \approx 75\%$ based on void ratios of 0.736 and
+0.742, respectively, the implied range of maximum and minimum void ratios is
+approximately 0.732 to 0.772. As a result, I do not think that a void ratio
+range of merely 0.04 and the terms ``dense'' and ``medium-dense'' as used in
+this manuscript correspond to the physical states observed in the Toyoura
+sand that this model purports to represent.
+\end{rcomment}
+
+\response
+\textit{[TODO: reframe $D_r$ as a behavior-matching label; cite Nakata
+monotonic + Ishihara cyclic triple match; report new CSR=0.40 $D_r\approx
+75\%$ validation point; acknowledge absence of Nakata monotonic data at
+$D_r \approx 75\%$ as a limitation.]}
+
+\changed{\textit{[TODO: \secref{...}, revised \figref{7}, new paragraph on
+limitations.]}}
+
+%% ---------------- R1.3 ----------------
+\subsection*{R1.3 --- Missing formulas for CSR and $\Kzero$}
+
+\begin{rcomment}
+Several variable symbols are used without a clear computational formula.
+Such as CSR, $\Kzero$.
+\end{rcomment}
+
+\response
+\textit{[TODO: add CSR $= \tau_{cyc}/\sigma'_{z0}$ and
+$\Kzero = \sigma'_r/\sigma'_z$ at first use.]}
+
+\changed{\textit{[TODO: pointer to \secref{2.3}, lines X--Y.]}}
+
+%% ---------------- R1.4 ----------------
+\subsection*{R1.4 --- Consolidated case table}
+
+\begin{rcomment}
+The description of the simulation program is summarized in brief statements
+without explicitly listing the complete set of parameters. It is recommended
+that all simulation cases (including combinations of different densities,
+$\Kzero$ values, and CSR levels) be presented collectively in a table
+format.
+\end{rcomment}
+
+\response
+\textit{[TODO: confirm new table with $D_r$, $\Kzero$, CSR, $N_L$.]}
+
+\changed{\textit{[TODO: new Table~\ref{...}.]}}
+
+%% ---------------- R1.5 ----------------
+\subsection*{R1.5 --- Loading rate / quasi-static condition}
+
+\begin{rcomment}
+The loading rate is not specified in the text. In DEM simulations, an
+excessively high loading rate may introduce inertial effects, leading to
+excessive particle accelerations and distorted contact forces. Please
+clarify whether the selected loading rate satisfies quasi-static conditions.
+\end{rcomment}
+
+\response
+\textit{[TODO: report inertial number $I = \dot{\gamma}\,d\,\sqrt{\rho/p}$;
+show $I \ll 10^{-3}$; cite da Cruz / Roux.]}
+
+\changed{\textit{[TODO: \secref{2.3}, new equation / paragraph.]}}
+
+%% ---------------- R1.6 ----------------
+\subsection*{R1.6 --- Rigid wall vs.\ flexible membrane}
+
+\begin{rcomment}
+Rigid walls are used to model the inner and outer boundaries of the HCA
+specimen, whereas flexible latex membranes are typically used in laboratory
+experiments. Rigid boundaries may restrict local deformation and shear band
+development, potentially leading to overestimation of stiffness and
+liquefaction resistance. Please discuss the limitations of adopting rigid
+boundaries and justify their use with relevant references.
+\end{rcomment}
+
+\response
+\textit{[TODO: acknowledge limitation; justify via (i) HCA chambers are
+rigid-walled with the membrane as a pressure interface, (ii) present work
+focuses on average fabric-level comparison rather than localized shear
+bands, (iii) flexible-membrane DEM-HCA (Song 2024) as complementary / future
+work.]}
+
+\changed{\textit{[TODO: \secref{2.1} end paragraph or discussion section.]}}
+
+%% ---------------- R1.7 ----------------
+\subsection*{R1.7 --- Citation for CSL in Fig.~8(c)}
+
+\begin{rcomment}
+The CSL in Fig.~8(c) is of unknown origin; whether it comes from your own
+data or from someone else's literature, a clear citation is required.
+\end{rcomment}
+
+\response
+\textit{[TODO: verify source; update caption with explicit citation.]}
+
+\changed{\textit{[TODO: \figref{8}(c) caption.]}}
+
+%% ---------------- R1.8 ----------------
+\subsection*{R1.8 --- ``Enhancement'' of $\Kzero = 1.0$ in the coordination-number plane (Fig.~12)}
+
+\begin{rcomment}
+In most cases, $N_L$ decreases monotonically with the increase of $\Kzero$,
+as shown in Figures 8 and 10; however, the situation changes in Figure 12.
+Theoretically, the evolution of the coordination number at the microscopic
+level corresponds to the evolution of the macroscopic parameters such as the
+excess pore water pressure ratio, deviatoric stress, and cumulative shear
+work. The enhancement of $\Kzero = 1.0$ in the coordination number plane
+should be explained more clearly.
+\end{rcomment}
+
+\response
+\textit{[TODO: clarify physical cause --- isotropic consolidation distributes
+contact normals more uniformly, yielding slightly higher $\Zmz$; reaffirm
+that $\Zmz$ alone is insufficient to predict $N_L$ and that the directional
+fabric indicator $\alpha$ is required, as demonstrated in
+\secref{...}.]}
+
+\changed{\textit{[TODO: 1--2 sentences appended to \figref{12} discussion.]}}
+
+\clearpage
+
+%% ===============================================================
+%% Reviewer 2
+%% ===============================================================
+
+\section*{Response to Reviewer 2}
+
+We thank Reviewer~2 for the thorough and constructive comments, and
+particularly for pointing us to relevant prior work on DEM-HCA modelling.
+
+%% ---------------- R2.1 ----------------
+\subsection*{R2.1 --- Particle--wall friction coefficient set to zero (Table 1)}
+
+\begin{rcomment}
+Table 1: Why is the friction coefficient between particles and walls zero?
+\end{rcomment}
+
+\response
+\textit{[TODO: explain that torque is transmitted geometrically through
+blade faces rather than wall friction; setting wall friction to zero avoids
+introducing an additional free parameter while the blade geometry already
+ensures full torque transfer.]}
+
+\changed{\textit{[TODO: Table~1 caption note / \secref{2.1}.]}}
+
+%% ---------------- R2.2 ----------------
+\subsection*{R2.2 --- Size of torsional blades}
+
+\begin{rcomment}
+What is the size of torsional blades?
+\end{rcomment}
+
+\response
+\textit{[TODO: report blade dimensions from \texttt{generate.py}.]}
+
+\changed{\textit{[TODO: \secref{2.1} or Table~1.]}}
+
+%% ---------------- R2.3 ----------------
+\subsection*{R2.3 --- Difference vs.\ servo mechanism in Han (2024)}
+
+\begin{rcomment}
+What is the difference between the servo mechanism used in this paper and
+that in Han (2024)?
+\end{rcomment}
+
+\response
+\textit{[TODO: reference the contribution statement in \secref{...}, lines
+326--...; summarise: Han~(2024) solved only the radial and torsional
+conditions with fixed specimen height; the present formulation adds the
+axial degree of freedom and derives the cross-coupling
+$\hat{\mathbf{K}}$ analytically.]}
+
+\changed{\textit{[TODO: no new text needed, or minor clarification in
+contribution paragraph.]}}
+
+%% ---------------- R2.4 ----------------
+\subsection*{R2.4 --- DEM-HCA literature review and the $H=D$ height choice}
+
+\begin{rcomment}
+There should be more context to introduce the research in DEM HCA models in
+Part Introduction. \dots\ [boundary-condition types in Li~2014, Li~2017,
+Song~2024a, Song~2024b; height $H \approx 2D$ in Shi~2021]. However, the
+height equals to the outer diameter in this paper. Are there any
+requirements or guidelines for the size of HCA?
+\end{rcomment}
+
+\response
+\textit{[TODO: add Introduction paragraph reviewing prior DEM-HCA
+modelling with a boundary-condition taxonomy (rigid wall, stacked wall,
+flexible membrane); justify $H=D$ as a computational-cost trade-off with
+PFC precedents; note that average fabric response, rather than end-plate
+localisation, is the focus of this study.]}
+
+\changed{\textit{[TODO: new paragraph in \secref{1}; short note in
+\secref{2.1}.]}}
+
+%% ---------------- R2.5 ----------------
+\subsection*{R2.5 --- Stability of the servo near singular stiffness matrix}
+
+\begin{rcomment}
+The proposed servo mechanism may face numerical instability when the
+stiffness matrix becomes near-singular due to the drastic loss of particle
+contacts. How does the algorithm prevent numerical oscillations during
+matrix inversion?
+\end{rcomment}
+
+\response
+\textit{[TODO: depending on code audit --- either (a) describe
+regularisation / condition-number checks, or (b) argue that the
+constant-volume constraint eliminates radial-axis degeneracy, while the
+torsional and axial degrees of freedom remain independently stable; any
+post-liquefaction oscillations observed are physical rather than numerical.]}
+
+\changed{\textit{[TODO: paragraph in \secref{...} or appendix.]}}
+
+%% ---------------- R2.6 ----------------
+\subsection*{R2.6 --- Evolution of $e_r$, $e_z$, or volume during validation}
+
+\begin{rcomment}
+For the validation part, please add some figures to display the evolution
+of $e_r$ and $e_z$ over time or the change in volume.
+\end{rcomment}
+
+\response
+\textit{[TODO: add plots of $r$, $H$, and total volume during monotonic
+calibration and cyclic validation, confirming strict enforcement of the
+constant-volume constraint.]}
+
+\changed{\textit{[TODO: new panel in \figref{7} or a separate
+\figref{...}.]}}
+
+%% ---------------- R2.7 ----------------
+\subsection*{R2.7 --- Contact-force anisotropy (3D rose diagrams)}
+
+\begin{rcomment}
+Fig.~14: You analysed contact density anisotropy, but why didn't you analyse
+anisotropy for contact forces such as normal contact force? Please refer to
+the papers mentioned before which plotted 3D rose diagrams of contact force
+anisotropies.
+\end{rcomment}
+
+\response
+\textit{[TODO: add contact-force rose diagrams alongside the contact-density
+ones; reference Song~2024 precedent.]}
+
+\changed{\textit{[TODO: extended \figref{14} or new companion figure.]}}
+
+%% ---------------- R2.8 ----------------
+\subsection*{R2.8 --- Quantifying the differences in Fig.~15}
+
+\begin{rcomment}
+Fig.~15: It is difficult to distinguish the difference in displacement
+between $\Kzero=0.5$ and $2.0$ specimens when $N/N_L=0.00$ and $N/N_L=0.61$,
+and it is also difficult to distinguish the difference in force chain when
+$N/N_L=1.05$ and $N/N_L=1.07$. Please quantify the differences.
+\end{rcomment}
+
+\response
+\textit{[TODO: add a quantitative metric --- e.g., displacement-magnitude
+CDF and force-chain principal-direction distribution --- either as a new
+panel or in the caption.]}
+
+\changed{\textit{[TODO: \figref{15} caption / new panel.]}}
+
+\clearpage
+
+\section*{Closing}
+
+We hope the revised manuscript now meets the journal's standards and the
+reviewers' expectations. We remain grateful for the reviewers' careful
+reading and valuable suggestions.
+
+\bibliographystyle{plainnat}
+\bibliography{../../refs.bib}
+
+\end{document}
