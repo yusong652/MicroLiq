@@ -10,12 +10,20 @@
 \usepackage{amsmath,amssymb}
 \usepackage{siunitx}
 \usepackage[authoryear,round]{natbib}
+\usepackage{xr-hyper}
 
 \hypersetup{
   colorlinks=true,
   linkcolor=blue!60!black,
   urlcolor=blue!60!black,
+  citecolor=blue!60!black,
 }
+
+% Pull labels (sections, figures, tables, equations) from the main
+% manuscript's .aux file, so that \ref{sec:introduction} etc. resolve
+% to the numbering in the compiled manuscript. Requires main.tex to
+% have been built first.
+\externaldocument{../../build/main}
 
 % ---------------------------------------------------------------
 % Response-letter environments and macros
@@ -42,12 +50,12 @@
 \newcommand{\eqnref}[1]{Eq.~#1}
 
 % Commonly needed symbols in this paper
-\newcommand{\Kzero}{K_0}
-\newcommand{\Zm}{Z_m}
-\newcommand{\Zmz}{Z_{m0}}
-\newcommand{\Vs}{V_s}
-\newcommand{\pmean}{p^{\prime}}
-\newcommand{\ru}{r_u}
+\newcommand{\Kzero}{\ensuremath{K_0}}
+\newcommand{\Zm}{\ensuremath{Z_m}}
+\newcommand{\Zmz}{\ensuremath{Z_{m0}}}
+\newcommand{\Vs}{\ensuremath{V_s}}
+\newcommand{\pmean}{\ensuremath{p^{\prime}}}
+\newcommand{\ru}{\ensuremath{r_u}}
 
 % ---------------------------------------------------------------
 
@@ -65,7 +73,9 @@
 Dear Editor,
 
 Thank you for the opportunity to revise our manuscript
-``\emph{[paper title]}'' (COMGE-D-26-01109) submitted to
+``\emph{Influence of Initial Stress Anisotropy on Liquefaction Resistance
+in Undrained Cyclic Torsional Shear: DEM Simulation of Hollow Cylinder
+Tests}'' (COMGE-D-26-01109) submitted to
 \emph{Computers and Geotechnics}. We sincerely thank both reviewers for their
 thoughtful and constructive comments, which have helped us to substantially
 improve the manuscript.
@@ -80,8 +90,8 @@ using \texttt{latexdiff} against the submitted version (also provided).
 
 \begin{itemize}[leftmargin=*]
   \item \textbf{Clarified the relative-density definition} as a
-    behavior-matching label calibrated against \citet{...} and
-    \citet{...} data, and added a new CSR=0.40 cyclic validation point at
+    behavior-matching label calibrated against \citet{Nakata1998} and
+    \citet{Ishihara1985} data, and added a new CSR=0.40 cyclic validation point at
     $D_r \approx 75\%$.
   \item \textbf{Expanded the Introduction} with a review of prior DEM-HCA
     models and the boundary-condition taxonomy (rigid wall, stacked wall,
@@ -122,87 +132,99 @@ references.
 \end{rcomment}
 
 \response
-We thank the reviewer for raising this important point. The specimen is an
-annular hollow cylinder with inner diameter \SI{60}{mm}, outer diameter
-\SI{100}{mm}, height \SI{100}{mm}, and a particle-size distribution of
-\SIrange{1.0}{3.0}{mm} ($d_{\max}=\SI{3}{mm}$). The radial thickness
-$R-r=\SI{20}{mm}$ is inherently the smallest coherent dimension of any HCA
-specimen; we acknowledge this openly as a structural feature of the test
-geometry rather than a modelling oversight. The corresponding specimen-to-%
-$d_{\max}$ ratios are 6.7 radially, 33 axially, and 84 in the mid-radius
-circumferential direction. We address the adequacy of the radial ratio
+We thank the reviewer for raising this important point. As the
+reviewer notes, particle size choice can influence macroscopic
+responses such as dilatancy, peak friction angle, and liquefaction
+resistance. These three behaviours are precisely the targets against
+which our calibrated parameter set has been validated (see item~(4)
+below). The remainder of this response focuses on the more specific
+question of whether the adopted specimen-to-particle size ratio is
+adequate. We agree that the radial direction of an HCA specimen
+(typically its thinnest dimension) is the direction most susceptible
+to specimen-size effects and therefore deserves careful examination.
+The present specimen is an annular hollow cylinder with inner
+diameter \SI{60}{mm}, outer diameter \SI{100}{mm}, height
+\SI{100}{mm}, and a particle-size distribution of
+\SIrange{1.0}{3.0}{mm} ($d_{\max}=\SI{3}{mm}$). The corresponding
+specimen-to-$d_{\max}$ ratios are 6.7 radially, 33 axially, and 84
+in the mid-radius circumferential direction, confirming that the
+radial ratio is the binding constraint. We examine its adequacy
 through the following independent considerations.
 
 \begin{enumerate}[leftmargin=*,label=(\arabic*)]
-  \item \textbf{Codified laboratory guideline.} The most geometrically
-    analogous standardised guideline for cohesive-soil triaxial testing is
-    ASTM~D4767, which stipulates that the largest particle size shall be
-    smaller than one-sixth of the specimen diameter. The present radial
-    ratio of 6.7 satisfies this 6:1 threshold; the axial and circumferential
-    ratios satisfy it by a wide margin.
+  \item \textbf{Codified laboratory guideline.} The standardised
+    guidelines for triaxial testing both stipulate that the largest
+    particle size shall be smaller than one-sixth of the specimen
+    diameter: \citet{ASTM_D4767} for consolidated undrained triaxial
+    testing on cohesive soils, and \citet{ASTM_D7181} for consolidated
+    drained triaxial testing on soils generally (including cohesionless
+    sands). The present radial ratio of 6.7 satisfies this 6:1
+    threshold; the axial and circumferential ratios satisfy it by a
+    wide margin.
 
-  \item \textbf{Consistency with DEM-HCA peer literature.} Among prior DEM-%
-    HCA studies employing rigid-wall boundaries, \citet{Shi2021}, using a
-    bonded-particle model of sandstone under HCA torsional loading, adopted
-    a radial/$d_{\max}$ ratio of 7.5 --- directly comparable to the present
-    6.7. Separately, the 10$\times$ up-scaling of the Toyoura grading adopted
-    here follows the same computational-efficiency rationale as in the DEM-%
-    HCA Toyoura-sand study of \citet{Song2024}. The present choices ---
-    both in size ratio and in scaling strategy --- are therefore consistent
-    with peer-reviewed DEM-HCA practice.
+  \item \textbf{DEM literature precedent.} Two strands of prior DEM
+    work support the present size choice.
+    \begin{enumerate}[label=(\alph*), leftmargin=2em, topsep=2pt, itemsep=3pt]
+    \item \textit{Size-ratio effect on end-state and cyclic
+      behaviour.} \citet{Huang2014} systematically investigated
+      the effect of specimen/particle size ratio on DEM triaxial
+      samples using a realistic Toyoura-sand grading and concluded
+      that ``the ultimate strength of the material at the critical
+      state is [\ldots] independent of the sample size and
+      boundary conditions''; their smallest sample, at a
+      diameter/$d_{\max}$ ratio of 7.2, is comparable to the
+      present 6.7. In a more direct cyclic-liquefaction setting,
+      \citet{KuhnRenken2014} simulated undrained cyclic shear in a
+      DEM assembly with periodic boundaries and minimum cell
+      dimension $\sim$12\,$D_{50}$ (comparable to the present
+      radial/$D_{50}=10$), and reported that the resulting
+      liquefaction resistance curves ($\mathrm{CSR}$ vs $N_L$) were
+      nearly indistinguishable when the particle count was doubled.
+      Because liquefaction ($\ru=0.95$) is itself an end-state
+      condition characterised by vanishing effective stress, the
+      quantity reported here ($N_L$) is expected to be weakly
+      affected by specimen size in this regime.
+    \item \textit{Comparable DEM-HCA configurations.} Within prior
+      DEM-HCA studies, \citet{Song2024} simulated a DEM-HCA specimen
+      with inner/outer diameters of 60/100~mm (identical to the
+      present radial geometry) on upscaled Toyoura sand, using the
+      same scaling strategy with an up-scaling factor somewhat
+      larger than the 10$\times$ adopted here. \citet{Shi2021} and
+      \citet{Liu2021} adopted radial/$d_{\max}$ ratios of 7.5 and
+      7.2, respectively, in rigid-wall bonded-particle models of
+      sandstone and mudstone under HCA torsional loading, both
+      directly comparable to the present 6.7.
+    \end{enumerate}
 
-  \item \textbf{Liquefaction is an end-state problem, and our comparison
-    is differential.} Liquefaction is defined at a finite strain level
-    ($\gamma_{SA}=2.5\%$ in the \citealt{Ishihara1985} protocol, which we
-    follow) and is governed by end-state fabric collapse rather than small-%
-    strain elastic response. Classical critical-state soil mechanics holds
-    that ultimate shear strength is a material property that is independent
-    of specimen size. Moreover, the principal interest of the present work
-    is the \emph{variation} of $N_L$ across \Kzero{} states rather than its
-    absolute value: any size-induced bias applies uniformly across the
-    compared \Kzero{} states and therefore does not distort the relative
-    trends that form the paper's conclusions.
+  \item \textbf{HCA-specific geometric argument.} Although the
+    radial ratio of 6.7 is the tightest of the three, the primary
+    shear strain $\gamma_{z\theta}$ under torsional loading
+    develops in the axial--circumferential plane, \emph{orthogonal}
+    to the thinnest (radial) dimension. The specimen/$d_{\max}$
+    ratios in the two directions that carry this primary
+    deformation are 33 (axial) and 84 (circumferential), both
+    comfortably within the ranges established in~(1) and~(2a).
 
-  \item \textbf{HCA-specific geometric argument.} The primary shear strain
-    $\gamma_{z\theta}$ developed during cyclic torsional loading lies in the
-    tangential--axial plane. The smallest dimension (radial) is therefore
-    \emph{perpendicular} to the primary deformation mode, unlike direct-%
-    shear tests in which loading acts across the thinnest dimension. Wall-%
-    induced inhomogeneity in the radial direction affects
-    $\sigma'_r$ measurement, which we address through annulus averaging,
-    but does not directly distort the primary $\gamma_{z\theta}$ response.
-    Representative-volume-element guidelines developed for cubic or solid-%
-    cylindrical specimens under axial loading do not apply cleanly to the
-    HCA configuration.
+  \item \textbf{Agreement with laboratory data.} The calibrated parameter set
+    reproduces both the monotonic undrained response of Toyoura sand
+    reported by \citet{Nakata1998} (effective stress path, stress--strain
+    relationship, and dilatancy) and the cyclic liquefaction-resistance
+    curve of \citet{Ishihara1985}. Agreement across these two independent
+    datasets, covering both monotonic and cyclic loading regimes,
+    indicates that the adopted particle sizing captures the behaviours
+    the model is used to predict.
 
-  \item \textbf{Empirical corroboration.} The calibrated parameter set
-    simultaneously reproduces three independent experimental behaviours of
-    Toyoura sand: the monotonic effective stress path and stress--strain
-    response of \citet{Nakata1998}, the associated dilatancy, and the
-    cyclic liquefaction-resistance curve of \citet{Ishihara1985} across
-    five CSR levels. This triple behavioural match provides empirical
-    evidence that the adopted particle sizing is adequate for the stress
-    regime and loading mode investigated.
-
-  \item \textbf{Computational trade-off.} A further reduction of the
-    particle size (e.g., halving $d_{50}$ to meet the more stringent
-    representative-volume-element ratios developed for axial-compression
-    specimens) would increase the computational cost by approximately 16$\times$
-    --- an 8-fold increase in particle number in three dimensions combined
-    with an approximately 2-fold reduction in the critical timestep ---
-    with limited incremental scientific return for a comparative study of
-    \Kzero{} effects. We note this refinement as a direction for future
-    work rather than pursue it here.
 \end{enumerate}
 
-\changed{In the revised manuscript we have (i) expanded the DEM-HCA
-literature review in the Introduction (Section~\ref{sec:introduction}, last
-paragraph) to introduce \citet{LiGuoZhang2014} (the reference specifically
-highlighted by the reviewers), \citet{Shi2021}, and \citet{Song2024}
-alongside the previously cited \citet{LiZhangGutierrez2015} and
-\citet{Liu2021}, and (ii) added a brief note in
-Section~\ref{subsec:dem_hca} citing \citet{Song2024} as precedent for the
-10$\times$ scaling of the Toyoura-sand grading.}
+Taken together, these considerations support the adequacy of the
+present size configuration for the quantities reported in this study.
+
+\changed{In the revised manuscript we have (i) added citations to
+\citet{Shi2021} and \citet{Song2024} in the Introduction's DEM
+paragraph (Section~\ref{sec:introduction}) in support of this
+response, and (ii) added a brief note in
+Section~\ref{subsec:dem_hca} citing \citet{Song2024} as precedent
+for the 10$\times$ scaling of the Toyoura-sand grading.}
 
 %% ---------------- R1.2 ----------------
 \subsection*{R1.2 --- Void ratio range and ``dense''/``medium-dense'' labels}
@@ -235,10 +257,21 @@ Such as CSR, $\Kzero$.
 \end{rcomment}
 
 \response
-\textit{[TODO: add CSR $= \tau_{cyc}/\sigma'_{z0}$ and
-$\Kzero = \sigma'_r/\sigma'_z$ at first use.]}
+Both ratios are now defined inline where each symbol first appears
+in Section~\ref{subsec:preparation}. $\Kzero$ is introduced at the
+opening of the IC--AC consolidation protocol as the ratio of radial
+to vertical effective stresses,
+$\Kzero = \sigma_r^{\prime}/\sigma_z^{\prime}$; and CSR is introduced
+at the opening of the cyclic shear program as the amplitude of
+cyclic shear stress normalised by the initial mean effective stress,
+$\mathrm{CSR} = \tau_{cyc}/p_0^{\prime}$. Both definitions
+cross-reference Table~\ref{tab:hca_equations}, which collects the
+full set of HCA stress and strain expressions.
 
-\changed{\textit{[TODO: pointer to \secref{2.3}, lines X--Y.]}}
+\changed{Inline definitions of $\Kzero$ and $\mathrm{CSR}$ added in
+Section~\ref{subsec:preparation} (IC--AC protocol opening and
+cyclic-shear program opening, respectively), with cross-references
+to Table~\ref{tab:hca_equations}.}
 
 %% ---------------- R1.4 ----------------
 \subsection*{R1.4 --- Consolidated case table}
@@ -252,9 +285,22 @@ format.
 \end{rcomment}
 
 \response
-\textit{[TODO: confirm new table with $D_r$, $\Kzero$, CSR, $N_L$.]}
+A consolidated table has been added at the end of
+Section~\ref{subsec:preparation} (Table~\ref{tab:case_matrix})
+listing all simulation cases. Each row identifies a
+$(D_r, \Kzero)$ combination; the third column enumerates the CSR
+levels tested for that case. The primary set at $D_r \approx 90\%$
+covers $\Kzero \in \{0.5, 1.0, 2.0\}$ across five CSR levels
+($0.200$ to $0.400$ in $0.05$ steps); the expanded set adds two
+intermediate $\Kzero$ values ($0.67$ and $1.5$) at $D_r \approx
+90\%$ together with the full $D_r \approx 75\%$ strip, all at
+CSR $= 0.300$. The resulting $N_L$ values are presented in the
+Results section (e.g., Fig.~\ref{fig:liq_resistance_curves}) so
+that the methodology table itself remains free of outcome data.
 
-\changed{\textit{[TODO: new Table~\ref{...}.]}}
+\changed{New Table~\ref{tab:case_matrix} inserted at the end of
+Section~\ref{subsec:preparation}, summarising the full simulation
+program with CSR levels enumerated for each $(D_r, \Kzero)$ case.}
 
 %% ---------------- R1.5 ----------------
 \subsection*{R1.5 --- Loading rate / quasi-static condition}
@@ -482,6 +528,6 @@ reviewers' expectations. We remain grateful for the reviewers' careful
 reading and valuable suggestions.
 
 \bibliographystyle{plainnat}
-\bibliography{../../refs.bib}
+\bibliography{refs}
 
 \end{document}

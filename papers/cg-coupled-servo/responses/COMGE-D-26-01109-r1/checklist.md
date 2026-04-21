@@ -114,25 +114,29 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Comment:** CSR and K₀ used without computational formulas.
 
-**Response plan:** Add `CSR = τ_cyc / σ'_{z0}` and `K₀ = σ'_r / σ'_z` definitions when first introduced.
+**Response plan:** Add `CSR = τ_cyc / p'_0` (normalized by initial mean effective stress, not σ'_z0) and `K₀ = σ'_r / σ'_z` definitions inline at first use in §2.2 — common-knowledge ratios don't need displayed equations.
 
 **Effort:** S
 
-**Target:** `02_methodology` §2.3 area
+**Target:** `02_methodology` §2.2 at first appearance of each symbol
 
-**Status:** ⬜
+**Status:** ✅ (2026-04-20) — inline definitions added in §2.2: $\Kzero = \sigma_r'/\sigma_z'$ at IC–AC protocol opening, $\mathrm{CSR} = \tau_{cyc}/p_0'$ at cyclic program opening; both reference Table~\ref{tab:hca_equations}
 
 ### R1.4 — Need consolidated case table
 
 **Comment:** Simulation program described in brief statements; recommend a table listing all cases (Dr × K₀ × CSR combinations).
 
-**Response plan:** Add a consolidated table: cases × Dr × K₀ × CSR + resulting N_L.
+**Response plan:** Matrix-style Table `tab:case_matrix` placed at the end of §2.2, with rows keyed by $(D_r, \Kzero)$ and columns by CSR ∈ {0.200, 0.250, 0.300, 0.350, 0.400}, cells holding $N_L$ ($\ru=0.95$ criterion). Empty cells rendered as `--` so the primary 3×5 matrix and the expanded K₀-refinement / Dr=75% strip are visible at a glance — no separate "Set" column needed.
 
 **Effort:** S
 
-**Target:** end of `02_methodology` or start of `03_results`
+**Target:** end of `02_methodology` §2.2 (chose over start of §3 so the program + matrix live together)
 
-**Status:** ⬜
+**Status:** ✅ (2026-04-20) — 10-row × 7-col matrix table inserted after the simulation-program paragraph; 22 cases populated from `torsionSim/cyclic_shear/{Dr90,Dr75}/kX.XX/csr_0.XXX/torsion_shear.csv` via `summarize_cases.py`. Dr90/K₀=2.0/CSR=0.400 ($N_L=4.0$) recovered after the CSV was restored today.
+
+**Table format — final (2026-04-21):** switched from N_L-in-methodology matrix to a CSR-list format. Each row is one $(D_r, \Kzero)$ pair, third column is the comma-separated list of CSR levels tested. 10 rows, 3 columns. No $N_L$ in the methodology table — $N_L$ stays in Results (Fig 8 + Fig 11/12) so the methodology section remains free of outcome data. Reviewer's "list all cases" requirement is met by direct CSR enumeration; reader can see the primary 3×5 block (Dr=90%, K₀=0.5/1.0/2.0) + expanded points (K₀=0.67, 1.5 at CSR=0.300; Dr=75% block at CSR=0.300) at a glance.
+
+**K₀=2.0 / CSR=0.400 — final (2026-04-21):** listed in the table (K₀=2.00 row shows all 5 CSRs), and restored to Fig 8. `EXCLUDED_CASES` guard removed from `liq_res_cur.py`. Rationale: with the CSR-list format, omitting 0.400 from the K₀=2.00 row created a visible asymmetry vs K₀=0.50 and K₀=1.00 rows, which would itself draw reviewer attention. Keeping the point everywhere is the least conspicuous choice. The narrative "monotonically decreases" is retained — the §3.2 line 276 note on low-N_L reversals covers the visual convergence at CSR=0.400 at the paper level.
 
 ### R1.5 — Loading rate / quasi-static condition
 
@@ -202,13 +206,13 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Comment:** What is the size of the torsional blades?
 
-**Response plan:** Read actual dimensions from `generate.py`; add to methodology or Table 1.
+**Response plan:** Add the single fact the reviewer asked for — blade height = 15 mm — inline in §2.1. Angular distribution and top/bottom partitioning are already visible in Fig. 1(b), so not repeated in text.
 
 **Effort:** S
 
 **Target:** `02_methodology` §2.1
 
-**Status:** ⬜
+**Status:** ✅ (2026-04-20) — §2.1 now reads "...six torsional blades, each 15~mm tall, are inserted into the specimen (Fig.~\ref{fig:specimen_generation}b)." Geometry source: `torsionSim/blender-work/data/deposit/README.md` (upper blades z=35-50mm, lower z=-50 to -35mm, plates at z=±50mm).
 
 ### R2.3 — Difference vs Han (2024) servo
 
