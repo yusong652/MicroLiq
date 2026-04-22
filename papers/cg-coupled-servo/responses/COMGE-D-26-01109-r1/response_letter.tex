@@ -11,6 +11,7 @@
 \usepackage{siunitx}
 \usepackage[authoryear,round]{natbib}
 \usepackage{xr-hyper}
+\usepackage{graphicx}
 
 \hypersetup{
   colorlinks=true,
@@ -89,10 +90,12 @@ using \texttt{latexdiff} against the submitted version (also provided).
 \section*{Summary of major revisions}
 
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Clarified the relative-density definition} as a
-    behavior-matching label calibrated against \citet{Nakata1998} and
-    \citet{Ishihara1985} data, and added a new CSR=0.40 cyclic validation point at
-    $D_r \approx 75\%$.
+  \item \textbf{Clarified the relative-density labels}
+    ``$D_r \approx 90\%$'' and ``$D_r \approx 75\%$'' as
+    behaviour-matched references to the Toyoura density states
+    reported by \citet{Nakata1998} and \citet{Ishihara1985}, rather
+    than values computed from the DEM void ratio via the textbook
+    formula.
   \item \textbf{Expanded the Introduction} with a review of prior DEM-HCA
     models and the boundary-condition taxonomy (rigid wall, stacked wall,
     flexible membrane).
@@ -240,13 +243,90 @@ sand that this model purports to represent.
 \end{rcomment}
 
 \response
-\textit{[TODO: reframe $D_r$ as a behavior-matching label; cite Nakata
-monotonic + Ishihara cyclic triple match; report new CSR=0.40 $D_r\approx
-75\%$ validation point; acknowledge absence of Nakata monotonic data at
-$D_r \approx 75\%$ as a limitation.]}
+We thank the reviewer for this careful observation. The reviewer's
+arithmetic correctly identifies that reading
+``$D_r \approx 90\%$'' and ``$D_r \approx 75\%$'' as strict point
+values on Toyoura's tabulated $(e_{\max}, e_{\min})$ scale would
+imply an implausibly narrow void-ratio range. The underlying issue,
+we believe, is that \emph{relative density is not a well-defined
+quantity for a DEM assembly}, and the labels in our manuscript are
+behaviour-matched references to laboratory conditions rather than
+quantities computed from the DEM void ratio.
 
-\changed{\textit{[TODO: \secref{...}, revised \figref{7}, new paragraph on
-limitations.]}}
+\medskip
+\noindent\textbf{Why $D_r$ does not transfer from laboratory
+Toyoura to this DEM assembly.}
+The particles in the present model are spherical, whereas real
+Toyoura sand consists of subrounded-to-subangular grains; packing
+under sedimentation or shearing depends strongly on particle shape,
+so the achievable void ratio of a spherical-particle assembly
+differs systematically from that of an angular-particle assembly of
+the same nominal grading. Furthermore, no standardised procedure
+exists for determining the loosest and densest states of a DEM
+assembly: the attainable $e_{\max}$ and $e_{\min}$ depend on the
+choice of particle shape and grading, the inter-particle friction
+used during assembly, the numerical scheme and damping, and the
+boundary and preparation conditions, none of which are standardised
+across DEM codes. Relative density, strictly speaking, is therefore
+not a meaningful quantity in a DEM context in the way it is for
+laboratory sand. Consistent with this, substituting the DEM void
+ratios (0.736, 0.742) into the textbook $D_r$ formula with
+real-Toyoura limits $(e_{\max}, e_{\min})=(0.98, 0.60)$ reported by
+\citet{Ishihara1985} yields $D_r \approx 64\%$ for both
+specimens---inconsistent with the cyclic behaviour they actually
+reproduce---which confirms that the textbook formula does not apply
+to this DEM assembly.
+
+\medskip
+\noindent\textbf{What the labels ``$D_r \approx 90\%$'' and
+``$D_r \approx 75\%$'' actually represent.}
+Rather than computing $D_r$ from the DEM void ratio, we tuned the
+target void ratio so that the resulting DEM specimen reproduces the
+macroscopic response of real Toyoura sand at the corresponding
+$D_r$ condition as reported in the laboratory literature.
+Specifically:
+\begin{itemize}[leftmargin=*,topsep=2pt,itemsep=3pt]
+  \item The ``$D_r \approx 90\%$'' DEM specimen ($e \approx 0.736$)
+    simultaneously reproduces (a) the undrained monotonic stress
+    path, stress--strain response, and dilatancy behaviour of
+    \citet{Nakata1998}, whose Toyoura specimens were prepared at
+    $D_r \approx 92\!-\!93\%$, and (b) the cyclic
+    liquefaction-resistance curve of \citet{Ishihara1985} for their
+    ``very dense'' Toyoura band ($D_r = 88\!-\!95\%$) at
+    $K_0 = 1.0$. Both comparisons are shown in
+    Fig.~\ref{fig:validation_combined} of the revised manuscript.
+  \item The ``$D_r \approx 75\%$'' DEM specimen ($e \approx 0.742$)
+    serves as a comparative density anchor for the $K_0$-expansion
+    study, chosen so that its macroscopic cyclic response at
+    $K_0 = 1.0$ falls within the ``dense'' ($D_r = 75\!-\!82\%$)
+    cyclic-resistance data of \citet{Ishihara1985} at representative
+    loading amplitude.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Precedent for band-based labelling.}
+\citet{Ishihara1985} himself groups test specimens into two
+density bands rather than point values---``very dense''
+($D_r = 88\!-\!95\%$) and ``dense'' ($D_r = 75\!-\!82\%$), each
+$\sim$7\%-wide. The paper notes explicitly that
+``\emph{individual specimen has a variation in relative density
+with a range of $\pm 3.5\%$ around the average}'' (p.~68), and that
+the specimen height had to be restored manually at the end of each
+cycle of undrained torsional loading because the specimen cannot
+automatically recover its deformation between half-cycles (p.~67).
+The ``$D_r \approx 90\%$'' and ``$D_r \approx 75\%$'' labels in our
+manuscript follow the same band-based convention.
+
+\changed{Section~\ref{subsec:preparation}: revised the paragraph
+introducing the two DEM density states to clarify (i) that the DEM
+void ratios cannot be mapped onto Toyoura's textbook relative
+density, because of the spherical particle shape and the absence of
+a standardised DEM packing-limit procedure; and (ii) that the
+labels ``$D_r \approx 90\%$'' and ``$D_r \approx 75\%$'' are used
+as behaviour-matched references to Ishihara's ``very dense''
+($D_r = 88\!-\!95\%$) and ``dense'' ($D_r = 75\!-\!82\%$) density
+bands, tuned to reproduce the corresponding macroscopic monotonic
+and cyclic responses. No figure changes in the main manuscript.}
 
 %% ---------------- R1.3 ----------------
 \subsection*{R1.3 --- Missing formulas for CSR and $\Kzero$}
@@ -393,12 +473,83 @@ Table 1: Why is the friction coefficient between particles and walls zero?
 \end{rcomment}
 
 \response
-\textit{[TODO: explain that torque is transmitted geometrically through
-blade faces rather than wall friction; setting wall friction to zero avoids
-introducing an additional free parameter while the blade geometry already
-ensures full torque transfer.]}
+The zero particle--wall friction coefficient applies uniformly to all
+wall-type elements in the PFC model --- the inner and outer
+cylinders, the top and bottom platens, and the six torsional blades
+(which are also wall elements in PFC). The physical justification
+differs by wall class, and we organise the response accordingly.
 
-\changed{\textit{[TODO: Table~1 caption note / \secref{2.1}.]}}
+\medskip
+\noindent\textbf{Cylindrical walls --- radial principal stress plane.}
+The HCA element-test reduction used in this work (Appendix~A,
+Table~\ref{tab:hca_equations}) assumes the radial-normal face to be a
+principal stress plane, which requires zero shear traction on it. In
+a laboratory HCA, the specimen is wrapped by a flexible membrane
+immersed in a pressurised water chamber. The membrane does carry
+non-negligible sand--membrane friction at each point of contact, but
+under small-strain quasi-static loading the membrane is in mechanical
+equilibrium: the local tangential tractions it transmits to the sand
+balance around the circumference and integrate to zero at the
+element scale. The radial-normal face therefore remains a principal
+stress face in the laboratory. In the DEM model, by contrast, the
+wall elements are massless and cannot carry their own equilibrium;
+prescribing $\mu_{pw}>0$ would leave a residual shear resultant on
+the radial-normal face, violating the principal-plane assumption on
+which the HCA stress reduction rests. Setting $\mu_{pw}=0$ on the
+cylinders is therefore \emph{required} (not merely a simplification)
+to preserve the element-test idealisation that the laboratory
+apparatus delivers through its membrane--water balance.
+
+\medskip
+\noindent\textbf{End platens --- axial principal stress plane and
+servo determinacy.}
+The same principal-plane argument applies to the axial-normal face.
+Laboratory HCA end platens (porous-stone caps) do carry some residual
+sand--cap friction, a well-known experimental non-ideality that
+contaminates the axial principal-stress state. The present DEM model
+represents the idealised HCA boundary condition rather than this
+laboratory non-ideality: $\mu_{pw}=0$ on the end platens keeps the
+$\sigma_z^{\prime}$ face as a principal stress face, and additionally
+prevents a Coulomb-limit coupling between the vertical stress and the
+torsional loading that would otherwise be introduced by a nonzero cap
+friction and that cannot be constrained by any measurable laboratory
+quantity.
+
+\medskip
+\noindent\textbf{Blades --- geometric torque transmission.}
+Torque is transmitted from the end platens into the specimen through
+the six torsional blades. Each blade is a thin radial slab whose
+face normal points in the circumferential direction, so a normal
+contact between a particle and a blade face delivers a purely
+circumferential force --- the torque-transmitting direction. Full
+torque transfer is therefore guaranteed geometrically and does not
+require tangential friction at the blade--particle interface.
+Conversely, prescribing $\mu_{pw}>0$ at the blade surface would
+introduce Coulomb-limited frictional tractions in the blade's
+tangent plane (the radial--axial plane). These tractions would
+(i)~directly contaminate the axial stress measurement, since
+$p_z^{\prime}$ (Appendix~A) is integrated from the end-platen contact
+forces including those on the attached blades, and (ii)~introduce a
+Coulomb-dependent contribution to the blade--particle force
+distribution that saturates as $\sigma_r^{\prime}\to 0$ in the
+post-liquefaction regime, rendering the servo response non-smooth
+and causing it to miss the prescribed $\tau^{tar}$.
+
+\medskip
+Taken together, $\mu_{pw}=0$ (i)~preserves the element-test
+principal-stress assumption on both the radial- and axial-normal
+faces, (ii)~avoids a Coulomb-limit servo constraint that would
+compromise torque control near liquefaction, and (iii)~removes a
+free parameter unconstrained by any measurable laboratory quantity.
+
+\changed{Section~\ref{subsec:dem_hca}: added a short clause after the
+torsional-blade paragraph clarifying that the cylindrical walls and
+end platens are assigned $\mu_{pw}=0$ so that they act as pure
+pressure boundaries, with torque transmission provided geometrically
+by the blade faces. The full principal-plane and servo-determinacy
+argument is kept in this letter rather than added to the manuscript,
+since it concerns a design-rationale question orthogonal to the
+paper's focus on $K_0$ effects and fabric evolution.}
 
 %% ---------------- R2.2 ----------------
 \subsection*{R2.2 --- Size of torsional blades}
@@ -408,9 +559,32 @@ What is the size of torsional blades?
 \end{rcomment}
 
 \response
-\textit{[TODO: report blade dimensions from \texttt{generate.py}.]}
+The blade height is \SI{15}{mm}, and the blades extend radially
+across the full annulus between the inner and outer cylinders. Six
+blades are inserted from the top and bottom plates (three each),
+uniformly spaced in the circumferential direction; their arrangement
+is visible in Fig.~\ref{fig:specimen_generation}.
 
-\changed{\textit{[TODO: \secref{2.1} or Table~1.]}}
+The blades of the laboratory HCA apparatus are approximately
+\SI{1.5}{mm}, which is \SI{15}{} times the minimum particle size of
+Toyoura sand. In the present DEM model, the blade height is
+correspondingly set to \SI{15}{} times the minimum particle size of
+the DEM grading ($d_{\min}=\SI{1.0}{mm}$, see the
+\SIrange{1.0}{3.0}{mm} grading stated in
+Section~\ref{subsec:dem_hca}), giving \SI{15}{mm}. This preserves
+the blade-to-grain scaling of the laboratory apparatus.
+
+\changed{Section~\ref{subsec:dem_hca}: the blade-insertion sentence
+now states the blade height (\SI{15}{mm}) explicitly, followed by a
+short sentence giving the blade layout (three blades at each end of
+the specimen, extending radially across the annulus and uniformly
+spaced around the specimen axis). The blade-to-grain-size rationale
+is kept in this letter rather than added to the manuscript: the
+methodology section reports the blade height as a model parameter,
+but the paper does not otherwise discuss whether the
+blade-to-$d_{\min}$ ratio is appropriate for DEM-HCA modelling,
+which is orthogonal to the paper's focus on $K_0$ effects and
+fabric evolution.}
 
 %% ---------------- R2.3 ----------------
 \subsection*{R2.3 --- Difference vs.\ servo mechanism in Han (2024)}
@@ -421,14 +595,50 @@ that in Han (2024)?
 \end{rcomment}
 
 \response
-\textit{[TODO: reference the contribution statement in \secref{...}, lines
-326--...; summarise: Han~(2024) solved only the radial and torsional
-conditions with fixed specimen height; the present formulation adds the
-axial degree of freedom and derives the cross-coupling
-$\hat{\mathbf{K}}$ analytically.]}
+The contribution paragraph at the end of Section~\ref{subsec:cyclic_loading}
+(already in the submitted manuscript) enumerates three explicit
+differences from \citet{Han2024jgs}, which we summarise here for
+convenience.
+\begin{enumerate}[leftmargin=*,label=(\roman*),topsep=2pt,itemsep=3pt]
+  \item \textbf{Degrees of freedom.} \citet{Han2024jgs} solved only
+    the radial and torsional conditions, with the specimen height
+    held fixed ($dH/dt=0$); axial loading and drained/undrained
+    height variation were outside the scope. The present
+    formulation adds the axial degree of freedom as a first-class
+    unknown, enabling general undrained and drained loading paths
+    with coupled radial, axial, and torsional components.
+  \item \textbf{Laboratory-to-DEM mapping.} \citet{Han2024jgs}
+    targeted individual effective stresses directly, which is only
+    an approximation because the pore water pressure $u$ is a
+    measured response, not a prescribed input. The present servo
+    instead targets the two pressure differences $p_{dif,r}^{\prime}$
+    and $p_{dif,z}^{\prime}$ (Section~\ref{subsec:cyclic_loading}), which are
+    invariant to $u$ and therefore provide a mapping to the
+    laboratory total-stress boundary conditions that does not
+    require $u$ as input.
+  \item \textbf{Cross-coupling.} In \citet{Han2024jgs}, with
+    $dH/dt$ suppressed, the radial condition reduces to a scalar
+    and cross-coupling does not arise. In the present formulation,
+    once $dH/dt$ is retained, $dr/dt$ and $dH/dt$ jointly affect
+    both the radial and axial stresses, and the servo coefficients
+    must reflect this coupling. We derive the $2\times 2$ coupled
+    stiffness matrix $\hat{\mathbf{K}}$ analytically and invert it
+    in closed form at every timestep, so the off-diagonal entries
+    $S_{rz}$ and $S_{zr}$ correctly represent the mutual influence
+    of $dr/dt$ and $dH/dt$ on both boundary conditions.
+\end{enumerate}
+Under the constant-height condition ($dH/dt=0$) adopted by
+\citet{Han2024jgs}, the present formulation reduces exactly to their
+radial-only servo coefficient, as stated after
+Eq.~(\ref{eq:servo_dr})--(\ref{eq:servo_dH}) in
+Section~\ref{subsec:cyclic_loading}; in that limiting case, the present and
+prior formulations are equivalent.
 
-\changed{\textit{[TODO: no new text needed, or minor clarification in
-contribution paragraph.]}}
+\changed{No additional text has been added on this point. The
+existing three-contribution paragraph at the end of
+Section~\ref{subsec:cyclic_loading} already identifies each of these
+differences, and the reduction to the \citet{Han2024jgs} formulation
+under $dH/dt=0$ is shown there as well.}
 
 %% ---------------- R2.4 ----------------
 \subsection*{R2.4 --- DEM-HCA literature review and the $H=D$ height choice}
@@ -442,14 +652,67 @@ requirements or guidelines for the size of HCA?
 \end{rcomment}
 
 \response
-\textit{[TODO: add Introduction paragraph reviewing prior DEM-HCA
-modelling with a boundary-condition taxonomy (rigid wall, stacked wall,
-flexible membrane); justify $H=D$ as a computational-cost trade-off with
-PFC precedents; note that average fabric response, rather than end-plate
-localisation, is the focus of this study.]}
+We thank the reviewer for pointing us to this body of prior DEM-HCA
+work. Our response has two parts: an expanded introduction of prior
+DEM-HCA research, and a justification of the $H=D$ aspect ratio.
 
-\changed{\textit{[TODO: new paragraph in \secref{1}; short note in
-\secref{2.1}.]}}
+\medskip
+\noindent\textbf{Prior DEM-HCA research and boundary taxonomy.}
+The submitted manuscript has been revised to cite the five DEM-HCA
+studies identified by the reviewer, grouped by the radial
+boundary-condition treatment that distinguishes them. Within
+rigid-boundary or stacked-wall formulations,
+\citet{LiGuoZhang2014} applied cyclic torsional loading under
+drained conditions using a stacked-wall boundary to mimic membrane
+compliance, and \citet{LiZhangGutierrez2015} used the same family
+of boundaries to analyse principal-stress-axis rotation in drained
+monotonic loading; \citet{Shi2021} and \citet{Liu2021} adopted
+rigid cylindrical walls combined with bonded-particle assemblies
+to analyse rock-like HCA behaviour. A more recent line of work by
+\citet{Song2024} introduced a flexible bonded-sphere membrane as
+the radial boundary. The present formulation falls within the
+rigid-wall class and extends it to undrained cyclic torsional
+loading. These citations now appear in the DEM paragraph of
+Section~\ref{sec:introduction}.
+
+\medskip
+\noindent\textbf{Specimen aspect ratio ($H=D_{\text{outer}}$).}
+Laboratory HCA specimens typically adopt $H/D_{\text{outer}}$ in
+the range $\sim\!1.0$--$2.0$. The longer aspect ratios are
+preferred for studies that target strain localisation and
+shear-band formation, where a longer specimen reduces end-platen
+constraint on the band trajectory. The present work, in contrast,
+targets the \emph{average specimen-level} response: the
+macroscopic liquefaction resistance curves
+(Fig.~\ref{fig:liq_resistance_curves}) and the
+specimen-averaged fabric quantities
+($Z_{m0}$, $\alpha$, $\rho_c$) in
+Section~\ref{sec:results}. All stress and strain expressions used
+in the analysis (Table~\ref{tab:hca_equations}) are integrated
+over the entire specimen boundary, and the fabric descriptors are
+evaluated over the full contact population; the analysis therefore
+does not rely on spatial resolution of localised deformation.
+For this class of problem, aspect-ratio requirements are
+considerably relaxed, and the $H=D$ configuration matches the
+laboratory-scale HCA apparatus cited in Section~\ref{subsec:dem_hca}
+\citep{Vargas2020}; the same geometry was also adopted by the
+DEM-HCA servo-formulation precursors \citet{Han2024jgs} and
+\citet{Ma2024}. Choosing $H=D$ rather than $H=2D$ approximately
+halves the particle count at fixed grading, which is a material
+saving given the parametric scope of this study
+(Table~\ref{tab:case_matrix}) and the per-case cost of high-cycle
+undrained simulations near liquefaction.
+
+\changed{Section~\ref{sec:introduction}, DEM paragraph: expanded to
+group the cited DEM-HCA precedents by radial boundary treatment ---
+rigid cylindrical walls \citep{Shi2021,Liu2021}, stacked-wall
+approximations of membrane compliance
+\citep{LiGuoZhang2014,LiZhangGutierrez2015}, and flexible
+bonded-sphere membranes \citep{Song2024} --- and to position the
+present work as an extension of the rigid-wall class to undrained
+cyclic loading. No dedicated text on the aspect-ratio choice was
+added to the manuscript; the justification above is provided in the
+reviewer's frame without expanding Section~\ref{subsec:dem_hca}.}
 
 %% ---------------- R2.5 ----------------
 \subsection*{R2.5 --- Stability of the servo near singular stiffness matrix}

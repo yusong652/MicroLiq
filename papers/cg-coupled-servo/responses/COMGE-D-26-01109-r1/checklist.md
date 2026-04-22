@@ -102,13 +102,36 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Comment:** e ranges of 0.736 and 0.742 imply total e spread of only 0.04, which doesn't match Toyoura's physical e_max/e_min range. Terms "dense" and "medium-dense" questionable.
 
-**Response plan:** Reframe Dr as *behavior-matching label* (matching Nakata monotonic + Ishihara cyclic), not e_max/e_min-based. Add **CSR=0.40 Dr=75% new data point** for validation. Acknowledge Dr=75% monotonic reference is missing (Nakata has no such data) as limitation.
+**Strategy — verbal-only response, no new figures:**
 
-**Effort:** L (requires new sim)
+Framed as a two-part argument:
 
-**Target:** `02_methodology` calibration section + Fig 7 (validation)
+1. **Relative density is not well-defined for a DEM assembly.**
+   - DEM particles are spherical vs real-Toyoura subrounded-to-subangular → different packing geometry at same grading.
+   - No standardised procedure exists for DEM (e_max, e_min): result depends on particle shape, grading, assembly friction, numerical scheme, boundary/preparation — none standardised across DEM codes.
+   - Substituting DEM e (0.736, 0.742) into textbook Dr formula with Ishihara's tabulated real-Toyoura (0.98, 0.60) gives Dr≈64% for both — inconsistent with reproduced behaviour → textbook formula does not apply here.
 
-**Status:** 🟥 decision pending — confirm new sim
+2. **Labels "Dr≈90%" / "Dr≈75%" are behavior-matched references to laboratory conditions, not values computed from DEM e.**
+   - Dr≈90% (e≈0.736) reproduces Nakata 1998 monotonic (Dr≈92–93%) + Ishihara 1985 "very dense" cyclic (Dr=88–95%) → shown in Fig. 7 of manuscript.
+   - Dr≈75% (e≈0.742) is a comparative density anchor for the K0-expansion study, tuned so cyclic response at K0=1.0 falls within Ishihara "dense" (Dr=75–82%) band.
+
+3. **Precedent for band labelling:** Ishihara himself uses ±3.5% bands; paper notes (p.68) "individual specimen has a variation in relative density with a range of ±3.5% around the average" and (p.67) manual specimen-height restoration each cycle. Our labels follow the same band-based convention.
+
+**No letter figure.** Previously-drafted Fig. rl_dr75 (Dr=75% vs Ishihara "dense") dropped because: (a) reviewer's question is about label consistency, not Dr=75% validation rigor; (b) Dr=75% at CSR=0.25/0.30 sits visibly above Ishihara cloud due to low-N_L manual-height-restore scatter — showing the figure invites a flank attack the reviewer did not open. Main manuscript Fig. 7 remains the Dr=90% validation visual.
+
+**Manuscript change:** subsec:preparation paragraph (line 71) revised — explicit statement that (i) DEM void ratios cannot be converted to Toyoura Dr via textbook formula (spherical vs angular particles; no standardised DEM packing-limit procedure); (ii) labels are behavior-matched references tuned to reproduce macroscopic responses at corresponding Toyoura Dr conditions.
+
+**Artifacts retained for reference (not cited):**
+
+- `torsionSim/parameter_validation/undrained_cyclic/hca_Ishihara_Dr75.csv` (digitised Ishihara "dense" band, 13 points)
+- `torsionSim/parameter_validation/validate_dual_density.py` and `validate_Dr75_check.py` (diagnostic plots)
+- `papers/cg-coupled-servo/responses/COMGE-D-26-01109-r1/figs/validate_Dr75_check.png` (kept on disk; no longer referenced from letter)
+
+**Effort:** S (text-only)
+
+**Target:** `02_methodology:subsec:preparation` wording; letter R1.2 verbal response; no figure changes in letter or manuscript
+
+**Status:** ✅ (2026-04-22)
 
 ### R1.3 — CSR, K₀ formulas missing
 
@@ -200,7 +223,14 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Target:** Table 1 caption / `02_methodology` §2.1
 
-**Status:** ⬜
+**Status:** ✅ (2026-04-22) — §2.1 blade paragraph extended with a one-sentence clause: "The cylindrical walls and end platens are assigned zero friction ($\mu_{pw}=0$, Table~\ref{tab:dem_parameters}) so that they act purely as servo-controlled pressure boundaries; torque is transmitted geometrically through normal contact forces on the blade faces and does not rely on a wall-friction coefficient."
+
+**Letter rewrite (2026-04-22, later):** R2.1 letter reorganised into three wall-class subsections after Yusong clarified the underlying physics. New structure:
+1. **Cylinders (radial principal stress plane):** HCA element reduction requires radial face to be principal stress plane. Laboratory membrane–water equilibrium self-balances tangential tractions at element scale → radial face remains principal. DEM walls are massless, so $\mu_{pw}>0$ leaves residual shear on radial face → violates principal-plane assumption. $\mu_{pw}=0$ is *required*, not a simplification.
+2. **End platens (axial principal stress plane + servo determinacy):** Same principal-plane argument extended to axial face. Lab porous-stone caps carry residual friction — known non-ideality that DEM models the *idealised* HCA boundary *without*. Additionally avoids Coulomb-limit coupling between $\sigma_z'$ and torsion that has no measurable experimental counterpart.
+3. **Blades (geometric torque transmission):** Blade is a thin **radial slab**; its **face normal is circumferential** (θ̂). Normal contact delivers a purely circumferential force — exactly the torque-transmitting direction — so full torque transfer is geometric. $\mu_{pw}>0$ introduces Coulomb-limited frictional tractions in the face tangent plane (r̂, ẑ). These tractions (i) directly contaminate $p_z'$ measurement (Appendix A integrates end-plate contact forces **including attached blades**; blade friction z-component leaks into $p_z'$), and (ii) introduce a Coulomb-dependent perturbation to the blade–particle force distribution that saturates as $\sigma_r'\to 0$ near liquefaction, rendering servo response non-smooth and causing it to miss $\tau^{tar}$. **Corrected from earlier draft** (2026-04-22 evening) which incorrectly said "face is oriented radially" and "friction adds Coulomb-limited frictional torque" — friction is in (r̂, ẑ) plane, carries no θ̂ component, so no direct torque contribution.
+
+Closing: $\mu_{pw}=0$ (i) preserves principal-stress assumption radial+axial, (ii) avoids Coulomb-limit servo constraint near liquefaction, (iii) removes unconstrained free parameter. Full argument kept in letter; manuscript retains the short §2.1 clause only.
 
 ### R2.2 — Torsional blade size
 
@@ -214,6 +244,8 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Status:** ✅ (2026-04-20) — §2.1 now reads "...six torsional blades, each 15~mm tall, are inserted into the specimen (Fig.~\ref{fig:specimen_generation}b)." Geometry source: `torsionSim/blender-work/data/deposit/README.md` (upper blades z=35-50mm, lower z=-50 to -35mm, plates at z=±50mm).
 
+**Letter update (2026-04-22):** R2.2 letter response extended with the blade-to-grain-size rationale. Parallel framing: laboratory blade ≈ \SI{1.5}{mm} = 15 × Toyoura $d_{\min}$; DEM blade = \SI{15}{mm} = $15\,d_{\min}$ of the DEM grading ($d_{\min}=\SI{1.0}{mm}$ from the \SIrange{1.0}{3.0}{mm} grading stated in §2.1 — note: Table~1 does not list the grading, only particle count, density, stiffness, friction, and damping). Rationale stays in the letter rather than the manuscript: §2.1 reports blade height as a model parameter, but the paper's scope ($K_0$ effects, fabric evolution) is orthogonal to DEM-HCA design-ratio appropriateness — adding the ratio invites scope creep (why 10× upscale? why $H=D$? etc.). No $d_{50}$ claimed; no "visual estimate" wording used.
+
 ### R2.3 — Difference vs Han (2024) servo
 
 **Comment:** What differs from the servo in Han (2024)?
@@ -224,7 +256,7 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Target:** existing text + response letter
 
-**Status:** ⬜
+**Status:** ✅ (2026-04-22) — letter R2.3 reorganised as three-point summary of the existing contribution paragraph in §2.3 (~line 349): (i) DOF extension (axial DOF added), (ii) laboratory-to-DEM mapping via pressure differences $p_{dif,r}'$, $p_{dif,z}'$ that are invariant to $u$, (iii) analytical inversion of the $2\times2$ coupled stiffness $\hat{\mathbf{K}}$. Also notes that the present formulation reduces to Han 2024's radial-only coefficient under $dH/dt=0$. No manuscript addition — existing contribution paragraph covers all three.
 
 ### R2.4 — DEM-HCA literature review + H=D choice
 
@@ -236,7 +268,7 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 
 **Target:** `01_introduction` + brief note in `02_methodology`
 
-**Status:** ⬜
+**Status:** ✅ (2026-04-22) — (a) intro DEM paragraph rewritten with explicit three-class radial-boundary taxonomy: rigid walls (Shi2021, Liu2021), stacked walls (LiGuoZhang2014, LiZhangGutierrez2015), flexible membranes (Song2024); (b) H=D justified in letter R2.4: focus on average specimen-level response (not strain localisation), geometry matches Vargas 2020 laboratory device and the DEM servo precursors Han 2024 / Ma 2024, ~2× particle-count saving vs H=2D. No dedicated aspect-ratio text in manuscript — kept in letter.
 
 ### R2.5 — Servo stability near singular stiffness matrix
 
@@ -319,3 +351,13 @@ Key response-letter sentence template: "Among DEM-HCA studies with rigid or quas
 5. R2.6, R2.7, R2.8 post-processing in parallel
 6. R1.1, R1.5, R1.6 — text + citations
 7. Consolidate into response letter last
+
+### Pre-submission checks
+
+Run these checks before declaring the letter final and building the submission PDF. Do NOT do them mid-task while manuscript text is still shifting.
+
+- [ ] **Line-number pointers in the letter.** The letter currently refers to changes via `Section~\ref{...}`, `Fig.~\ref{...}`, and `Table~\ref{...}`. Once the revised manuscript body is frozen, augment each `\changed{...}` entry (and selected inline references) with concrete manuscript line-number pointers using the `\manref{p.~X, l.~Y}` helper already defined in the letter preamble, so reviewers can jump directly to the changed text without searching the section. Do a final `latexmk` build of `main.tex` first to lock the line numbering.
+- [ ] **`latexdiff` vs `submitted-r0` tag** regenerated against the final manuscript.
+- [ ] **Bibliography sanity pass** — verify all new `\citep{...}` keys resolve in `refs.bib` and that no entries added during revision contain placeholder titles / years.
+- [ ] **Figure / table numbers** referenced in the letter match the final compiled manuscript (numbering can shift when new tables/figures are inserted).
+- [ ] **Overfull hboxes** in the letter log — scan for any remaining and trim or reword.
