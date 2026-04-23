@@ -1,0 +1,51 @@
+% Standalone version of Fig. specimen_generation for fast iteration.
+% Compile: pdflatex specimen_generation_standalone.tex
+% Main manuscript includes the resulting PDF via \includegraphics.
+\documentclass[border=5pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\graphicspath{{./}}
+
+\begin{document}
+\begin{tikzpicture}
+  % --- (a) Deposit ---
+  \node[anchor=north west, inner sep=0] (imgA) at (0,0)
+    {\includegraphics[height=5.5cm]{specimen_generation_deposit.png}};
+  \node[font=\small\bfseries, anchor=north west] at
+    ([xshift=4pt,yshift=-4pt]imgA.north west) {(a)};
+  % --- h_b (blade height) dimension, normalized image coords (0,0)=SW ---
+  \begin{scope}[
+    x={($(imgA.south east)-(imgA.south west)$)},
+    y={($(imgA.north west)-(imgA.south west)$)},
+    shift={(imgA.south west)},
+  ]
+    \draw[{Stealth[length=3pt]}-{Stealth[length=3pt]}, thin, black]
+      (0.152, 0.83) -- (0.152, 0.75);
+    \node[font=\footnotesize, anchor=east] at (0.152, 0.768)
+      {$h_b$};
+    % --- debug grid (uncomment to fine-tune coords) ---
+    % \draw[help lines, step=0.05, gray!40] (0,0) grid (1,1);
+    % \foreach \x in {0.0,0.1,...,1.0} {\node[font=\tiny,gray] at (\x,-0.02) {\x};}
+    % \foreach \y in {0.0,0.1,...,1.0} {\node[font=\tiny,gray] at (-0.03,\y) {\y};}
+  \end{scope}
+  % --- (b) Post-insert ---
+  \node[anchor=north west, inner sep=0] (imgB) at ([xshift=6pt]imgA.north east)
+    {\includegraphics[height=5.5cm]{specimen_generation_postinsert.png}};
+  \node[font=\small\bfseries, anchor=north west] at
+    ([xshift=4pt,yshift=-4pt]imgB.north west) {(b)};
+  % --- Colorbar ---
+  \node[anchor=north west, inner sep=0] (cbar) at ([xshift=6pt]imgB.north east)
+    {\includegraphics[height=5.5cm]{colorbar_viridis.png}};
+  % Tick labels
+  \foreach \val/\frac in {1.5/0, 1.25/0.25, 1.0/0.5, 0.75/0.75, 0.5/1.0} {
+    \node[font=\footnotesize, anchor=west] at
+      ([xshift=2pt, yshift={-\frac*5.5cm}]cbar.north east) {\val};
+  }
+  % Title
+  \node[font=\footnotesize, rotate=90, anchor=south] at
+    ([xshift=40pt]cbar.east) {Particle radius (mm)};
+\end{tikzpicture}
+\end{document}

@@ -33,29 +33,7 @@ The specimen geometry (Fig.~\ref{fig:specimen_generation}) follows a laboratory-
 
 \begin{figure*}[t]
   \centering
-  \begin{tikzpicture}
-    % --- (a) Deposit ---
-    \node[anchor=north west, inner sep=0] (imgA) at (0,0)
-      {\includegraphics[height=5.5cm]{specimen_generation_deposit.png}};
-    \node[font=\small\bfseries, anchor=north west] at
-      ([xshift=4pt,yshift=-4pt]imgA.north west) {(a)};
-    % --- (b) Post-insert ---
-    \node[anchor=north west, inner sep=0] (imgB) at ([xshift=6pt]imgA.north east)
-      {\includegraphics[height=5.5cm]{specimen_generation_postinsert.png}};
-    \node[font=\small\bfseries, anchor=north west] at
-      ([xshift=4pt,yshift=-4pt]imgB.north west) {(b)};
-    % --- Colorbar ---
-    \node[anchor=north west, inner sep=0] (cbar) at ([xshift=6pt]imgB.north east)
-      {\includegraphics[height=5.5cm]{colorbar_viridis.png}};
-    % Tick labels
-    \foreach \val/\frac in {1.5/0, 1.25/0.25, 1.0/0.5, 0.75/0.75, 0.5/1.0} {
-      \node[font=\footnotesize, anchor=west] at
-        ([xshift=2pt, yshift={-\frac*5.5cm}]cbar.north east) {\val};
-    }
-    % Title
-    \node[font=\footnotesize, rotate=90, anchor=south] at
-      ([xshift=40pt]cbar.east) {Particle radius (mm)};
-  \end{tikzpicture}
+  \includegraphics[width=\textwidth]{specimen_generation_standalone.pdf}
   \caption{Initial specimen generation process in the DEM-based hollow cylinder apparatus model.
     Particles are colored by radius.
     (a)~Particle generation modeling air-pluviation.
@@ -123,7 +101,7 @@ During the AC stage, $\pmean$ is increased from \SI{10}{kPa} to \SI{100}{kPa} th
   \label{fig:ac_specimens}
 \end{figure*}
 
-The cyclic shear simulation program consists of two sets. The cyclic stress ratio is defined as $\mathrm{CSR} = \tau_{cyc}/p_0^{\prime}$, with $\tau_{cyc}$ the amplitude of the sinusoidal shear stress $\tau_{z\theta}$ (Table~\ref{tab:hca_equations}) and $p_0^{\prime}$ the initial mean effective stress after consolidation. In the primary set, three representative \Kzero{} states---0.5 (compression), 1.0 (isotropic), and 2.0 (extension)---are examined at a dense state ($D_r \approx 90\%$) across multiple CSR levels to characterize how liquefaction resistance varies with the direction and magnitude of stress anisotropy, and to trace the associated energy dissipation, stiffness degradation, and fabric evolution. In the expanded set, a medium-dense state ($D_r \approx 75\%$) is introduced alongside the dense state, and two additional \Kzero{} values (0.67 and 1.5) are included to refine the coverage of anisotropy levels, yielding ten cases ($2 \times 5$) at a single CSR = 0.300. This expanded set allows examination of whether the \Kzero{}-dependent liquefaction resistance trend observed at $D_r \approx 90\%$ persists at a lower density, and provides a broader parametric basis for the subsequent microscopic analysis. Table~\ref{tab:case_matrix} summarizes the full simulation program and the resulting $N_L$ for each case.
+The cyclic shear simulation program consists of two sets. Throughout all cyclic simulations reported here, the outer and inner cell pressures are held at the post-consolidation value ($p_o=p_i=\sigma_{r0}$, so $p_{dif,r}^{tar}=0$ and the mean radial total stress $\sigma_r$ is time-invariant), and the axial boundary is imposed in displacement-control mode ($dH/dt=0$) matching the protocol of \citet{Ishihara1985}; the general time-dependent $p_{dif,r}^{tar}(t)$ and the stress-control axial formulations of \cref{subsec:cyclic_loading} remain available in the servo code for future studies that use differential cell control or constant total axial stress. The cyclic stress ratio is defined as $\mathrm{CSR} = \tau_{cyc}/p_0^{\prime}$, with $\tau_{cyc}$ the amplitude of the sinusoidal shear stress $\tau_{z\theta}$ (Table~\ref{tab:hca_equations}) and $p_0^{\prime}$ the initial mean effective stress after consolidation. In the primary set, three representative \Kzero{} states---0.5 (compression), 1.0 (isotropic), and 2.0 (extension)---are examined at a dense state ($D_r \approx 90\%$) across multiple CSR levels to characterize how liquefaction resistance varies with the direction and magnitude of stress anisotropy, and to trace the associated energy dissipation, stiffness degradation, and fabric evolution. In the expanded set, a medium-dense state ($D_r \approx 75\%$) is introduced alongside the dense state, and two additional \Kzero{} values (0.67 and 1.5) are included to refine the coverage of anisotropy levels, yielding ten cases ($2 \times 5$) at a single CSR = 0.300. This expanded set allows examination of whether the \Kzero{}-dependent liquefaction resistance trend observed at $D_r \approx 90\%$ persists at a lower density, and provides a broader parametric basis for the subsequent microscopic analysis. Table~\ref{tab:case_matrix} summarizes the full simulation program and the resulting $N_L$ for each case.
 
 \begin{table}[t]
   \centering
@@ -165,7 +143,7 @@ The cyclic shear simulation program consists of two sets. The cyclic stress rati
   \label{fig:hca_schematic}
 \end{figure*}
 
-In a laboratory HCA (left half of Fig.~\ref{fig:hca_schematic}), the specimen is enclosed between an outer chamber (pressure $p_o$) and an inner chamber (pressure $p_i$), which are controlled independently. An axial load is applied through the loading piston, producing a vertical pressure $p_z$, and a torque $T$ is transmitted through end platens. Under undrained conditions the pore water pressure $u$, monitored by pressure transducers, is uniform throughout the specimen, so the effective pressures are $p_o^{\prime}=p_o-u$, $p_i^{\prime}=p_i-u$, and $p_z^{\prime}=p_z-u$. Because $u$ drops out in any difference of effective pressures, the radial pressure difference equals its total-stress counterpart, $p_o^{\prime}-p_i^{\prime}=p_o-p_i$, and so does the axial pressure difference between the vertical and average radial effective stresses (Table~\ref{tab:hca_equations}): $p_z^{\prime}-\sigma_r^{\prime}=p_z-\sigma_r$.
+In a laboratory HCA (left half of Fig.~\ref{fig:hca_schematic}), the specimen is enclosed between an outer chamber (pressure $p_o$) and an inner chamber (pressure $p_i$), which are controlled through independent channels and can therefore be prescribed as general functions of time. An axial load is applied through the loading piston, producing a vertical pressure $p_z$ that is likewise independently prescribed, and a torque $T$ is transmitted through end platens. Under undrained conditions the pore water pressure $u$, monitored by pressure transducers, is uniform throughout the specimen, so the effective pressures are $p_o^{\prime}=p_o-u$, $p_i^{\prime}=p_i-u$, and $p_z^{\prime}=p_z-u$. Because $u$ drops out in any difference of effective pressures, the radial pressure difference equals its total-stress counterpart, $p_o^{\prime}-p_i^{\prime}=p_o-p_i$, and so does the axial pressure difference between the vertical and average radial effective stresses (Table~\ref{tab:hca_equations}): $p_z^{\prime}-\sigma_r^{\prime}=p_z-\sigma_r$.
 
 The constant-volume method is a well-established approach in DEM for reproducing undrained cyclic loading \citep{YimsiriSoga2010}. In this method, the pore water pressure is not modelled explicitly; instead, the contact forces between particles and walls yield effective stresses ($p_o^{\prime}$, $p_i^{\prime}$, $p_z^{\prime}$; right half of Fig.~\ref{fig:hca_schematic}) directly (Table~\ref{tab:hca_equations}). The DEM-based HCA specimen has four kinematic degrees of freedom---inner radius rate ($dr/dt$), outer radius rate ($dR/dt$), height rate ($dH/dt$), and rotation angle rate ($d\theta/dt$), where $r$ is the inner radius, $R$ the outer radius (Fig.~\ref{fig:hca_schematic}b), and $H$ the height of the hollow cylindrical specimen (Fig.~\ref{fig:hca_schematic}a)---and the following laboratory boundary conditions to reproduce: the undrained (constant-volume) constraint, the inner and outer cell pressures, the axial stress, and the torsional shear stress.
 
@@ -339,14 +317,14 @@ S_{rr} = -\frac{1}{\hat{K}_{11}} = \frac{1}{\dfrac{K_{r,i}}{A_i}+\dfrac{r}{R}\,\
   \label{fig:servo_flowchart}
 \end{figure}
 
-The excess pore water pressure is inferred from the reduction in radial effective stress:
+The excess pore water pressure is inferred from the difference between the mean radial total and effective stresses:
 \begin{equation}
-u = \sigma_{r0}^{\prime} - \sigma_r^{\prime},
+u = \sigma_r - \sigma_r^{\prime},
 \label{eq:epwp_definition}
 \end{equation}
-where $u$ is the excess pore water pressure, $\sigma_r^{\prime}$ is the current radial effective stress, and $\sigma_{r0}^{\prime}$ is its initial value. The ratio $\ru$ is then defined as $\ru = u/\sigma_{r0}^{\prime}$. Figure~\ref{fig:servo_flowchart} summarizes the complete servo procedure applied at each simulation timestep.
+where $\sigma_r$ is the mean radial total stress prescribed by the laboratory boundary conditions (determined by $p_o$ and $p_i$) and $\sigma_r^{\prime}$ is the current mean radial effective stress evaluated from the DEM contact forces (Table~\ref{tab:hca_equations}). For the constant-cell-pressure cases studied here, $\sigma_r$ is time-invariant and equal to $\sigma_{r0}^{\prime}$, so \cref{eq:epwp_definition} reduces to $u = \sigma_{r0}^{\prime} - \sigma_r^{\prime}$. The ratio $\ru$ is defined as $\ru = u/\sigma_{r0}^{\prime}$. Figure~\ref{fig:servo_flowchart} summarizes the complete servo procedure applied at each simulation timestep.
 
-Compared with earlier DEM-based HCA servo strategies, the present formulation makes three contributions explicit. First, the governing equations are systematically reduced through elimination of the volume constraint and torsional independence before the coupled system is solved, clarifying the mathematical structure of the problem. Second, the laboratory-to-DEM mapping is established through two pressure differences ($p_{dif,r}^{\prime}$ and $p_{dif,z}^{\prime}$), which are the correct servo targets because they are invariant to the unknown pore water pressure. Third, the cross-coupling between the radial and axial degrees of freedom is quantified analytically through the off-diagonal entries of $\hat{\mathbf{K}}$, so that the servo coefficients correctly reflect the mutual influence of $dr/dt$ and $dH/dt$ on both boundary conditions. None of these steps were formalized in earlier work: \citet{Han2024jgs} solved only the radial and torsional conditions while keeping the specimen height fixed, thereby bypassing the axial degree of freedom entirely, and \citet{Ma2024} introduced an axial servo but derived each servo coefficient from the contact stiffness at the corresponding wall independently, without reflecting the cross-coupling among the wall movements.
+Compared with earlier DEM-based HCA servo strategies, the present formulation makes three contributions explicit. First, the governing equations are systematically reduced through elimination of the volume constraint and torsional independence before the coupled system is solved, clarifying the mathematical structure of the problem. Second, the laboratory-to-DEM mapping is established through two pressure differences ($p_{dif,r}^{\prime}$ and $p_{dif,z}^{\prime}$), treated as general time-dependent targets $p_{dif,r}^{tar}(t)$ and $p_{dif,z}^{tar}(t)$ that are invariant to the unknown pore water pressure and reproduce the independent $p_o$, $p_i$, $p_z$ control available on a laboratory HCA. Third, the cross-coupling between the radial and axial degrees of freedom is quantified analytically through the off-diagonal entries of $\hat{\mathbf{K}}$, so that the servo coefficients correctly reflect the mutual influence of $dr/dt$ and $dH/dt$ on both boundary conditions. None of these steps were formalized in earlier work: \citet{Han2024jgs} solved only the radial and torsional conditions while keeping the specimen height fixed ($dH/dt=0$) and the radial pressure-difference target held at $p_{dif,r}^{tar}=0$ (i.e., $p_o=p_i$), and \citet{Ma2024} introduced an axial servo but derived each servo coefficient from the contact stiffness at the corresponding wall independently, without reflecting the cross-coupling among the wall movements.
 
 \subsection{Parameter calibration and validation}
 \label{subsec:calibration_validation}
