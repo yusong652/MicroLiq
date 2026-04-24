@@ -443,13 +443,82 @@ boundaries and justify their use with relevant references.
 \end{rcomment}
 
 \response
-\textit{[TODO: acknowledge limitation; justify via (i) HCA chambers are
-rigid-walled with the membrane as a pressure interface, (ii) present work
-focuses on average fabric-level comparison rather than localized shear
-bands, (iii) flexible-membrane DEM-HCA (Song 2024) as complementary / future
-work.]}
+We thank the reviewer for raising this point. We agree that rigid
+cylindrical walls do not reproduce every aspect of the laboratory
+latex membrane, and the concerns the reviewer lists --- restricted
+local deformation, suppressed shear-band development, and potentially
+overestimated stiffness --- are well established in the \emph{drained}
+HCA testing literature, where the membrane locally accommodates the
+specimen's dilative or contractive response at developing localisation
+sites. The choice of rigid cylindrical walls for the present
+\emph{undrained} application rests on the following considerations.
 
-\changed{\textit{[TODO: \secref{2.1} end paragraph or discussion section.]}}
+\medskip
+\noindent\textbf{No flexible-membrane DEM-HCA formulation to date
+enforces a sealed constant-volume boundary.}
+The flexible bonded-sphere membrane developed by \citet{Song2024} and
+extended by \citet{Song2024suffusion} is the most advanced DEM
+analogue of a laboratory latex membrane to date. Both formulations,
+however, operate under open, stress-controlled boundary conditions
+rather than under a sealed constant-volume condition. \citet{Song2024}
+applies drained torsional shear by prescribing the cell pressures
+acting on the membrane particles directly; \citet{Song2024suffusion}
+extends the same flexible-membrane DEM with a CFD solver to drive
+seepage flow through the specimen between explicit inlet and outlet
+boundaries under a prescribed hydraulic gradient, with the confining
+pressure held fixed throughout. In neither case is the specimen-total
+volume constrained; the fluid phase, where present, resolves seepage
+flow through the specimen rather than enforcing volume conservation
+of a sealed sample. To our knowledge, no flexible-membrane DEM
+formulation currently enforces the sealed constant-volume boundary
+that undrained cyclic loading requires; doing so would demand
+additional global kinematic constraints superimposed on the membrane
+degrees of freedom. The rigid-wall servo used here is therefore not a
+simplification of a readily available flexible-membrane alternative.
+
+\medskip
+\noindent\textbf{In undrained loading, the dominant boundary physics
+is global volume conservation, which the rigid-wall servo enforces
+directly.}
+The laboratory HCA specimen is sealed against drainage, and the pore
+water is essentially incompressible at the pressures of interest. The
+latex membrane is therefore backed by an incompressible fluid, so the
+specimen-total volume is fixed by water conservation irrespective of
+membrane flexibility; the membrane serves as a pressure interface
+that transmits cell pressure to the grain skeleton, but cannot
+contribute net volume change. The DEM analogue of this physics is a
+global volume constraint on the specimen boundary, which the present
+servo imposes directly at every timestep
+(Section~\ref{subsec:cyclic_loading}). In this sense the rigid-wall-
+plus-servo configuration is the direct match to the undrained
+boundary condition, whereas the flexible membrane is the direct
+match to the drained condition.
+
+\medskip
+\noindent\textbf{Scope and limitation.}
+Rigid walls do suppress boundary-local heterogeneity that a flexible
+membrane would accommodate: even under a global volume constraint, a
+laboratory specimen can develop spatially non-uniform deformation at
+the membrane surface, whereas the DEM walls enforce uniform radial
+positions. The present work reports specimen-averaged quantities ---
+liquefaction-resistance curves and integrated fabric descriptors
+$Z_{m0}$, $F_c$, $\rho_c$ --- that are insensitive to this class of
+boundary heterogeneity. Extending the analysis to localisation
+features would benefit from a future flexible-boundary treatment
+coupled to an incompressible fluid phase, which we note as a
+direction for future work.
+
+\changed{Section~\ref{subsec:dem_hca}: a short paragraph has been
+added at the end of the wall-configuration description, framing the
+rigid cylindrical walls as the direct implementation of the undrained
+constant-volume boundary via the servo, and noting that existing
+flexible-membrane DEM-HCA formulations address drained
+(\citealp{Song2024}) and open-boundary seepage
+(\citealp{Song2024suffusion}) loading respectively, neither of which
+enforces the sealed constant-volume condition required for undrained
+cyclic loading. Boundary-local heterogeneity suppressed by the rigid
+walls is acknowledged as a limitation of the specimen-averaged scope
+in the discussion section.}
 
 %% ---------------- R1.7 ----------------
 \subsection*{R1.7 --- Citation for CSL in Fig.~8(c)}
@@ -720,9 +789,14 @@ for the constant-cell-pressure cases studied here. For
 transparency, the cyclic-shear program description now states
 explicitly that the cell pressures are held at $p_o=p_i=\sigma_{r0}$
 (i.e., $p_{dif,r}^{tar}=0$) and the axial boundary is imposed in
-displacement-control mode ($dH/dt=0$) throughout all simulations
-reported in this paper, while the general $p_{dif,r}^{tar}(t)$ and
-stress-control axial formulations remain available in the servo
+displacement-control mode ($dH/dt=0$) for the cyclic $K_0$ suite
+that forms the core of this paper. The monotonic validation
+runs against \citet{Nakata1998} and a supplemental cyclic
+validation set (added in response to R2.6 to demonstrate exact
+volume conservation under a free axial boundary) both use the
+constant-total-axial-stress formulation, with principal-angle-
+locked $p_{dif,z}^{tar}(t)$ in the monotonic case. The general
+$p_{dif,r}^{tar}(t)$ input remains available in the servo
 code. We thank the
 reviewer for prompting these clarifications, which make the
 generality of the boundary-condition definition explicit in the
@@ -815,13 +889,71 @@ matrix inversion?
 \end{rcomment}
 
 \response
-\textit{[TODO: depending on code audit --- either (a) describe
-regularisation / condition-number checks, or (b) argue that the
-constant-volume constraint eliminates radial-axis degeneracy, while the
-torsional and axial degrees of freedom remain independently stable; any
-post-liquefaction oscillations observed are physical rather than numerical.]}
+The reviewer raises an important point. In an undrained DEM
+specimen approaching liquefaction, the contact network thins
+drastically and the aggregate wall stiffnesses collapse;
+$\hat{\mathbf{K}}$'s entries shrink accordingly,
+$\det\hat{\mathbf{K}}\!\to\!0$, and the servo coefficients
+(the entries of $\hat{\mathbf{K}}^{-1}$) blow up. The failure
+modes are division by zero at the matrix-inversion step and
+divergence of the commanded wall velocities. This scenario arises
+in two classes of undrained loading: cyclic loading as
+$p^{\prime}\!\to\!0$ (cyclic liquefaction, at any density), and
+monotonic loading on loose, contractive sand that can reach a
+static / flow-liquefaction state along the same
+$p^{\prime}\!\to\!0$ trajectory. Any servo that enters these
+regimes therefore needs an explicit lower bound on the wall
+stiffnesses to keep $\hat{\mathbf{K}}$ non-singular.
 
-\changed{\textit{[TODO: paragraph in \secref{...} or appendix.]}}
+Our safeguard is a per-wall aggregate-stiffness clip that, by
+construction, keeps every entry of $\hat{\mathbf{K}}$ bounded away
+from zero, so division by zero and near-singular blow-up are
+prevented at the level of matrix assembly rather than caught after
+the fact. Concretely, each wall group's aggregate contact stiffness
+(inner cylinder $K_{r,i}$, outer cylinder $K_{r,o}$, end platens
+$K_z$) is floored at $10\%$ of its initial (end-of-consolidation)
+value: once the measured value drops below that threshold, it is
+clamped at the floor before $\hat{\mathbf{K}}$ is assembled. Both
+diagonal entries of $\hat{\mathbf{K}}$ are sums of these per-wall
+stiffnesses divided by wall areas; e.g.,
+\begin{equation}
+\hat{K}_{11} = -\frac{K_{r,i}}{A_i} - \frac{r}{R}\,\frac{K_{r,o}}{A_o},
+\label{eq:rl_Khat11}
+\end{equation}
+with $A_i$, $A_o$ the corresponding wall areas. The clip therefore
+keeps $\hat{K}_{11}$ (and analogously $\hat{K}_{22}$) strictly
+negative and $\det\hat{\mathbf{K}}$ strictly non-zero regardless of
+how many contacts are lost. An analogous $20\%$-of-initial clip on
+the torsional moment of inertia protects the independent torsional
+servo. Because $\hat{\mathbf{K}}$ is at most $2\times 2$, its
+inverse is computed analytically in closed form at every timestep,
+with no iterative linear solve involved.
+
+\medskip
+\noindent\textbf{Observed stability in the regimes where the clip
+engages.}
+In this paper, the scenario above is reached only during cyclic
+loading. The servo runs stably through both cyclic regimes in
+which $\hat{K}_{11}$ can approach the clip: (i)~cyclic
+pre-liquefaction loading, exercised in both the
+scalar-$\hat{\mathbf{K}}$ mode under $dH/dt=0$ (the $K_0$ suite
+that forms the paper's core) and the full $2\times 2$ mode under
+constant-total-axial-stress (the supplemental cyclic validation
+runs added for R2.6 below); and (ii)~several cycles of cyclic
+post-liquefaction loading, in which the clip becomes the binding
+constraint on $\hat{K}_{11}$. The tracking-error ($e_r$, $e_z$)
+and specimen-volume traces through these regimes are the subject
+of the R2.6 validation below and exhibit no divergence or
+high-frequency oscillation on any servo channel.
+
+\changed{Section~\ref{subsec:cyclic_loading}: a short sentence
+has been added after the servo-coefficient derivation noting that
+the aggregate contact stiffness on each wall is floored at $10\%$
+of its initial (end-of-consolidation) value before
+$\hat{\mathbf{K}}$ is assembled, which keeps $\det\hat{\mathbf{K}}$
+strictly non-zero and prevents any near-singular behaviour in the
+closed-form inversion (an analogous $20\%$ floor is applied to the
+torsional moment of inertia in the independent torsional servo).}
 
 %% ---------------- R2.6 ----------------
 \subsection*{R2.6 --- Evolution of $e_r$, $e_z$, or volume during validation}
