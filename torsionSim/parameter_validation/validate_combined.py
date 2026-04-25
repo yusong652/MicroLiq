@@ -96,7 +96,7 @@ for csr in csrs:
 	cycle = time_c * 8.0
 	cycles.append(cycle)
 
-df_exp = pd.read_csv("undrained_cyclic/hca_Ishihara.csv", header=None)
+df_exp = pd.read_csv("undrained_cyclic/hca_Ishihara_Dr90.csv", header=None)
 n_ref = df_exp.to_numpy()[:, 0]
 csr_ref = df_exp.to_numpy()[:, 1]
 
