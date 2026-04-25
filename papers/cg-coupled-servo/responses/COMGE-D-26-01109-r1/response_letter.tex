@@ -629,9 +629,184 @@ data or from someone else's literature, a clear citation is required.
 \end{rcomment}
 
 \response
-\textit{[TODO: verify source; update caption with explicit citation.]}
+We are grateful to the reviewer for this question. On close
+examination it exposed a substantive conceptual and methodological
+error in the submitted version, which we apologise for; we describe
+both the error and its correction in full below.
 
-\changed{\textit{[TODO: \figref{8}(c) caption.]}}
+\medskip
+\noindent\textbf{The conceptual error: large-strain cyclic-mobility
+excursions are not the critical state.}
+The dashed ``critical state line'' in
+Fig.~\ref{fig:macro_response_c}(c) of the submitted manuscript was
+not drawn from external data, nor from a true critical-state
+determination at all. It was constructed by taking the instantaneous
+$q/p^{\prime}$ ratio at one specific timestep of a cyclic-loading
+case ($D_r\approx 90\%$, $\Kzero=0.5$, CSR $=0.200$, 80 steps after
+the $\ru=0.95$ liquefaction onset) and drawing a line of that slope
+through the origin. The implicit assumption was that, since the
+specimen had reached large strains following liquefaction, the
+local stress ratio at that point could stand in for $M_{cs}$. This
+assumption is incorrect: under cyclic mobility a soil at large
+post-liquefaction strain is \emph{not} at critical state. Within
+each half-cycle the specimen alternately contracts and dilates,
+so the instantaneous $q/p^{\prime}$ \emph{crosses} the CSL on each
+upstroke and falls back below it on each downstroke. Picking a
+point shortly after liquefaction onset captures the dilatant
+upstroke, not the critical state. The slope so obtained
+($q/p^{\prime}\approx 1.16$) is in fact neither the triaxial
+$M_{TC}\approx 1.24$ (Lode parameter $b=0$) nor the pure-shear
+critical-state ratio (HCA torsional Lode parameter $b=0.5$),
+and overestimates the true CSL slope by roughly $30\%$.
+
+\medskip
+\noindent\textbf{The correct methodology: dedicated monotonic shear
+to a $q/p^{\prime}$ plateau.}
+Critical state has a well-defined meaning only as the limiting state
+of \emph{monotonic} shear at constant volume and constant stress
+ratio, in which $q$, $p^{\prime}$, and the fabric stop evolving
+with further strain. To replace the discarded slope with such a
+determination, we performed a separate
+monotonic-undrained-torsional-shear simulation on the same calibrated
+DEM specimen.
+
+The run is sheared all the way to engineering shear strain
+$\gamma_{z\theta}\approx 1.11$ (deviatoric strain
+$\varepsilon_q\approx 64\%$), far past the typical experimental
+termination point, and the strain is taken sufficiently large that
+$q/p^{\prime}$ stops evolving. Fig.~\ref{fig:rl_csl} shows the
+resulting effective stress path together with the stress-ratio
+evolution; the same figure has been added to the manuscript as
+Fig.~\ref{fig:csl_determination}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figs/fig_r1_7.pdf}
+  \caption{CSL determination from a dedicated monotonic-undrained
+    torsional-shear DEM run on the calibrated $D_r\approx 90\%$
+    specimen ($p_0^{\prime}=\SI{100}{kPa}$, $\Kzero=1.0$).
+    (a)~Effective stress path in $p^{\prime}$--$q$ space; the red
+    segment marks the plateau window
+    $\varepsilon_q\in[23,46]\%$ from which the CSL slope is fit, and
+    the dashed line is the resulting CSL $q=0.872\,p^{\prime}$.
+    (b)~Stress-ratio $q/p^{\prime}$ versus deviatoric strain
+    $\varepsilon_q$; the post-peak path settles onto a clean plateau
+    at $q/p^{\prime}=0.872\pm 0.015$, corresponding to
+    $\varphi_{cs}=30.2^{\circ}$ at HCA-torsional Lode parameter
+    $b=0.5$.}
+  \label{fig:rl_csl}
+\end{figure}
+
+The plateau in panel~(b) gives
+\[
+  M_{cs} = 0.872 \pm 0.015,
+  \qquad
+  \varphi_{cs} = 30.2^{\circ},
+\]
+where the friction angle is back-computed from
+$M_{cs}=\sqrt{3}\,\sin\varphi$, the Mohr--Coulomb relation specific
+to pure-shear loading ($b=0.5$). Three independent checks confirm
+this is the correct critical-state slope for the present geometry:
+
+\begin{enumerate}[leftmargin=*,label=(\arabic*),topsep=2pt,itemsep=3pt]
+  \item \textbf{Lode-angle consistency.} Direct measurement of the
+    principal-stress state in the plateau window yields a
+    Lode parameter $b=0.500\pm 0.005$, confirming that the loading
+    is in the pure-shear sector throughout the plateau, and that the
+    appropriate Mohr--Coulomb conversion is
+    $M_{cs}=\sqrt{3}\sin\varphi$ rather than the triaxial form.
+
+  \item \textbf{Toyoura friction angle.} The recovered
+    $\varphi_{cs}=30.2^{\circ}$ matches the widely-cited
+    $\varphi_{cs}\approx 30^{\circ}\!-\!31^{\circ}$ for Toyoura sand
+    obtained from drained triaxial compression; the predicted
+    pure-shear $q/p^{\prime}$ at these friction angles is $0.866$
+    and $0.892$, respectively, bracketing our $0.872$ to within
+    $\pm 1\%$.
+
+  \item \textbf{Consistency with the triaxial-compression
+    $M_{TC}$.} The triaxial-compression slope at the same friction
+    angle, $M_{TC}=6\sin\varphi_{cs}/(3-\sin\varphi_{cs})$, evaluates
+    to $1.20$--$1.24$ for $\varphi_{cs}\in[30^{\circ},31^{\circ}]$,
+    consistent with values reported in the triaxial DEM and
+    laboratory literature on Toyoura sand. We note that this
+    agreement is consistent with a near-Mohr--Coulomb behaviour
+    within typical experimental scatter, but does not by itself
+    test whether $\varphi_{cs}$ is strictly Lode-independent: real
+    granular materials are known to exhibit a weak Lode-angle
+    dependence of $\varphi_{cs}$ (typically a few degrees, captured
+    by Lade--Duncan or Matsuoka--Nakai criteria), and resolving that
+    dependence would require a parametric set of monotonic runs at
+    multiple $b$ values. Such a study is beyond the scope of the
+    present manuscript; the $M_{cs}$ reported here is therefore
+    explicitly the \emph{monotonic, pure-shear} ($b=0.5$) critical-
+    state slope, not a Lode-independent universal value.
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Scope of the dashed CSL line in
+Fig.~\ref{fig:macro_response_c}(c).}
+Because $M_{cs}=0.872$ is determined under monotonic loading at
+$b=0.5$, the dashed CSL line in Fig.~\ref{fig:macro_response_c}(c)
+is most directly applicable to the isotropically consolidated
+$\Kzero=1.0$ cyclic case, where $\sigma_z\approx \sigma_r\approx
+\sigma_\theta$ at every phase of the cycle and the principal-stress
+state stays close to $b=0.5$ throughout. For the anisotropically
+consolidated $\Kzero=0.5$ and $\Kzero=2.0$ cyclic cases, the
+principal axes rotate during each cycle and the loading sweeps over
+a range of Lode angles, so a single straight CSL line is, strictly,
+a representative reference rather than the locus of critical states
+visited. The cyclic-mobility excursions of all three $\Kzero$ paths
+are observed to peak in the immediate neighbourhood of this line
+(Fig.~\ref{fig:macro_response_c}c), which is consistent with the
+weak Lode-angle dependence reported for real sands; an explicit
+Lode-resolved CSL envelope is left as an item for future work. We
+have added a sentence to this effect in the caption of
+Fig.~\ref{fig:macro_response_c} of the revised manuscript.
+
+\medskip
+\noindent\textbf{Why DEM rather than laboratory HCA data.}
+The plateau used to fit the CSL spans
+$\varepsilon_q\in[23,46]\%$. Laboratory HCA tests on dense sand
+typically cannot reach $\varepsilon_q\gtrsim 20\%$ before localized
+deformation at the latex membrane, end-cap slippage, or
+specimen-shape distortion forces test termination, which is why the
+torsional CSL slope in the laboratory literature is often inferred
+from the pre-plateau softening trend rather than directly observed.
+The rigid cylindrical walls and blade-pinned end-particle layers of
+the present DEM model suppress all three failure modes, allowing the
+specimen to be sheared all the way into the plateau and the CSL to
+be read off directly. This is, in effect, a DEM-specific resolution
+of a long-standing measurement gap in HCA torsional shear.
+
+\medskip
+\noindent\textbf{Quasi-static check.} Although the
+monotonic-to-CSL run is much faster in absolute terms than a typical
+laboratory test (mean $\dot\gamma\approx 2.3\,\mathrm{s^{-1}}$), the
+inertial number $I=\dot\gamma\,d_{50}\sqrt{\rho_s/p^{\prime}}$
+remains below $10^{-3}$ throughout: $I\approx 7.6\times 10^{-4}$ at
+the initial $p^{\prime}=\SI{100}{kPa}$ and
+$I\approx 2.1\times 10^{-4}$ on the plateau where
+$p^{\prime}\approx \SI{1260}{kPa}$. The run is therefore squarely in
+the strict quasi-static regime per \citet{GDRMiDi2004}.
+
+\changed{Section~\ref{subsec:calibration_validation}: a short
+paragraph has been added describing the dedicated
+monotonic-undrained-to-critical-state simulation, reporting
+$M_{cs}=0.872$ and $\varphi_{cs}=30.2^{\circ}$ at HCA-torsional
+Lode parameter $b=0.5$, and noting the agreement with both the
+Mohr--Coulomb prediction $M_{cs}=\sqrt{3}\sin\varphi_{cs}$ and the
+Toyoura $\varphi_{cs}\approx 30^{\circ}\!-\!31^{\circ}$ from
+drained triaxial data. Fig.~\ref{fig:macro_response_c}(c)
+caption is corrected: the dashed line is now drawn at slope
+$M_{cs}=0.872$ and explicitly attributed to this DEM determination,
+replacing the earlier post-liquefaction cyclic-mobility tangent
+(which is acknowledged in the response above as the source of the
+incorrect slope in the submitted version). The post-peak plateau
+that supports this fit is reached at deviatoric strains
+($\varepsilon_q\in[23,46]\%$) beyond the practical envelope of
+laboratory HCA tests, which is noted in the new paragraph as a
+DEM-specific feature of the determination.}
 
 %% ---------------- R1.8 ----------------
 \subsection*{R1.8 --- ``Enhancement'' of $\Kzero = 1.0$ in the coordination-number plane (Fig.~12)}
@@ -1098,12 +1273,70 @@ of $e_r$ and $e_z$ over time or the change in volume.
 \end{rcomment}
 
 \response
-\textit{[TODO: add plots of $r$, $H$, and total volume during monotonic
-calibration and cyclic validation, confirming strict enforcement of the
-constant-volume constraint.]}
+We thank the reviewer for this suggestion. The revised manuscript
+includes a new methodology subsection
+(Section~\ref{subsec:numerical_verification}) reporting the time
+histories of the specimen-volume drift $V/V_0-1$ and the radial and
+axial servo errors $e_r$, $e_z$ across a representative cyclic run
+(Fig.~\ref{fig:rl_verification}). The verification case is
+deliberately the most demanding in the simulation program
+($D_r\approx 75\%$, $\Kzero=1.0$, CSR$=0.400$), and is run under the
+constant-total-axial-stress axial boundary so that the full
+$2\times 2$ coupled servo is exercised. The same verification case
+has been added as a footnoted entry in Table~\ref{tab:case_matrix}.
 
-\changed{\textit{[TODO: new panel in \figref{7} or a separate
-\figref{...}.]}}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figs/fig_r2_6.pdf}
+  \caption{Servo verification on the most demanding cyclic run
+    ($D_r \approx 75\%$, $\Kzero = 1.0$, CSR $= 0.400$,
+    constant-total-axial-stress boundary):
+    (a)~specimen-volume drift $V/V_0 - 1$ confirming exact enforcement
+    of the constant-volume constraint
+    (Eq.~(\ref{eq:const_volume_constraint}));
+    (b)~tracking errors of the radial and axial pressure-difference
+    targets ($e_r$, $e_z$). Vertical dashed line: liquefaction onset
+    ($N_c/N_L = 1$, $\ru = 0.95$). Panels~(a) and~(b) of
+    Fig.~\ref{fig:numerical_verification} of the revised manuscript;
+    panel~(c) of that figure (inertial number) is reproduced
+    separately in R1.5 as Fig.~\ref{fig:rl_inertial}.}
+  \label{fig:rl_verification}
+\end{figure}
+
+\medskip
+\noindent\textbf{Volume conservation.}
+Because the constant-volume constraint
+(Eq.~(\ref{eq:const_volume_constraint})) is enforced kinematically
+through the analytical relation between $dr/dt$, $dR/dt$, and $dH/dt$
+rather than through a feedback loop, the specimen volume is
+conserved to floating-point round-off: the relative drift
+$V(t)/V_0-1$ stays below $10^{-7}$ throughout the run
+(Fig.~\ref{fig:rl_verification}a), several orders of magnitude
+smaller than the laboratory drift attributable to membrane
+compliance and water compressibility.
+
+\medskip
+\noindent\textbf{Servo tracking errors.}
+The tracking errors $e_r=p_{dif,r}^{\prime}-p_{dif,r}^{tar}$ and
+$e_z=p_{dif,z}^{\prime}-p_{dif,z}^{tar}$ are shown in
+Fig.~\ref{fig:rl_verification}b. Both grow modestly as the effective
+confining stress decays towards liquefaction but remain bounded
+throughout, with peak magnitudes of only a few percent of the
+initial mean effective stress. The closed-form $2\times 2$ inversion
+of $\hat{\mathbf{K}}$ therefore continues to deliver
+well-conditioned wall velocities even when the underlying contact
+network is severely depleted, and the $10\%$ stiffness floor and
+$20\%$ moment-of-inertia floor introduced in response to R2.5
+keep $\det\hat{\mathbf{K}}$ bounded away from zero through the
+post-liquefaction excursions.
+
+\changed{New Section~\ref{subsec:numerical_verification}
+(``Numerical verification of the coupled servo'') added at the end
+of the methodology, with Fig.~\ref{fig:numerical_verification}
+reporting (a)~the relative volume drift, (b)~the radial and axial
+servo-error traces, and (c)~the inertial number (panel~(c)
+addressing R1.5). The verification case is listed as a footnoted
+entry in Table~\ref{tab:case_matrix}.}
 
 %% ---------------- R2.7 ----------------
 \subsection*{R2.7 --- Contact-force anisotropy (3D rose diagrams)}

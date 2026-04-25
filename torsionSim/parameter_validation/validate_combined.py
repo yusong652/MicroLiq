@@ -20,8 +20,8 @@ def add_panel_label(ax, label):
 # ======================================================================
 # (a) Effective stress path: p'-q (dilatancy)
 # ======================================================================
-df1 = pd.read_csv("undrained_monotonic/monotonic_dense/torsion_shear.csv", header=0)
-df2 = pd.read_csv("undrained_monotonic/Nakata_p_q_dense.csv", header=None)
+df1 = pd.read_csv("undrained_monotonic/nakata_calibration/torsion_shear.csv", header=0)
+df2 = pd.read_csv("undrained_monotonic/lab_data/Nakata_p_q_dense.csv", header=None)
 
 stresses_shear = df1["stress_shear"] / 1000.
 stresses_out = df1["stress_outer"] / 1000.
@@ -59,7 +59,7 @@ add_panel_label(ax1, "(a)")
 # ======================================================================
 # (b) Stress-strain relationship (stiffness)
 # ======================================================================
-df3 = pd.read_csv("undrained_monotonic/Nakata_gamma_q_dense.csv", header=None)
+df3 = pd.read_csv("undrained_monotonic/lab_data/Nakata_gamma_q_dense.csv", header=None)
 strains_dev = df1["strain_dev"] * 100.0
 
 strains_dev_ref = df3.to_numpy()[:, 0]

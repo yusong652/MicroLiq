@@ -58,43 +58,22 @@ def draw_dev(k0, lst, color):
 		ax1.plot(stresses_p[flt][::16],stresses_dev[flt][::16],linewidth=LW_MAIN,
 			label=r"$K_0=%.2f$"%k0, color=color, linestyle=lst)
 
+# Critical-state slope determined from a dedicated monotonic-undrained
+# torsional-shear run on the same calibrated specimen, pushed to
+# epsilon_q ~ 64% so that q/p reaches a clean plateau at HCA-torsional
+# Lode parameter b = 0.5. Source: torsionSim/parameter_validation/
+# critical_state.py (plateau eps_q in [23, 46]%, N = 651 points).
+#   M_cs   = 0.872 +/- 0.015
+#   phi_cs = 30.2 deg  (M_cs = sqrt(3) * sin(phi_cs), pure-shear)
+M_CS = 0.872
+
+
 def draw_csl():
-	for csr in csr_arr:
-		file_name = "Dr90/k%.2f/csr_%.3f/torsion_shear.csv"%(0.5, 0.200)
-		try:
-			df1 = pd.read_csv(file_name,header=0)
-			print("Found")
-		except FileNotFoundError:
-			print("Not found")
-			continue
-
-		strains = df1["strain_shear"] * 100.0
-		# overall data
-		stresses_shear = df1["stress_shear"] / 1000.
-		stresses_out = df1["stress_outer"] / 1000.
-		stresses_in =df1["stress_inner"] / 1000.
-		stresses_lat = (stresses_out + stresses_in) / 2.0
-		stress_ini = stresses_out[0] + stresses_in[0] / 2.0
-		stresses_u = -(stresses_in + stresses_out) / 2 + stress_ini
-		stresses_z = df1["stress_z"] / 1000.0
-		J2s = (1.0/6.0 * ((stresses_z-stresses_lat)**2 + 
-			(stresses_z-stresses_lat)**2) + stresses_shear**2)
-		stresses_dev = np.sqrt(3.0 * J2s)
-		stresses_p = (stresses_in + stresses_out + stresses_z) / 3.0
-		# measurement ball data
-		time = df1["time_duration"]
-		###################################################
-		#  find the index when liquefaction occurs
-		period = 1.0 / 8.0
-		ind_liq = 0
-		while stresses_u[ind_liq] < 0.95 * stress_ini:
-			ind_liq += 1
-
-		slope = stresses_dev[ind_liq+80] / stresses_p[ind_liq+80] 
-		ax1.plot([0, 120.0],
-			[0, slope*120.0],
-			linewidth=LW_MAIN,label=r"$Critical\ state\ line$",
-			color='tab:red',linestyle='--')
+	p_max = 120.0
+	ax1.plot([0.0, p_max], [0.0, M_CS * p_max],
+		linewidth=LW_MAIN,
+		label=r"$Critical\ state\ line\ (M_{cs}=%.3f)$" % M_CS,
+		color='tab:red', linestyle='--')
 
 # ax1.set_title(r"$Triaxial\ Compression$")
 # xmajorLocator = MultipleLocator(5)

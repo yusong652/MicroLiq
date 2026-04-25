@@ -401,6 +401,83 @@ def make_inertial_panel(csv_path: str, out_stem: Path):
     return pdf, png
 
 
+def make_volume_error_panels(csv_path: str, out_stem: Path,
+                             freq: float = 8.0):
+    """Generate a 1x2 standalone figure containing panels (a) volume
+    drift and (b) servo tracking errors. Used in the response letter
+    for R2.6 so the reviewer sees the constant-volume and (e_r, e_z)
+    evidence in scope, without panel (c) which addresses R1.5."""
+    df = pd.read_csv(csv_path)
+    x, _, _ = compute_N_over_NL(df, freq=freq)
+
+    V = np.pi * (df["rad_outer"] ** 2 - df["rad_inner"] ** 2) * df["height"]
+    V0 = V.iloc[0]
+    drift = (V.to_numpy() / V0 - 1.0) * 1e7
+    drift_max_abs = float(np.max(np.abs(drift)))
+
+    e_r = (df["stress_dif_r"] - df["stress_dif_r_tgt"]).to_numpy() / 1e3
+    e_z = (df["stress_dif_z_r"] - df["stress_dif_z_tgt"]).to_numpy() / 1e3
+
+    s = slice(None, None, STRIDE)
+    x_p = x[s]
+    drift_p = drift[s]
+    e_r_p = e_r[s]
+    e_z_p = e_z[s]
+    x_max = float(x[-1])
+    liq_kw = dict(color='tab:red', linestyle='dashed', linewidth=1.2)
+
+    fig, (ax_a, ax_b) = plt.subplots(1, 2, figsize=(10.0, 4.9))
+
+    def mark_liquefaction(ax, y_pos):
+        ax.axvline(1.0, **liq_kw)
+        ax.text(1.02, y_pos, r'$N_{c}/N_{L}=1$',
+                color='tab:red', fontsize=LEGEND_FS,
+                ha='left', va='top',
+                transform=ax.get_xaxis_transform())
+
+    ax_a.plot(x_p, drift_p, color='tab:blue', linewidth=1.6,
+              label=r'$DEM\ simulation$')
+    ax_a.axhline(0.0, color='grey', lw=0.6)
+    mark_liquefaction(ax_a, 0.97)
+    ax_a.set_xlim(0.0, x_max)
+    ax_a.set_ylim(*YLIM_DRIFT)
+    ax_a.set_xlabel(r'$N_{c}/N_{L}$', fontsize=AXLABEL_FS)
+    ax_a.set_ylabel(r'$V/V_{0}-1\ (\times 10^{-7})$', fontsize=AXLABEL_FS)
+    ax_a.annotate(
+        (r'$\max|V/V_{0}-1|$'
+         '\n'
+         r'$=%.1f\times 10^{-7}$' % drift_max_abs),
+        xy=(0.03, 0.05), xycoords='axes fraction',
+        fontsize=LEGEND_FS, ha='left', va='bottom')
+    style(ax_a)
+    add_panel_label(ax_a, '(a)')
+
+    ax_b.plot(x_p, e_r_p, color='tab:blue', linewidth=1.2,
+              label=r'$e_{r}=p_{dif,r}^{\prime}-p_{dif,r}^{tar}$')
+    ax_b.plot(x_p, e_z_p, color='tab:orange', linewidth=1.2,
+              label=r'$e_{z}=p_{dif,z}^{\prime}-p_{dif,z}^{tar}$')
+    ax_b.axhline(0.0, color='grey', lw=0.6)
+    mark_liquefaction(ax_b, 0.97)
+    ax_b.set_xlim(0.0, x_max)
+    ax_b.set_ylim(*YLIM_ERR)
+    ax_b.set_xlabel(r'$N_{c}/N_{L}$', fontsize=AXLABEL_FS)
+    ax_b.set_ylabel(r'$Tracking\ error\ (kPa)$', fontsize=AXLABEL_FS)
+    ax_b.legend(fontsize=LEGEND_FS, loc='lower left')
+    style(ax_b)
+    add_panel_label(ax_b, '(b)')
+
+    plt.tight_layout()
+    out_stem.parent.mkdir(parents=True, exist_ok=True)
+    pdf = out_stem.with_suffix(".pdf")
+    png = out_stem.with_suffix(".png")
+    plt.savefig(pdf, bbox_inches='tight')
+    plt.savefig(png, dpi=300, bbox_inches='tight')
+    plt.close(fig)
+    print(f"wrote {pdf}")
+    print(f"wrote {png}")
+    return pdf, png
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", default=DEFAULT_CSV)
@@ -413,6 +490,9 @@ def main():
     ap.add_argument("--panel-stiff-only", action="store_true",
                     help="emit only the wall-stiffness / inertia-ratio panel "
                          "as a standalone figure (used by R2.5).")
+    ap.add_argument("--panel-ab-only", action="store_true",
+                    help="emit only panels (a) volume drift and (b) tracking "
+                         "errors as a standalone figure (used by R2.6).")
     ap.add_argument("--letter-out", default=(
         "/Users/hanyusong/thesis/MicroLiq/papers/cg-coupled-servo/"
         "responses/COMGE-D-26-01109-r1/figs/fig_r1_5"),
@@ -421,6 +501,10 @@ def main():
         "/Users/hanyusong/thesis/MicroLiq/papers/cg-coupled-servo/"
         "responses/COMGE-D-26-01109-r1/figs/fig_r2_5"),
                     help="output stem for the letter stiffness-ratio figure.")
+    ap.add_argument("--letter-ab-out", default=(
+        "/Users/hanyusong/thesis/MicroLiq/papers/cg-coupled-servo/"
+        "responses/COMGE-D-26-01109-r1/figs/fig_r2_6"),
+                    help="output stem for the letter (a)+(b) figure.")
     args = ap.parse_args()
 
     if args.panel_c_only:
@@ -428,6 +512,9 @@ def main():
         return
     if args.panel_stiff_only:
         make_stiffness_panel(args.csv, Path(args.letter_stiff_out))
+        return
+    if args.panel_ab_only:
+        make_volume_error_panels(args.csv, Path(args.letter_ab_out))
         return
 
     pdf, png = make_figure(args.csv, Path(args.out))

@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
-df1 = pd.read_csv("monotonic_dense/torsion_shear.csv",header=0)
-df2 = pd.read_csv("Nakata_gamma_q_dense.csv", header=None)
+df1 = pd.read_csv("nakata_calibration/torsion_shear.csv",header=0)
+df2 = pd.read_csv("lab_data/Nakata_gamma_q_dense.csv", header=None)
 strains = df1["strain_shear"] * 100.0
 strains_dev = df1["strain_dev"] * 100.0
 stresses_shear = df1["stress_shear"] / 1000.
