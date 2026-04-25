@@ -790,6 +790,20 @@ $I\approx 2.1\times 10^{-4}$ on the plateau where
 $p^{\prime}\approx \SI{1260}{kPa}$. The run is therefore squarely in
 the strict quasi-static regime per \citet{GDRMiDi2004}.
 
+\medskip
+\noindent\textbf{Open data.} For direct reproducibility, the raw
+DEM output of this run and the analysis script that produces
+Fig.~\ref{fig:rl_csl} are available at the commit-pinned URL
+\url{https://github.com/yusong652/MicroLiq/tree/csl-r1/torsionSim/parameter_validation}
+(tag \texttt{csl-r1}). The CSV
+\texttt{undrained\_monotonic/to\_critical\_state/torsion\_shear.csv}
+is the complete time history of the monotonic run; the script
+\texttt{critical\_state.py} reads that CSV, computes
+$(p^{\prime}, q)$ via the HCA invariants, and emits $M_{cs}$ from
+the plateau average. The expected console output on a fresh clone
+is \texttt{M\_cs = 0.8720, phi\_cs = 30.23 deg}, recovered from a
+single \texttt{python} invocation in approximately one second.
+
 \changed{Section~\ref{subsec:calibration_validation}: a short
 paragraph has been added describing the dedicated
 monotonic-undrained-to-critical-state simulation, reporting
