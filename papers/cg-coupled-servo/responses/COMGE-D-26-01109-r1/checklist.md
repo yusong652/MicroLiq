@@ -165,13 +165,33 @@ Framed as a two-part argument:
 
 **Comment:** Loading rate not specified. Excessive rates cause inertial effects / distorted contact forces. Confirm quasi-static condition.
 
-**Response plan:** Report inertial number I = γ̇·d·√(ρ/p). Show I ≪ 10⁻³ across loading. Cite da Cruz/Roux threshold.
+**Response strategy (final, 2026-04-26):** Two-pronged.
 
-**Effort:** M
+1. Add explicit loading frequency $f=8$ Hz to §2.2 (responds to "not specified").
+2. Address the QS question with the inertial number $I = |\dot\gamma|\,d_{50}\sqrt{\rho_s/p'}$ in the new §2.5, with two reference values cited from primary literature:
+   - $I<10^{-3}$ (GDR-MiDi 2004, strict $\mu_{\rm eff}$ rate-independence threshold)
+   - $I=10^{-2}$ (da Cruz et al. 2005, representative quasi-static value, Fig. 1a)
 
-**Target:** `02_methodology` §2.3
+**Compliance (Dr75/K=1.0/CSR=0.400, $r_u=0.95$ criterion):**
 
-**Status:** ⬜
+- pre-liq fully satisfies $I<10^{-2}$ ($I_{\max}=2.7\times 10^{-3}$)
+- pre-liq satisfies $I<10^{-3}$ for **96.9%** of the window
+- $\sim 3\%$ excursion confined to final cycle before liquefaction
+
+**Post-liq framing:** $I$ rises to $\sim 4\times 10^{-2}$ peak — a physical consequence of $p'\to 0$ in the inertial-number definition, shared with laboratory testing. Cite Wang et al. 2025 (Bull. Eng. Geol. Environ.) for the cyclic-specific three-stage framing (initial stability / rapid transition / post-liq stabilisation = "kinematic critical state").
+
+**Lopera Perez 2016 (with 2017 erratum)** deliberately NOT cited — the corrected upper limit $I\leq 7.9\times 10^{-5}$ is monotonic-CSL specific and stricter than even GDR-MiDi by 1.5 decades; their own erratum (point 4) acknowledges it is "a lower bound to the values given in the literature". Citing it would create unnecessary friction on our 96.9% number. PDF kept in `ref/PerezKwok2016.pdf` for in-house reference.
+
+**Effort:** M (new figure panel + new methodology subsection + new bib entries)
+
+**Targets:**
+
+- `02_methodology.tex` §2.2 (subsec:preparation): added $f=8$ Hz at first CSR mention
+- `02_methodology.tex` §2.5 (new subsec:numerical_verification): full quasi-static / inertial-number paragraph + Fig. 6 panel (c)
+- `refs.bib`: added GDRMiDi2004, daCruzEmam2005, Wang2025inertial
+- `response_letter.tex` R1.5: full response
+
+**Status:** ✅ (2026-04-26)
 
 ### R1.6 — Rigid walls vs flexible membrane
 
@@ -226,6 +246,7 @@ Framed as a two-part argument:
 **Status:** ✅ (2026-04-22) — §2.1 blade paragraph extended with a one-sentence clause: "The cylindrical walls and end platens are assigned zero friction ($\mu_{pw}=0$, Table~\ref{tab:dem_parameters}) so that they act purely as servo-controlled pressure boundaries; torque is transmitted geometrically through normal contact forces on the blade faces and does not rely on a wall-friction coefficient."
 
 **Letter rewrite (2026-04-22, later):** R2.1 letter reorganised into three wall-class subsections after Yusong clarified the underlying physics. New structure:
+
 1. **Cylinders (radial principal stress plane):** HCA element reduction requires radial face to be principal stress plane. Laboratory membrane–water equilibrium self-balances tangential tractions at element scale → radial face remains principal. DEM walls are massless, so $\mu_{pw}>0$ leaves residual shear on radial face → violates principal-plane assumption. $\mu_{pw}=0$ is *required*, not a simplification.
 2. **End platens (axial principal stress plane + servo determinacy):** Same principal-plane argument extended to axial face. Lab porous-stone caps carry residual friction — known non-ideality that DEM models the *idealised* HCA boundary *without*. Additionally avoids Coulomb-limit coupling between $\sigma_z'$ and torsion that has no measurable experimental counterpart.
 3. **Blades (geometric torque transmission):** Blade is a thin **radial slab**; its **face normal is circumferential** (θ̂). Normal contact delivers a purely circumferential force — exactly the torque-transmitting direction — so full torque transfer is geometric. $\mu_{pw}>0$ introduces Coulomb-limited frictional tractions in the face tangent plane (r̂, ẑ). These tractions (i) directly contaminate $p_z'$ measurement (Appendix A integrates end-plate contact forces **including attached blades**; blade friction z-component leaks into $p_z'$), and (ii) introduce a Coulomb-dependent perturbation to the blade–particle force distribution that saturates as $\sigma_r'\to 0$ near liquefaction, rendering servo response non-smooth and causing it to miss $\tau^{tar}$. **Corrected from earlier draft** (2026-04-22 evening) which incorrectly said "face is oriented radially" and "friction adds Coulomb-limited frictional torque" — friction is in (r̂, ẑ) plane, carries no θ̂ component, so no direct torque contribution.

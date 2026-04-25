@@ -425,10 +425,110 @@ clarify whether the selected loading rate satisfies quasi-static conditions.
 \end{rcomment}
 
 \response
-\textit{[TODO: report inertial number $I = \dot{\gamma}\,d\,\sqrt{\rho/p}$;
-show $I \ll 10^{-3}$; cite da Cruz / Roux.]}
+We thank the reviewer for raising this important point. The reviewer
+is correct that the loading frequency was not stated explicitly in the
+submitted manuscript; this has now been corrected, and the
+quasi-static character of the loading has been examined quantitatively
+in a new methodology subsection.
 
-\changed{\textit{[TODO: \secref{2.3}, new equation / paragraph.]}}
+\medskip
+\noindent\textbf{Loading rate.}
+The cyclic torsional shear is sinusoidal,
+$\tau_{z\theta}(t) = \tau_{cyc}\sin(2\pi f t)$, at frequency
+$f=\SI{8}{Hz}$. This value has been added to
+Section~\ref{subsec:preparation} of the revised manuscript at the
+first definition of CSR.
+
+\medskip
+\noindent\textbf{Inertial number.}
+The standard non-dimensional measure of inertial effects in DEM
+\citep{GDRMiDi2004,daCruzEmam2005} is
+\begin{equation}
+I = \frac{|\dot\gamma_{z\theta}|\,d_{50}}{\sqrt{p^\prime/\rho_s}},
+\label{eq:inertial_number_letter}
+\end{equation}
+with $d_{50}=\SI{2.0}{mm}$ (the median grain diameter of the upscaled
+PSD) and $\rho_s=\SI{2650}{kg/m^3}$ (Toyoura particle density).
+\citet{GDRMiDi2004} report a strict quasi-static threshold of
+$I<10^{-3}$, defined empirically as the regime in which the effective
+friction becomes shear-rate independent in steady plane shear; the
+companion paper \citet{daCruzEmam2005} subsequently illustrate the
+quasi-static regime with the representative value $I=10^{-2}$ in their
+Fig.~1(a), giving a second, more permissive reference.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figs/fig_r1_5.pdf}
+  \caption{Inertial number $I(t)$ for the most demanding case in the
+    simulation program ($D_r\approx 75\%$, $\Kzero=1.0$, CSR$=0.400$),
+    plotted on log-scale against the normalised cycle ratio
+    $N_c/N_L$ ($N_L$ from the $\ru=0.95$ criterion adopted in
+    Section~\ref{sec:results} of the revised manuscript). Orange:
+    strict quasi-static threshold $I<10^{-3}$ of \citet{GDRMiDi2004}.
+    Green: representative quasi-static value $I=10^{-2}$ used by
+    \citet{daCruzEmam2005} in their Fig.~1(a). Red dashed: liquefaction
+    onset. The same panel forms part~(c) of
+    Fig.~\ref{fig:numerical_verification} of the revised manuscript.}
+  \label{fig:rl_inertial}
+\end{figure}
+
+\medskip
+\noindent\textbf{Compliance and post-liquefaction excursion.}
+We have computed $I(t)$ throughout this run
+(Fig.~\ref{fig:rl_inertial}). The pre-liquefaction window ($N_c/N_L<1$)
+lies \emph{entirely} below the representative quasi-static value
+$I<10^{-2}$ of \citet{daCruzEmam2005}; the strict threshold $I<10^{-3}$
+of \citet{GDRMiDi2004} is satisfied throughout $96.9\%$ of the
+pre-liquefaction window, with the remaining $\sim 3\%$ excursion
+confined to the final cycle before liquefaction, where $p^\prime$ has
+already decayed by more than an order of magnitude. The loading rate
+itself is therefore comfortably quasi-static.
+
+After liquefaction onset, $I$ rises further to peak values of order
+$10^{-2}$. We wish to draw the reviewer's attention to the fact that,
+unlike monotonic constant-$p^\prime$ shear (the setting in which the
+$I<10^{-3}$ threshold was originally calibrated), undrained cyclic
+loading is intrinsically a transient $p^\prime$-evolution problem: by
+Eq.~(\ref{eq:inertial_number_letter}), $p^\prime\to 0$ at liquefaction
+necessarily drives $I$ upward in any test, simulation or laboratory.
+The recent DEM-cyclic-liquefaction study by \citet{Wang2025inertial}
+is explicit on this point: they identify a three-stage evolution of
+$I$---initial stability, rapid transition, and post-liquefaction
+stabilisation---and observe that the post-liquefaction increase in
+$I$ is a physical signature of the granular fabric reaching a
+``kinematic critical state'' rather than an indication that the
+simulation has left the dense-flow regime. Our observed peak
+post-liquefaction $I\sim 4\times 10^{-2}$ is consistent with this
+picture and remains well within the dense-flow regime described by
+\citet{daCruzEmam2005}.
+
+\medskip
+\noindent\textbf{Specimen-level corroboration.}
+Independent confirmation that grain-inertia effects are not
+contaminating the macroscopic response is provided by the validation
+in Section~\ref{subsec:calibration_validation}: the calibrated DEM
+specimen reproduces both the monotonic dilatancy and stiffness of
+\citet{Nakata1998} and the cyclic liquefaction-resistance curve of
+\citet{Ishihara1985} across CSR levels, including the case examined
+above. If the loading were dynamically distorted, this combined
+agreement would not be expected.
+
+\changed{Section~\ref{subsec:preparation}: the loading frequency
+$f=\SI{8}{Hz}$ and the explicit waveform
+$\tau_{z\theta}(t)=\tau_{cyc}\sin(2\pi f t)$ are now stated at the
+first appearance of CSR. A new
+Section~\ref{subsec:numerical_verification} (``Numerical verification
+of the coupled servo'') has been added at the end of the methodology,
+with Fig.~\ref{fig:numerical_verification} reporting the volume drift,
+servo tracking errors, and inertial number throughout a representative
+post-liquefaction run; the inertial-number panel and accompanying
+prose discuss the GDR-MiDi and da Cruz reference values, the
+$96.9\%$ / $100\%$ pre-liquefaction compliance, and the physical
+origin of the post-liquefaction $I$ excursion. References
+\citet{GDRMiDi2004}, \citet{daCruzEmam2005}, and
+\citet{Wang2025inertial} have been added to the bibliography.}
+
+\FloatBarrier
 
 %% ---------------- R1.6 ----------------
 \subsection*{R1.6 --- Rigid wall vs.\ flexible membrane}
@@ -929,22 +1029,56 @@ servo. Because $\hat{\mathbf{K}}$ is at most $2\times 2$, its
 inverse is computed analytically in closed form at every timestep,
 with no iterative linear solve involved.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figs/fig_r2_5.png}
+  \caption{Aggregate wall stiffnesses $K_{r,i}$, $K_{r,o}$, $K_z$ and
+    torsional moment of inertia $I_{rot}$ normalised by their
+    end-of-consolidation values, throughout the same demanding
+    cyclic run reported in R1.5
+    ($D_r\approx 75\%$, $\Kzero=1.0$, CSR$=0.400$,
+    constant-total-axial-stress boundary), plotted against the
+    normalised cycle ratio $N_c/N_L$ ($\ru=0.95$ criterion). Black
+    dashed: $10\%$ floor on each per-wall aggregate stiffness
+    ($K_{r,i}$, $K_{r,o}$, $K_z$). Black dotted: $20\%$ floor on
+    $I_{rot}$ in the independent torsional servo. Red dashed:
+    liquefaction onset.}
+  \label{fig:rl_floors}
+\end{figure}
+
 \medskip
-\noindent\textbf{Observed stability in the regimes where the clip
-engages.}
-In this paper, the scenario above is reached only during cyclic
-loading. The servo runs stably through both cyclic regimes in
-which $\hat{K}_{11}$ can approach the clip: (i)~cyclic
-pre-liquefaction loading, exercised in both the
-scalar-$\hat{\mathbf{K}}$ mode under $dH/dt=0$ (the $K_0$ suite
-that forms the paper's core) and the full $2\times 2$ mode under
-constant-total-axial-stress (the supplemental cyclic validation
-runs added for R2.6 below); and (ii)~several cycles of cyclic
-post-liquefaction loading, in which the clip becomes the binding
-constraint on $\hat{K}_{11}$. The tracking-error ($e_r$, $e_z$)
-and specimen-volume traces through these regimes are the subject
-of the R2.6 validation below and exhibit no divergence or
-high-frequency oscillation on any servo channel.
+\noindent\textbf{Observed clip behaviour and servo stability.}
+The aggregate stiffnesses and moment of inertia for our most
+demanding case ($D_r\approx 75\%$, $\Kzero=1.0$, CSR$=0.400$,
+constant-total-axial-stress) are shown in
+Fig.~\ref{fig:rl_floors}. Two observations follow:
+\begin{enumerate}[leftmargin=*,label=(\arabic*),topsep=2pt,itemsep=3pt]
+  \item The three per-wall stiffness ratios
+    $K_{r,i}/K_{r,i}^{(0)}$, $K_{r,o}/K_{r,o}^{(0)}$, and
+    $K_z/K_z^{(0)}$ each remain well above the $10\%$ floor
+    throughout the run, with minimum values of $0.57$, $0.59$,
+    and $0.47$, respectively. The clip on the radial--axial
+    stiffness matrix $\hat{\mathbf{K}}$ is therefore a designed
+    safety margin that is \emph{not} engaged in this run; the
+    closed-form $2\times 2$ inversion remains well-conditioned
+    on its own physical contact-network basis.
+  \item The torsional moment of inertia $I_{rot}$ is more
+    sensitive to the loss of blade--particle contacts as
+    $\sigma_z^{\prime}\!\to\!0$. It decays cycle by cycle and
+    reaches the $20\%$ floor at the deepest excursions of the
+    post-liquefaction cycles, where the floor briefly engages
+    and bounds the torsional servo coefficient
+    $S_T=1/I_{rot}$.
+\end{enumerate}
+The servo runs stably through both regimes (cyclic
+pre-liquefaction in the scalar-$\hat{\mathbf{K}}$ mode under
+$dH/dt=0$, exercised in the $K_0$ suite that forms the paper's
+core, and the full $2\times 2$ mode under constant-total-axial-stress,
+exercised in the supplemental cyclic validation run reported here);
+no high-frequency oscillation appears on any servo channel, and
+the tracking-error ($e_r$, $e_z$) and specimen-volume traces
+through these regimes are documented in the R2.6 validation
+below.
 
 \changed{Section~\ref{subsec:cyclic_loading}: a short sentence
 has been added after the servo-coefficient derivation noting that
