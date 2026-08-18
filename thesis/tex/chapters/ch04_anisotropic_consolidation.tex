@@ -17,9 +17,9 @@ Hollow cylinder apparatus (HCA) and hollow torsional shear tests address this li
 
 The influence of the initial lateral-to-vertical effective stress ratio, \Kzero{}, on liquefaction resistance has been investigated extensively, yet the reported findings vary considerably depending on test conditions. Some experimental studies reported weak or negligible dependence of liquefaction strength on the initial anisotropic stress state \citep[e.g.,][]{IshiharaTakatsu1979,YamashitaToki1993}, whereas others found clear differences between isotropically consolidated (IC) and anisotropically consolidated (AC) specimens, with the trend depending on density \citep{GeorgiannouKonstadinou2014}. \citet{Vargas2020} observed that specimens under compressive consolidation exhibited higher liquefaction resistance than those consolidated isotropically. More recently, \citet{Zhao2024} conducted systematic torsional shear tests covering both compressional and extensional consolidation states and attributed the higher liquefaction resistance under compressive consolidation to smaller principal stress axis rotation during cyclic loading. While these findings establish the macroscopic trend convincingly, the particle-scale mechanisms through which stress anisotropy alters liquefaction resistance remain to be explored.
 
-The discrete element method \citep[DEM;][]{Cundall1979} is well suited for this problem because it provides direct access to particle-scale quantities such as contact topology, force chains, and fabric anisotropy, while avoiding some specimen-to-specimen variability associated with laboratory preparation. Numerous DEM studies have examined liquefaction-related behavior in triaxial, simple-shear, or polyhedral specimen settings \citep[e.g.,][]{Huang2018,Yang2021,Jiang2021,Morimoto2021,WuYang2022,Xie2023,YangHuang2023,Zhang2023} and have identified important microscopic factors governing liquefaction resistance. Recent DEM investigations have also addressed \Kzero{} effects: \citet{YangTaiebat2024} found that both preparation protocols and \Kzero{} influence liquefaction resistance, with the difference between IC and AC states narrowing at higher densities; \citet{Otsubo2022} showed that specimens with stronger inherent anisotropy exhibit weaker stiffness in the minor principal direction and correspondingly lower liquefaction resistance. However, triaxial configurations do not incorporate principal stress axis rotation, while periodic-boundary and polyhedral specimen settings, though capable of applying general stress paths, lack direct counterparts in standard laboratory apparatus. Although DEM replication of HCA tests has precedents under drained loading \citep[e.g.,][]{Li2014,Liu2021}, extension to undrained cyclic loading in HCA geometry remains limited.
+The discrete element method \citep[DEM;][]{Cundall1979} is well suited for this problem because it provides direct access to particle-scale quantities such as contact topology, force chains, and fabric anisotropy, while avoiding some specimen-to-specimen variability associated with laboratory preparation. Numerous DEM studies have examined liquefaction-related behavior in triaxial, simple-shear, or polyhedral specimen settings \citep[e.g.,][]{Huang2018,Yang2021,Jiang2021,Morimoto2021,WuYang2022,Xie2023,YangHuang2023,Zhang2023} and have identified important microscopic factors governing liquefaction resistance. Recent DEM investigations have also addressed \Kzero{} effects: \citet{YangTaiebat2024} found that both preparation protocols and \Kzero{} influence liquefaction resistance, with the difference between IC and AC states narrowing at higher densities; \citet{Otsubo2022} showed that specimens with stronger inherent anisotropy exhibit weaker stiffness in the minor principal direction and correspondingly lower liquefaction resistance. However, triaxial configurations do not incorporate principal stress axis rotation, while periodic-boundary and polyhedral specimen settings, though capable of applying general stress paths, lack direct counterparts in standard laboratory apparatus. DEM replication of HCA tests has been developed under drained and monotonic loading, addressing principal stress rotation, shear-band formation, and stress-path effects. Existing DEM-HCA models can be grouped by the radial boundary treatment: rigid cylindrical walls \citep{Shi2021,Liu2021}, stacked-wall approximations of membrane compliance \citep{LiGuoZhang2014,LiZhangGutierrez2015,LiChenGutierrez2017}, and, more recently, fully flexible bonded-sphere membranes \citep{Song2024,Song2024suffusion}. However, extension to undrained cyclic loading under HCA-type boundary conditions remains limited.
 
-Using DEM to replicate HCA tests is relatively specialized, but still has precedents. \citet{Li2014} conducted DEM simulations of drained tests and investigated strain localization in HCA tests. \citet{Liu2021} conducted analysis of torsional shear tests under drained conditions and investigated the development of cracks at different principal stress rotation angles. \citet{Han2024jgs} first realized undrained cyclic torsional shear in a DEM-based HCA model by introducing a combined servo mechanism that simultaneously satisfies the HCA stress boundary conditions and the constant-volume constraint. However, their formulation assumed a constant specimen height throughout, precluding axial loading and height variation, which are commonly employed loading modes in HCA tests. \citet{Ma2024} subsequently generalized this framework to accommodate a broader range of loading conditions, including drained stress paths and combined axial--torsional loading. While these formulations successfully reproduced a variety of target stress paths, three aspects of the undrained servo problem deserve closer examination:
+Among these drained-loading precedents, \citet{LiGuoZhang2014} investigated strain localization in DEM-based HCA tests, and \citet{Liu2021} examined the development of cracks at different principal stress rotation angles. \citet{Han2024jgs} first realized undrained cyclic torsional shear in a DEM-based HCA model by introducing a combined servo mechanism that simultaneously satisfies the HCA stress boundary conditions and the constant-volume constraint. However, their formulation assumed a constant specimen height throughout, precluding axial loading and height variation, which are commonly employed loading modes in HCA tests. \citet{Ma2024} subsequently generalized this framework to accommodate a broader range of loading conditions, including drained stress paths and combined axial--torsional loading. While these formulations successfully reproduced a variety of target stress paths, three aspects of the undrained servo problem deserve closer examination:
 \begin{enumerate}
 \item[(a)] Under undrained loading, the constant-volume constraint is a governing equation, not an auxiliary condition. It must be substituted into the kinematic system to eliminate one degree of freedom before the stress boundary conditions can form a closed system.
 \item[(b)] The servo conditions should reproduce the laboratory total-stress boundary conditions. Because the pore water pressure $u$ is a measured response rather than a prescribed input, directly targeting individual effective stresses, as in previous formulations, is only an approximation. A valid formulation must express the servo conditions in a form that does not require $u$ as an input.
@@ -38,9 +38,11 @@ The investigation is organized in two stages. First, the macroscopic \Kzero{}-de
 \subsection{DEM model of the hollow cylinder apparatus}
 \label{subsec:ch4_dem_hca}
 
-DEM simulations were performed in \textsc{PFC3D} \citep{Itasca2021} to reproduce undrained cyclic torsional shear in an HCA. Unlike periodic-cell element tests, the present HCA model uses rigid boundaries (inner and outer cylinders, top and bottom planes) and six torsional blades to apply shear while preserving laboratory-relevant boundary conditions.
+DEM simulations were performed in \textsc{PFC3D} \citep{Itasca2021} to reproduce undrained cyclic torsional shear in an HCA. Unlike element-level periodic-cell DEM, which models a representative volume rather than an apparatus, and unlike recent flexible-membrane DEM-HCA formulations \citep{Song2024,Song2024suffusion} developed for drained and open-seepage loading, the present model uses rigid cylindrical walls (inner and outer cylinders, top and bottom planes) with six torsional blades to apply shear.
 
-The specimen geometry (Fig.~\ref{fig:ch4_specimen_generation}) follows a laboratory-scale HCA configuration with inner diameter \SI{6}{cm}, outer diameter \SI{10}{cm}, and specimen height \SI{10}{cm} \citep{Vargas2020}. A rolling-resistance contact model \citep{IwashitaOda1998,WensrichKatterfeld2012} is adopted to capture non-spherical grain effects, with a particle size distribution in the range of \SIrange{1.0}{3.0}{mm}, which is a 10$\times$ scaled-up analogue of the grain size distribution of Toyoura sand. The DEM parameters are summarized in Table~\ref{tab:ch4_dem_parameters}. Particles are generated by gravity deposition from the upper part of the apparatus. Gravity is then removed to ensure a uniform stress state, and six vertically arranged torsional blades are inserted into the specimen (Fig.~\ref{fig:ch4_specimen_generation}b). Compared with the conventional approach of constraining boundary particles to transmit torque \citep[e.g.,][]{Li2014,Liu2021}, these independent wall-based blades avoid interference with the radial expansion or contraction of the cylinders, thereby preserving accurate radial stress measurement.
+The undrained condition is reproduced by enforcing constant specimen volume directly through the rigid-wall servo at every timestep (\cref{subsec:ch4_servo}). This is the same kinematic constraint that, in the laboratory, follows from the essentially incompressible pore fluid: the latex membrane transmits cell pressure to the grain skeleton but cannot change the specimen volume. Rigid walls are accordingly an effective DEM implementation of the undrained boundary.
+
+The specimen geometry (Fig.~\ref{fig:ch4_specimen_generation}) follows the laboratory-scale HCA apparatus of \citet{Vargas2020}, with inner diameter \SI{6}{cm}, outer diameter \SI{10}{cm}, and specimen height \SI{10}{cm} ($H$ equal to the outer diameter, also adopted by the DEM-HCA servo-formulation precursors \citet{Han2024jgs} and \citet{Ma2024}). A rolling-resistance contact model \citep{IwashitaOda1998,WensrichKatterfeld2012} is adopted to capture non-spherical grain effects, with a particle size distribution in the range of \SIrange{1.0}{3.0}{mm}, which is a 10$\times$ scaled-up analogue of the grain size distribution of Toyoura sand, a scaling approach commonly adopted in DEM simulations of this sand to reduce particle count while preserving the non-dimensional grading \citep{Song2024}. The resulting specimen-to-$d_{\max}$ ratios are 6.7 (radial), 33 (axial), and 84 (mid-radius circumferential), satisfying the 6:1 minimum stipulated by \citet{ASTM_D7181,ASTM_D4767} and consistent with prior DEM studies reporting weak size-ratio sensitivity of end-state and cyclic-liquefaction responses at comparable ratios \citep{Huang2014,KuhnRenken2014}. Prior DEM-HCA studies have adopted radial size ratios in the same range (7.5 in \citealt{Shi2021}; 7.2 in \citealt{Liu2021}; \citealt{Song2024} used the same 60/100~mm geometry on upscaled Toyoura sand with a scaling factor somewhat larger than the 10$\times$ adopted here). The DEM parameters are summarized in Table~\ref{tab:ch4_dem_parameters}. Particles are generated by gravity deposition from the upper part of the apparatus. Gravity is then removed to ensure a uniform stress state, and six torsional blades, each 15~mm tall, are inserted into the specimen (Fig.~\ref{fig:ch4_specimen_generation}b). Three blades at each end of the specimen extend radially across the annulus between the inner and outer cylinders, uniformly spaced around the specimen axis. Compared with the conventional approach of constraining boundary particles to transmit torque \citep[e.g.,][]{LiZhangGutierrez2015,Liu2021}, these independent wall-based blades avoid interference with the radial expansion or contraction of the cylinders, thereby preserving accurate radial stress measurement. The cylindrical walls and end platens are assigned zero friction ($\mu_{pw}=0$, Table~\ref{tab:ch4_dem_parameters}) so that they act purely as servo-controlled pressure boundaries; torque is transmitted geometrically through normal contact forces on the blade faces and does not rely on a wall-friction coefficient. On the cylindrical walls in particular, $\mu_{pw}=0$ is also required for the HCA element-test reduction (\cref{subsubsec:ch4_hca_equations}), which treats the radial-normal face as a principal-stress plane: with $\mu_{pw}>0$, torsion would generate a residual circumferential particle--wall traction on this face and thereby invalidate the principal-direction assumption.
 
 \begin{table}[t]
   \centering
@@ -67,27 +69,7 @@ The specimen geometry (Fig.~\ref{fig:ch4_specimen_generation}) follows a laborat
 
 \begin{figure}[t]
   \centering
-  \begin{tikzpicture}
-    % --- (a) Deposit ---
-    \node[anchor=north west, inner sep=0] (imgA) at (0,0)
-      {\includegraphics[height=6cm]{specimen_generation_deposit.png}};
-    \node[font=\small\bfseries, anchor=north west] at
-      ([xshift=4pt,yshift=-4pt]imgA.north west) {(a)};
-    % --- (b) Post-insert ---
-    \node[anchor=north west, inner sep=0] (imgB) at ([xshift=8pt]imgA.north east)
-      {\includegraphics[height=6cm]{specimen_generation_postinsert.png}};
-    \node[font=\small\bfseries, anchor=north west] at
-      ([xshift=4pt,yshift=-4pt]imgB.north west) {(b)};
-    % --- Colorbar ---
-    \node[anchor=north west, inner sep=0] (cbar) at ([xshift=8pt]imgB.north east)
-      {\includegraphics[height=6cm]{colorbar_viridis.png}};
-    \foreach \val/\frac in {1.5/0, 1.25/0.25, 1.0/0.5, 0.75/0.75, 0.5/1.0} {
-      \node[font=\footnotesize, anchor=west] at
-        ([xshift=2pt, yshift={-\frac*6cm}]cbar.north east) {\val};
-    }
-    \node[font=\footnotesize, rotate=90, anchor=south] at
-      ([xshift=40pt]cbar.east) {Particle radius (mm)};
-  \end{tikzpicture}
+  \includegraphics[width=\linewidth]{specimen_generation_standalone.pdf}
   \caption{Initial specimen generation process in the DEM-based hollow cylinder apparatus model.
     Particles are colored by radius.
     (a)~Particle generation modeling air-pluviation.
@@ -150,9 +132,9 @@ Table~\ref{tab:ch4_hca_equations} summarizes the stress and strain evaluation ex
 \subsection{Specimen preparation and anisotropic consolidation protocol}
 \label{subsec:ch4_preparation}
 
-Specimens are prepared using an isotropic-consolidation to anisotropic-consolidation (IC--AC) protocol. First, the assembly is compressed under zero interparticle friction to a target void ratio, which is determined through the iterative calibration procedure described in \cref{subsec:ch4_calibration}: approximately 0.736 for the dense state ($D_r \approx 90\%$) and 0.742 for the medium-dense state ($D_r \approx 75\%$). The interparticle friction coefficient is then restored to 0.5, and the specimen is consolidated from an isotropic state (\Kzero{} = 1.0, $\pmean=\SI{10}{kPa}$) to the target mean effective stress ($\pmean=\SI{100}{kPa}$) along a linear anisotropic stress path.
+Specimens are prepared using an isotropic-consolidation to anisotropic-consolidation (IC--AC) protocol, with the consolidation anisotropy characterized by the lateral-to-vertical effective stress ratio $\Kzero = \sigma_r^{\prime}/\sigma_z^{\prime}$, where $\sigma_r^{\prime}$ and $\sigma_z^{\prime}$ are the radial and vertical effective stresses (Table~\ref{tab:ch4_hca_equations}). First, the assembly is compressed under zero interparticle friction to a target void ratio, determined through the iterative calibration procedure described in \cref{subsec:ch4_calibration}: approximately 0.736 for the very dense state and 0.742 for the dense state. Because the DEM particles are spherical (in contrast to the subrounded-to-subangular grains of real Toyoura sand) and because no standardised procedure exists for determining the packing limits $(e_{\max}, e_{\min})$ of a DEM assembly, these void ratios are not converted to a relative density through the textbook formula with laboratory Toyoura limits. The labels ``$D_r \approx 90\%$'' and ``$D_r \approx 75\%$'' are instead used as behaviour-matched references to the ``very dense'' ($D_r = 88\!-\!95\%$) and ``dense'' ($D_r = 75\!-\!82\%$) density bands of \citet{Ishihara1985}: the DEM target void ratios are tuned so that the macroscopic monotonic and cyclic responses reproduce those observed in the laboratory at the corresponding $D_r$ conditions (\cref{subsec:ch4_calibration}). The interparticle friction coefficient is then restored to 0.5, and the specimen is consolidated from an isotropic state (\Kzero{} = 1.0, $\pmean=\SI{10}{kPa}$) to the target mean effective stress ($\pmean=\SI{100}{kPa}$) along a linear anisotropic stress path.
 
-During the AC stage, $\pmean$ is increased from \SI{10}{kPa} to \SI{100}{kPa} through ten equally spaced target stress states along a linear anisotropic stress path. The resulting stress paths and void-ratio evolution for the three primary cases are shown in \cref{fig:ch4_ac_path}. The markers in \cref{fig:ch4_ac_path}(a) correspond to the prescribed target states; the solid lines between them represent the actual stress evolution, which exhibits minor fluctuations that arise because different \Kzero{} states require different amounts of axial strain to reach the same $\pmean$ increment---compression-state specimens (\Kzero{} = 0.5) undergo larger axial strain per step, causing the axial stress to lag slightly behind the radial stress during each increment. These fluctuations vanish at each target state, confirming that the servo accurately satisfies the prescribed stress conditions. The final void ratio differs only slightly among the three states (on the order of $10^{-3}$), which allows the comparison to focus on fabric-related effects rather than void-ratio differences. \Cref{fig:ch4_ac_specimens} shows the three specimens after consolidation, with force-chain networks and particle arrangements displayed side by side; the visual contrast in force-chain directionality reflects the different \Kzero{} states.
+During the AC stage, $\pmean$ is increased from \SI{10}{kPa} to \SI{100}{kPa} through ten equally spaced target stress states along a linear anisotropic stress path, with $p_o^{\prime}=p_i^{\prime}$ held throughout (so $p_{dif,r}^{tar}=0$). The resulting stress paths and void-ratio evolution for the three primary cases are shown in \cref{fig:ch4_ac_path}. The markers in \cref{fig:ch4_ac_path}(a) correspond to the prescribed target states; the solid lines between them represent the actual stress evolution, which exhibits minor fluctuations that arise because different \Kzero{} states require different amounts of axial strain to reach the same $\pmean$ increment: compression-state specimens (\Kzero{} = 0.5) undergo larger axial strain per step, causing the axial stress to lag slightly behind the radial stress during each increment. These fluctuations vanish at each target state, confirming that the servo accurately satisfies the prescribed stress conditions. The final void ratio differs only slightly among the three states (on the order of $10^{-3}$), which allows the comparison to focus on fabric-related effects rather than void-ratio differences. \Cref{fig:ch4_ac_specimens} shows the three specimens after consolidation, with force-chain networks and particle arrangements displayed side by side; the visual contrast in force-chain directionality reflects the different \Kzero{} states.
 
 \begin{figure}[t]
   \centering
@@ -204,13 +186,11 @@ During the AC stage, $\pmean$ is increased from \SI{10}{kPa} to \SI{100}{kPa} th
   \label{fig:ch4_ac_specimens}
 \end{figure}
 
-The cyclic shear simulation program consists of two sets. In the primary set, three representative \Kzero{} states---0.5 (compression), 1.0 (isotropic), and 2.0 (extension)---are examined at a dense state ($D_r \approx 90\%$) across multiple CSR levels to characterize how liquefaction resistance varies with the direction and magnitude of stress anisotropy, and to trace the associated energy dissipation, stiffness degradation, and fabric evolution. In the expanded set, a medium-dense state ($D_r \approx 75\%$) is introduced alongside the dense state, and two additional \Kzero{} values (0.67 and 1.5) are included to refine the coverage of anisotropy levels, yielding ten cases ($2 \times 5$) at a single CSR = 0.300. This expanded set allows examination of whether the \Kzero{}-dependent liquefaction resistance trend observed at $D_r \approx 90\%$ persists at a lower density, and provides a broader parametric basis for the subsequent microscopic analysis.
-
 % ----------------------------------------------------------------
 \subsection{Coupled analytical servo mechanism for undrained loading}
 \label{subsec:ch4_servo}
 
-In a laboratory HCA, the specimen is enclosed between an outer chamber (pressure $p_o$) and an inner chamber (pressure $p_i$), which are controlled independently. An axial load is applied through the loading piston, producing a vertical pressure $p_z$, and a torque $T$ is transmitted through end platens. Under undrained conditions the pore water pressure $u$, monitored by pressure transducers, is uniform throughout the specimen, so the effective pressures are $p_o^{\prime}=p_o-u$, $p_i^{\prime}=p_i-u$, and $p_z^{\prime}=p_z-u$. Because $u$ drops out in any difference of effective pressures, the radial pressure difference equals its total-stress counterpart, $p_o^{\prime}-p_i^{\prime}=p_o-p_i$, and so does the axial pressure difference between the vertical and average radial effective stresses (Table~\ref{tab:ch4_hca_equations}): $p_z^{\prime}-\sigma_r^{\prime}=p_z-\sigma_r$.
+In a laboratory HCA, the specimen is enclosed between an outer chamber (pressure $p_o$) and an inner chamber (pressure $p_i$), which are controlled through independent channels and can therefore be prescribed as general functions of time. An axial load is applied through the loading piston, producing a vertical pressure $p_z$ that is likewise independently prescribed, and a torque $T$ is transmitted through end platens. Under undrained conditions the pore water pressure $u$, monitored by pressure transducers, is uniform throughout the specimen, so the effective pressures are $p_o^{\prime}=p_o-u$, $p_i^{\prime}=p_i-u$, and $p_z^{\prime}=p_z-u$. Because $u$ drops out in any difference of effective pressures, the radial pressure difference equals its total-stress counterpart, $p_o^{\prime}-p_i^{\prime}=p_o-p_i$, and so does the axial pressure difference between the vertical and average radial effective stresses (Table~\ref{tab:ch4_hca_equations}): $p_z^{\prime}-\sigma_r^{\prime}=p_z-\sigma_r$.
 
 \begin{figure}[t]
   \centering
@@ -238,7 +218,7 @@ The radial condition controls the pressure difference between the outer and inne
 p_{dif,r}^{\prime} = p_o^{\prime} - p_i^{\prime}, \qquad e_r = p_{dif,r}^{\prime} - p_{dif,r}^{tar},
 \label{eq:ch4_cond1_radial}
 \end{equation}
-where $p_o^{\prime}$ and $p_i^{\prime}$ are the outer and inner radial effective pressures (Table~\ref{tab:ch4_hca_equations}) and $p_{dif,r}^{tar}$ is the target radial pressure difference. In this study, $p_o = p_i$ (equal chamber pressures) is adopted, so $p_{dif,r}^{tar} = 0$. The servo must drive $e_r$ to zero at each timestep.
+where $p_o^{\prime}$ and $p_i^{\prime}$ are the outer and inner radial effective pressures (Table~\ref{tab:ch4_hca_equations}) and $p_{dif,r}^{tar}=p_o-p_i$ is the prescribed target radial pressure difference, set in laboratory total-stress terms. In this study, $p_o = p_i$ (equal chamber pressures) is adopted, so $p_{dif,r}^{tar} = 0$. The servo must drive $e_r$ to zero at each timestep.
 
 \paragraph{Axial condition.}
 Laboratory HCA tests can operate under either constant total axial stress or constant specimen height.
@@ -247,8 +227,8 @@ Laboratory HCA tests can operate under either constant total axial stress or con
 p_{dif,z}^{\prime} = p_z^{\prime} - \sigma_r^{\prime}, \qquad e_z = p_{dif,z}^{\prime} - p_{dif,z}^{tar},
 \label{eq:ch4_cond2_axial}
 \end{equation}
-where $p_z^{\prime}$ is the vertical effective pressure, $\sigma_r^{\prime}$ is the average radial effective stress, and $p_{dif,z}^{tar}$ is the target axial pressure difference. This mode is used during anisotropic consolidation and monotonic shear validation (\cref{subsec:ch4_calibration}).
-(ii)~\emph{Displacement-control mode}: the specimen height is held constant ($dH/dt=0$), and $p_{dif,z}^{\prime}$ evolves freely. This mode is adopted for all cyclic shear simulations.
+where $p_z^{\prime}$ is the vertical effective pressure, $\sigma_r^{\prime}$ is the average radial effective stress, and $p_{dif,z}^{tar}=p_z-\sigma_r$ is the prescribed target axial pressure difference, set in laboratory total-stress terms. This mode is used during anisotropic consolidation, monotonic shear calibration (\cref{subsec:ch4_calibration}), and the cyclic verification case (\cref{subsec:ch4_verification}).
+(ii)~\emph{Displacement-control mode}: the specimen height is held constant ($dH/dt=0$), and $p_{dif,z}^{\prime}$ evolves freely. This mode is adopted for the parametric cyclic shear simulations (\cref{subsec:ch4_cyclic_program}).
 
 \paragraph{Torsional condition.}
 The torque error is:
@@ -326,15 +306,15 @@ Let $K_{r,i}=\sum_{c\in\mathrm{inner}} k_n$ and $K_{r,o}=\sum_{c\in\mathrm{outer
 
 The sign convention adopts outward-positive for all kinematic increments: $dr>0$ and $dR>0$ denote outward (radius-increasing) wall movements, and $dH>0$ denotes an increase in specimen height. The individual pressure increments are:
 \begin{align}
-\delta p_i^{\prime} &= \frac{K_{r,i}}{A_i}\,dr,\qquad
-\delta p_o^{\prime} = -\frac{K_{r,o}}{A_o}\,dR, \label{eq:ch4_dp_r}\\[4pt]
-\delta p_z^{\prime} &= -\frac{K_z}{A_z}\,dH, \label{eq:ch4_dp_z}
+dp_i^{\prime} &= \frac{K_{r,i}}{A_i}\,dr,\qquad
+dp_o^{\prime} = -\frac{K_{r,o}}{A_o}\,dR, \label{eq:ch4_dp_r}\\[4pt]
+dp_z^{\prime} &= -\frac{K_z}{A_z}\,dH, \label{eq:ch4_dp_z}
 \end{align}
 where the signs follow from the geometry: an outward movement of the inner wall ($dr>0$) expands the inner cylinder into the specimen, compressing particles against it and increasing $p_i^{\prime}$; an outward movement of the outer wall ($dR>0$) moves it away from the specimen, unloading particles and decreasing $p_o^{\prime}$; and an increase in specimen height ($dH>0$) moves the top and bottom plates apart, unloading axial contacts and decreasing $p_z^{\prime}$.
 
 Substituting \cref{eq:ch4_dRdt} into the pressure increment expressions to eliminate $dR$ yields the pressure responses in terms of only $dr$ and $dH$. Collecting the coefficients into a matrix:
 \begin{equation}
-\begin{pmatrix} \delta p_{dif,r}^{\prime} \\[4pt] \delta p_{dif,z}^{\prime} \end{pmatrix}
+\begin{pmatrix} dp_{dif,r}^{\prime} \\[4pt] dp_{dif,z}^{\prime} \end{pmatrix}
 =
 \underbrace{\begin{pmatrix} \hat{K}_{11} & \hat{K}_{12} \\[8pt] \hat{K}_{21} & \hat{K}_{22} \end{pmatrix}}_{\hat{\mathbf{K}}}
 \begin{pmatrix} dr \\[4pt] dH \end{pmatrix},
@@ -349,7 +329,7 @@ where
 \end{alignat}
 All entries carry dimensions of Pa/m, reflecting the displacement-to-pressure mapping through the wall areas. Three entries are negative ($\hat{K}_{11}$, $\hat{K}_{21}$, $\hat{K}_{22}<0$), consistent with the outward-positive convention: outward wall movements generally reduce the confining pressures. The exception is $\hat{K}_{12}>0$, because an increase in specimen height forces the outer wall inward through the volume constraint (\cref{eq:ch4_dRdt}), which raises $p_o^{\prime}$ and thereby increases $p_{dif,r}^{\prime}$.
 
-The servo must apply wall movements that eliminate the current pressure errors, i.e., produce $\delta p_{dif,r}^{\prime}=-e_r$ and $\delta p_{dif,z}^{\prime}=-e_z$. Inverting \cref{eq:ch4_stiffness_matrix} gives the coupled servo equations:
+The servo must apply wall movements that eliminate the current pressure errors, i.e., produce $dp_{dif,r}^{\prime}=-e_r$ and $dp_{dif,z}^{\prime}=-e_z$. Inverting \cref{eq:ch4_stiffness_matrix} gives the coupled servo equations:
 \begin{align}
 \frac{dr}{dt} &= S_{rr}\,\frac{e_r}{\Delta t} + S_{rz}\,\frac{e_z}{\Delta t}, \label{eq:ch4_servo_dr}\\[6pt]
 \frac{dH}{dt} &= S_{zr}\,\frac{e_r}{\Delta t} + S_{zz}\,\frac{e_z}{\Delta t}, \label{eq:ch4_servo_dH}
@@ -368,6 +348,8 @@ Under the constant specimen height condition ($dH/dt=0$) adopted for all cyclic 
 S_{rr} = -\frac{1}{\hat{K}_{11}} = \frac{1}{\dfrac{K_{r,i}}{A_i}+\dfrac{r}{R}\,\dfrac{K_{r,o}}{A_o}}.
 \label{eq:ch4_Srr_constantH}
 \end{equation}
+
+In undrained loading, the contact network thins as the effective confining stress decays, and the aggregate wall stiffnesses $K_{r,i}$, $K_{r,o}$ and the end-platen stiffness $K_z=\tfrac{1}{2}(K_z^{top}+K_z^{bot})$ that enter $\hat{\mathbf{K}}$ can drop towards zero, driving $\det(\hat{\mathbf{K}})$ towards zero and the servo coefficients towards arbitrarily large values. To prevent near-singular behaviour in the closed-form inversion, each per-wall aggregate contact stiffness is floored at $10\%$ of its end-of-consolidation value before $\hat{\mathbf{K}}$ is assembled, which keeps every entry of $\hat{\mathbf{K}}$ bounded away from zero by construction. An analogous $20\%$ floor is applied to the rotational stiffness $I_{rot}$ in the independent torsional servo (\cref{eq:ch4_irot}), which is more sensitive to the loss of blade--particle contacts as the vertical effective stress decays towards zero. Both floors function as safety margins on the closed-form inversion and are exercised explicitly in \cref{subsec:ch4_verification}.
 
 The servo procedure applied at each simulation timestep is summarized in \cref{fig:ch4_servo_flowchart}.
 
@@ -393,10 +375,12 @@ The servo procedure applied at each simulation timestep is summarized in \cref{f
        $d\theta/dt = (e_T/\Delta t)\,S_T$};
     \node[box, below=of step3] (step4)
       {Assemble $\hat{\mathbf{K}}$ from contact stiffnesses;\;
-       compute $S_{rr},\,S_{rz},\,S_{zr},\,S_{zz}$};
+       compute $S_{rr},\,S_{rz},\,S_{zr},\,S_{zz}$\\
+       {\footnotesize\itshape (constant height: only $S_{rr}$, \cref{eq:ch4_Srr_constantH})}};
     \node[box, below=of step4] (step5)
       {Coupled radial--axial servo:\;
-       $dr/dt$,\; $dH/dt$ \;(\cref{eq:ch4_servo_dr,eq:ch4_servo_dH})};
+       $dr/dt$,\; $dH/dt$ \;(\cref{eq:ch4_servo_dr,eq:ch4_servo_dH})\\
+       {\footnotesize\itshape (constant height: $dH/dt=0$, $dr/dt = S_{rr}\,e_r/\Delta t$)}};
     \node[box, below=of step5] (step6)
       {Volume constraint $\rightarrow$ $dR/dt$
        \;(\cref{eq:ch4_const_volume})};
@@ -417,38 +401,95 @@ The servo procedure applied at each simulation timestep is summarized in \cref{f
 \end{figure}
 
 \paragraph{Excess pore water pressure.}
-The excess pore water pressure is inferred from the reduction in radial effective stress:
+The excess pore water pressure is inferred from the difference between the mean radial total and effective stresses:
 \begin{equation}
-u = \sigma_{r0}^{\prime} - \sigma_r^{\prime},
+u = \sigma_r - \sigma_r^{\prime},
 \label{eq:ch4_epwp}
 \end{equation}
-where $\sigma_r^{\prime}$ is the current radial effective stress and $\sigma_{r0}^{\prime}$ is its initial value. The ratio $\ru$ is then defined as $\ru = u/\sigma_{r0}^{\prime}$.
+where $\sigma_r$ is the mean radial total stress prescribed by the laboratory boundary conditions (determined by $p_o$ and $p_i$) and $\sigma_r^{\prime}$ is the current mean radial effective stress evaluated from the DEM contact forces (Table~\ref{tab:ch4_hca_equations}). For the constant-cell-pressure cases studied here, $\sigma_r$ is time-invariant and equal to $\sigma_{r0}^{\prime}$, so \cref{eq:ch4_epwp} reduces to $u = \sigma_{r0}^{\prime} - \sigma_r^{\prime}$. The ratio $\ru$ is defined as $\ru = u/\sigma_{r0}^{\prime}$.
 
 \paragraph{Comparison with earlier formulations.}
-Compared with earlier DEM-based HCA servo strategies, the present formulation makes three contributions explicit. First, the governing equations are systematically reduced through elimination of the volume constraint and torsional independence before the coupled system is solved, clarifying the mathematical structure of the problem. Second, the laboratory-to-DEM mapping is established through two pressure differences ($p_{dif,r}^{\prime}$ and $p_{dif,z}^{\prime}$), which are the correct servo targets because they are invariant to the unknown pore water pressure. Third, the cross-coupling between the radial and axial degrees of freedom is quantified analytically through the off-diagonal entries of $\hat{\mathbf{K}}$, so that the servo coefficients correctly reflect the mutual influence of $dr/dt$ and $dH/dt$ on both boundary conditions. None of these steps were formalized in earlier work: \citet{Han2024jgs} solved only the radial and torsional conditions while keeping the specimen height fixed, and \citet{Ma2024} introduced an axial servo but derived each servo coefficient from the contact stiffness at the corresponding wall independently, without reflecting the cross-coupling among the wall movements.
+Compared with earlier DEM-based HCA servo strategies, the present formulation makes three contributions explicit. First, the governing equations are systematically reduced through elimination of the volume constraint and torsional independence before the coupled system is solved, clarifying the mathematical structure of the problem. Second, the laboratory-to-DEM mapping is established through two pressure differences ($p_{dif,r}^{\prime}$ and $p_{dif,z}^{\prime}$), treated as general time-dependent targets $p_{dif,r}^{tar}(t)$ and $p_{dif,z}^{tar}(t)$ that are invariant to the unknown pore water pressure and reproduce the independent $p_o$, $p_i$, $p_z$ control available on a laboratory HCA. Third, the cross-coupling between the radial and axial degrees of freedom is quantified analytically through the off-diagonal entries of $\hat{\mathbf{K}}$, so that the servo coefficients correctly reflect the mutual influence of $dr/dt$ and $dH/dt$ on both boundary conditions. None of these steps were formalized in earlier work: \citet{Han2024jgs} solved only the radial and torsional conditions while keeping the specimen height fixed ($dH/dt=0$) and the radial pressure-difference target held at $p_{dif,r}^{tar}=0$ (i.e., $p_o=p_i$), and \citet{Ma2024} introduced an axial servo but derived each servo coefficient from the contact stiffness at the corresponding wall independently, without reflecting the cross-coupling among the wall movements.
+
+% ----------------------------------------------------------------
+\subsection{Cyclic shear simulation program}
+\label{subsec:ch4_cyclic_program}
+
+The cyclic shear simulation program consists of a verification case and a parametric \Kzero{} study. Cyclic loading is sinusoidal, $\tau_{z\theta}(t) = \tau_{cyc}\sin(2\pi f t)$, at frequency $f = \SI{8}{Hz}$, with the cyclic stress ratio defined as $\mathrm{CSR} = \tau_{cyc}/p_0^{\prime}$ ($p_0^{\prime}$ the initial mean effective stress after consolidation). The outer and inner cell pressures are held at the post-consolidation value ($p_o=p_i=\sigma_{r0}$, so $p_{dif,r}^{tar}=0$). The verification case ($D_r \approx 75\%$, \Kzero{} = 1.0, CSR = 0.400) is run under the constant-total-axial-stress axial boundary ($p_{dif,z}^{tar}$ held constant, $dH/dt$ free); the resulting servo behavior is reported in \cref{subsec:ch4_verification}. The parametric \Kzero{} study uses the displacement-control axial boundary ($dH/dt=0$) matching the protocol of \citet{Ishihara1985}: the primary set examines three representative \Kzero{} states (compression 0.5, isotropic 1.0, extension 2.0) at a very dense state ($D_r \approx 90\%$) across multiple CSR levels, while the expanded set introduces a dense state ($D_r \approx 75\%$) alongside the very dense state with two additional \Kzero{} values (0.67 and 1.5), yielding ten cases ($2 \times 5$) at a single CSR = 0.300 to test whether the \Kzero{}-dependent trend persists at a lower density. Table~\ref{tab:ch4_case_matrix} summarizes the full program.
+
+\begin{table}[t]
+  \centering
+  \caption{Cyclic shear simulation program: CSR levels tested at each combination of relative density and consolidation stress ratio. All cases use the displacement-control axial boundary ($dH/dt=0$) matching \citet{Ishihara1985}, except as noted.}
+  \label{tab:ch4_case_matrix}
+  \begin{tabular}{@{}ccl@{}}
+    \toprule
+    $D_r$ (\%) & $\Kzero$ & CSR levels \\
+    \midrule
+    90 & 0.50 & 0.200, 0.250, 0.300, 0.350, 0.400 \\
+    90 & 0.67 & 0.300 \\
+    90 & 1.00 & 0.200, 0.250, 0.300, 0.350, 0.400 \\
+    90 & 1.50 & 0.300 \\
+    90 & 2.00 & 0.200, 0.250, 0.300, 0.350, 0.400 \\
+    \midrule
+    75 & 0.50 & 0.300 \\
+    75 & 0.67 & 0.300 \\
+    75 & 1.00 & 0.300, 0.400$^{\dagger}$ \\
+    75 & 1.50 & 0.300 \\
+    75 & 2.00 & 0.300 \\
+    \bottomrule
+  \end{tabular}\\[2pt]
+  \begin{minipage}{0.95\linewidth}
+    \footnotesize $^{\dagger}$\,Numerical-verification case (\cref{subsec:ch4_verification}), run under the constant-total-axial-stress axial boundary.
+  \end{minipage}
+\end{table}
+
+% ----------------------------------------------------------------
+\subsection{Numerical verification of the coupled servo}
+\label{subsec:ch4_verification}
+
+This subsection verifies whether the servo formulation faithfully solves the boundary conditions stated in \cref{eq:ch4_cond1_radial,eq:ch4_cond2_axial,eq:ch4_cond3_torsion_error,eq:ch4_const_volume} through the regimes of interest, and whether the cyclic loading is conducted slowly enough that grain-inertia effects do not contaminate the response. Three verification quantities measured throughout the verification case (\cref{subsec:ch4_cyclic_program}) are reported below.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{numerical_verification.png}
+  \caption{Numerical verification of the coupled servo on the verification case ($D_r \approx 75\%$, $\Kzero{} = 1.0$, CSR $= 0.400$, constant-total-axial-stress axial boundary): (a)~volume drift $V/V_0 - 1$; (b)~tracking errors of the radial and axial pressure-difference targets; (c)~evolution of the inertial number $I$.}
+  \label{fig:ch4_numerical_verification}
+\end{figure}
+
+\paragraph{Volume conservation.}
+The constant-volume constraint is enforced kinematically through the analytical relation between $dr/dt$, $dR/dt$, and $dH/dt$ (\cref{eq:ch4_const_volume}), so the specimen volume is expected to remain exactly conserved up to floating-point round-off. \Cref{fig:ch4_numerical_verification}(a) confirms this: the relative volume drift $V(t)/V_0 - 1$ stays below $10^{-7}$ throughout the run, more than two orders of magnitude smaller than the residual compressibility of laboratory pore water.
+
+\paragraph{Boundary tracking errors.}
+\Cref{fig:ch4_numerical_verification}(b) shows the tracking errors for the radial and axial pressure-difference targets ($e_r = p_{dif,r}^{\prime} - p_{dif,r}^{tar}$, $e_z = p_{dif,z}^{\prime} - p_{dif,z}^{tar}$): both grow modestly as the effective confining stress decays towards liquefaction (vertical dashed line), but remain bounded throughout, with peak magnitudes a few percent of the initial mean effective stress. The closed-form $2 \times 2$ inversion of $\hat{\mathbf{K}}$ therefore continues to deliver well-conditioned wall velocities even when the underlying contact network is severely depleted; in particular, the $10\%$ stiffness floor and $20\%$ moment-of-inertia floor introduced in \cref{subsec:ch4_servo} are sufficient to keep $\det\hat{\mathbf{K}}$ bounded away from zero throughout the post-liquefaction excursions.
+
+\paragraph{Quasi-static condition.}
+The inertial number $I=|\dot\gamma_{z\theta}|\,d_{50}\sqrt{\rho_s/\pmean}$, with $d_{50}=\SI{2.0}{mm}$ and $\rho_s=\SI{2650}{kg/m^3}$, plotted in \cref{fig:ch4_numerical_verification}(c) quantifies the strength of grain-inertia effects relative to the prevailing confining stress. \citet{GDRMiDi2004} report that the effective friction becomes shear-rate independent below $I = 10^{-3}$ in steady plane shear, defining a strict quasi-static threshold; \citet{daCruzEmam2005} subsequently use $I = 10^{-2}$ as the representative quasi-static value. In the present run, the representative value $I < 10^{-2}$ is satisfied for the entire pre-liquefaction stage ($N_c/N_L < 1$, $\ru < 0.95$), and the strict threshold $I < 10^{-3}$ is satisfied throughout $96.9\%$ of that stage. The remaining $\sim 3\%$ excursion above $10^{-3}$ is confined to the final cycle before liquefaction, where the mean effective stress has already decayed by more than an order of magnitude and the loading enters the rapid-transition stage of \citet{Wang2025inertial}. After liquefaction, $I$ rises further to peak values of order $10^{-2}$, an unavoidable physical consequence of the vanishing mean effective stress in the inertial-number definition that is shared with laboratory undrained cyclic tests \citep{Wang2025inertial}; the strict quasi-static interpretation of $I$ does not apply in this regime in either the simulation or the laboratory. The monotonic calibration runs of \cref{subsec:ch4_calibration} (torsional-blade rotation at $\omega = \SI{2}{rad/s}$) likewise satisfy both quasi-static thresholds, since their stress paths never approach the near-zero mean-effective-stress regime that drives $I$ upward in the present cyclic case.
 
 % ----------------------------------------------------------------
 \subsection{Parameter calibration and validation}
 \label{subsec:ch4_calibration}
 
-The micro-parameters listed in Table~\ref{tab:ch4_dem_parameters} were calibrated against the undrained monotonic torsional shear data of \citet{Nakata1998} for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0) \citep[see also][]{Ma2024}. Because the micro-parameters collectively influence shear stiffness, dilatancy, and liquefaction resistance, the calibration targeted these behaviors in sequence. Starting from a base parameter set at a given void ratio, the contact Young's modulus $E$ and rolling friction coefficient $\mu_r$ were adjusted while keeping the normal-to-shear stiffness ratio $\kappa$ constant, aiming to reproduce the shear stiffness observed in the $\varepsilon_q$--$q$ response of the monotonic shear tests. The effective stress path in $\pmean$--$q$ space was then examined to assess dilatancy. If the simulated dilatancy was insufficient---i.e., the mean effective stress at phase transformation was lower than the experimental value---the specimen was further compacted to a lower void ratio, which increased both dilatancy and shear stiffness; $E$ was then reduced accordingly to restore the target shear stiffness. This iterative process between void ratio, contact modulus, and rolling friction was repeated until both the shear stiffness and dilatancy simultaneously matched the monotonic experimental data. During the monotonic calibration, the axial pressure difference was maintained at zero ($p_{dif,z}^{tar}=0$ in \cref{eq:ch4_cond2_axial}) to ensure $\sigma_z^{\prime}=\sigma_r^{\prime}$ during shearing.
+\paragraph{Monotonic calibration.}
+The micro-parameters listed in Table~\ref{tab:ch4_dem_parameters} were calibrated against the undrained monotonic torsional shear data of \citet{Nakata1998} for very dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0) \citep[see also][]{Ma2024}. Because the micro-parameters collectively influence shear stiffness, dilatancy, and liquefaction resistance, the calibration targeted these behaviors in sequence. Starting from a base parameter set at a given void ratio, the contact Young's modulus $E$ and rolling friction coefficient $\mu_r$ were adjusted while keeping the normal-to-shear stiffness ratio $\kappa$ constant, aiming to reproduce the shear stiffness observed in the $\varepsilon_q$--$q$ response of the monotonic shear tests. The effective stress path in $\pmean$--$q$ space was then examined to assess dilatancy. If the simulated dilatancy was insufficient---i.e., the mean effective stress at phase transformation was lower than the experimental value---the specimen was further compacted to a lower void ratio, which increased both dilatancy and shear stiffness; $E$ was then reduced accordingly to restore the target shear stiffness. This iterative process between void ratio, contact modulus, and rolling friction was repeated until both the shear stiffness and dilatancy simultaneously matched the monotonic experimental data. During the monotonic calibration, the axial pressure difference was maintained at zero ($p_{dif,z}^{tar}=0$ in \cref{eq:ch4_cond2_axial}) to ensure $\sigma_z^{\prime}=\sigma_r^{\prime}$ during shearing, and shear was imposed through prescribed torsional-blade rotation at $\omega = \SI{2}{rad/s}$, well within the quasi-static regime quantified in \cref{subsec:ch4_verification}.
 
+\paragraph{Cyclic validation.}
 The calibrated parameter set was then validated against the cyclic liquefaction resistance data of \citet{Ishihara1985} for the same sand under identical conditions. Specimens were subjected to sinusoidal torsional shear at five CSR levels (0.20, 0.25, 0.30, 0.35, and 0.40) under constant specimen height ($dH/dt=0$), matching the experimental protocol, with liquefaction defined by single-amplitude shear strain $\gamma_{SA}=2.5\%$.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.95\linewidth]{validate_combined.png}
-  \caption{Calibration and validation of the DEM-HCA model for dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0): (a)~effective stress path and (b)~stress--strain relationship from undrained monotonic shear, calibrated against \citet{Nakata1998}; (c)~cyclic stress ratio versus number of cycles to liquefaction, validated against \citet{Ishihara1985}.}
+  \caption{Calibration and validation of the DEM-HCA model for very dense Toyoura sand ($D_r \approx 90\%$, $\pmean_0=\SI{100}{kPa}$, \Kzero{} = 1.0): (a)~effective stress path and (b)~stress--strain relationship from undrained monotonic shear, calibrated against \citet{Nakata1998}; (c)~cyclic stress ratio versus number of cycles to liquefaction, validated against \citet{Ishihara1985}.}
   \label{fig:ch4_validation}
 \end{figure}
 
+\paragraph{Calibration and validation results.}
 \Cref{fig:ch4_validation} summarizes the calibration and validation results. The effective stress path (\cref{fig:ch4_validation}a) captures the initial contraction followed by dilation towards the critical state line, matching the experimental trend. The stress--strain relationship (\cref{fig:ch4_validation}b) reproduces the shear stiffness and strain-hardening behavior. The liquefaction resistance curve (\cref{fig:ch4_validation}c) shows good agreement with the cyclic data across the full range of CSR. The simultaneous agreement across stiffness, dilatancy, and cyclic liquefaction resistance confirms the reliability of the micro-parameters and demonstrates that the servo mechanism performs well under both axial stress-control (monotonic calibration) and displacement-control (cyclic validation) modes.
 
 % ----------------------------------------------------------------
 \subsection{Microscopic descriptors}
 \label{subsec:ch4_micro_descriptors}
 
-While the macroscopic response characterizes the overall liquefaction behavior, a key advantage of DEM is its ability to access particle-scale information that is not directly measurable in laboratory tests. Three microscopic descriptors are introduced to probe the contact network from complementary perspectives.
+While the macroscopic response characterizes the overall liquefaction behavior, a key advantage of DEM is its ability to access particle-scale information that is not directly measurable in laboratory tests. To exploit this advantage, several microscopic descriptors are introduced to probe the contact network from complementary perspectives: the mechanical coordination number \Zm{}, the count- and force-weighted fabric tensors $\Phi_{ij}$ and $\Phi^f_{ij}$ together with their scalar invariants $(A, B)$, the signed fabric anisotropy indicator $\alpha$, the contact density $\rho_c$, and the directional average normal contact force $\bar{f}_n$.
 
 \paragraph{Mechanical coordination number.}
 The mechanical coordination number \citep{Thornton2000,Oda1977} is defined as:
@@ -458,37 +499,52 @@ Z_m = \frac{2N_c - N_1}{N_p - N_1 - N_0},
 \end{equation}
 where $N_c$ is the total number of interparticle contacts, $N_p$ is the total number of particles, and $N_1$ and $N_0$ are the numbers of particles with one and zero contacts, respectively. Floaters are excluded to focus on the load-bearing contact network. $Z_m$ serves as a scalar measure of packing compactness.
 
-\paragraph{Fabric tensor and fabric anisotropy indicator.}
+\paragraph{Fabric tensors and anisotropy indicators.}
 The directionality of the contact network is characterized through the fabric tensor \citep{Oda1982fabric,Oda1982stat}:
 \begin{equation}
-\Phi_{ij} = \frac{1}{N_c}\sum n_i\,n_j,
+\Phi_{ij} = \frac{1}{N_c}\sum_c n_i^c\,n_j^c,
 \label{eq:ch4_fabric_tensor}
 \end{equation}
-where $n_i$ and $n_j$ are the components of the contact normal vector. Because the HCA specimen is axisymmetric about the vertical axis $z$, it is natural to express $\Phi_{ij}$ in the cylindrical coordinate system $(r,\theta,z)$.
-
-The deviatoric fabric tensor $\mathbf{F}_{ij}$ and its second invariant $\Fc$ measure the magnitude of fabric anisotropy \citep{ZhaoGuo2013}:
+where $n_i^c$ and $n_j^c$ are the components of the unit contact normal at contact $c$. Its force-weighted counterpart,
 \begin{equation}
-\mathbf{F}_{ij} = \frac{15(\Phi_{ij} - \delta_{ij}/3)}{2}, \qquad
-\Fc = \sqrt{\frac{3}{2}\mathbf{F}_{ij}\mathbf{F}_{ij}}.
-\label{eq:ch4_Fc}
+\Phi^f_{ij} = \frac{\sum_c f_n^c\, n_i^c\, n_j^c}{\sum_c f_n^c},
+\label{eq:ch4_fabric_tensor_force}
 \end{equation}
+weights each contact by its normal-force magnitude $f_n^c$ and therefore reflects the directional partitioning of the load-bearing network rather than the contact topology alone; the two diagonals coincide only when contact forces are uniform across orientations. Because the HCA specimen is axisymmetric about the vertical axis $z$, both tensors are expressed in the cylindrical coordinate system $(r,\theta,z)$ in what follows. Following \citet{Zhou2022,Song2024}, from each tensor two scalar invariants are extracted: the deviator magnitude
+\begin{equation}
+A = \sqrt{\tfrac{3}{2}\,\Phi'_{ij}\,\Phi'_{ij}} \in [0,1],
+\qquad
+\Phi'_{ij} = \Phi_{ij} - \tfrac{1}{3}\delta_{ij},
+\label{eq:ch4_fabric_invariants}
+\end{equation}
+which reaches $A = 1$ when all contact normals share a single direction and $A = 0$ for a perfectly isotropic distribution; and the tilt
+\begin{equation}
+B = \arccos\bigl|\hat{\bm v}_1 \cdot \hat{z}\bigr| \in [0, \pi/2],
+\label{eq:ch4_fabric_tilt}
+\end{equation}
+where $\hat{\bm v}_1$ is the eigenvector of $\Phi$ associated with the largest eigenvalue, so that $B = 0$ when the dominant fabric direction is aligned with the specimen axis and $B = \pi/2$ when it lies in the horizontal plane. Subscripts $c$ and $n$ identify the count- and normal-force-weighted versions, so that $(A_c, B_c)$ are computed from $\Phi$ and $(A_n, B_n)$ from $\Phi^f$.
 
-However, $\Fc$ captures only the magnitude of anisotropy without indicating its direction. A signed indicator is needed to distinguish between compression and extension states. Following \citet{Otsubo2022}, the fabric anisotropy indicator $\alpha$ \citep{YimsiriSoga2010} is defined from the axial diagonal component $\Phi_{zz}$:
+A signed indicator is additionally needed to distinguish between compression and extension states with a single scalar. Following \citet{Otsubo2022}, the signed fabric anisotropy indicator $\alpha$ \citep{YimsiriSoga2010} is defined from the axial diagonal component $\Phi_{zz}$:
 \begin{equation}
 \alpha = \frac{5(3\Phi_{zz} - 1)}{5\Phi_{zz} + 1}.
 \label{eq:ch4_alpha}
 \end{equation}
 Positive $\alpha$ indicates that contact normals concentrate toward the vertical axis (compression-state anisotropy, \Kzero{} $< 1.0$), whereas negative $\alpha$ indicates concentration toward the horizontal plane (extension-state anisotropy, \Kzero{} $> 1.0$).
 
-\paragraph{Contact density.}
+\paragraph{Contact density and directional contact force.}
 The contact density \citep{Han2023} describes the average number of contacts per unit solid angle on the unit sphere of contact normal orientations:
 \begin{equation}
 \rho_c(\theta_z,\,\phi_{\mathrm{cir}}) = \frac{2\,N(\theta_z,\,\phi_{\mathrm{cir}})}{N_p\,\Delta\Omega},
 \label{eq:ch4_contact_density}
 \end{equation}
-where $\theta_z$ and $\phi_{\mathrm{cir}}$ are the polar and azimuthal angles in the spherical coordinate system, $N(\theta_z,\,\phi_{\mathrm{cir}})$ is the number of contacts whose normals fall within the angular bin of widths $\Delta\theta_z$ and $\Delta\phi_{\mathrm{cir}}$, and $\Delta\Omega = (\cos\phi_{\mathrm{cir}} - \cos(\phi_{\mathrm{cir}}+\Delta\phi_{\mathrm{cir}}))\,\Delta\theta_z$ is the solid angle subtended by that bin. Unlike the fabric tensor, $\rho_c$ retains the full directional information and thus provides a more complete picture of the evolving contact network.
+where $\theta_z$ and $\phi_{\mathrm{cir}}$ are the polar and azimuthal angles in the spherical coordinate system, $N(\theta_z,\,\phi_{\mathrm{cir}})$ is the number of contacts whose normals fall within the angular bin of widths $\Delta\theta_z$ and $\Delta\phi_{\mathrm{cir}}$, and $\Delta\Omega = (\cos\phi_{\mathrm{cir}} - \cos(\phi_{\mathrm{cir}}+\Delta\phi_{\mathrm{cir}}))\,\Delta\theta_z$ is the solid angle subtended by that bin. The directional average normal contact force is defined on the same angular bins:
+\begin{equation}
+\bar{f}_n(\theta_z,\,\phi_{\mathrm{cir}}) = \frac{1}{N(\theta_z,\,\phi_{\mathrm{cir}})} \sum_{c \in (\theta_z,\,\phi_{\mathrm{cir}})} f_n^c,
+\label{eq:ch4_fn_directional}
+\end{equation}
+where the sum runs over the contacts whose normals fall within the bin. Whereas $\rho_c$ resolves how contacts are distributed across orientations, $\bar{f}_n$ resolves how the load carried by those contacts is distributed across the same orientations; together they retain the full directional information that is collapsed into the second-order tensors $\Phi_{ij}$ and $\Phi^f_{ij}$.
 
-Together, these three descriptors probe the contact network at increasing levels of directional detail: \Zm{} quantifies the average contact density per particle (scalar), $\alpha$ captures the dominant anisotropy direction (signed scalar), and $\rho_c$ resolves the full directional distribution (field on the unit sphere).
+Together, these descriptors probe the contact network across a hierarchy of directional detail: from the scalar packing measure \Zm{} through tensorial anisotropy ($\Phi$, $\Phi^f$ and their invariants) to the full directional fields $\rho_c$ and $\bar{f}_n$.
 
 
 % ================================================================
@@ -522,7 +578,7 @@ The macroscopic response is examined first to establish the overall liquefaction
   \begin{subfigure}[t]{0.48\linewidth}
     \centering
     \includegraphics[width=\linewidth]{macro_response_c.png}
-    \caption{Deviatoric stress vs.\ $\pmean$ for three \Kzero{} states.}
+    \caption{Deviatoric stress vs.\ $\pmean$ for three \Kzero{} states; the dashed line is the critical-state line at slope $M_{cs}\approx 0.892$ (see text).}
     \label{fig:ch4_macro_response_c}
   \end{subfigure}
   \hfill
@@ -538,7 +594,7 @@ The macroscopic response is examined first to establish the overall liquefaction
 
 As shown in \cref{fig:ch4_macro_response}(a,\,b), the isotropically consolidated specimen (\Kzero{} = 1.0) exhibits the classical undrained cyclic response: progressive reduction in $\pmean$ with a butterfly-shaped effective stress path, and marked stiffness degradation with increasingly nonlinear hysteretic loops. As the shear stress $\tau_{z\theta}$ cyclically acts on the hollow cylindrical specimen, the mean effective stress $\pmean$ exhibits an overall decrease. Once $\pmean$ falls below approximately \SI{60}{kPa}, an increase in the magnitude of $\tau_{z\theta}$ drives an upward trend in $\pmean$, displaying the characteristic butterfly-shaped relationship. After liquefaction onset, $\pmean$ and $\tau_{z\theta}$ delineate the critical state line and converge at the origin periodically. The stress--strain relationship (\cref{fig:ch4_macro_response}b) exhibits stiff shear modulus with slight reduction in the initial stage; as cyclic loading progresses towards liquefaction, shear stiffness markedly decreases, plastic deformation occurs, and strong nonlinearity becomes evident in the hysteretic loops.
 
-When the three \Kzero{} states are compared in \cref{fig:ch4_macro_response}(c,\,d), their stress paths converge toward a similar low-effective-stress state near the origin, but the rate of effective stress loss differs systematically: the \Kzero{} = 2.0 specimen accumulates excess pore pressure fastest, the \Kzero{} = 0.5 specimen slowest, and the \Kzero{} = 1.0 specimen is intermediate. The \Kzero{} = 1.0 specimen starts with deviatoric stress $q$ at zero due to isotropic consolidation, while \Kzero{} = 0.5 and \Kzero{} = 2.0 specimens exhibit initial deviatoric stress due to anisotropic consolidation. As cyclic shear progresses, specimens with different \Kzero{} values follow distinct stress paths toward the critical state line, with varying rates of stress degradation. Initial stress anisotropy therefore governs the rate of effective stress reduction rather than the ultimate state at liquefaction.
+When the three \Kzero{} states are compared in \cref{fig:ch4_macro_response}(c,\,d), their stress paths converge toward a similar low-effective-stress state near the origin, but the rate of effective stress loss differs systematically: the \Kzero{} = 2.0 specimen accumulates excess pore pressure fastest, the \Kzero{} = 0.5 specimen slowest, and the \Kzero{} = 1.0 specimen is intermediate. The \Kzero{} = 1.0 specimen starts with deviatoric stress $q$ at zero due to isotropic consolidation, while \Kzero{} = 0.5 and \Kzero{} = 2.0 specimens exhibit initial deviatoric stress due to anisotropic consolidation. As cyclic shear progresses, specimens with different \Kzero{} values follow distinct stress paths toward the critical state line, with varying rates of stress degradation. Initial stress anisotropy therefore governs the rate of effective stress reduction rather than the ultimate state at liquefaction. The dashed line shown in \cref{fig:ch4_macro_response}(c) for reference is the critical-state line at $M_{cs}\approx 0.892$, obtained from the steady-state friction angle $\varphi_{cs}\approx 31^{\circ}$ reported by \citet{VerdugoIshihara1996} for Toyoura sand via $M_{cs}=\sqrt{3}\sin\varphi_{cs}$ at $b=0.5$.
 
 Two commonly used liquefaction criteria are considered: a stress-based criterion, defined as excess pore water pressure reaching 95\% of the initial radial effective stress $\sigma_{r0}^{\prime}$ (i.e., $\ru = 0.95$), and a strain-based criterion, defined as single-amplitude shear strain reaching $\gamma_{SA} = 2.5\%$ (as adopted in \cref{subsec:ch4_calibration} for validation against \citet{Ishihara1985}). A comparison of the two criteria across all simulated cases confirms that they yield nearly identical conclusions: the strain-based criterion consistently produces $N_L$ values approximately 1--2 cycles higher than the stress-based criterion (e.g., for CSR = 0.200, $N_L$ = 40.7 vs.\ 39.5 for \Kzero{} = 0.5, 32.8 vs.\ 31.5 for \Kzero{} = 1.0, and 30.7 vs.\ 29.5 for \Kzero{} = 2.0), and the relative ordering among \Kzero{} states remains unchanged. Since this study focuses on comparing specimens with different initial stress states, the stress-based criterion ($\ru = 0.95$) is adopted for all subsequent analyses, as it directly reflects the loss of effective stress that constitutes the fundamental mechanism of liquefaction.
 
@@ -646,89 +702,40 @@ The preceding macroscopic analysis identified stiffness degradation rate as the 
   \label{fig:ch4_zm_evolution}
 \end{figure}
 
-\Cref{fig:ch4_zm_evolution} shows that the initial coordination number differs with stress anisotropy: the isotropically consolidated specimen exhibits the largest $Z_{m0} \approx 4.98$, whereas the anisotropically consolidated specimens have slightly smaller and nearly identical values ($Z_{m0} \approx 4.89$ and $4.88$ for \Kzero{} = 0.5 and 2.0, respectively). This is consistent with the larger initial stiffness of the isotropic state. During cyclic loading, \Zm{} decreases gradually in the early stage and then drops more rapidly as liquefaction is approached, reflecting progressive loss of contacts. Liquefaction is triggered when \Zm{} approaches a similar threshold value ($\sim$4.0) across the three states, and post-liquefaction \Zm{} fluctuates around comparable levels.
-
-However, the inset in \cref{fig:ch4_zm_evolution} also indicates that \Zm{} alone cannot explain the \Kzero{} dependence of liquefaction resistance: the \Kzero{} = 0.5 and 2.0 specimens exhibit similar initial \Zm{} but markedly different $N_L$, implying that directional characteristics of the contact network must be considered.
+\Cref{fig:ch4_zm_evolution} shows that the initial coordination number differs with stress anisotropy: the isotropically consolidated specimen exhibits the largest $Z_{m0} \approx 4.98$, whereas the anisotropically consolidated specimens have slightly smaller and nearly identical values ($Z_{m0} \approx 4.89$ and $4.88$ for \Kzero{} = 0.5 and 2.0, respectively). Yet \Zm{} alone cannot rank the three: the \Kzero{} = 1.0 specimen carries the largest $Z_{m0}$ but is not the most resistant (\cref{fig:ch4_liq_resistance}), and the \Kzero{} = 0.5 and 2.0 specimens share nearly identical $Z_{m0}$ yet have markedly different $N_L$ (inset of \cref{fig:ch4_zm_evolution}). The reason is that \Zm{} counts contacts isotropically, whereas resistance to torsional shear depends additionally on the directional partitioning of contacts and forces, examined quantitatively in the analyses that follow. The larger $Z_{m0}$ at \Kzero{} = 1.0 is nonetheless consistent with the larger initial stiffness of the isotropic state observed in \cref{fig:ch4_vs_evolution}. During cyclic loading, \Zm{} decreases gradually in the early stage and then drops more rapidly as liquefaction is approached, reflecting progressive loss of contacts and fabric integrity. Liquefaction is triggered when \Zm{} approaches a similar threshold value ($\sim$4.0) across the three states, and post-liquefaction \Zm{} fluctuates around comparable levels.
 
 \subsubsection{Fabric anisotropy indicator}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.7\linewidth]{fabric_anisotropy_evolution.png}
-  \caption{Evolution of fabric anisotropy indicator $\alpha$ during cyclic shear for different \Kzero{} states (CSR = 0.200).}
+  \caption{Evolution of signed fabric anisotropy indicator $\alpha$ during cyclic shear for different \Kzero{} states (CSR = 0.200).}
   \label{fig:ch4_alpha_evolution}
 \end{figure}
 
 \Cref{fig:ch4_alpha_evolution} shows that the \Kzero{} = 0.5 specimen starts with positive $\alpha_0 \approx +0.07$, indicating contact normals concentrated in the axial direction. The \Kzero{} = 1.0 specimen shows $\alpha_0$ close to zero ($\approx +0.02$), reflecting a nearly isotropic fabric. The \Kzero{} = 2.0 specimen exhibits negative $\alpha_0 \approx -0.05$, indicating contact normals concentrated in the horizontal direction. During the early stages of cyclic loading ($N/N_L < 0.8$), $\alpha$ remains relatively stable for all three \Kzero{} states. As the specimens approach liquefaction, $\alpha$ begins to fluctuate significantly and converge toward a narrow band (approximately 0 to 0.05), indicating that the directional fabric anisotropy diminishes as the fabric structure degrades. Notably, the ordering of initial values ($\alpha_0$: \Kzero{} = 0.5 $>$ 1.0 $>$ 2.0) largely mirrors the liquefaction resistance ranking, suggesting that initial fabric anisotropy is a key factor controlling liquefaction resistance. This relationship is examined quantitatively with an expanded dataset in \cref{subsec:ch4_combined_effect}.
 
-While the fabric anisotropy indicator $\alpha$ provides a scalar measure of directional bias, the morphological basis for the sign of $\alpha_0$ can be visualized through contact density distributions. To simultaneously capture changes in both direction and quantity of contact normals during cyclic shear, the contact density $\rho_c$ (\cref{eq:ch4_contact_density}) is used for visualization.
+While the fabric anisotropy indicator $\alpha$ captures directional bias, it does not reveal the full morphology of the contact orientation distribution. To visualize the evolution of contact orientation, contact quantity, and the magnitude of inter-particle forces simultaneously, two complementary 3D rose diagrams are examined for the \Kzero{} = 0.5 and 2.0 specimens over the liquefaction process: a contact-density rose ($\rho_c$, \cref{eq:ch4_contact_density}) and a normal-force rose ($\bar{f}_n$, \cref{eq:ch4_fn_directional}). Each panel is annotated with the corresponding deviator invariant $A$ and tilt angle $B$ (\cref{eq:ch4_fabric_invariants,eq:ch4_fabric_tilt}), with subscripts $c$ for the count-weighted and $n$ for the normal-force-weighted versions.
 
-\subsubsection{Contact density evolution and morphological interpretation}
+\subsubsection{Contact density and contact-force directional distributions}
 
 \begin{figure}[t]
   \centering
-  \begin{tikzpicture}
-    \def\imgW{0.22\linewidth}
-    \def\gap{1pt}
-    \def\rowgap{12pt}
-
-    % --- Row 1: K0=0.5 ---
-    \node[anchor=north west, inner sep=0] (a1) at (0,0)
-      {\includegraphics[width=\imgW]{contact_density_k0_05_t0.png}};
-    \node[font=\small, anchor=south] at (a1.north) {$N/N_L = 0.00$};
-    \node[anchor=north west, inner sep=0] (a2) at ([xshift=\gap]a1.north east)
-      {\includegraphics[width=\imgW]{contact_density_k0_05_t302.png}};
-    \node[font=\small, anchor=south] at (a2.north) {$N/N_L \approx 0.61$};
-    \node[anchor=north west, inner sep=0] (a3) at ([xshift=\gap]a2.north east)
-      {\includegraphics[width=\imgW]{contact_density_k0_05_t523.png}};
-    \node[font=\small, anchor=south] at (a3.north) {$N/N_L \approx 1.05$};
-    \node[anchor=north west, inner sep=0] (a4) at ([xshift=\gap]a3.north east)
-      {\includegraphics[width=\imgW]{contact_density_k0_05_t529.png}};
-    \node[font=\small, anchor=south] at (a4.north) {$N/N_L \approx 1.07$};
-
-    % Axis labels
-    \coordinate (axO) at ([xshift=6pt, yshift=12pt]a1.south west);
-    \draw[->, thick] (axO) -- ++(0, 14pt) node[font=\scriptsize, right, inner sep=1pt] {$z$};
-    \draw[->, thick] (axO) -- ++(16pt, 2pt) node[font=\scriptsize, right, inner sep=1pt] {$\theta$};
-    \draw[->, thick] (axO) -- ++(8pt, -8pt) node[font=\scriptsize, right, inner sep=1pt] {$r$};
-
-    % K0=0.5 label
-    \path (a1.south) -- (a4.south) coordinate[midway] (row1mid);
-    \node[font=\scriptsize, anchor=north] at ([yshift=-1pt]row1mid) {$\Kzero{} = 0.5$};
-
-    % --- Row 2: K0=2.0 ---
-    \node[anchor=north west, inner sep=0] (b1) at ([yshift=-\rowgap]a1.south west)
-      {\includegraphics[width=\imgW]{contact_density_k0_20_t0.png}};
-    \node[anchor=north west, inner sep=0] (b2) at ([xshift=\gap]b1.north east)
-      {\includegraphics[width=\imgW]{contact_density_k0_20_t226.png}};
-    \node[anchor=north west, inner sep=0] (b3) at ([xshift=\gap]b2.north east)
-      {\includegraphics[width=\imgW]{contact_density_k0_20_t379.png}};
-    \node[anchor=north west, inner sep=0] (b4) at ([xshift=\gap]b3.north east)
-      {\includegraphics[width=\imgW]{contact_density_k0_20_t386.png}};
-
-    % K0=2.0 label
-    \path (b1.south) -- (b4.south) coordinate[midway] (row2mid);
-    \node[font=\scriptsize, anchor=north] at ([yshift=-1pt]row2mid) {$\Kzero{} = 2.0$};
-
-    % --- Rainbow colorbar ---
-    \pgfpointdiff{\pgfpointanchor{b4}{south}}{\pgfpointanchor{a4}{north}}
-    \pgfgetlastxy{\discard}{\cbarH}
-    \node[anchor=north west, inner sep=0] (cbar) at ([xshift=4pt]a4.north east)
-      {\includegraphics[height=\cbarH]{colorbar_rainbow.png}};
-    \foreach \val/\frac in {0.5/0, 0.4/0.2, 0.3/0.4, 0.2/0.6, 0.1/0.8, 0/1.0} {
-      \node[font=\footnotesize, anchor=west] at
-        ([xshift=2pt, yshift={-\frac*\cbarH}]cbar.north east) {\val};
-    }
-    \node[font=\footnotesize, rotate=90, anchor=south] at
-      ([xshift=32pt]cbar.east) {Contact density $\rho_c$};
-  \end{tikzpicture}
-  \caption{Evolution of contact density distribution during the liquefaction process for \Kzero{} = 0.5 and 2.0 specimens (CSR = 0.200).}
+  \includegraphics[width=\linewidth]{fig_contact_density_standalone.pdf}
+  \caption{Evolution of contact density distribution $\rho_c$ during the liquefaction process for \Kzero{} = 0.5 and 2.0 specimens (CSR = 0.200). Each panel is annotated with $(A_c, B_c)$ defined in \cref{eq:ch4_fabric_invariants,eq:ch4_fabric_tilt}.}
   \label{fig:ch4_contact_density}
 \end{figure}
 
-\Cref{fig:ch4_contact_density} shows that the \Kzero{} = 0.5 specimen initially exhibits an axially extended contact-density distribution with higher density (orange/red) at the poles and lower density (green) around the equator, corresponding to the positive $\alpha_0$ value. In contrast, the \Kzero{} = 2.0 specimen displays a dimpled sphere distribution with lower contact density at the poles and higher density around the equator, corresponding to the negative $\alpha_0$ value. These distinct morphologies arise from the stress-induced fabric rearrangement during anisotropic consolidation: contacts tend to align perpendicular to the maximum principal stress direction.
+\Cref{fig:ch4_contact_density} shows that the \Kzero{} = 0.5 specimen initially exhibits an axially extended distribution ($A_c \approx 0.022$, $B_c \approx 4^\circ$), consistent with its positive $\alpha_0$, whereas the \Kzero{} = 2.0 specimen shows an equator-concentrated distribution ($A_c \approx 0.016$, $B_c \approx 85^\circ$). Through the intermediate stages, contacts are progressively lost yet the morphology is preserved: the fabric shrinks but does not reshape. As liquefaction is approached, both specimens converge to a strongly anisotropic tilted distribution: $\hat{\bm v}_1$ locks onto $B_c \approx 40$--$45^\circ$ from the axial direction, and $A_c$ rises to $\approx 0.06$--$0.07$, several times the initial \Kzero{}-induced values ($A_c \approx 0.022$ for \Kzero{} = 0.5 and $0.016$ for \Kzero{} = 2.0). Each subsequent loading reversal flips $\hat{\bm v}_1$ to the opposite tilt direction in the $z$--$\theta$ plane while $B_c$ stays at the same magnitude, indicating that the two initially distinct fabrics collapse into a common oscillatory regime governed by the rotating principal-stress direction. This shared post-liquefaction regime is consistent with the dynamic convergence of $\alpha$, \Vs{}, and \Zm{} observed as specimens approach liquefaction.
 
-As cyclic shear progresses, the contact density distributions gradually evolve. During the intermediate stage, the overall contact density decreases notably while the morphological characteristics of the initial distribution are largely preserved---the fabric shrinks but does not reshape. As the specimens approach liquefaction, the contact density further diminishes and the direction of maximum contact density varies following the rotating principal stress axis. In the post-liquefaction state, the distinct initial morphologies converge toward similar patterns---both specimens exhibit an inclined distribution aligned with the rotated principal stress direction, rather than the original axial or horizontal orientations. This shared post-liquefaction regime is consistent with the dynamic convergence of $\alpha$, \Vs{}, and \Zm{} observed as specimens approach liquefaction.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{fig_contact_force_standalone.pdf}
+  \caption{Evolution of the normal contact force distribution during the liquefaction process for \Kzero{} = 0.5 and 2.0 specimens (CSR = 0.200). Each panel is annotated with $(A_n, B_n)$ from \cref{eq:ch4_fabric_invariants,eq:ch4_fabric_tilt} and the specimen-mean normal contact force $\langle F_n \rangle$.}
+  \label{fig:ch4_contact_force}
+\end{figure}
+
+\Cref{fig:ch4_contact_force} weights the same contact set by the normal contact force \citep{Zhou2022,Song2024}. At the initial state, $A_c \approx 0.022$ for \Kzero{} = 0.5 and $A_c \approx 0.016$ for \Kzero{} = 2.0, while the force-fabric counterparts are several times larger ($A_n = 0.17$ and $0.12$, with $B_n \approx 1^\circ$ and $90^\circ$ respectively): under anisotropic consolidation, contacts oriented away from the major principal-stress direction carry only small normal forces, so the force-weighted distribution is far more anisotropic than the count-weighted one. Cyclic shearing reduces $\langle F_n \rangle$ from $\approx 0.57$\,N to $\approx 0.14$\,N (a $\sim 75\%$ decay), while $B_n$ converges to $43$--$45^\circ$ and $A_n$ rises to $\approx 0.18$--$0.20$ for both specimens---the strongest force-fabric anisotropy of the entire sequence, exceeding the initial \Kzero{}-induced values. The residual force network thus carries a much smaller mean force but is even more strongly aligned with the rotating principal-stress direction than the initial network. This force-fabric convergence is the microscopic counterpart of the macroscopic stress-path convergence in \cref{fig:ch4_macro_response}(c): the initial \Kzero{} imprint is erased and a common rotating force skeleton emerges.
 
 \subsubsection{Interparticle force chains and particle displacement}
 
@@ -800,15 +807,13 @@ As cyclic shear progresses, the contact density distributions gradually evolve. 
   \label{fig:ch4_force_disp}
 \end{figure}
 
-\Cref{fig:ch4_force_disp} visualizes the complementary evolution of contact force chains and particle displacements. At the initial state, force chains exhibit distinct patterns corresponding to the initial stress anisotropy. For \Kzero{} = 0.5, the contact forces are predominantly aligned in the axial direction, while for \Kzero{} = 2.0, they are concentrated in the horizontal direction, reflecting the maximum principal stress direction. As cyclic loading progresses, the number of interparticle contacts gradually decreases and the average contact force magnitude diminishes. The amplitude of particle displacement also increases with each loading cycle, reflecting the progressive degradation of the fabric structure.
-
-As the specimens approach liquefaction, the force chains become increasingly sparse while the contact forces reorient to align with the rotated principal stress direction. In the post-liquefaction state, regardless of the initial \Kzero{} value, the contact force distributions converge toward similar patterns---forces no longer align with the initial axial or horizontal directions but concentrate along the rotated principal stress axis. Particle displacements likewise converge in magnitude and pattern, with larger displacements concentrated near the top and bottom boundaries of the specimen. These visual observations directly corroborate the statistical evidence from the contact density and fabric anisotropy analyses: cyclic shearing progressively erases the memory of the initial stress state, driving both assemblies into a shared post-liquefaction dynamic equilibrium. This convergence of fabric structure provides microscopic evidence supporting the uniqueness of the critical state stress ratio, although it should be noted that the post-liquefaction state observed here does not constitute the critical state in a strict sense, as the critical state requires sustained large deformation at the void ratio and effective stress corresponding to the critical state line.
+\Cref{fig:ch4_force_disp} visualizes the spatial pattern of contact force chains and particle displacements over the cycle history. At the initial state ($N/N_L = 0.00$), the force chains align with the major principal-stress direction---axial for \Kzero{} = 0.5, horizontal for \Kzero{} = 2.0---while the displacement field is visually indistinguishable in both specimens. By $N/N_L = 0.61$ the displacements remain indistinguishable, reflecting the small accumulated strain and high shear stiffness at these pre-liquefaction stages; the quantitative discriminator between the two states is instead the force-fabric tilt (\cref{fig:ch4_contact_force}: $B_n = 1^\circ$ vs.\ $90^\circ$ at $N/N_L = 0.00$; $15^\circ$ vs.\ $83^\circ$ at 0.61), while the force chains thin out and darken (the low-force end of the colorbar) and reorient toward the rotating principal-stress direction. The onset of liquefaction ($N/N_L = 1.05$) brings an abrupt change: particle displacements amplify suddenly, becoming clearly visible and concentrating near the top and bottom boundaries with comparable magnitude in both \Kzero{} cases, while the force chains realign toward a common $\sim 45^\circ$ tilt. Between $N/N_L = 1.05$ and 1.07 the loading reverses and both visualisations alternate accordingly: the displacement field flips to the opposite direction, and the dominant force chains swing from one tilt to its mirror in the $z$--$\theta$ plane ($B_n$ stays between $45^\circ$ and $43^\circ$ because, by definition, it is an unsigned tilt magnitude). This reversal signature is shared by both \Kzero{} states rather than discriminating between them. Thus the spatial visualization corroborates the statistical evidence above: cyclic shearing progressively erases the memory of the initial stress state, driving both assemblies into a shared post-liquefaction dynamic equilibrium. This convergence of fabric structure provides microscopic evidence supporting the uniqueness of the critical state stress ratio, although it should be noted that the post-liquefaction state observed here does not constitute the critical state in a strict sense, as the critical state requires sustained large deformation at the void ratio and effective stress corresponding to the critical state line.
 
 % ----------------------------------------------------------------
 \subsection{Combined effect of contact density and directional anisotropy on liquefaction resistance}
 \label{subsec:ch4_combined_effect}
 
-The qualitative analyses above show that initial \Zm{} alone cannot explain the \Kzero{}-dependent liquefaction resistance, while $\alpha$ provides additional discriminating power. To separate their respective contributions quantitatively, the expanded simulation set (two relative densities, five \Kzero{} values, CSR = 0.300) is examined.
+The qualitative analyses above show that initial \Zm{} alone cannot explain the \Kzero{}-dependent liquefaction resistance, while $\alpha$ provides additional discriminating power. To separate their respective contributions quantitatively, the expanded simulation set (two relative densities, five \Kzero{} values, CSR = 0.300; see \cref{subsec:ch4_cyclic_program}) is examined.
 
 \begin{figure}[t]
   \centering
@@ -844,42 +849,45 @@ The three-dimensional view in \cref{fig:ch4_fabric_liq_3d} synthesizes these obs
 
 \subsubsection{Fabric tensor decomposition in cylindrical coordinates}
 
-The physical origin of the $\alpha_0$--$N_L$ correlation can be understood by decomposing the fabric tensor in cylindrical coordinates (\cref{fig:ch4_fabric_mechanism}). Since $\tau_{z\theta}$ acts on the $z$- and $\theta$-planes, a contact's contribution to torsional resistance depends on the projection of its normal onto the $z$--$\theta$ plane; purely radially oriented contacts have zero projection and therefore do not contribute. The effective fraction of contacts resisting $\tau_{z\theta}$ is thus captured by $\Phi_{zz} + \Phi_{\theta\theta} = 1 - \Phi_{rr}$.
+The physical origin of the $\alpha_0$--$N_L$ correlation can be understood by decomposing the fabric tensors $\Phi_{ij}$ and $\Phi^f_{ij}$ (\cref{eq:ch4_fabric_tensor,eq:ch4_fabric_tensor_force}) in the local cylindrical frame $(\hat{r},\hat{\theta},\hat{z})$ (\cref{fig:ch4_fabric_mechanism}). Since $\tau_{z\theta}$ acts on the $(z,\theta)$ plane, a contact's contribution to torsional resistance depends on the projection of its normal onto that plane; purely radially oriented contacts have zero projection and therefore do not contribute. The torsion-resisting fractions are accordingly $1-\Phi_{rr}$ for the topological contact distribution and $1-\Phi^f_{rr}$ for the load-bearing network.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.95\linewidth]{fabric_mechanism_schematic.png}
-  \caption{Mechanism of torsion-resisting contact fraction under \Kzero{} consolidation. (a)~Schematic of a hollow cylindrical element in cylindrical coordinates: contacts with normals in the $z$ and $\theta$ directions (blue) directly resist the applied torsional shear $\tau_{z\theta}$, while radially oriented contacts (red) are mechanically neutral. (b)~Torsion-resisting fraction $1-\Phi_{rr}$ from the expanded dataset (Table~\ref{tab:ch4_fabric_diagonal}), showing a monotonic decrease with increasing \Kzero{} in both density groups.}
+  \caption{Mechanism of torsion-resisting contact fraction under \Kzero{} consolidation. (a)~Schematic of a hollow cylindrical element in cylindrical coordinates: contacts with normals in the $z$ and $\theta$ directions (blue) directly resist the applied torsional shear $\tau_{z\theta}$, while radially oriented contacts (red) are mechanically neutral. (b)~Torsion-resisting fraction from the expanded dataset (Table~\ref{tab:ch4_fabric_diagonal}), shown for both the count-weighted fabric ($1-\Phi_{rr}$, left axis, gray) and the force-weighted fabric ($1-\Phi^f_{rr}$, right axis, blue). Both decrease monotonically with \Kzero{} in both density groups.}
   \label{fig:ch4_fabric_mechanism}
 \end{figure}
 
 \begin{table}[t]
 \centering
-\caption{Initial fabric tensor diagonal components and torsion-resisting fraction for the expanded dataset (CSR = 0.300).}
+\caption{Initial fabric tensor diagonal components and torsion-resisting fractions for the expanded dataset, after anisotropic consolidation. The count fabric varies by ${\sim}1.5\%$ across \Kzero{}, while the force-weighted fabric varies by ${\sim}14\%$, demonstrating the much greater sensitivity of the load-bearing fabric to consolidation anisotropy. Both tensors are evaluated on ball--ball contacts only at the consolidation end-state.}
 \label{tab:ch4_fabric_diagonal}
 \small
-\begin{tabular}{cccccc}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{ccccccccccc}
 \toprule
-$D_r$ & \Kzero{} & $\Phi_{rr}$ & $\Phi_{\theta\theta}$ & $\Phi_{zz}$ & $1-\Phi_{rr}$ \\
+& & \multicolumn{4}{c}{Count fabric $\Phi_{ij}$} & & \multicolumn{4}{c}{Force fabric $\Phi^f_{ij}$} \\
+\cmidrule{3-6} \cmidrule{8-11}
+$D_r$ & \Kzero{} & $\Phi_{rr}$ & $\Phi_{\theta\theta}$ & $\Phi_{zz}$ & $1{-}\Phi_{rr}$ & & $\Phi^f_{rr}$ & $\Phi^f_{\theta\theta}$ & $\Phi^f_{zz}$ & $1{-}\Phi^f_{rr}$ \\
 \midrule
 \multirow{5}{*}{90\%}
-& 0.5  & 0.333 & 0.321 & 0.346 & 0.667 \\
-& 0.67 & 0.337 & 0.323 & 0.340 & 0.664 \\
-& 1.0  & 0.338 & 0.325 & 0.338 & 0.662 \\
-& 1.5  & 0.339 & 0.326 & 0.335 & 0.661 \\
-& 2.0  & 0.343 & 0.331 & 0.325 & 0.657 \\
+& 0.5  & 0.333 & 0.321 & 0.346 & 0.667 & & 0.267 & 0.285 & 0.449 & 0.733 \\
+& 0.67 & 0.337 & 0.323 & 0.340 & 0.664 & & 0.291 & 0.309 & 0.400 & 0.709 \\
+& 1.0  & 0.338 & 0.325 & 0.338 & 0.662 & & 0.317 & 0.339 & 0.344 & 0.683 \\
+& 1.5  & 0.339 & 0.326 & 0.335 & 0.661 & & 0.341 & 0.366 & 0.293 & 0.659 \\
+& 2.0  & 0.343 & 0.331 & 0.325 & 0.657 & & 0.358 & 0.386 & 0.255 & 0.642 \\
 \midrule
 \multirow{5}{*}{75\%}
-& 0.5  & 0.333 & 0.319 & 0.348 & 0.667 \\
-& 0.67 & 0.338 & 0.322 & 0.340 & 0.662 \\
-& 1.0  & 0.339 & 0.323 & 0.337 & 0.661 \\
-& 1.5  & 0.341 & 0.325 & 0.334 & 0.659 \\
-& 2.0  & 0.346 & 0.332 & 0.322 & 0.654 \\
+& 0.5  & 0.333 & 0.319 & 0.348 & 0.667 & & 0.266 & 0.284 & 0.450 & 0.734 \\
+& 0.67 & 0.338 & 0.322 & 0.340 & 0.662 & & 0.291 & 0.309 & 0.400 & 0.709 \\
+& 1.0  & 0.339 & 0.323 & 0.337 & 0.661 & & 0.318 & 0.339 & 0.343 & 0.682 \\
+& 1.5  & 0.341 & 0.325 & 0.334 & 0.659 & & 0.342 & 0.366 & 0.292 & 0.658 \\
+& 2.0  & 0.346 & 0.332 & 0.322 & 0.654 & & 0.360 & 0.387 & 0.253 & 0.640 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-This fraction varies monotonically with \Kzero{} due to the redistribution of contacts under anisotropic consolidation. When \Kzero{} increases above unity, contacts migrate from the $z$ direction into both the $r$ and $\theta$ directions; the gain in $\theta$-directed contacts contributes to torsional resistance, but the accompanying gain in $r$-directed contacts does not. Conversely, when \Kzero{} decreases below unity, contacts concentrate axially, increasing the combined torsion-resisting fraction $\Phi_{zz} + \Phi_{\theta\theta}$. Extraction of the diagonal components from the expanded dataset (Table~\ref{tab:ch4_fabric_diagonal}) confirms that $\Phi_{rr}$ increases monotonically with \Kzero{} in both density groups, so that $1 - \Phi_{rr}$ decreases monotonically---in direct agreement with the liquefaction resistance ordering.
+Both fractions decrease monotonically with \Kzero{}, but with markedly different sensitivities (\cref{fig:ch4_fabric_mechanism}b; Table~\ref{tab:ch4_fabric_diagonal}): as \Kzero{} increases from 0.5 to 2.0 at $D_r = 90\%$, $1-\Phi_{rr}$ falls from 0.667 to 0.657 (${\sim}1.5\%$), whereas $1-\Phi^f_{rr}$ falls from 0.733 to 0.642 (${\sim}14\%$); the two density groups trace nearly identical curves for both descriptors. The underlying redistribution is the same in both tensors: when \Kzero{} increases above unity, contacts (and, more strongly, contact forces) migrate from the $z$ direction into both the $r$ and $\theta$ directions, and the gain in the $r$ direction does not contribute to torsional resistance; when \Kzero{} decreases below unity, contacts concentrate axially. The two fabrics thus play complementary roles: $\Phi$ reflects how contact normals are distributed across orientations, while $\Phi^f$ reflects how the contact forces are distributed across the same orientations, with the force network preferentially aligned with the major principal stress. The much stronger \Kzero{}-sensitivity of $\Phi^f$ identifies the load-bearing network---rather than the contact topology alone---as the dominant microscopic carrier of the \Kzero{}-dependent liquefaction-resistance signal, in direct agreement with the observed $\alpha_0$--$N_L$ correlation.
 
 % ----------------------------------------------------------------
 \subsection{Implications and limitations of DEM simulation}
@@ -889,7 +897,7 @@ The preceding analyses yield two broader implications.
 
 First, the fabric tensor decomposition assumes that, in the HCA torsional shear geometry, contacts with normals in the $z$ and $\theta$ directions contribute equally to resistance against $\tau_{z\theta}$, so that only their sum $\Phi_{zz} + \Phi_{\theta\theta}$ matters and the individual partitioning between $\Phi_{zz}$ and $\Phi_{\theta\theta}$ is not considered. This assumption leads to a testable prediction: specimens sharing the same $\Phi_{zz} + \Phi_{\theta\theta}$ but differing in their individual partitioning should exhibit similar liquefaction resistance. Verification would require preparation methods that independently control the orientation of fabric anisotropy, which is left for future investigation.
 
-It should also be noted that the foregoing interpretation is based on the geometric distribution of contact normals; however, anisotropic consolidation simultaneously induces contact force anisotropy, concentrating larger normal forces on contacts aligned with the major principal stress direction. Because these force-bearing contacts coincide with the torsion-resisting orientations for compression-state specimens, force anisotropy may amplify---or even dominate---the geometric fabric effect identified above. Quantitatively separating the contributions of contact-normal geometry and contact-force magnitude to the overall torsional resistance is left for future work.
+Second, the comparison between the count- and force-weighted fabrics quantifies the relative contributions of contact-normal geometry and contact-force magnitude to the torsion-resisting fraction. The much stronger \Kzero{}-sensitivity of $\Phi^f$ relative to $\Phi$ (\cref{fig:ch4_fabric_mechanism}b; Table~\ref{tab:ch4_fabric_diagonal}) shows that force anisotropy dominates---rather than merely amplifies---the geometric fabric effect, identifying the force-weighted fabric as the principal microscopic carrier of the \Kzero{}-dependent liquefaction-resistance signal.
 
 One limitation should be noted. Relative density and $Z_{m0}$ are strongly coupled under the present consolidation procedure, making it difficult to vary one independently of the other. The present dataset therefore cannot fully isolate their individual contributions to liquefaction resistance; developing preparation protocols that decouple these variables remains a direction for future work.
 
@@ -935,9 +943,9 @@ This chapter used DEM simulations of undrained cyclic torsional shear in hollow 
 
 \item Liquefaction resistance exhibits a monotonic directional dependency on initial stress anisotropy: compression-state anisotropy (\Kzero{} $< 1.0$) produces higher resistance, while extension-state anisotropy (\Kzero{} $> 1.0$) reduces it. This ordering is consistent across all CSR levels and both relative densities examined. The per-cycle energy input rate differs because of distinct stiffness degradation trajectories: the compression-state specimen degrades stiffness most slowly, and the extension-state specimen fastest.
 
-\item The mechanical coordination number \Zm{} and the signed fabric anisotropy indicator $\alpha$ play complementary roles. \Zm{} primarily reflects packing compactness and separates the two density groups, but does not independently explain the \Kzero{}-dependent resistance within each group. By contrast, $\alpha_0$ correlates positively with $N_L$ within both density groups, indicating that directional fabric governs the resistance variation among \Kzero{} states. Decomposition of the fabric tensor in cylindrical coordinates shows that a contact's contribution to torsional resistance depends on the projection of its normal onto the $z$--$\theta$ plane; compression-state consolidation concentrates a larger fraction of contacts onto this plane, offering a geometric interpretation of the $\alpha_0$--$N_L$ correlation.
+\item The mechanical coordination number \Zm{} and the signed fabric anisotropy indicator $\alpha$ play complementary roles. \Zm{} primarily reflects packing compactness and separates the two density groups, but does not independently explain the \Kzero{}-dependent resistance within each group. By contrast, $\alpha_0$ correlates positively with $N_L$ within both density groups, indicating that directional fabric governs the resistance variation among \Kzero{} states. Decomposition of the fabric tensor in cylindrical coordinates shows that a contact's contribution to torsional resistance depends on the projection of its normal onto the $z$--$\theta$ plane; compression-state consolidation concentrates a larger fraction of contacts onto this plane, offering a geometric interpretation of the $\alpha_0$--$N_L$ correlation. Both the count-weighted and force-weighted fabric tensors capture this directional signal through their torsion-resisting fractions ($1 - \Phi_{rr}$ and $1 - \Phi^f_{rr}$), with the force-weighted fraction by far the more sensitive to \Kzero{}.
 
-\item Multiple indicators, including shear wave velocity, mechanical coordination number, fabric anisotropy indicator, contact-density distributions, and force-chain configurations, all show that initially distinct fabric states progressively degrade and converge toward similar configurations in the post-liquefaction stage. This convergence indicates that cyclic loading drives the granular assembly into a common dynamic equilibrium regardless of the initial stress anisotropy.
+\item Multiple indicators, including shear wave velocity, mechanical coordination number, signed fabric anisotropy indicator, count- and force-weighted fabric tensors, contact-density distributions, and force-chain configurations, all show that initially distinct fabric states progressively degrade and converge toward similar configurations in the post-liquefaction stage. This convergence indicates that cyclic loading drives the granular assembly into a common dynamic equilibrium regardless of the initial stress anisotropy.
 \end{enumerate}
 
 \end{document}
