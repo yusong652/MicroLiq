@@ -61,8 +61,11 @@ papers/*/figures/*.pdf
 # Paper reference PDFs
 papers/*/ref/*.pdf
 
-# yade-mcp paper draft — lives in its own private repo until submission
-papers/yade-mcp/
+# dem-mcp paper draft (ex yade-mcp) — lives in its own private repo until submission
+papers/dem-mcp/
+
+# PhD thesis — its own private repo (github.com/yusong652/thesis) until the DEM-MCP paper is published
+thesis/
 
 # Build outputs
 papers/*/build/
